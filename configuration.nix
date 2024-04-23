@@ -161,6 +161,7 @@
     plots
     capitaine-cursors
     lua51Packages.luarocks-nix
+    pinentry
     pass
     yazi
     alejandra

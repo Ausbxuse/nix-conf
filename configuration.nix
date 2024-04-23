@@ -1,137 +1,139 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
 {
-environment.sessionVariables = {
-  MUTTER_DEBUG="color";
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  environment.sessionVariables = {
+    MUTTER_DEBUG = "color";
   };
 
-system.copySystemConfiguration = true;
+  system.copySystemConfiguration = true;
   nixpkgs.config.allowUnfree = true;
-  imports =
-    [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
-      <home-manager/nixos>
-    ];
-systemd.user.services.duo = {
-  script = ''
-    /home/zhenyu/.local/bin/duo set-displays
-    /home/zhenyu/.local/bin/duo watch-rotation
-    /home/zhenyu/.local/bin/duo watch-backlight
-    /home/zhenyu/.local/bin/duo bat-limit
-  '';
-  wantedBy = [ "multi-user.target" ];
-};
+    <home-manager/nixos>
+  ];
+  systemd.user.services.duo = {
+    script = ''
+      /home/zhenyu/.local/bin/duo set-displays
+      /home/zhenyu/.local/bin/duo watch-rotation
+      /home/zhenyu/.local/bin/duo watch-backlight
+      /home/zhenyu/.local/bin/duo bat-limit
+    '';
+    wantedBy = ["multi-user.target"];
+  };
 
-
-# Use the systemd-boot EFI boot loader.
-programs.neovim.enable = true;
-programs.neovim.defaultEditor = true;
+  # Use the systemd-boot EFI boot loader.
+  programs.neovim.enable = true;
+  programs.neovim.defaultEditor = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixuse"; # Define your hostname.
-# Pick only one of the below networking options.
-#networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  # Pick only one of the below networking options.
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
-# Set your time zone.
-    time.timeZone = "US/Pacific";
+  # Set your time zone.
+  time.timeZone = "US/Pacific";
 
-# Configure network proxy if necessary
-# networking.proxy.default = "http://user:password@proxy:port/";
-# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-# Select internationalisation properties.
+  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-# console = {
-#   font = "Lat2-Terminus16";
-#   keyMap = "us";
-#   useXkbConfig = true; # use xkb.options in tty.
-# };
+  # console = {
+  #   font = "Lat2-Terminus16";
+  #   keyMap = "us";
+  #   useXkbConfig = true; # use xkb.options in tty.
+  # };
 
-# Enable the X11 windowing system.
+  # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
-# Enable the GNOME Desktop Environment.
+  # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-/* services.xserver.displayManager.sddm.enable = false;
-services.xserver.desktopManager.plasma6.enable = false; */
+  /*
+     services.xserver.displayManager.sddm.enable = false;
+  services.xserver.desktopManager.plasma6.enable = false;
+  */
 
-# Configure keymap in X11
-# services.xserver.xkb.layout = "us";
-# services.xserver.xkb.options = "eurosign:e,caps:escape";
+  # Configure keymap in X11
+  # services.xserver.xkb.layout = "us";
+  # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
-# Enable CUPS to print documents.
+  # Enable CUPS to print documents.
   services.printing.enable = true;
 
-# Enable sound.
+  # Enable sound.
   hardware.pulseaudio.enable = false;
-# OR
+  # OR
   services.pipewire = {
     enable = true;
     pulse.enable = true;
   };
 
-# Enable touchpad support (enabled default in most desktopManager).
+  # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
-# Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zhenyu = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" ]; # Enable ‘sudo’ for the user.
-      home = "/home/zhenyu";
+    extraGroups = ["wheel" "networkmanager" "video"]; # Enable ‘sudo’ for the user.
+    home = "/home/zhenyu";
     createHome = true;
     packages = with pkgs; [
-
       firefox
-        tree
-        discord
-        alacritty
-        kdeconnect
-        ueberzug
-	libreoffice
-
+      tree
+      discord
+      alacritty
+      kdeconnect
+      ueberzug
+      libreoffice
     ];
   };
-services.locate = {
-	enable = true;
-	localuser = null;
-	package = pkgs.plocate;
-};
-security.sudo = {
-  enable = true;
-  extraRules = [{
-    commands = [
-    {
-      command = "/usr/bin/env";
-      options = [ "NOPASSWD" ];
-    }
+  services.locate = {
+    enable = true;
+    localuser = null;
+    package = pkgs.plocate;
+  };
+  security.sudo = {
+    enable = true;
+    extraRules = [
+      {
+        commands = [
+          {
+            command = "/usr/bin/env";
+            options = ["NOPASSWD"];
+          }
+        ];
+        groups = ["wheel"];
+      }
     ];
-    groups = [ "wheel" ];
-  }];
-};
+  };
 
-services = {
+  services = {
     syncthing = {
-        enable = true;
-        user = "zhenyu";
-        dataDir = "/home/zhenyu/Documents";    # Default folder for new synced folders
-        configDir = "/home/zhenyu/Documents/.config/syncthing";   # Folder for Syncthing's settings and keys
+      enable = true;
+      user = "zhenyu";
+      dataDir = "/home/zhenyu/Documents"; # Default folder for new synced folders
+      configDir = "/home/zhenyu/Documents/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
-};
-# List packages installed in system profile. To search, run:
-# $ nix search wget
+  };
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
   environment.localBinInPath = true;
   environment.systemPackages = with pkgs; [
-    gnome.gnome-shell-extensions 
+    gnome.gnome-shell-extensions
     gnome.dconf-editor
     gnome.gnome-tweaks
     gnome-extension-manager
@@ -159,8 +161,9 @@ services = {
     plots
     capitaine-cursors
     lua51Packages.luarocks-nix
+    pass
     yazi
-  alejandra
+    alejandra
     neovim
     rustup
     sdcv
@@ -209,113 +212,110 @@ services = {
     wl-clipboard
     tree-sitter
     inotify-tools
-unclutter-xfixes
-
-      ];
-
+    unclutter-xfixes
+  ];
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-# Some programs need SUID wrappers, can be configured further or are
-# started in user sessions.
-# programs.mtr.enable = true;
-# programs.gnupg.agent = {
-#   enable = true;
-#   enableSSHSupport = true;
-# };
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
 
-# List services that you want to enable:
-services.unclutter.enable = true;
+  # List services that you want to enable:
+  services.unclutter.enable = true;
   services.xserver.displayManager.gdm.settings = {
     Theme = {
-    CursorTheme = "capitaine-cursors-light";
+      CursorTheme = "capitaine-cursors-light";
     };
-    };
+  };
 
-# Enable the OpenSSH daemon.
-# services.openssh.enable = true;
+  # Enable the OpenSSH daemon.
+  # services.openssh.enable = true;
 
-# Open ports in the firewall.
-# networking.firewall.allowedTCPPorts = [ ... ];
-# networking.firewall.allowedUDPPorts = [ ... ];
-# Or disable the firewall altogether.
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
-# Copy the NixOS configuration file and link it from the resulting system
-# (/run/current-system/configuration.nix). This is useful in case you
-# accidentally delete configuration.nix.
-# system.copySystemConfiguration = true;
+  # Copy the NixOS configuration file and link it from the resulting system
+  # (/run/current-system/configuration.nix). This is useful in case you
+  # accidentally delete configuration.nix.
+  # system.copySystemConfiguration = true;
 
-# This option defines the first version of NixOS you have installed on this particular machine,
-# and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-#
-# Most users should NEVER change this value after the initial install, for any reason,
-# even if you've upgraded your system to a new NixOS release.
-#
-# This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-# so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-# to actually do that.
-#
-# This value being lower than the current NixOS release does NOT mean your system is
-# out of date, out of support, or vulnerable.
-#
-# Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-# and migrated your data accordingly.
-#
-# For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-# fileSystems. "/boot" = {
-# 	device = "/dev/disk/by-label/BOOT";
-#       fsType= "fat32";
-# };
+  # This option defines the first version of NixOS you have installed on this particular machine,
+  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
+  #
+  # Most users should NEVER change this value after the initial install, for any reason,
+  # even if you've upgraded your system to a new NixOS release.
+  #
+  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
+  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
+  # to actually do that.
+  #
+  # This value being lower than the current NixOS release does NOT mean your system is
+  # out of date, out of support, or vulnerable.
+  #
+  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
+  # and migrated your data accordingly.
+  #
+  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  # fileSystems. "/boot" = {
+  # 	device = "/dev/disk/by-label/BOOT";
+  #       fsType= "fat32";
+  # };
 
   system.stateVersion = "24.05"; # Did you read the comment?
-#boot.initrd.luks.devices = {
-#        crypted = {
-#      	  device = "/dev/disk/by-uuid/3f14ceeb-fe2b-4360-974b-695004b8b640";
-#      	  preLVM = true;
-#      	  allowDiscards = true;
-#        };
-#};
+  #boot.initrd.luks.devices = {
+  #        crypted = {
+  #      	  device = "/dev/disk/by-uuid/3f14ceeb-fe2b-4360-974b-695004b8b640";
+  #      	  preLVM = true;
+  #      	  allowDiscards = true;
+  #        };
+  #};
 
-    fonts = {
-      fontDir.enable = true;
-      packages = with pkgs;[
-        jetbrains-mono
-        nerdfonts
-        noto-fonts-emoji-blob-bin
-        source-han-sans
-      ];
+  fonts = {
+    fontDir.enable = true;
+    packages = with pkgs; [
+      jetbrains-mono
+      nerdfonts
+      noto-fonts-emoji-blob-bin
+      source-han-sans
+    ];
+  };
+
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-rime
+      fcitx5-gtk
+      fcitx5-chinese-addons
+      librime
+    ];
+  };
+  /*
+     services.redshift = {
+    enable = true;
+    brightness = {
+  # Note the string values below.
+      day = "1";
+      night = "1";
     };
-
-i18n.inputMethod = {
-  enabled = "fcitx5";
-  fcitx5.addons = with pkgs; [
-    fcitx5-rime
-    fcitx5-gtk
-    fcitx5-chinese-addons
-    librime
-  ];
-};
-/* services.redshift = {
-  enable = true;
-  brightness = {
-# Note the string values below.
-    day = "1";
-    night = "1";
+    temperature = {
+      day = 5500;
+      night = 3700;
+    };
   };
-  temperature = {
-    day = 5500;
-    night = 3700;
+
+  location = {
+    provider = "manual";
+    latitude = 34.023220;
+    longitude = -118.302747;
   };
-};
-
-location = {
-  provider = "manual";
-  latitude = 34.023220;
-  longitude = -118.302747;
-}; */
-
-
+  */
 }
-

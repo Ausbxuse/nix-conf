@@ -18,15 +18,8 @@
     ./hardware-configuration.nix
     <home-manager/nixos>
   ];
-  systemd.user.services.duo = {
-    script = ''
-      /home/zhenyu/.local/bin/duo set-displays
-      /home/zhenyu/.local/bin/duo watch-rotation
-      /home/zhenyu/.local/bin/duo watch-backlight
-      /home/zhenyu/.local/bin/duo bat-limit
-    '';
-    wantedBy = ["multi-user.target"];
-  };
+
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Use the systemd-boot EFI boot loader.
   programs.neovim.enable = true;

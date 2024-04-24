@@ -10,5 +10,5 @@ sudo nixos-rebuild -I nixos-config=configuration.nix switch 2>nixos-switch.log |
 ) &
 gen=$(nixos-rebuild list-generations | grep current)
 git commit -am "$gen"
-git push
+git push origin master
 popd

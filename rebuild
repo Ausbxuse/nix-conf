@@ -6,8 +6,8 @@ alejandra . &>/dev/null
 git diff -U0 *.nix
 echo "NixOS Rebuidling ... "
 git add .
-sudo nixos-rebuild switch --flake "/home/zhenyu/.local/src/public/nixos/#nixuse" 2> nixos-switch.log || (
-# sudo nixos-rebuild -I nixos-config=configuration.nix switch --flake "/home/zhenyu/.local/src/public/nixos/#nixuse" 2> nixos-switch.log || (
+# sudo nixos-rebuild switch --flake "/home/zhenyu/.local/src/public/nixos/#nixuse" 2> nixos-switch.log || (
+sudo nixos-rebuild -I nixos-config=configuration.nix switch --flake "/home/zhenyu/.local/src/public/nixos/#nixuse" 2> nixos-switch.log || (
 # sudo nixos-rebuild -I nixos-config=configuration.nix switch 2> nixos-switch.log || (
 	cat nixos-switch.log | rg error && git reset && false
 )

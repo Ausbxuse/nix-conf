@@ -142,6 +142,7 @@
     gnomeExtensions.tiling-assistant
     gnomeExtensions.gnome-bedtime
     gnomeExtensions.night-light-slider-updated
+    gnomeExtensions.hide-cursor
     # gnomeExtensions.rounded-corners
     gnomeExtensions.unite
     gnomeExtensions.blur-my-shell
@@ -215,7 +216,7 @@
     wl-clipboard
     tree-sitter
     inotify-tools
-    unclutter
+    # unclutter
     texlive.combined.scheme-medium
     openvpn3
     lua-language-server
@@ -249,10 +250,12 @@
   # };
 
   # List services that you want to enable:
-  services.unclutter.enable = true;
+  # services.unclutter.enable = true;
+  # services.unclutter.threshold = 10;
+  # services.unclutter.timeout = 5;
   services.xserver.displayManager.gdm.settings = {
     Theme = {
-      CursorTheme = "capitaine-cursors-light";
+      CursorTheme = "capitaine-cursors-white";
     };
   };
   /*

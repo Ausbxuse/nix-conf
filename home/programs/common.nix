@@ -110,6 +110,7 @@
     #   };
     # };
 
+    brave.enable = true;
     btop.enable = true; # replacement of htop/nmon
     eza.enable = true; # A modern replacement for ‘ls’
     # ssh.enable = true;

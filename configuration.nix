@@ -207,6 +207,7 @@
     tree-sitter
     inotify-tools
     unclutter-xfixes
+    texlive.combined.scheme-small
   ];
 
   programs.zsh.enable = true;

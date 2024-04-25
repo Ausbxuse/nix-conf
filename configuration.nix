@@ -215,7 +215,7 @@
     wl-clipboard
     tree-sitter
     inotify-tools
-    unclutter-xfixes
+    unclutter
     texlive.combined.scheme-medium
     openvpn3
     lua-language-server
@@ -223,6 +223,7 @@
     ltex-ls
     marksman
     nodePackages.pyright
+    nodePackages.prettier
     neofetch
   ];
 

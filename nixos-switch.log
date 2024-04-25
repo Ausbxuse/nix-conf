@@ -1,32 +1,6 @@
 warning: Git tree '/home/zhenyu/.local/src/public/nixos-conf' is dirty
 building the system configuration...
 warning: Git tree '/home/zhenyu/.local/src/public/nixos-conf' is dirty
-error:
-       … while calling the 'head' builtin
-
-         at /nix/store/m5i890m2g4pnyflpn48d1dpzzmwp5q4p-source/lib/attrsets.nix:1575:11:
-
-         1574|         || pred here (elemAt values 1) (head values) then
-         1575|           head values
-             |           ^
-         1576|         else
-
-       … while evaluating the attribute 'value'
-
-         at /nix/store/m5i890m2g4pnyflpn48d1dpzzmwp5q4p-source/lib/modules.nix:809:9:
-
-          808|     in warnDeprecation opt //
-          809|       { value = builtins.addErrorContext "while evaluating the option `${showOption loc}':" value;
-             |         ^
-          810|         inherit (res.defsFinal') highestPrio;
-
-       (stack trace truncated; use '--show-trace' to show the full trace)
-
-       error: syntax error, unexpected '}', expecting ';'
-
-       at /nix/store/hdkmb72nhb0kknf5cry0g9x4ck0fh1jv-source/home.nix:129:3:
-
-          128|     NIX_PATH = "~/.local/src/public/nixos/"
-          129|   };
-             |   ^
-          130|
+activating the configuration...
+reloading user units for zhenyu...
+restarting sysinit-reactivation.target

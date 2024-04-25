@@ -1,1 +1,89 @@
-/run/current-system/sw/bin/nixos-rebuild: unknown option `/home/zhenyu/.local/src/public/nixos/#nixuse'
+error:
+       … while evaluating the attribute 'config'
+
+         at /nix/var/nix/profiles/per-user/root/channels/nixos/lib/modules.nix:322:9:
+
+          321|         options = checked options;
+          322|         config = checked (removeAttrs config [ "_module" ]);
+             |         ^
+          323|         _module = checked (config._module);
+
+       … while calling the 'seq' builtin
+
+         at /nix/var/nix/profiles/per-user/root/channels/nixos/lib/modules.nix:322:18:
+
+          321|         options = checked options;
+          322|         config = checked (removeAttrs config [ "_module" ]);
+             |                  ^
+          323|         _module = checked (config._module);
+
+       (stack trace truncated; use '--show-trace' to show the full trace)
+
+       error: The option `programs.defaults' does not exist. Definition values:
+       - In `/home/zhenyu/.local/src/public/nixos/configuration.nix':
+           {
+             defaults = {
+               "application/pdf" = [
+                 <derivation zathura-with-plugins-0.5.5>
+                 "/nix/store/bhxp8fs2mr8iiincvk5grvcljgi8ahcd-evince-45.0/share/applications/org.gnome.Evince.desktop"
+           ...
+building Nix...
+error:
+       … while evaluating the attribute 'config'
+
+         at /nix/var/nix/profiles/per-user/root/channels/nixos/lib/modules.nix:322:9:
+
+          321|         options = checked options;
+          322|         config = checked (removeAttrs config [ "_module" ]);
+             |         ^
+          323|         _module = checked (config._module);
+
+       … while calling the 'seq' builtin
+
+         at /nix/var/nix/profiles/per-user/root/channels/nixos/lib/modules.nix:322:18:
+
+          321|         options = checked options;
+          322|         config = checked (removeAttrs config [ "_module" ]);
+             |                  ^
+          323|         _module = checked (config._module);
+
+       (stack trace truncated; use '--show-trace' to show the full trace)
+
+       error: The option `programs.defaults' does not exist. Definition values:
+       - In `/home/zhenyu/.local/src/public/nixos/configuration.nix':
+           {
+             defaults = {
+               "application/pdf" = [
+                 <derivation zathura-with-plugins-0.5.5>
+                 "/nix/store/bhxp8fs2mr8iiincvk5grvcljgi8ahcd-evince-45.0/share/applications/org.gnome.Evince.desktop"
+           ...
+building the system configuration...
+error:
+       … while evaluating the attribute 'config.system.build.toplevel'
+
+         at /nix/var/nix/profiles/per-user/root/channels/nixos/lib/modules.nix:322:9:
+
+          321|         options = checked options;
+          322|         config = checked (removeAttrs config [ "_module" ]);
+             |         ^
+          323|         _module = checked (config._module);
+
+       … while calling the 'seq' builtin
+
+         at /nix/var/nix/profiles/per-user/root/channels/nixos/lib/modules.nix:322:18:
+
+          321|         options = checked options;
+          322|         config = checked (removeAttrs config [ "_module" ]);
+             |                  ^
+          323|         _module = checked (config._module);
+
+       (stack trace truncated; use '--show-trace' to show the full trace)
+
+       error: The option `programs.defaults' does not exist. Definition values:
+       - In `/home/zhenyu/.local/src/public/nixos/configuration.nix':
+           {
+             defaults = {
+               "application/pdf" = [
+                 <derivation zathura-with-plugins-0.5.5>
+                 "/nix/store/bhxp8fs2mr8iiincvk5grvcljgi8ahcd-evince-45.0/share/applications/org.gnome.Evince.desktop"
+           ...

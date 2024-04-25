@@ -1,0 +1,2 @@
+warning: Git tree '/home/zhenyu/.local/src/public/nixos' is dirty
+error: getting status of '/nix/store/srsj76kkyf9f7r4km9d2k9cbc7rmq6rr-source/flake.nix': No such file or directory

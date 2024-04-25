@@ -213,6 +213,7 @@
     ruff-lsp
     ltex-ls
     marksman
+    nodePackages.pyright
   ];
 
   programs.defaults.defaults = {

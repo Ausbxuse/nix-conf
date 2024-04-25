@@ -22,17 +22,25 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.grub = {
-    minegrub-theme = {
-      enable = true;
-      splash = "100% Flakes!";
-      boot-options-count = 4;
+  boot.loader.systemd-boot.enable = false;
+  #boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi"; # ← use the same mount point here.
     };
-    # ...
+    grub = {
+      enable = true;
+      efiSupport = true;
+      #efiInstallAsRemovable = true; # in case canTouchEfiVariables doesn't work for your system
+      device = "nodev";
+    };
+    grub2-theme = {
+      enable = true;
+    };
   };
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixuse";
   # Pick only one of the below networking options.

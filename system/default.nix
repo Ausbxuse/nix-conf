@@ -32,7 +32,6 @@
     grub = {
       enable = true;
       efiSupport = true;
-      version = 2;
       #efiInstallAsRemovable = true; # in case canTouchEfiVariables doesn't work for your system
       device = "nodev";
     };

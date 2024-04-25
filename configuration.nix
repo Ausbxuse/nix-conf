@@ -207,8 +207,21 @@
     tree-sitter
     inotify-tools
     unclutter-xfixes
-    texlive.combined.scheme-small
+    texlive.combined.scheme-medium
+    openvpn3
+    lua-language-server
+    ruff-lsp
+    ltex-ls
+    marksman
   ];
+
+  programs.defaults.defaults = {
+    "application/pdf" = [pkgs.zathura "${pkgs.evince}/share/applications/org.gnome.Evince.desktop"];
+    "inode/directory" = [pkgs.yazi];
+    "video/mp4" = pkgs.mpv;
+    "image/png" = pkgs.sxiv;
+    "image/jpg" = pkgs.sxiv;
+  };
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -228,6 +241,23 @@
       CursorTheme = "capitaine-cursors-light";
     };
   };
+  /*
+     programs.nix-ld.enable = true;
+
+  # Sets up all the libraries to load
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    zlib
+    fuse3
+    icu
+    zlib
+    nss
+    openssl
+    curl
+    expat
+    # ...
+  ];
+  */
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -294,23 +324,23 @@
     ];
   };
   /*
-     services.redshift = {
-    enable = true;
-    brightness = {
+       services.redshift = {
+       enable = true;
+       brightness = {
   # Note the string values below.
-      day = "1";
-      night = "1";
-    };
-    temperature = {
-      day = 5500;
-      night = 3700;
-    };
+  day = "1";
+  night = "1";
+  };
+  temperature = {
+  day = 5500;
+  night = 3700;
+  };
   };
 
   location = {
-    provider = "manual";
-    latitude = 34.023220;
-    longitude = -118.302747;
+  provider = "manual";
+  latitude = 34.023220;
+  longitude = -118.302747;
   };
   */
 }

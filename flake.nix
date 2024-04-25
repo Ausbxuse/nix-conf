@@ -32,7 +32,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.zhenyu = import ./home.nix;
+          home-manager.users.zhenyu = import ./home;
 
           # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
         }

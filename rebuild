@@ -4,7 +4,7 @@ pushd ~/.local/src/public/nixos
 alejandra . &>/dev/null
 git diff -U0 *.nix
 echo "NixOS Rebuidling ... "
-sudo nixos-rebuild -I nixos-config=configuration.nix switch --flake "/home/zhenyu/.local/src/public/nixos/#nixuse" || (
+sudo nixos-rebuild -I nixos-config=configuration.nix switch --flake --impure "/home/zhenyu/.local/src/public/nixos/#nixuse" 2>nixos-switch.log || (
 	cat nixos-switch.log | rg error && false
 )
 gen=$(nixos-rebuild list-generations | grep current)

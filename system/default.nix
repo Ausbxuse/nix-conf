@@ -14,14 +14,14 @@
   nixpkgs.config.allowUnfree = true;
   imports = [
     # Include the results of the hardware scan.
+    # ./disk
+    # ./hardware
     ./hardware-configuration.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Use the systemd-boot EFI boot loader.
-  programs.neovim.enable = true;
-  programs.neovim.defaultEditor = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -69,6 +69,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
+  users.defaultUserShell = pkgs.zsh;
   users.users.zhenyu = {
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "video"]; # Enable ‘sudo’ for the user.
@@ -210,7 +211,6 @@
   ];
 
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

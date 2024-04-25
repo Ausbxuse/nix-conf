@@ -17,78 +17,32 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    neofetch
-
-    # archives
-    zip
-    xz
-    unzip
-    # p7zip
-
-    # utils
-    # jq # A lightweight and flexible command-line JSON processor
-    # yq-go # yaml processor https://github.com/mikefarah/yq
-    eza # A modern replacement for ‘ls’
-
-    # networking tools
-    # mtr # A network diagnostic tool
-    # iperf3
-    # dnsutils  # `dig` + `nslookup`
-    # ldns # replacement of `dig`, it provide the command `drill`
-    # aria2 # A lightweight multi-protocol & multi-source command-line download utility
-    # socat # replacement of openbsd-netcat
-    nmap # A utility for network discovery and security auditing
-    # ipcalc  # it is a calculator for the IPv4/v6 addresses
-
-    # misc
     cowsay
+    eza
     file
-    which
-    tree
-    # gnused
-    # gnutar
-    # gawk
-    # zstd
     gnupg
-
-    # nix related
-    #
-    # it provides the command `nom` works just like `nix`
-    # with more details log output
-    nix-output-monitor
-
-    # btop  # replacement of htop/nmon
-    # iotop # io monitoring
-    iftop # network monitoring
-
-    # system call monitoring
-    strace # system call monitoring
-    # ltrace # library call monitoring
-
-    # system tools
-    # sysstat
-    # lm_sensors # for `sensors` command
-    # ethtool
-    # pciutils # lspci
-    usbutils # lsusb
-    killall
-
-    # utils
-    ripgrep
     htop
-
-    # misc
+    iftop # network monitoring
+    killall
     libnotify
-    xdg-utils
-
-    # productivity
-    obsidian
-
-    # JS
-    nodejs
+    neofetch
+    nix-output-monitor
+    shfmt
+    nmap
     nodePackages.npm
     nodePackages.pnpm
+    nodejs
+    obsidian
+    ripgrep
+    strace # system call monitoring
+    tree
+    unzip
+    usbutils # lsusb
+    which
+    xdg-utils
+    xz
     yarn
+    zip
   ];
 
   programs = {
@@ -113,6 +67,9 @@
     brave.enable = true;
     btop.enable = true; # replacement of htop/nmon
     eza.enable = true; # A modern replacement for ‘ls’
+
+    neovim.enable = true;
+    neovim.defaultEditor = true;
     # ssh.enable = true;
 
     # skim = {

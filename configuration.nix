@@ -216,15 +216,18 @@
     ltex-ls
     marksman
     nodePackages.pyright
+    neofetch
   ];
 
-  programs.defaults.defaults = {
+  /*
+     programs.defaults = {
     "application/pdf" = [pkgs.zathura "${pkgs.evince}/share/applications/org.gnome.Evince.desktop"];
     "inode/directory" = [pkgs.yazi];
     "video/mp4" = pkgs.mpv;
     "image/png" = pkgs.sxiv;
     "image/jpg" = pkgs.sxiv;
   };
+  */
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;

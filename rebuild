@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+set -e
 pushd ~/.local/src/public/nixos
 alejandra . &>/dev/null
 git diff -U0 *.nix

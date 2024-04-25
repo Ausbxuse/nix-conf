@@ -4,6 +4,7 @@
 {
   config,
   lib,
+  inputs,
   pkgs,
   ...
 }: {
@@ -19,10 +20,6 @@
     # <home-manager/nixos>
   ];
 
-  /*
-     home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  */
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Use the systemd-boot EFI boot loader.

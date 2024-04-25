@@ -91,6 +91,7 @@
     # ethtool
     # pciutils # lspci
     usbutils # lsusb
+    killall
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

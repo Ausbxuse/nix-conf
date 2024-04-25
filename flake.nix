@@ -12,7 +12,7 @@
     nixosConfigurations.nixuse = nixpkgs.lib.nixosSystem {
       modules = [
         ./configuration.nix
-        inputs.minegrub.nixosModules.default
+        inputs.minegrub-theme.nixosModules.default
       ];
     };
   };

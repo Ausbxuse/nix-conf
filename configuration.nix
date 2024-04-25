@@ -11,16 +11,18 @@
     MUTTER_DEBUG = "color";
   };
 
-  system.copySystemConfiguration = true;
+  system.copySystemConfiguration = false;
   nixpkgs.config.allowUnfree = true;
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    <home-manager/nixos>
+    # <home-manager/nixos>
   ];
 
-  home-manager.useGlobalPkgs = true;
+  /*
+     home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+  */
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Use the systemd-boot EFI boot loader.
@@ -29,6 +31,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.loader.grub = {
+    minegrub-theme = {
+      enable = true;
+      splash = "100% Flakes!";
+      boot-options-count = 4;
+    };
+    # ...
+  };
 
   networking.hostName = "nixuse"; # Define your hostname.
   # Pick only one of the below networking options.

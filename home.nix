@@ -125,6 +125,7 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    # NIX_PATH = "~/.local/src/public/nixos/"
   };
 
   # Let Home Manager install and manage itself.

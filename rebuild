@@ -7,7 +7,7 @@ alejandra . &>/dev/null
 git diff -U0 $(fd .nix)
 echo "NixOS Rebuidling ... "
 git add .
-# sudo nixos-rebuild switch --flake "/home/zhenyu/.local/src/public/nixos/#nixuse" 2> nixos-switch.log || (
+
 sudo nixos-rebuild switch --flake ".#" || (git reset && false)
 gen=$(nixos-rebuild list-generations --flake ".#" | grep current)
 git commit -m "$gen"

@@ -17,6 +17,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
+    just
     cowsay
     eza
     file

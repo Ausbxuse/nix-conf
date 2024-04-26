@@ -269,7 +269,7 @@
     fontDir.enable = true;
     packages = with pkgs; [
       jetbrains-mono
-      nerdfonts
+      # nerdfonts
       noto-fonts-emoji-blob-bin
       source-han-sans
     ];

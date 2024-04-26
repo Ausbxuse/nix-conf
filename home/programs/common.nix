@@ -28,6 +28,8 @@
     gnomeExtensions.coverflow-alt-tab
     gnomeExtensions.color-picker
     gnomeExtensions.bluetooth-battery-meter
+    gnomeExtensions.just-perfection
+    gnome.cheese
     gnome-graphs
     plots
 

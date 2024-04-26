@@ -178,7 +178,7 @@
     tree-sitter
     inotify-tools
     texlive.combined.scheme-medium
-    openvpn3
+    openvpn
   ];
 
   # nix-ld

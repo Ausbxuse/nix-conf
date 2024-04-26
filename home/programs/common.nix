@@ -10,21 +10,56 @@
     # # fonts?
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    gnomeExtensions.tiling-assistant
+    gnomeExtensions.gnome-bedtime
+    gnomeExtensions.night-light-slider-updated
+    gnomeExtensions.hide-cursor
+    gnomeExtensions.unite
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.forge
+    gnomeExtensions.rounded-window-corners
+    gnomeExtensions.kimpanel
+    gnomeExtensions.system-monitor-next
+    gnomeExtensions.net-speed-simplified
+    gnomeExtensions.gsconnect
+    # gnomeExtensions.vitals
+    gnomeExtensions.caffeine
+    gnomeExtensions.paperwm
+    gnomeExtensions.cronomix
+    gnomeExtensions.coverflow-alt-tab
+    # gnomeExtensions.desk-changer
+    gnomeExtensions.color-picker
+    gnomeExtensions.bluetooth-battery-meter
+    gnome-graphs
+    plots
 
+    firefox
+    tree
+    discord
+    alacritty
+    kdeconnect
+    ueberzug
+    libreoffice
+    # Developer
+    lua-language-server
+    ruff-lsp
+    ltex-ls
+    marksman
+    nodePackages.pyright
+    nodePackages.prettier
+    gimp
+    font-manager
+    foliate
+    # User
+    zathura
+    bat
+    nyancat
     gnumake
+    pre-commit
     cowsay
-    eza
     file
     gnupg
-    htop
-    iftop # network monitoring
-    killall
+    iftop
     libnotify
     neofetch
     nix-output-monitor
@@ -39,48 +74,26 @@
     tree
     unzip
     usbutils # lsusb
-    which
     xdg-utils
     xz
     yarn
     zip
+    obs-studio
+    sxiv
+    neocmakelsp
+    wl-clipboard
+    scrcpy
+    alejandra
+    xournalpp
+    mpv
+    stylua
   ];
 
   programs = {
-    # tmux = {
-    # };
-
-    # bat = {
-    #   enable = true;
-    #   config = {
-    #     pager = "less -FR";
-    #     # theme = "catppuccin-mocha";
-    #   };
-    #   themes = {
-    #     # https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme
-    #     catppuccin-mocha = {
-    #       src = catppuccin-bat;
-    #       file = "Catppuccin-mocha.tmTheme";
-    #     };
-    #   };
-    # };
-
     brave.enable = true;
     btop.enable = true; # replacement of htop/nmon
     eza.enable = true; # A modern replacement for ‘ls’
-
     neovim.enable = true;
     neovim.defaultEditor = true;
-    # ssh.enable = true;
-
-    # skim = {
-    #   enable = true;
-    #   enableZshIntegration = true;
-    #   defaultCommand = "rg --files --hidden";
-    #   changeDirWidgetOptions = [
-    #     "--preview 'exa --icons --git --color always -T -L 3 {} | head -200'"
-    #     "--exact"
-    #   ];
-    # };
   };
 }

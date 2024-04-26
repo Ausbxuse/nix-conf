@@ -180,6 +180,10 @@
     inotify-tools
     texlive.combined.scheme-medium
     openvpn
+    pciutils
+    wirelesstools
+    iw
+    gtop
   ];
 
   # nix-ld

@@ -17,7 +17,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    just
+    gnumake
     cowsay
     eza
     file

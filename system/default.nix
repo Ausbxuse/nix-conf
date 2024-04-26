@@ -32,6 +32,7 @@
     grub = {
       enable = true;
       efiSupport = true;
+      # enableCryptodisk= true;
       #efiInstallAsRemovable = true; # in case canTouchEfiVariables doesn't work for your system
       device = "nodev";
     };

@@ -92,7 +92,7 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.displayManager.gdm.settings = {
     Theme = {
-      CursorTheme = "capitaine-cursors-white";
+      cursorTheme = "capitaine-cursors-white";
     };
   };
 
@@ -134,6 +134,7 @@
   environment.localBinInPath = true;
   environment.systemPackages = with pkgs; [
     gnome.gnome-shell-extensions
+    gnome.networkmanager-openvpn
     gnome.dconf-editor
     gnome.gnome-tweaks
     gnome-extension-manager

@@ -10,7 +10,7 @@
     # # fonts?
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
 
-    gnomeExtensions.tiling-assistant
+    gnomeExtensions.astra-monitor
     gnomeExtensions.gnome-bedtime
     gnomeExtensions.night-light-slider-updated
     gnomeExtensions.hide-cursor
@@ -22,12 +22,10 @@
     gnomeExtensions.system-monitor-next
     gnomeExtensions.net-speed-simplified
     gnomeExtensions.gsconnect
-    # gnomeExtensions.vitals
     gnomeExtensions.caffeine
     gnomeExtensions.paperwm
     gnomeExtensions.cronomix
     gnomeExtensions.coverflow-alt-tab
-    # gnomeExtensions.desk-changer
     gnomeExtensions.color-picker
     gnomeExtensions.bluetooth-battery-meter
     gnome-graphs

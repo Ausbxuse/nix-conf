@@ -40,7 +40,7 @@
     discord
     alacritty
     kdeconnect
-    ueberzug
+    ueberzugpp
     libreoffice
     # Developer
     lua-language-server

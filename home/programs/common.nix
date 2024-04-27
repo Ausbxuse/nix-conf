@@ -33,6 +33,8 @@
     gnome-graphs
     plots
 
+    jupyter
+
     firefox
     tree
     discord

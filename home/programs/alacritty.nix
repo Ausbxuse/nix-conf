@@ -52,7 +52,9 @@
         };
       };
       cursor = {
-        style = "Never";
+        style = {
+          blinking = "Never";
+        };
       };
       env = {
         TERM = "xterm-256color";

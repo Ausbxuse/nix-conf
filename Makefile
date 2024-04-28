@@ -8,9 +8,12 @@ GENERATION := $$(nixos-rebuild list-generations --flake ".\#" | grep current)
 NIX_FILES := $$(fd .nix)
 
 # Phony targets for workflow
-.PHONY: all show check format diff push build debug up upp history repl clean gc
+.PHONY: add all show check format diff push build debug up upp history repl clean gc
 
-all: format build push
+all: add format build push
+
+add:
+	@git add .
 
 show:
 	echo $(GENERATION)

@@ -31,8 +31,9 @@
     gnomeExtensions.just-perfection
     gnome.cheese
     gnome-graphs
+    dconf2nix
     plots
-
+    gh
     jupyter
 
     firefox
@@ -88,6 +89,7 @@
     xournalpp
     mpv
     stylua
+    android-tools
   ];
 
   programs = {
@@ -96,5 +98,12 @@
     eza.enable = true; # A modern replacement for ‘ls’
     neovim.enable = true;
     neovim.defaultEditor = true;
+  };
+
+  programs.git = {
+    enable = true;
+
+    userName = "Zhenyu Zhao";
+    userEmail = "peterzhaozzy@gmail.com";
   };
 }

@@ -39,7 +39,6 @@
     tree
     discord
     alacritty
-    kdeconnect
     ueberzugpp
     libreoffice
     # Developer

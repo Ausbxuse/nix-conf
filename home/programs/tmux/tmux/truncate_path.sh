@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get the current path from tmux
 current_path=$(tmux display-message -p -F "#{pane_current_path}")

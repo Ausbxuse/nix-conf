@@ -2,6 +2,6 @@
   imports = [
     ./common.nix
     ./alacritty.nix
-    ./tmux
+    ./tmux.nix
   ];
 }

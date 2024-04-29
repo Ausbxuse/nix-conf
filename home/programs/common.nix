@@ -86,6 +86,7 @@
     zip
     obs-studio
     sxiv
+    home-manager
     neocmakelsp
     wl-clipboard
     scrcpy

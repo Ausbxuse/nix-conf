@@ -4,154 +4,19 @@
   pkgs,
   ...
 }: {
+  home.activation.installAstroNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./tmux}/ ${config.xdg.configHome}/tmux/
+  '';
   programs.tmux = {
     enable = true;
     extraConfig = ''
-      unbind '"' # unbind horizontal split
-      unbind %   # unbind vertical split
-      unbind C-b
-
-      # Smart pane switching with awareness of Neovim splits.
-      bind -n M-h if -F "#{@pane-is-vim}" 'send-keys M-h'  { if -F '#{pane_at_left}' "" 'select-pane -L'}
-      bind -n M-j if -F "#{@pane-is-vim}" 'send-keys M-j'  { if -F '#{pane_at_bottom}' "" 'select-pane -D'}
-      bind -n M-k if -F "#{@pane-is-vim}" 'send-keys M-k'  { if -F '#{pane_at_top}' "" 'select-pane -U'}
-      bind -n M-l if -F "#{@pane-is-vim}" 'send-keys M-l'  { if -F '#{pane_at_right}' "" 'select-pane -R'}
-
-      # Smart pane resizing with awareness of Neovim splits.
-      bind -n M-H if -F "#{@pane-is-vim}" 'send-keys M-H' 'resize-pane -L 3'
-      bind -n M-J if -F "#{@pane-is-vim}" 'send-keys M-J' 'resize-pane -D 3'
-      bind -n M-K if -F "#{@pane-is-vim}" 'send-keys M-K' 'resize-pane -U 3'
-      bind -n M-L if -F "#{@pane-is-vim}" 'send-keys M-L' 'resize-pane -R 3'
-
-      tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
-      if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
-          "bind -n 'C-\\' if -F \"#{@pane-is-vim}\" 'send-keys C-\\'  'select-pane -l'"
-      if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
-          "bind -n 'C-\\' if -F \"#{@pane-is-vim}\" 'send-keys C-\\\\'  'select-pane -l'"
-
-      bind -T copy-mode-vi 'M-h' if -F '#{pane_at_left}' "" 'select-pane -L'
-      bind -T copy-mode-vi 'M-j' if -F '#{pane_at_bottom}' "" 'select-pane -D'
-      bind -T copy-mode-vi 'M-k' if -F '#{pane_at_top}' "" 'select-pane -U'
-      bind -T copy-mode-vi 'M-l' if -F '#{pane_at_right}' "" 'select-pane -R'
-      bind -T copy-mode-vi 'C-\' select-pane -l
-
-      bind f command-prompt -p find-session 'switch-client -t %%'
-
-      bind r source-file ~/.config/tmux/tmux.conf
-      bind -n M-c command-prompt "rename-window %%"
-      bind -n M-C command-prompt "rename-session %%"
-      bind -n "M-'" switch-client -l
-      bind -n "M-;" last-window
-      bind s split-window -v # split pane horizontally
-      bind v split-window -h # split pane vertically
-      bind Enter next-layout
-
-      bind -n M-Space run-shell "~/.config/tmux/dwm.sh open"
-      bind -n M-a run-shell "~/.config/tmux/dwm.sh close"
-      bind -n M-Enter new-window
-
-      bind C-p previous-window
-      bind p previous-window
-      bind C-n next-window
-      bind n next-window
-      bind C-f send-prefix
-
-      bind -n M-Q if-shell "tmux list-windows | grep -q '^1:'" "join-pane -s . -t 1; select-layout main-vertical" "break-pane -a -t 1"
-      bind -n M-W if-shell "tmux list-windows | grep -q '^2:'" "join-pane -s . -t 2; select-layout main-vertical" "break-pane -a -t 2"
-      bind -n M-E if-shell "tmux list-windows | grep -q '^3:'" "join-pane -s . -t 3; select-layout main-vertical" "break-pane -a -t 3"
-      bind -n M-R if-shell "tmux list-windows | grep -q '^4:'" "join-pane -s . -t 4; select-layout main-vertical" "break-pane -a -t 4"
-      bind -n M-T if-shell "tmux list-windows | grep -q '^5:'" "join-pane -s . -t 5; select-layout main-vertical" "break-pane -a -t 5"
-
-      bind -n M-q if-shell "tmux list-windows | grep -q '^1:'" "select-window -t 1" ""
-      bind -n M-w if-shell "tmux list-windows | grep -q '^2:'" "select-window -t 2" ""
-      bind -n M-e if-shell "tmux list-windows | grep -q '^3:'" "select-window -t 3" ""
-      bind -n M-r if-shell "tmux list-windows | grep -q '^4:'" "select-window -t 4" ""
-      bind -n M-t if-shell "tmux list-windows | grep -q '^5:'" "select-window -t 5" ""
-      bind -n M-f resize-pane -Z
-      bind h select-pane -L
-      bind j select-pane -D
-      bind k select-pane -U
-      bind l select-pane -R
-      bind -r C-h select-pane -L
-      bind -r C-j select-pane -D
-      bind -r C-k select-pane -U
-      bind -r C-l select-pane -R
-
-      bind -n PageUp copy-mode -u
-      bind -n PageDown copy-mode
-      bind -n M-, swap-pane -D       # swap current pane with the next one
-      bind -n M-. swap-pane -U       # swap current pane with the previous one
-      bind t select-layout "main-vertical"
-      # bind -n M-r rotate-window
-      bind -n M-n next
-      bind -n M-p prev
-
-      bind -n M-o if-shell "tmux has-session -t org 2>/dev/null" "switch-client -t org" "new-session -d -s org \; switch-client -t org"
-      bind -n M-z if-shell "tmux has-session -t configs 2>/dev/null" "switch-client -t configs" "new-session -d -s configs \; switch-client -t configs"
-      bind -n M-s if-shell "tmux has-session -t school 2>/dev/null" "switch-client -t school" "new-session -d -s school \; switch-client -t school"
-      bind -n M-m if-shell "tmux has-session -t main 2>/dev/null" "switch-client -t main" "new-session -d -s main \; switch-client -t main"
-
-      ################# General Options  #########################
-      set -gq allow-passthrough on
-      set -ga update-environment TERM
-      set -ga update-environment TERM_PROGRAM
-
-      set -g prefix C-f
-      set -g default-terminal "xterm-256color"
-      set -g pane-active-border-style fg=blue
-      set -g other-pane-width "50%"
-      set -g mouse on
-      set -g history-limit 30000
-      set -ga terminal-overrides ",xterm-256color:Tc"
-      set -ga terminal-overrides ",xterm-256color:Tc"
-      set -sg escape-time 20 # faster escape delay time
-      set -g visual-activity on
-      set -g set-titles on
-      set -g set-titles-string '#H:#S.#I.#P #W #T'
-      set -g renumber-windows on
-      set -g base-index 1
-      setw -g aggressive-resize on
-      setw -g xterm-keys on # for vim
-      setw -g mode-keys vi # vi key
-      setw -g monitor-activity off
-      setw -g window-status-current-style fg=white
-      setw -g window-status-current-style reverse
-      setw -g automatic-rename
-      # set -g terminal-overrides 'xterm*:smcup@:rmcup@'
-      # set-option -ga terminal-overrides ",xterm-256color:Tc"
-
-      ################################# Status bar ###################################
-      set -g status-interval 60         # update the status bar every 10 seconds
-      set -g status-justify centre
-      set -g status-position top
-      set -g status-style 'bg=default'  # transparent background
-      set -g status-left-length 50
-      set -g status-right-length 60
-      setw -g window-status-separator ""
-      set -g status-bg 'default'
-      set -g status-left '#{prefix_highlight}#{pomodoro_status}#[fg=#2b2a30,bg=default]#[fg=#b4befe,bg=default] #S#[fg=#2b2a30,bg=default] #[fg=#eaeaea,bg=default]#(~/.config/tmux/truncate_path.sh #{pane_current_path})'
-
-      set -g status-right '#[fg=#4fc1ff,bg=default,bold]#{?window_zoomed_flag,󰍋 , }#[fg=#b4befe,bold]#[nobold] #[fg=#b4befe,nobold]#(duo status) #[fg=#89ddff,bg=default,bold] #[nobold]#{ram_percentage} #[bold]#{battery_color_charge_fg}#[bg=default]#{battery_icon}#[nobold] #{battery_percentage} #[fg=#a9b1d6,bg=default,bold,noitalics]#(forecast)#[fg=#daeafa,nobold]%m-%d #[fg=#f4bf75,bold]#[fg=#daeafa,nobold]%H:%M  #[bg=default]'
-
-      set -g window-status-current-style 'fg=#89ddff,bg=default'
-      # set -g window-status-format '#[fg=#2c2e3b,bg=default]#[fg=#a9b1d6,bg=#2c2e3b]#W #[fg=#2c2e3b,bg=#a9b1d6] #I#[fg=#a9b1d6,bg=default] #[fg=#2b2a30,bg=default]'
-      set -g window-status-format '#[fg=#5c626e,bg=default,italics]#I: #[fg=#5c626e,bg=default,noitalics,bold]#W#[fg=#2b2a30,bg=default] '
-
-      # set -g window-status-current-format '#[fg=#2c2e3b,bg=default]#[fg=#eaeaea,bg=#2c2e3b]#W #[fg=#2c2e3b,bg=#89ddff] #I#[fg=#89ddff,bg=default] #[fg=#2b2a30,bg=default]'
-      set -g window-status-current-format '#[fg=#ae81ff,bg=default,]#[italics]#I: #[fg=#eaeaea,bg=default]#[bold,noitalics]#W#[fg=#2b2a30,bg=default] '
-      # set -g window-status-format '#[fg=#737aa2,bg=default]#I #W '
-      set -g window-status-last-style 'fg=#a9b1d6,bg=default'
-      set -g window-status-activity-style 'fg=#9ece6a,bg=default'
-      set -g pane-border-style 'fg=#b4befe'
-      set -g pane-active-border-style 'fg=#b4befe'
-      set -g message-command-style "bg=default,fg=#9ece6a,italics"
-      set -g message-style "bg=default,fg=#9ece6a,italics"
-      set -g mode-style "bg=default,fg=#9ece6a,italics"
-
-            set -g status-right '#[fg=black,bg=color15] #{cpu_percentage}  %H:%M '
-            run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
-
-
+      run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
+      run-shell ${pkgs.tmuxPlugins.sensible}/share/tmux-plugins/sensible/sensible.tmux
+      run-shell ${pkgs.tmuxPlugins.prefix-highlight}/share/tmux-plugins/prefix-highlight/prefix-highlight.tmux
+      run-shell ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
+      run-shell ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect/resurrect.tmux
+      run-shell ${pkgs.tmuxPlugins.continuum}/share/tmux-plugins/continuum/continuum.tmux
+      run-shell ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf/tmux-fzf.tmux
     '';
   };
 }

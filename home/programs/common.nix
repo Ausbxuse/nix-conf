@@ -33,6 +33,7 @@
     gnome.cheese
     gnome-graphs
     dconf2nix
+    texlab
     plots
     gh
     jupyter
@@ -76,6 +77,8 @@
     strace # system call monitoring
     tree
     unzip
+
+    texlive.combined.scheme-full
     usbutils # lsusb
     xdg-utils
     xz

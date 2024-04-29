@@ -178,7 +178,6 @@
     unzip
     tree-sitter
     inotify-tools
-    texlive.combined.scheme-medium
     openvpn
     pciutils
     wirelesstools

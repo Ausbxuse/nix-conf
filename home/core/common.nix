@@ -97,6 +97,8 @@
     android-tools
     calibre
     imv
+    nh
+    nvd
   ];
 
   programs = {

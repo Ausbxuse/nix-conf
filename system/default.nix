@@ -113,6 +113,7 @@
       cursorTheme = "capitaine-cursors-white";
     };
   };
+  services.gnome.tracker.enable = true;
 
   # Printing
   services.printing.enable = true;

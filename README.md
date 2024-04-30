@@ -5,11 +5,12 @@ This repository contains my personal nix configuration files.
 # Core Todos
 
 - [ ] firefox: user.js
+  - [ ] bookmarks
 - `.config`
-  - [ ] nvim
+  - [x] nvim
     - [ ] gdb integration
   - [x] tmux
-  - [ ] zsh
+  - [x] zsh
     - cache
   - [ ] zathura
   - [ ] sxiv/ replace it with a wayland image viewer
@@ -22,7 +23,7 @@ This repository contains my personal nix configuration files.
   - [x] alacritty
   - [ ] gtk-2.0/3.0/4.0??
   - [ ] dconf
-  - [ ] gitconfig
+  - [x] gitconfig
   - [ ] syncthing for personal files
 - .local
   Maybe make a flake for a separate thingy

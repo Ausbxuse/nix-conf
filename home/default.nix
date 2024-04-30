@@ -5,7 +5,9 @@
   ...
 }: {
   imports = [
-    ./programs
+    ./core
+    ./gui
+    ./games.nix
   ];
 
   home = {

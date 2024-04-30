@@ -11,6 +11,7 @@
     # ./disk
     # ./hardware
     ./hardware-configuration.nix
+    ./gaming
   ];
 
   # user
@@ -29,6 +30,23 @@
       user = "zhenyu";
       dataDir = "/home/zhenyu/Documents"; # Default folder for new synced folders
       configDir = "/home/zhenyu/Documents/.config/syncthing"; # Folder for Syncthing's settings and keys
+      settings = {
+        devices = {
+          "SSU23" = {id = "JQCGOJT-ZVSXGTS-A6LVBAN-X2MSWXI-KHDG4ZY-QQNEP4J-5AQXGMG-DIFYOAU";};
+        };
+        folders = {
+          "Documents" = {
+            # Name of folder in Syncthing, also the folder ID
+            path = "/home/zhenyu/Documents"; # Which folder to add to Syncthing
+            devices = ["SSU23"]; # Which devices to share the folder with
+            ignorePerms = false; # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
+          };
+          "Pictures" = {
+            path = "/home/zhenyu/Pictures";
+            devices = ["SSU23"];
+          };
+        };
+      };
     };
   };
 
@@ -197,6 +215,7 @@
       # nerdfonts
       noto-fonts-emoji-blob-bin
       source-han-sans
+      wqy_zenhei # Need by steam for Chinese
     ];
   };
 }

@@ -118,9 +118,9 @@
 
       # Smart pane switching with awareness of Neovim splits.
             bind -n M-h if -F "#{@pane-is-vim}" 'send-keys M-h'  { if -F '#{pane_at_left}' "" 'select-pane -L'}
-          bind -n M-j if -F "#{@pane-is-vim}" 'send-keys M-j'  { if -F '#{pane_at_bottom}' /""///g 'select-pane -D'}
-          bind -n M-k if -F "#{@pane-is-vim}" 'send-keys M-k'  { if -F '#{pane_at_top}' /""///g 'select-pane -U'}
-          bind -n M-l if -F "#{@pane-is-vim}" 'send-keys M-l'  { if -F '#{pane_at_right}' /""///g 'select-pane -R'}
+          bind -n M-j if -F "#{@pane-is-vim}" 'send-keys M-j'  { if -F '#{pane_at_bottom}' "" 'select-pane -D'}
+          bind -n M-k if -F "#{@pane-is-vim}" 'send-keys M-k'  { if -F '#{pane_at_top}' "" 'select-pane -U'}
+          bind -n M-l if -F "#{@pane-is-vim}" 'send-keys M-l'  { if -F '#{pane_at_right}' "" 'select-pane -R'}
 
       # Smart pane resizing with awareness of Neovim splits.
           bind -n M-H if -F "#{@pane-is-vim}" 'send-keys M-H' 'resize-pane -L 3'
@@ -134,10 +134,10 @@
             if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
             "bind -n 'C-\\' if -F \"#{@pane-is-vim}\" 'send-keys C-\\\\'  'select-pane -l'"
 
-            bind -T copy-mode-vi 'M-h' if -F '#{pane_at_left}' /""///g 'select-pane -L'
-            bind -T copy-mode-vi 'M-j' if -F '#{pane_at_bottom}' /""///g 'select-pane -D'
-            bind -T copy-mode-vi 'M-k' if -F '#{pane_at_top}' /""///g 'select-pane -U'
-            bind -T copy-mode-vi 'M-l' if -F '#{pane_at_right}' /""///g 'select-pane -R'
+            bind -T copy-mode-vi 'M-h' if -F '#{pane_at_left}' "" 'select-pane -L'
+            bind -T copy-mode-vi 'M-j' if -F '#{pane_at_bottom}' "" 'select-pane -D'
+            bind -T copy-mode-vi 'M-k' if -F '#{pane_at_top}' "" 'select-pane -U'
+            bind -T copy-mode-vi 'M-l' if -F '#{pane_at_right}' "" 'select-pane -R'
             bind -T copy-mode-vi 'C-\' select-pane -l
 
             bind f command-prompt -p find-session 'switch-client -t %%'
@@ -232,7 +232,7 @@
             set -g status-style 'bg=default'  # transparent background
             set -g status-left-length 50
             set -g status-right-length 60
-            setw -g window-status-separator /""///g
+            setw -g window-status-separator ""
             set -g status-bg 'default'
             set -g status-left '#{prefix_highlight}#{pomodoro_status}#[fg=#2b2a30,bg=default]#[fg=#b4befe,bg=default] #S#[fg=#2b2a30,bg=default] #[fg=#eaeaea,bg=default]#(~/.config/tmux/truncate_path.sh #{pane_current_path})'
 

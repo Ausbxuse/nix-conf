@@ -1,0 +1,13 @@
+hash -d cac=/home/$USER/.cache 
+hash -d cf=/home/$USER/.config 
+hash -d D=/home/$USER/Downloads 
+hash -d d=/home/$USER/Documents 
+hash -d dt=/home/$USER/.local/share 
+hash -d h=/home/$USER 
+hash -d m=/home/$USER/Music 
+hash -d mn=/mnt 
+hash -d pp=/home/$USER/Pictures 
+hash -d sc=/home/$USER/.local/bin 
+hash -d src=/home/$USER/.local/src 
+hash -d vv=/home/$USER/Videos 
+hash -d USC=/home/$USER/Documents/USC

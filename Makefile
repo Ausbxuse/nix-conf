@@ -8,9 +8,12 @@ GENERATION := $$(nixos-rebuild list-generations --flake ".\#" | grep current)
 NIX_FILES := $$(fd .nix)
 
 # Phony targets for workflow
-.PHONY: add all show check format diff push build debug up upp history repl clean gc
+.PHONY: gen-dconf add all show check format diff push build debug up upp history repl clean gc
 
 all: add format build push
+
+gen-dconf:
+	@dconf dump / | sed "/^color-history/d" | sed '/world-clocks =/{N;N;N;N;d;}' | dconf2nix > home/core/dconf.nix
 
 add:
 	@git add .

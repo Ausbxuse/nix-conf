@@ -8,6 +8,7 @@
     ./core
     ./gui
     ./games.nix
+    ./xdg.nix
   ];
 
   home = {

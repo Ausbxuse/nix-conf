@@ -12,25 +12,25 @@ This repository contains my personal nix configuration files.
   - [x] tmux
   - [x] zsh
     - cache
-  - [ ] zathura
-  - [ ] sxiv/ replace it with a wayland image viewer
+  - [x] zathura
+  - [x] sxiv/ replace it with a wayland image viewer
   - [ ] shell
     - [ ] .zprofile
-    - [ ] shortcuts
-    - [ ] alias
+    - [x] shortcuts
+    - [x] alias
     - [ ] ...
   - [ ] mimeapps
   - [x] alacritty
   - [ ] gtk-2.0/3.0/4.0??
   - [ ] dconf
   - [x] gitconfig
-  - [ ] syncthing for personal files
+  - [x] syncthing for personal files
 - .local
   Maybe make a flake for a separate thingy
-  - [ ] share
-    - [ ] fonts
-    - [ ] wallpapers
-    - [ ] dict
+  - [x] share
+    - [x] fonts
+    - [x] wallpapers
+    - [x] dict
     - [ ] maybe no applications? does mimetype take care of it?
   - [ ] bin/
 - dev

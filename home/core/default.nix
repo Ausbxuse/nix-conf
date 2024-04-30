@@ -8,9 +8,48 @@
     ./common.nix
     ./alacritty.nix
     ./tmux
-    ./zsh
     ./dconf.nix
   ];
+
+  home.sessionVariables = {
+    XCURSOR_THEME = "capitaine-cursors-white";
+  };
+
+  home.file.".gdbinit".text = ''
+    set auto-load safe-path /nix/store
+  '';
+
+  home.activation.installZsh = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./zsh}/ ${config.xdg.configHome}/zsh/
+  '';
+
+  # programs.zsh = {
+  #   dotDir = ".config/zsh";
+  #   enable = true;
+  #   enableCompletion = true;
+  #   autosuggestion.enable = true;
+  #   syntaxHighlighting.enable = true;
+
+  #   shellAliases = {
+  #     ll = "ls -l";
+  #   };
+  #   history.size = 10000;
+  #   history.path = "${config.xdg.dataHome}/zsh/history";
+  # };
+
+  # programs.fzf = {
+  #   enable = true;
+  #   enableZshIntegration = true;
+  # };
+
+  # XDG
+  home.activation.installApplications = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./applications}/ ${config.xdg.dataHome}/applications/
+  '';
+
+  home.activation.installShell = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./shell}/ ${config.xdg.configHome}/shell/
+  '';
 
   home.activation.installNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''
     ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./nvim}/ ${config.xdg.configHome}/nvim/

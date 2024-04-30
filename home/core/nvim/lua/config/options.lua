@@ -12,8 +12,8 @@ local default_options = {
     -- nbsp="␣",
     -- trail="•",
     -- eol="¶",
-    precedes = "«",
-    extends = "»",
+    -- precedes = "«",
+    -- extends = "»",
   },
   fillchars = "eob: ",
   backup = false, -- creates a backup file

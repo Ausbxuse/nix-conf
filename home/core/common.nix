@@ -99,6 +99,7 @@
     imv
     nh
     nvd
+    gdb
   ];
 
   programs = {

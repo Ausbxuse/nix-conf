@@ -142,6 +142,7 @@ source "$HOME/.config/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
 source "$HOME/.config/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
 source "$HOME/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
 source "$HOME/.config/zsh/plugins/zsh-nix-shell/nix-shell.plugin.zsh"
+source "$HOME/.config/zsh/plugins/fzf-tab/fzf-tab.zsh"
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down

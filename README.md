@@ -8,7 +8,7 @@ This repository contains my personal nix configuration files.
 - `.config`
   - [ ] nvim
     - [ ] gdb integration
-  - [ ] tmux
+  - [x] tmux
   - [ ] zsh
     - cache
   - [ ] zathura

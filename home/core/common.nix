@@ -12,6 +12,7 @@
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
 
     gnomeExtensions.astra-monitor
+    gnomeExtensions.media-controls
     gnomeExtensions.gnome-bedtime
     gnomeExtensions.night-light-slider-updated
     gnomeExtensions.hide-cursor

@@ -9,6 +9,7 @@
     #   ~/.steam/root        - A symlink to ~/.local/share/Steam
     #   ~/.steam             - Some Symlinks & user info
     enable = true;
+    gamescopeSession.enable = true;
 
     # fix gamescope inside steam
     package = pkgs.steam.override {
@@ -32,5 +33,10 @@
           source-han-serif
         ];
     };
+
   };
+  environment.systemPackages = with pkgs; [ 
+    mangobud
+  ];
+  programs.gamemode.enable = true;
 }

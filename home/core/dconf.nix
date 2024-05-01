@@ -413,8 +413,8 @@ with lib.hm.gvariant; {
       night-light-enabled = true;
       night-light-last-coordinates = mkTuple [34.0100551621283 (-118.3027446)];
       night-light-schedule-automatic = false;
-      night-light-schedule-from = 8.0;
-      night-light-schedule-to = 20.0;
+      night-light-schedule-from = 9.0;
+      night-light-schedule-to = 21.0;
       night-light-temperature = mkUint32 4172;
     };
 

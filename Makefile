@@ -15,7 +15,7 @@ all: gen-dconf commit format build push
 gen-dconf:
 	@dconf dump /  | sed "/^color-history/d" | dconf2nix > home/core/dconf.nix && alejandra home/core/dconf.nix &>/dev/null && sed -i "/world-clocks =/{N;N;N;N;d;}" home/core/dconf.nix && sed -i "/locations = /d" home/core/dconf.nix
 
-commit:
+commit: format
 	@git commit -a
 
 show:
@@ -31,7 +31,7 @@ diff:
 push: 
 	@git push origin master
 
-build: format
+build: 
 	@nixos-rebuild switch --flake . --use-remote-sudo
 
 debug: format

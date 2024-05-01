@@ -29,7 +29,7 @@ diff:
 	@git diff
 
 push: 
-	@git push origin master
+	@git push origin stable
 
 build: 
 	@nixos-rebuild switch --flake . --use-remote-sudo

@@ -35,7 +35,13 @@
     };
   };
   environment.systemPackages = with pkgs; [
-    mangohud
+    protonup
+    mangohud # system stats overlay
   ];
+
+  environment.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/zhenyu/.steam/root/compatibilitytools.d";
+  };
+
   programs.gamemode.enable = true;
 }

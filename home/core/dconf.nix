@@ -82,7 +82,7 @@ with lib.hm.gvariant; {
       camera = "USB2.0 FHD UVC WebCam (V4L2)";
       photo-x-resolution = 1920;
       photo-y-resolution = 1080;
-      selected-effect = "Historical";
+      selected-effect = "No Effect";
       video-x-resolution = 1920;
       video-y-resolution = 1080;
     };
@@ -411,7 +411,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = true;
-      night-light-last-coordinates = mkTuple [33.998501 (-118.28695)];
+      night-light-last-coordinates = mkTuple [34.0100551621283 (-118.3027446)];
       night-light-schedule-automatic = false;
       night-light-schedule-from = 8.0;
       night-light-schedule-to = 20.0;
@@ -512,17 +512,17 @@ with lib.hm.gvariant; {
       queued-pref-category = "";
       sensors-header-icon = false;
       sensors-header-sensor1 = ''
-        {"service":"hwmon","path":["coretemp","Core 0","input"]}
+        {"service":"hwmon","path":["coretemp","Core 0","input"]}\\n\n
       '';
       sensors-header-sensor1-digits = -1;
       sensors-header-sensor1-show = true;
       sensors-header-show = true;
       sensors-header-tooltip = false;
       sensors-header-tooltip-sensor1 = ''
-        {"service":"hwmon","path":["BAT0","in0","input"]}\\n\n
+        {"service":"hwmon","path":["BAT0","in0","input"]}\\\\\\\\n\\\\n\\n\n
       '';
       sensors-header-tooltip-sensor2 = ''
-        {"service":"hwmon","path":["nvme-{$10000e100}","Composite","input"]}\\n\n
+        {"service":"hwmon","path":["nvme-{$10000e100}","Composite","input"]}\\\\\\\\n\\\\n\\n\n
       '';
       sensors-indicators-order = "[\"icon\",\"value\"]";
       sensors-source = "auto";
@@ -574,8 +574,9 @@ with lib.hm.gvariant; {
     };
 
     "org/gnome/shell/extensions/caffeine" = {
-      indicator-position-max = 5;
-      toggle-state = false;
+      indicator-position-max = 2;
+      toggle-state = true;
+      user-enabled = true;
     };
 
     "org/gnome/shell/extensions/color-picker" = {
@@ -680,7 +681,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/shell/extensions/gsconnect/device/05936842_ff41_4791_b9f0_17f7ee6e0421/plugin/notification" = {
       applications = ''
-        {"Printers":{"iconName":"org.gnome.Settings-printers-symbolic","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Disks":{"iconName":"org.gnome.DiskUtility","enabled":true},"Date & Time":{"iconName":"org.gnome.Settings-time-symbolic","enabled":true},"Disk Usage Analyzer":{"iconName":"org.gnome.baobab","enabled":true},"Geary":{"iconName":"org.gnome.Geary","enabled":true},"Power":{"iconName":"org.gnome.Settings-power-symbolic","enabled":true},"Console":{"iconName":"org.gnome.Console","enabled":true},"Color":{"iconName":"org.gnome.Settings-color-symbolic","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Archive Manager":{"iconName":"org.gnome.FileRoller","enabled":true},"notify-send":{"iconName":"","enabled":true}}\\n\n
+        {"Printers":{"iconName":"org.gnome.Settings-printers-symbolic","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Disks":{"iconName":"org.gnome.DiskUtility","enabled":true},"Date & Time":{"iconName":"org.gnome.Settings-time-symbolic","enabled":true},"Disk Usage Analyzer":{"iconName":"org.gnome.baobab","enabled":true},"Geary":{"iconName":"org.gnome.Geary","enabled":true},"Power":{"iconName":"org.gnome.Settings-power-symbolic","enabled":true},"Console":{"iconName":"org.gnome.Console","enabled":true},"Color":{"iconName":"org.gnome.Settings-color-symbolic","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Archive Manager":{"iconName":"org.gnome.FileRoller","enabled":true},"notify-send":{"iconName":"","enabled":true}}\\\\\\\\n\\\\n\\n\n
       '';
     };
 
@@ -712,7 +713,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/shell/extensions/gsconnect/device/_4927fd63_aac9_455a_afc2_09441434b5f7_/plugin/notification" = {
       applications = ''
-        {"Printers":{"iconName":"org.gnome.Settings-printers-symbolic","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Disks":{"iconName":"org.gnome.DiskUtility","enabled":true},"Date & Time":{"iconName":"org.gnome.Settings-time-symbolic","enabled":true},"Power":{"iconName":"org.gnome.Settings-power-symbolic","enabled":true},"Disk Usage Analyzer":{"iconName":"org.gnome.baobab","enabled":true},"Geary":{"iconName":"org.gnome.Geary","enabled":true},"Console":{"iconName":"org.gnome.Console","enabled":true},"Color":{"iconName":"org.gnome.Settings-color-symbolic","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Archive Manager":{"iconName":"org.gnome.FileRoller","enabled":true}}\\n\n
+        {"Printers":{"iconName":"org.gnome.Settings-printers-symbolic","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Disks":{"iconName":"org.gnome.DiskUtility","enabled":true},"Date & Time":{"iconName":"org.gnome.Settings-time-symbolic","enabled":true},"Power":{"iconName":"org.gnome.Settings-power-symbolic","enabled":true},"Disk Usage Analyzer":{"iconName":"org.gnome.baobab","enabled":true},"Geary":{"iconName":"org.gnome.Geary","enabled":true},"Console":{"iconName":"org.gnome.Console","enabled":true},"Color":{"iconName":"org.gnome.Settings-color-symbolic","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Archive Manager":{"iconName":"org.gnome.FileRoller","enabled":true}}\\\\\\\\n\\\\n\\n\n
       '';
     };
 
@@ -751,7 +752,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/shell/extensions/gsconnect/device/_a5b1bde4_dfb2_4dca_b388_7124681e68f1_/plugin/notification" = {
       applications = ''
-        {"Printers":{"iconName":"org.gnome.Settings-printers-symbolic","enabled":true},"calibre":{"iconName":"calibre-gui","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Disks":{"iconName":"org.gnome.DiskUtility","enabled":true},"Date & Time":{"iconName":"org.gnome.Settings-time-symbolic","enabled":true},"Disk Usage Analyzer":{"iconName":"org.gnome.baobab","enabled":true},"Geary":{"iconName":"org.gnome.Geary","enabled":true},"Power":{"iconName":"org.gnome.Settings-power-symbolic","enabled":true},"Console":{"iconName":"org.gnome.Console","enabled":true},"Color":{"iconName":"org.gnome.Settings-color-symbolic","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Archive Manager":{"iconName":"org.gnome.FileRoller","enabled":true}}\n
+        {"Printers":{"iconName":"org.gnome.Settings-printers-symbolic","enabled":true},"calibre":{"iconName":"calibre-gui","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Disks":{"iconName":"org.gnome.DiskUtility","enabled":true},"Date & Time":{"iconName":"org.gnome.Settings-time-symbolic","enabled":true},"Disk Usage Analyzer":{"iconName":"org.gnome.baobab","enabled":true},"Geary":{"iconName":"org.gnome.Geary","enabled":true},"Power":{"iconName":"org.gnome.Settings-power-symbolic","enabled":true},"Console":{"iconName":"org.gnome.Console","enabled":true},"Color":{"iconName":"org.gnome.Settings-color-symbolic","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Archive Manager":{"iconName":"org.gnome.FileRoller","enabled":true}}\\\\n\\n\n
       '';
     };
 
@@ -836,7 +837,7 @@ with lib.hm.gvariant; {
       restore-attach-modal-dialogs = "";
       restore-edge-tiling = "";
       restore-keybinds = ''
-        {}\\n\n
+        {}\\\\\\\\n\\\\n\\n\n
       '';
       restore-workspaces-only-on-primary = "";
       show-workspace-indicator = false;

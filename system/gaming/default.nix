@@ -33,10 +33,9 @@
           source-han-serif
         ];
     };
-
   };
-  environment.systemPackages = with pkgs; [ 
-    mangobud
+  environment.systemPackages = with pkgs; [
+    mangohud
   ];
   programs.gamemode.enable = true;
 }

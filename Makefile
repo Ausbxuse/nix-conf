@@ -19,7 +19,7 @@ commit:
 	@git commit -a
 
 show:
-	echo $(GENERATION)
+	echo $(GENERATION) >> README.md
 check:
 	@nix flake check
 format:

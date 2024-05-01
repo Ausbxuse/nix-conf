@@ -84,3 +84,4 @@ The following are synced with syncthing
 1. suspesne freeze
 2. nightlight not working
 3. cursor in alacritty disappearing
+4. dev flow and version cvontrool

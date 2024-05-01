@@ -89,11 +89,6 @@ with lib.hm.gvariant; {
     };
 
     "org/gnome/clocks" = {
-      world-clocks = [
-        {
-          location = mkVariant [(mkUint32 2) (mkVariant ["Wuhan" "ZHHH" true [(mkTuple [0.5343616451366947 1.9920024471250972])] [(mkTuple [0.5337798570838349 1.9943295644299512])]])];
-        }
-      ];
     };
 
     "org/gnome/clocks/state/window" = {

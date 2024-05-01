@@ -10,7 +10,7 @@ NIX_FILES := $$(fd .nix)
 # Phony targets for workflow
 .PHONY: gen-dconf commit all show check format diff push build debug up upp history repl clean gc
 
-all: commit format build push
+all: gen-dconf commit format build push
 
 gen-dconf:
 	@dconf dump /  | sed "/^color-history/d" | dconf2nix > home/core/dconf.nix && alejandra home/core/dconf.nix &>/dev/null && sed -i "/world-clocks =/{N;N;N;N;d;}" home/core/dconf.nix && sed -i "/locations = /d" home/core/dconf.nix

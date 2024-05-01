@@ -44,7 +44,6 @@ with lib.hm.gvariant; {
     };
 
     "org/gnome/Weather" = {
-      locations = [(mkVariant [(mkUint32 2) (mkVariant ["Los Angeles" "KCQT" true [(mkTuple [0.5937028397045019 (-2.064433611082862)])] [(mkTuple [0.5943236009595587 (-2.063741622941031)])]])])];
       window-height = 852;
       window-maximized = false;
       window-width = 708;
@@ -989,11 +988,9 @@ with lib.hm.gvariant; {
 
     "org/gnome/shell/weather" = {
       automatic-location = true;
-      locations = [(mkVariant [(mkUint32 2) (mkVariant ["Los Angeles" "KCQT" true [(mkTuple [0.5937028397045019 (-2.064433611082862)])] [(mkTuple [0.5943236009595587 (-2.063741622941031)])]])])];
     };
 
     "org/gnome/shell/world-clocks" = {
-      locations = [(mkVariant [(mkUint32 2) (mkVariant ["Wuhan" "ZHHH" true [(mkTuple [0.5343616451366947 1.9920024471250972])] [(mkTuple [0.5337798570838349 1.9943295644299512])]])])];
     };
 
     "org/gnome/system/location" = {

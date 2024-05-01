@@ -20,7 +20,7 @@ with lib.hm.gvariant; {
     };
 
     "org/gnome/Console" = {
-      last-window-size = mkTuple [1920 1048];
+      last-window-size = mkTuple [708 852];
       use-system-font = true;
     };
 
@@ -35,6 +35,41 @@ with lib.hm.gvariant; {
     "org/gnome/Music" = {
       window-maximized = false;
       window-size = [936 651];
+    };
+
+    "org/gnome/Snapshot" = {
+      is-maximized = false;
+      window-height = 852;
+      window-width = 708;
+    };
+
+    "org/gnome/Weather" = {
+      locations = [(mkVariant [(mkUint32 2) (mkVariant ["Los Angeles" "KCQT" true [(mkTuple [0.5937028397045019 (-2.064433611082862)])] [(mkTuple [0.5943236009595587 (-2.063741622941031)])]])])];
+      window-height = 852;
+      window-maximized = false;
+      window-width = 708;
+    };
+
+    "org/gnome/baobab/ui" = {
+      is-maximized = false;
+      window-size = mkTuple [1440 868];
+    };
+
+    "org/gnome/calculator" = {
+      accuracy = 9;
+      angle-units = "degrees";
+      base = 10;
+      button-mode = "advanced";
+      number-format = "automatic";
+      show-thousands = false;
+      show-zeroes = false;
+      source-currency = "";
+      source-units = "degree";
+      target-currency = "";
+      target-units = "radian";
+      window-maximized = false;
+      window-size = mkTuple [680 659];
+      word-size = 64;
     };
 
     "org/gnome/calendar" = {
@@ -54,6 +89,11 @@ with lib.hm.gvariant; {
     };
 
     "org/gnome/clocks" = {
+      world-clocks = [
+        {
+          location = mkVariant [(mkUint32 2) (mkVariant ["Wuhan" "ZHHH" true [(mkTuple [0.5343616451366947 1.9920024471250972])] [(mkTuple [0.5337798570838349 1.9943295644299512])]])];
+        }
+      ];
     };
 
     "org/gnome/clocks/state/window" = {
@@ -129,6 +169,7 @@ with lib.hm.gvariant; {
       font-hinting = "slight";
       font-name = "Noto Sans,  10";
       icon-theme = "Adwaita";
+      locate-pointer = false;
       scaling-factor = mkUint32 1;
       show-battery-percentage = true;
       text-scaling-factor = 1.0;
@@ -159,6 +200,10 @@ with lib.hm.gvariant; {
 
     "org/gnome/desktop/notifications/application/mpv" = {
       application-id = "mpv.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/org-gnome-baobab" = {
+      application-id = "org.gnome.baobab.desktop";
     };
 
     "org/gnome/desktop/notifications/application/org-gnome-characters" = {
@@ -372,7 +417,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = true;
-      night-light-last-coordinates = mkTuple [33.998500505989256 (-118.2869503)];
+      night-light-last-coordinates = mkTuple [33.998501 (-118.28695)];
       night-light-schedule-automatic = false;
       night-light-schedule-from = 8.0;
       night-light-schedule-to = 20.0;
@@ -429,7 +474,7 @@ with lib.hm.gvariant; {
       command-history = ["lg"];
       disable-user-extensions = false;
       disabled-extensions = ["light-style@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "tiling-assistant@leleat-on-github" "Rounded_Corners@lennart-k" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "Vitals@CoreCoding.com" "paperwm@paperwm.github.com" "netspeedsimplified@prateekmedia.extension" "system-monitor-next@paradoxxx.zero.gmail.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "cronomix@zagortenay333"];
-      enabled-extensions = ["blur-my-shell@aunetx" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "kimpanel@kde.org" "gnomebedtime@ionutbortis.gmail.com" "gsconnect@andyholmes.github.io" "night-light-slider-updated@vilsbeg.codeberg.org" "forge@jmmaranan.com" "CoverflowAltTab@palatis.blogspot.com" "color-picker@tuberry" "caffeine@patapon.info" "Bluetooth-Battery-Meter@maniacx.github.com" "hide-cursor@elcste.com" "just-perfection-desktop@just-perfection" "monitor@astraext.github.io" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "unite@hardpixel.eu"];
+      enabled-extensions = ["blur-my-shell@aunetx" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "user-theme@gnome-shell-extensions.gcampax.github.com" "kimpanel@kde.org" "gnomebedtime@ionutbortis.gmail.com" "gsconnect@andyholmes.github.io" "night-light-slider-updated@vilsbeg.codeberg.org" "forge@jmmaranan.com" "CoverflowAltTab@palatis.blogspot.com" "color-picker@tuberry" "caffeine@patapon.info" "Bluetooth-Battery-Meter@maniacx.github.com" "hide-cursor@elcste.com" "just-perfection-desktop@just-perfection" "monitor@astraext.github.io" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "unite@hardpixel.eu" "mediacontrols@cliffniff.github.com"];
       looking-glass-history = ["Flags"];
       welcome-dialog-last-shown-version = "45.5";
     };
@@ -473,19 +518,20 @@ with lib.hm.gvariant; {
       queued-pref-category = "";
       sensors-header-icon = false;
       sensors-header-sensor1 = ''
-        {"service":"hwmon","path":["coretemp","Core 0","input"]}\n
+        {"service":"hwmon","path":["coretemp","Core 0","input"]}
       '';
       sensors-header-sensor1-digits = -1;
       sensors-header-sensor1-show = true;
       sensors-header-show = true;
       sensors-header-tooltip = false;
       sensors-header-tooltip-sensor1 = ''
-        {"service":"hwmon","path":["BAT0","in0","input"]}\n
+        {"service":"hwmon","path":["BAT0","in0","input"]}\\n\n
       '';
       sensors-header-tooltip-sensor2 = ''
-        {"service":"hwmon","path":["nvme-{$10000e100}","Composite","input"]}\n
+        {"service":"hwmon","path":["nvme-{$10000e100}","Composite","input"]}\\n\n
       '';
       sensors-indicators-order = "[\"icon\",\"value\"]";
+      sensors-source = "auto";
       shell-bar-position = "top";
       storage-header-show = false;
       storage-indicators-order = "[\"icon\",\"bar\",\"percentage\",\"value\",\"free\",\"IO bar\",\"IO graph\",\"IO speed\"]";
@@ -640,7 +686,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/shell/extensions/gsconnect/device/05936842_ff41_4791_b9f0_17f7ee6e0421/plugin/notification" = {
       applications = ''
-        {"Printers":{"iconName":"org.gnome.Settings-printers-symbolic","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Disks":{"iconName":"org.gnome.DiskUtility","enabled":true},"Date & Time":{"iconName":"org.gnome.Settings-time-symbolic","enabled":true},"Disk Usage Analyzer":{"iconName":"org.gnome.baobab","enabled":true},"Geary":{"iconName":"org.gnome.Geary","enabled":true},"Power":{"iconName":"org.gnome.Settings-power-symbolic","enabled":true},"Console":{"iconName":"org.gnome.Console","enabled":true},"Color":{"iconName":"org.gnome.Settings-color-symbolic","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Archive Manager":{"iconName":"org.gnome.FileRoller","enabled":true},"notify-send":{"iconName":"","enabled":true}}\n
+        {"Printers":{"iconName":"org.gnome.Settings-printers-symbolic","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Disks":{"iconName":"org.gnome.DiskUtility","enabled":true},"Date & Time":{"iconName":"org.gnome.Settings-time-symbolic","enabled":true},"Disk Usage Analyzer":{"iconName":"org.gnome.baobab","enabled":true},"Geary":{"iconName":"org.gnome.Geary","enabled":true},"Power":{"iconName":"org.gnome.Settings-power-symbolic","enabled":true},"Console":{"iconName":"org.gnome.Console","enabled":true},"Color":{"iconName":"org.gnome.Settings-color-symbolic","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Archive Manager":{"iconName":"org.gnome.FileRoller","enabled":true},"notify-send":{"iconName":"","enabled":true}}\\n\n
       '';
     };
 
@@ -672,7 +718,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/shell/extensions/gsconnect/device/_4927fd63_aac9_455a_afc2_09441434b5f7_/plugin/notification" = {
       applications = ''
-        {"Printers":{"iconName":"org.gnome.Settings-printers-symbolic","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Disks":{"iconName":"org.gnome.DiskUtility","enabled":true},"Date & Time":{"iconName":"org.gnome.Settings-time-symbolic","enabled":true},"Power":{"iconName":"org.gnome.Settings-power-symbolic","enabled":true},"Disk Usage Analyzer":{"iconName":"org.gnome.baobab","enabled":true},"Geary":{"iconName":"org.gnome.Geary","enabled":true},"Console":{"iconName":"org.gnome.Console","enabled":true},"Color":{"iconName":"org.gnome.Settings-color-symbolic","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Archive Manager":{"iconName":"org.gnome.FileRoller","enabled":true}}\n
+        {"Printers":{"iconName":"org.gnome.Settings-printers-symbolic","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Disks":{"iconName":"org.gnome.DiskUtility","enabled":true},"Date & Time":{"iconName":"org.gnome.Settings-time-symbolic","enabled":true},"Power":{"iconName":"org.gnome.Settings-power-symbolic","enabled":true},"Disk Usage Analyzer":{"iconName":"org.gnome.baobab","enabled":true},"Geary":{"iconName":"org.gnome.Geary","enabled":true},"Console":{"iconName":"org.gnome.Console","enabled":true},"Color":{"iconName":"org.gnome.Settings-color-symbolic","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Archive Manager":{"iconName":"org.gnome.FileRoller","enabled":true}}\\n\n
       '';
     };
 
@@ -711,7 +757,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/shell/extensions/gsconnect/device/_a5b1bde4_dfb2_4dca_b388_7124681e68f1_/plugin/notification" = {
       applications = ''
-        {"Printers":{"iconName":"org.gnome.Settings-printers-symbolic","enabled":true},"calibre":{"iconName":"calibre-gui","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Disks":{"iconName":"org.gnome.DiskUtility","enabled":true},"Date & Time":{"iconName":"org.gnome.Settings-time-symbolic","enabled":true},"Disk Usage Analyzer":{"iconName":"org.gnome.baobab","enabled":true},"Geary":{"iconName":"org.gnome.Geary","enabled":true},"Power":{"iconName":"org.gnome.Settings-power-symbolic","enabled":true},"Console":{"iconName":"org.gnome.Console","enabled":true},"Color":{"iconName":"org.gnome.Settings-color-symbolic","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Archive Manager":{"iconName":"org.gnome.FileRoller","enabled":true}}
+        {"Printers":{"iconName":"org.gnome.Settings-printers-symbolic","enabled":true},"calibre":{"iconName":"calibre-gui","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Disks":{"iconName":"org.gnome.DiskUtility","enabled":true},"Date & Time":{"iconName":"org.gnome.Settings-time-symbolic","enabled":true},"Disk Usage Analyzer":{"iconName":"org.gnome.baobab","enabled":true},"Geary":{"iconName":"org.gnome.Geary","enabled":true},"Power":{"iconName":"org.gnome.Settings-power-symbolic","enabled":true},"Console":{"iconName":"org.gnome.Console","enabled":true},"Color":{"iconName":"org.gnome.Settings-color-symbolic","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Archive Manager":{"iconName":"org.gnome.FileRoller","enabled":true}}\n
       '';
     };
 
@@ -731,22 +777,30 @@ with lib.hm.gvariant; {
 
     "org/gnome/shell/extensions/just-perfection" = {
       accessibility-menu = true;
-      clock-menu-position = 0;
+      background-menu = true;
+      clock-menu-position = 2;
       clock-menu-position-offset = 0;
       controls-manager-spacing-size = 0;
+      dash = true;
       dash-icon-size = 0;
-      notification-banner-position = 2;
-      overlay-key = false;
+      double-super-to-appgrid = true;
+      notification-banner-position = 0;
+      osd = true;
+      overlay-key = true;
       panel = true;
       panel-in-overview = true;
       ripple-box = true;
       search = true;
       show-apps-button = true;
-      startup-status = 0;
+      startup-status = 1;
       theme = false;
       window-demands-attention-focus = false;
       window-picker-icon = true;
+      window-preview-caption = true;
+      window-preview-close-button = true;
       workspace = true;
+      workspace-background-corner-size = 0;
+      workspace-popup = true;
       workspace-switcher-should-show = false;
       workspaces-in-app-grid = true;
       world-clock = true;
@@ -788,7 +842,7 @@ with lib.hm.gvariant; {
       restore-attach-modal-dialogs = "";
       restore-edge-tiling = "";
       restore-keybinds = ''
-        {}\n
+        {}\\n\n
       '';
       restore-workspaces-only-on-primary = "";
       show-workspace-indicator = false;
@@ -936,6 +990,15 @@ with lib.hm.gvariant; {
       toggle-application-view = [];
       toggle-message-tray = [];
       toggle-quick-settings = [];
+    };
+
+    "org/gnome/shell/weather" = {
+      automatic-location = true;
+      locations = [(mkVariant [(mkUint32 2) (mkVariant ["Los Angeles" "KCQT" true [(mkTuple [0.5937028397045019 (-2.064433611082862)])] [(mkTuple [0.5943236009595587 (-2.063741622941031)])]])])];
+    };
+
+    "org/gnome/shell/world-clocks" = {
+      locations = [(mkVariant [(mkUint32 2) (mkVariant ["Wuhan" "ZHHH" true [(mkTuple [0.5343616451366947 1.9920024471250972])] [(mkTuple [0.5337798570838349 1.9943295644299512])]])])];
     };
 
     "org/gnome/system/location" = {

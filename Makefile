@@ -8,15 +8,15 @@ GENERATION := $$(nixos-rebuild list-generations --flake ".\#" | grep current)
 NIX_FILES := $$(fd .nix)
 
 # Phony targets for workflow
-.PHONY: gen-dconf add all show check format diff push build debug up upp history repl clean gc
+.PHONY: gen-dconf commit all show check format diff push build debug up upp history repl clean gc
 
-all: add format build push
+all: commit format build push
 
 gen-dconf:
-	@dconf dump / | sed "/^color-history/d" | sed '/world-clocks =/{N;N;N;N;d;}' | dconf2nix > home/core/dconf.nix
+	@dconf dump / | sed "/^color-history/d" | sed '/world-clocks =/{N;N;N;N;d;}' | dconf2nix > home/core/dconf.nix && alejandra . &>/dev/null
 
-add:
-	@git add .
+commit:
+	@git commit -a
 
 show:
 	echo $(GENERATION)
@@ -26,10 +26,10 @@ format:
 	@alejandra . &>/dev/null
 
 diff:
-	@git diff -U0 $(NIX_FILES)
+	@git diff
 
 push: 
-	@git commit -am "$(GENERATION)" && git push origin master
+	@git push origin master
 
 build: format
 	@nixos-rebuild switch --flake . --use-remote-sudo

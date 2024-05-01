@@ -4,6 +4,8 @@ This repository contains my personal nix configuration files.
 
 # Core Todos
 
+- [ ] dev flow and version cvontrool
+
 - [ ] firefox: user.js
       https://github.com/dwarfmaster/arkenfox-nixos
   - [ ] bookmarks
@@ -81,7 +83,4 @@ The following are synced with syncthing
 
 # Issues with asus zenbook duo
 
-1. suspesne freeze
-2. nightlight not working
-3. cursor in alacritty disappearing
-4. dev flow and version cvontrool
+1. nightlight not working

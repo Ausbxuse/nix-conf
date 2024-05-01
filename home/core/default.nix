@@ -7,7 +7,6 @@
   imports = [
     ./common.nix
     ./alacritty.nix
-    ./tmux
     ./dconf.nix
   ];
 
@@ -17,6 +16,10 @@
 
   home.file.".gdbinit".text = ''
     set auto-load safe-path /nix/store
+  '';
+
+  home.activation.installTmux = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./tmux}/ ${config.xdg.configHome}/tmux/
   '';
 
   home.activation.installZsh = lib.hm.dag.entryAfter ["writeBoundary"] ''

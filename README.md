@@ -5,6 +5,7 @@ This repository contains my personal nix configuration files.
 # Core Todos
 
 - [ ] firefox: user.js
+      https://github.com/dwarfmaster/arkenfox-nixos
   - [ ] bookmarks
 - `.config`
   - [x] nvim
@@ -14,15 +15,15 @@ This repository contains my personal nix configuration files.
     - cache
   - [x] zathura
   - [x] sxiv/ replace it with a wayland image viewer
-  - [ ] shell
-    - [ ] .zprofile
+  - [x] shell
+    - [x] .zprofile
     - [x] shortcuts
     - [x] alias
-    - [ ] ...
-  - [ ] mimeapps
+    - [x] ...
+  - [x] mimeapps
   - [x] alacritty
   - [ ] gtk-2.0/3.0/4.0??
-  - [ ] dconf
+  - [x] dconf
   - [x] gitconfig
   - [x] syncthing for personal files
 - .local
@@ -31,8 +32,8 @@ This repository contains my personal nix configuration files.
     - [x] fonts
     - [x] wallpapers
     - [x] dict
-    - [ ] maybe no applications? does mimetype take care of it?
-  - [ ] bin/
+    - [x] applications
+  - [x] bin/
 - dev
   - [ ] Python env (patch elf?)
 - Logistics

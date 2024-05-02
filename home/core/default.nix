@@ -12,6 +12,7 @@
 
   home.sessionVariables = {
     XCURSOR_THEME = "capitaine-cursors-white";
+    FLAKE = "/home/zhenyu/.local/src/public/nixos-conf";
   };
 
   home.file.".gdbinit".text = ''

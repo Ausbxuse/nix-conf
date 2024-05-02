@@ -31,6 +31,10 @@
     gnomeExtensions.color-picker
     gnomeExtensions.bluetooth-battery-meter
     gnomeExtensions.just-perfection
+    gnomeExtensions.openweather
+    gnomeExtensions.status-area-horizontal-spacing
+    gnomeExtensions.removable-drive-menu
+    gnomeExtensions.dash-to-dock
     gnome.cheese
     gnome-graphs
     dconf2nix

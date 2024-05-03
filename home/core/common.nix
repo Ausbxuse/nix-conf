@@ -31,9 +31,8 @@
     gnomeExtensions.color-picker
     gnomeExtensions.bluetooth-battery-meter
     gnomeExtensions.just-perfection
-    gnomeExtensions.openweather
+    # gnomeExtensions.openweather # incompatible
     gnomeExtensions.status-area-horizontal-spacing
-    gnomeExtensions.removable-drive-menu
     gnomeExtensions.dash-to-dock
     gnome.cheese
     gnome-graphs
@@ -115,6 +114,19 @@
 
       userName = "Zhenyu Zhao";
       userEmail = "peterzhaozzy@gmail.com";
+      delta = {
+        enable = true;
+        options = {
+          # decorations = {
+          #   commit-decoration-style = "bold yellow box ul";
+          #   file-decoration-style = "none";
+          #   file-style = "bold yellow ul";
+          # };
+          side-by-side = true;
+          features = "decorations";
+          whitespace-error-style = "22 reverse";
+        };
+      };
     };
   };
 }

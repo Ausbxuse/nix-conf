@@ -28,7 +28,7 @@ format:
 push: 
 	@git push origin stable
 
-build: format gen-dconf
+build: format
 	@nixos-rebuild switch --flake . --use-remote-sudo |& nom
 
 debug: format

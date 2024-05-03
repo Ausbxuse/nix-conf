@@ -15,7 +15,7 @@ alias \
 
 # Colorize commands when possible.
 alias \
-	ls="exa --group-directories-first --time-style=long-iso" \
+	ls="eza --long --git --color=always --no-filesize --icons=always --no-user --no-permissions --sort=date" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"

@@ -7,7 +7,6 @@
   imports = [
     ./common.nix
     ./alacritty.nix
-    ./dconf.nix
   ];
 
   home.sessionVariables = {

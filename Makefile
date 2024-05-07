@@ -8,9 +8,12 @@ GENERATION := $$(nixos-rebuild list-generations --flake ".\#" | grep current)
 NIX_FILES := $$(fd .nix)
 
 # Phony targets for workflow
-.PHONY: commit all show check format push build debug up upp history repl clean gc
+.PHONY: dconf commit all show check format push build debug up upp history repl clean gc
 
-all: commit format build push
+all: dconf format build commit push
+
+dconf: 
+	@rsync -av /home/zhenyu/.config/dconf/ ./home/gui/dconf
 
 commit: format
 	@git commit -a
@@ -25,7 +28,7 @@ format:
 push: 
 	@git push origin stable
 
-build: format
+build: dconf format
 	@nixos-rebuild switch --flake . --use-remote-sudo |& nom
 
 debug: format

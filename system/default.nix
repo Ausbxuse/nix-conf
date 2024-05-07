@@ -48,7 +48,7 @@
     WINEPREFIX = "${XDG_DATA_HOME}/wineprefixes/default";
     KODI_DATA = "${XDG_DATA_HOME}/kodi";
     PASSWORD_STORE_DIR = "${XDG_DATA_HOME}/password-store";
-    TMUX_TMPDIR = "$XDG_RUNTIME_DIR";
+    # TMUX_TMPDIR = "${XDG_RUNTIME_DIR}";
     ANDROID_SDK_HOME = "${XDG_CONFIG_HOME}/android";
     ANDROID_SDK = "${XDG_CONFIG_HOME}/android/Android/Sdk";
     ANDROID_AVD_HOME = "${XDG_DATA_HOME}/android/";
@@ -67,7 +67,7 @@
     DICS = "/usr/share/stardict/dic/";
     FZF_DEFAULT_OPTS = "--layout=reverse --height 40%";
     FZF_DEFAULT_COMMAND = "fd . $HOME";
-    FZF_CTRL_T_COMMAND = "$FZF_DEFAULT_COMMAND";
+    FZF_CTRL_T_COMMAND = "${FZF_DEFAULT_COMMAND}";
     FZF_ALT_C_COMMAND = "fd -t d . $HOME";
   };
 

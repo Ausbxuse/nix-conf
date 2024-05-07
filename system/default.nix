@@ -46,9 +46,8 @@
     INPUTRC = "${XDG_CONFIG_HOME}/shell/inputrc";
     ZDOTDIR = "${XDG_CONFIG_HOME}/zsh";
     WINEPREFIX = "${XDG_DATA_HOME}/wineprefixes/default";
-    KODI_DATA = "${XDG_DATA_HOME}/kodi";
     PASSWORD_STORE_DIR = "${XDG_DATA_HOME}/password-store";
-    TMUX_TMPDIR = "${XDG_RUNTIME_DIR}";
+    TMUX_TMPDIR = ''$XDG_RUNTIME_DIR'';
     ANDROID_SDK_HOME = "${XDG_CONFIG_HOME}/android";
     ANDROID_SDK = "${XDG_CONFIG_HOME}/android/Android/Sdk";
     ANDROID_AVD_HOME = "${XDG_DATA_HOME}/android/";

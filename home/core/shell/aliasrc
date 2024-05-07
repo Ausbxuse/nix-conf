@@ -14,8 +14,10 @@ alias \
 	ffmpeg="ffmpeg -hide_banner"
 
 # Colorize commands when possible.
+# ls="eza --long --git --color=always --no-filesize --icons=always --no-user --no-time --no-permissions --sort=date" \
 alias \
-	ls="eza --long --git --color=always --no-filesize --icons=always --no-user --no-time --no-permissions --sort=date" \
+	l="eza --long --git --color=always --no-filesize --icons=always --no-user --no-time --no-permissions --sort=date" \
+	ls="eza --long --git --color=always --no-filesize --icons=always --sort=date" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"

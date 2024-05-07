@@ -56,7 +56,7 @@
     nodePackages.pyright
     nodePackages.prettier
     gimp
-    font-manager
+    # font-manager
     foliate
     # User
     zathura

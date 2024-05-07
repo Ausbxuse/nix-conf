@@ -16,6 +16,8 @@
 
   # user
   programs.zsh.enable = true;
+  programs.tmux.enable = true;
+
   users.defaultUserShell = pkgs.zsh;
   users.users.zhenyu = {
     isNormalUser = true;
@@ -23,9 +25,9 @@
     home = "/home/zhenyu";
     createHome = true;
   };
-  environment.variables = {
-    TMUX_TMPDIR = "$XDG_RUNTIME_DIR";
-    };
+  # environment.variables = {
+  #   TMUX_TMPDIR = "$XDG_RUNTIME_DIR";
+  # };
   environment.sessionVariables = rec {
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
@@ -33,8 +35,9 @@
     XDG_STATE_HOME = "$HOME/.local/state";
     XDG_BIN_HOME = "$HOME/.local/bin";
     PATH = [
-      "${XDG_BIN_HOME}" # can remove because the nextline includes it
-      "$(du ${XDG_BIN_HOME} | cut -f2 | paste -sd ':')"
+      "${XDG_BIN_HOME}"
+      "${XDG_BIN_HOME}/scripts"
+      "${XDG_BIN_HOME}/scripts/statusbar"
     ];
 
     XCURSOR_THEME = "capitaine-cursors-white";

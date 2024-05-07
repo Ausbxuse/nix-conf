@@ -23,6 +23,9 @@
     home = "/home/zhenyu";
     createHome = true;
   };
+  environment.variables = {
+    TMUX_TMPDIR = "$XDG_RUNTIME_DIR";
+    };
   environment.sessionVariables = rec {
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
@@ -47,7 +50,6 @@
     ZDOTDIR = "${XDG_CONFIG_HOME}/zsh";
     WINEPREFIX = "${XDG_DATA_HOME}/wineprefixes/default";
     PASSWORD_STORE_DIR = "${XDG_DATA_HOME}/password-store";
-    TMUX_TMPDIR = "${config.xdg.portal.runtimeDir}";
     ANDROID_SDK_HOME = "${XDG_CONFIG_HOME}/android";
     ANDROID_SDK = "${XDG_CONFIG_HOME}/android/Android/Sdk";
     ANDROID_AVD_HOME = "${XDG_DATA_HOME}/android/";

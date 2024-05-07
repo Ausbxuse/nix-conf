@@ -244,7 +244,7 @@ fi
 eval "$(fzf --zsh)"
 
 fzf-file-widget() {
-  FILE="$(__fsel | sed 's/ $//')"
+  FILE="$(fd -H --max-depth 4 -t f -t l | fzf  | sed 's/ $//')"
   if [[ -n $FILE ]]; then
     nvim $FILE
     local ret=$?

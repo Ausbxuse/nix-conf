@@ -148,14 +148,26 @@ require("lspconfig").ltex.setup({
 })
 _G.auto_insert_checkbox = function()
   local current_line = vim.api.nvim_get_current_line()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
   -- Capture the leading whitespace and the checkbox pattern
   local indent, checkbox = string.match(current_line, "^(%s*)(%-%s*%[%s%])")
-  vim.api.nvim_put({ "" }, "l", true, false)
-  if checkbox then
+  if checkbox and col == #vim.api.nvim_get_current_line() then
     -- If a checkbox is found, insert a new line with the same indentation followed by the checkbox
+    vim.api.nvim_put({ "" }, "l", true, false)
     local new_line = indent .. "- [ ] "
     vim.api.nvim_put({ new_line }, "c", true, true)
   else
+    -- If no checkbox, handle as a normal Enter by splitting at the cursor position
+    local before_cursor = current_line:sub(1, col)
+    local after_cursor = current_line:sub(col + 1)
+
+    vim.api.nvim_set_current_line(before_cursor)
+    vim.api.nvim_put({ after_cursor }, "l", true, false)
+    if indent then
+      vim.api.nvim_win_set_cursor(0, { row + 1, #indent })
+    else
+      vim.api.nvim_win_set_cursor(0, { row + 1, 0 })
+    end
   end
 end
 

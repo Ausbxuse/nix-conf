@@ -77,7 +77,7 @@ return {
         { name = "emoji" },
         { name = "calc" },
       }, {
-        -- { name = "buffer" },
+        { name = "buffer" },
       })
 
       opts.formatting.fields = { "abbr", "menu", "kind" }

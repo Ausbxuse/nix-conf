@@ -27,7 +27,7 @@
     # the system-level desktop entries can be list by command:
     #   ls -l /run/current-system/sw/share/applications/
     # the user-level desktop entries can be list by command(user ryan):
-    #  ls /etc/profiles/per-user/ryan/share/applications/
+    #  ls /etc/profiles/per-user/zhenyu/share/applications/
     mimeApps = {
       enable = true;
       # let `xdg-open` to open the url with the correct application.

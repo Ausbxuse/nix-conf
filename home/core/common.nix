@@ -36,7 +36,8 @@
     gnomeExtensions.dash-to-dock
     gnome.cheese
     gnome-graphs
-    dconf2nix
+    kdeconnect
+    thunderbird-bin
     texlab
     plots
     gh

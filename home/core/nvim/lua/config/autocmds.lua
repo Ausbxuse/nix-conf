@@ -182,5 +182,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
       "<cmd>lua _G.auto_insert_checkbox()<CR>",
       { noremap = true, silent = true }
     )
+    vim.api.nvim_buf_set_keymap(0, "x", "<CR>", "<cmd>ObsidianLinkNew<CR>", { noremap = true, silent = true })
   end,
 })

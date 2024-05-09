@@ -10,7 +10,7 @@ NIX_FILES := $$(fd .nix)
 # Phony targets for workflow
 .PHONY: dconf install commit all show check format push build debug up upp history repl clean gc zsh-test nvim-test tmux-test
 
-all: dconf format build commit push
+all: install
 
 dconf: 
 	@rsync -av /home/zhenyu/.config/dconf/ ./home/gui/dconf

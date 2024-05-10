@@ -132,6 +132,7 @@
     };
     grub2-theme = {
       enable = true;
+      screen = "4k";
     };
   };
 

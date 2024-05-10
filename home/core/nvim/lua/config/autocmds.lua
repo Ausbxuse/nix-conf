@@ -133,6 +133,10 @@ local on_attach = function(client, bufnr)
   })
 end
 
+local words = {}
+for word in io.open(vim.fn.stdpath("config") .. "/spell/en.utf-8.add", "r"):lines() do
+  table.insert(words, word)
+end
 require("lspconfig").ltex.setup({
   on_attach = on_attach,
   settings = {
@@ -143,6 +147,10 @@ require("lspconfig").ltex.setup({
         languageModel = "~/.local/share/ngrams/",
       },
       completionEnabled = true,
+
+      dictionary = {
+        ["en-US"] = words,
+      },
     },
   },
 })

@@ -36,6 +36,7 @@
     gnomeExtensions.dash-to-dock
     gnome.cheese
     gnome-graphs
+    xiccd
     kdeconnect
     thunderbird-bin
     texlab

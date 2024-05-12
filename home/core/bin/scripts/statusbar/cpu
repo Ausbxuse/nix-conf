@@ -1,0 +1,21 @@
+#!/bin/bash
+
+case $BLOCK_BUTTON in
+	1) notify-send "🖥 CPU hogs" "$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)\\n(100% per core)" ;;
+	2) setsid -f "$TERMINAL" -e htop ;;
+	3) notify-send "🖥 CPU module " "\- Shows CPU temperature.
+- Click to show intensive processes.
+- Middle click to open htop." ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+temp=$(sensors | awk '/Core 0/ {print $3}' | awk -F'[^0-9]*' '$0=$2')
+case $temp in
+	[0-9]|1[0-9]) printf "\x10%3s°C" $temp;;
+	2[0-9]|3[0-9]) printf "\x10%3s°C" $temp;;
+	4[0-9]|5[0-9]) printf "\x10%3s°C" $temp;;
+	6[0-9]|7[0-9]) printf "\x10%3s°C" $temp;;
+	8[0-9]|9[0-9]) printf "\x10%3s°C" $temp;;
+esac
+
+#printf "\x0c%s%s°C" "$icon" "$temp" 

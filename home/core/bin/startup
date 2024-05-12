@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+/home/zhenyu/.local/bin/duo set-displays &
+/home/zhenyu/.local/bin/duo watch-rotation &
+/home/zhenyu/.local/bin/duo watch-backlight &
+/home/zhenyu/.local/bin/duo bat-limit &
+
+sudo systemctl stop colord &
+xiccd &

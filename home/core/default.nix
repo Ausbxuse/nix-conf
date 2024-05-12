@@ -18,6 +18,14 @@
     set auto-load safe-path /nix/store
   '';
 
+  home.activation.installScripts = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./bin}/ ${config.home.homeDirectory}/.local/bin/
+  '';
+
+  home.activation.installAutostart = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./autostart}/ ${config.home.homeDirectory}/autostart/
+  '';
+
   home.activation.installTmux = lib.hm.dag.entryAfter ["writeBoundary"] ''
     ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./tmux}/ ${config.xdg.configHome}/tmux/
   '';

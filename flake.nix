@@ -1,6 +1,6 @@
 {
   inputs = {
-    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
+    # minegrub-theme.url = "github:Lxtharia/minegrub-theme";
     grub2-theme.url = "github:vinceliuice/grub2-themes";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 

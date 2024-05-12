@@ -64,11 +64,14 @@
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
+      plugins = [
+        pkgs.vimPlugins.markdown-preview-nvim
+      ];
     };
+
     zathura = {
       enable = true;
       extraConfig = ''
-        # vim: filetype=conf
         set font			"BreezeSans Regular 12"
         #set recolor                     true
         #set completion-group-bg         "#002b36"

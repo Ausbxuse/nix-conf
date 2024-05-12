@@ -18,6 +18,11 @@
   programs.zsh.enable = true;
   programs.tmux.enable = true;
 
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
   users.defaultUserShell = pkgs.zsh;
   users.users.zhenyu = {
     isNormalUser = true;
@@ -254,6 +259,16 @@
     wirelesstools
     iw
     gtop
+  ];
+
+  programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [
+
+# Add any missing dynamic libraries for unpackaged programs
+
+# here, NOT in environment.systemPackages
+
   ];
 
   # nix-ld

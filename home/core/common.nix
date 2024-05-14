@@ -37,6 +37,7 @@
     gnome.cheese
     gnome-graphs
     xiccd
+    moreutils
     kdeconnect
     thunderbird-bin
     texlab

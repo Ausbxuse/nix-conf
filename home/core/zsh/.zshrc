@@ -154,8 +154,8 @@ num_dirs=0 # Use 0 for full path
 NEWLINE=$'\n'
 #truncated_path="%F{8}%K{8}%F{4} %K{0} %F{white}%$num_dirs~%{%k%}%F{0}%f%F{13}❯%F{5}❯%F{14}❯%{%k%}%F{white}"
 truncated_path="%F{4}%$num_dirs~$NEWLINE%{%k%}%f%F{5}❯%{%k%}%F{white}"
-background_jobs="%(1j.%F{0}%K{0}%F{3}%{%k%}%F{0}%f.)"
-non_zero_return_value="%(0?..%F{0}%K{0}%F{1}%{%k%}%F{0}%f)"
+background_jobs="%(1j.%F{0}%K{0}%F{3}%{%k%}%F{0}%f.)"
+non_zero_return_value="%(0?..%F{0}%F{1} %{%k%}%F{0}%f)"
 
 # Left part of prompt
 #PROMPT="$truncated_path $user_symbol "

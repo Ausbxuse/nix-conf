@@ -43,11 +43,11 @@
     plots
     gh
     jupyter
-
     firefox
     tree
     discord
     alacritty
+    wezterm
     ueberzugpp
     libreoffice
     # Developer

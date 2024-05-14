@@ -47,15 +47,6 @@ return {
         size = { height = 0.5 },
       },
       {
-        title = "Neo-Tree Git",
-        ft = "neo-tree",
-        filter = function(buf)
-          return vim.b[buf].neo_tree_source == "git_status"
-        end,
-        pinned = true,
-        open = "Neotree position=right git_status",
-      },
-      {
         title = "Neo-Tree Buffers",
         ft = "neo-tree",
         filter = function(buf)
@@ -63,11 +54,6 @@ return {
         end,
         pinned = true,
         open = "Neotree position=top buffers",
-      },
-      {
-        ft = "Outline",
-        pinned = true,
-        open = "SymbolsOutlineOpen",
       },
       -- any other neo-tree windows
       "neo-tree",

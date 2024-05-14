@@ -35,6 +35,7 @@
         browser = ["firefox.desktop"];
         editor = ["text.desktop"];
         pdfviewer = ["pdf.desktop"];
+        office = ["libreoffice-writer.desktop"];
       in {
         "application/json" = browser;
         "application/pdf" = pdfviewer;
@@ -42,6 +43,7 @@
         "text/html" = browser;
         "text/xml" = browser;
         "text/plain" = editor;
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = browser;
         "application/xml" = browser;
         "application/xhtml+xml" = browser;
         "application/xhtml_xml" = browser;

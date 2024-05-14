@@ -23,7 +23,7 @@
   '';
 
   home.activation.installAutostart = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./autostart}/ ${config.home.homeDirectory}/autostart/
+    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./autostart}/ ${config.xdg.configHome}/autostart/
   '';
 
   home.activation.installTmux = lib.hm.dag.entryAfter ["writeBoundary"] ''

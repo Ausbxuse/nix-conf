@@ -107,7 +107,7 @@ local on_attach = function(client, bufnr)
   end
 
   -- Autocommand to suppress notifications in insert mode
-  vim.api.nvim_create_autocmd("InsertEnter", {
+  vim.api.nvim_create_autocmd({ "BufEnter", "InsertEnter" }, {
     buffer = bufnr,
     callback = function()
       client._suppress_notifications = true

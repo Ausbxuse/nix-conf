@@ -132,7 +132,7 @@
       };
       window = {
         dynamic_padding = true;
-        opacity = 0.88;
+        opacity = 0.78;
         decorations = "None";
       };
       mouse = {

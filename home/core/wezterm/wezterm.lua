@@ -1,9 +1,91 @@
--- Pull in the wezterm API
 local wezterm = require("wezterm")
-
--- This table will hold the configuration.
 local config = {}
 
+config.font = wezterm.font({ family = "JetBrainsMono NF" })
+
+config.font_rules = {
+	{
+		italic = false,
+		intensity = "Bold",
+		font = wezterm.font({
+			family = "JetBrainsMono NF",
+			weight = "Bold",
+		}),
+	},
+	{
+		italic = false,
+		intensity = "Bold",
+		font = wezterm.font({
+			family = "JetBrainsMono NF",
+			-- family = "Jetbrains Mono",
+			weight = "Bold",
+		}),
+	},
+	{
+		italic = false,
+		intensity = "Half",
+		font = wezterm.font({
+			family = "JetBrainsMono NF",
+			-- family = "Jetbrains Mono",
+			weight = "DemiBold",
+		}),
+	},
+	{
+		italic = false,
+		intensity = "Normal",
+		font = wezterm.font({
+			family = "JetBrainsMono NF",
+			-- family = "Jetbrains Mono",
+			weight = "Regular",
+		}),
+	},
+	{
+		intensity = "Bold",
+		italic = true,
+		font = wezterm.font({
+			family = "Operator Mono Book",
+			weight = "Bold",
+			style = "Italic",
+		}),
+	},
+	{
+		italic = true,
+		intensity = "Half",
+		font = wezterm.font({
+			family = "Operator Mono Book",
+			weight = "DemiBold",
+			style = "Italic",
+		}),
+	},
+	{
+		italic = true,
+		intensity = "Normal",
+		font = wezterm.font({
+			family = "Operator Mono Book",
+			style = "Italic",
+		}),
+	},
+}
+
+config.window_padding = {
+	left = "0.25cell",
+	right = "0.25cell",
+	top = "0.25cell",
+	bottom = "0.25cell",
+}
+
+config.window_frame = {
+	border_left_width = "0cell",
+	border_right_width = "0cell",
+	border_bottom_height = "0cell",
+	border_top_height = "0cell",
+	border_left_color = "NONE",
+	border_right_color = "NONE",
+	border_bottom_color = "NONE",
+	border_top_color = "NONE",
+}
+config.window_decorations = "NONE"
+config.cursor_blink_rate = 0
 config.colors = {
 	-- The default text color
 	foreground = "#eaeaea",
@@ -12,9 +94,10 @@ config.colors = {
 
 	-- Overrides the cell background color when the current cell is occupied by the
 	-- cursor and the cursor style is set to Block
-	cursor_bg = "#000000",
+	--
+	cursor_bg = "#ffffff",
 	-- Overrides the text color when the current cell is occupied by the cursor
-	cursor_fg = "#ffffff",
+	cursor_fg = "#000000",
 	-- Specifies the border color of the cursor when the cursor style is set to Block,
 	-- or the color of the vertical or horizontal bar when the cursor style is set to
 	-- Bar or Underline.
@@ -31,25 +114,25 @@ config.colors = {
 	-- The color of the split lines between panes
 	split = "#444444",
 
+	brights = {
+		"#121212",
+		"#ff2740",
+		"#9ece6a",
+		"#f4bf75",
+		"#4fc1ff",
+		"#fc317e",
+		"#62d8f1",
+		"#eaeaea",
+	},
 	ansi = {
 		"#121212",
-		"#ff000f",
-		"#aae95b",
-		"#ffb900",
-		"#57c7ff",
-		"#ff6ac1",
-		"#00d7ea",
-		"#ffffff",
-	},
-	brights = {
-		"#444444",
 		"#ff2740",
-		"#abe15b",
-		"#ffd242",
-		"#61afef",
-		"#fc1a70",
-		"#67fff0",
-		"#ffffff",
+		"#9ece6a",
+		"#f4bf75",
+		"#4fc1ff",
+		"#fc317e",
+		"#62d8f1",
+		"#eaeaea",
 	},
 
 	-- Arbitrary colors of the palette in the range from 16 to 255
@@ -59,7 +142,7 @@ config.colors = {
 	-- When the IME, a dead key or a leader key are being processed and are effectively
 	-- holding input pending the result of input composition, change the cursor
 	-- to this color to give a visual cue about the compose state.
-	compose_cursor = "black",
+	compose_cursor = "orange",
 
 	-- Colors for copy_mode and quick_select
 	-- available since: 20220807-113146-c2fee766
@@ -81,7 +164,8 @@ config.colors = {
 	quick_select_match_fg = { Color = "#ffffff" },
 }
 
-config.font_size = 10.0
+config.font_size = 12.0
+config.enable_tab_bar = false
 
 --[[ config.window_frame = {
   -- The font used in the tab bar.
@@ -105,7 +189,7 @@ config.font_size = 10.0
   inactive_titlebar_bg = '#333333',
 } ]]
 
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.78
 config.enable_wayland = true
 
 -- In newer versions of wezterm, use the config_builder which will

@@ -115,7 +115,7 @@ config.colors = {
 	split = "#444444",
 
 	brights = {
-		"#121212",
+		"#444444",
 		"#ff2740",
 		"#9ece6a",
 		"#f4bf75",

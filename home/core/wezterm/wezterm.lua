@@ -204,4 +204,15 @@ end ]]
 -- config.color_scheme = 'AdventureTime'
 
 -- and finally, return the configuration to wezterm
+--
+config.keys = {
+	-- Turn off the default CMD-m Hide action, allowing CMD-m to
+	-- be potentially recognized and handled by the tab
+	{
+		key = "Enter",
+		mods = "ALT",
+		action = "DisableDefaultAssignment",
+	},
+}
+
 return config

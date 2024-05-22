@@ -81,6 +81,7 @@
   };
 
   services = {
+    logind.lidSwitch = "ignore";
     syncthing = {
       enable = true;
       user = "zhenyu";

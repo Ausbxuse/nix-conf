@@ -97,10 +97,10 @@
             devices = ["SSU23"]; # Which devices to share the folder with
             ignorePerms = false; # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
           };
-          "Media" = {
-            path = "/home/zhenyu/Media";
-            devices = ["SSU23"];
-          };
+          # "Media" = {
+          #   path = "/home/zhenyu/Media";
+          #   devices = ["SSU23"];
+          # };
         };
       };
     };

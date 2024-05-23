@@ -1,7 +1,10 @@
 local wezterm = require("wezterm")
 local config = {}
 
-config.font = wezterm.font_with_fallback({ family = "JetBrainsMono NF" })
+config.font = wezterm.font_with_fallback({
+	{ family = "JetBrainsMono NF" },
+	{ family = "Source Han Sans SC" },
+})
 
 config.font_rules = {
 	{

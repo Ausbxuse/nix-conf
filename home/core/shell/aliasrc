@@ -26,7 +26,7 @@ alias \
 alias \
 	ka="killall" \
 	se="sudoedit" \
-	g="git" \
+	ga="git commit -a" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
 	sdn="sudo shutdown -h now" \

@@ -10,7 +10,7 @@ GenericName=Terminal
 Comment=My personal startup script
 StartupWMClass=Alacritty
 Actions=New;
-
+X-GNOME-Autostart-enabled=true
 X-Desktop-File-Install-Version=0.26
 
 [Desktop Action New]

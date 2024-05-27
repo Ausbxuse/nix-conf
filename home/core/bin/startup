@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-/home/zhenyu/.local/bin/duo set-displays &
-/home/zhenyu/.local/bin/duo watch-rotation &
-/home/zhenyu/.local/bin/duo watch-backlight &
-/home/zhenyu/.local/bin/duo bat-limit &
+/home/zhenyu/.local/bin/duo set-displays &>/dev/null 2>&1
+/home/zhenyu/.local/bin/duo watch-rotation &>/dev/null 2>&1
+/home/zhenyu/.local/bin/duo watch-backlight &>/dev/null 2>&1
+/home/zhenyu/.local/bin/duo bat-limit &>/dev/null 2>&1
 
-sudo systemctl stop colord &
-xiccd &
+echo "$(date): Screen unlocked by $PAM_USER" >>/var/log/screen_unlock.log

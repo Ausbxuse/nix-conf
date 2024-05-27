@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
-/home/zhenyu/.local/bin/duo set-displays &>/dev/null 2>&1
 /home/zhenyu/.local/bin/duo watch-rotation &>/dev/null 2>&1
 /home/zhenyu/.local/bin/duo watch-backlight &>/dev/null 2>&1
 /home/zhenyu/.local/bin/duo bat-limit &>/dev/null 2>&1
 
-echo "$(date): Screen unlocked by $PAM_USER" >>/home/zhenyu/screen_unlock.log
+dbus-monitor --session "type='signal',interface='org.gnome.ScreenSaver'" |
+	while read x; do
+		case "$x" in
+		*"boolean true"*) echo SCREEN_LOCKED ;;
+		*"boolean false"*) /home/zhenyu/.local/bin/duo set-displays &>/dev/null 2>&1 ;;
+		esac
+	done

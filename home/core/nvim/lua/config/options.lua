@@ -14,6 +14,13 @@ local default_options = {
     -- eol="¶",
     -- precedes = "«",
     -- extends = "»",
+    -- tab = " ",
+    space = " ",
+    -- nbsp = " ",
+    -- trail = " ",
+    -- eol = " ",
+    -- precedes = " ",
+    -- extends = " ",
   },
   fillchars = "eob: ",
   backup = false, -- creates a backup file

@@ -1,17 +1,35 @@
 return {
+  -- Active indent guide and indent text objects. When you're browsing
+  -- code, this highlights the current level of indentation, and animates
+  -- the highlighting.
   {
-    "lukas-reineke/indent-blankline.nvim",
+    "echasnovski/mini.indentscope",
+    version = false, -- wait till new 0.7.0 release to put it back on semver
     event = "LazyFile",
     opts = {
-      indent = {
-        char = "▏",
-        -- char = "│",
-        tab_char = "▏",
-        -- tab_char = "│",
+      -- symbol = "▏",
+      symbol = "▏",
+      options = { try_as_border = true },
+
+      draw = {
+        -- Delay (in ms) between event and start of drawing scope indicator
+        delay = 0,
+
+        -- Animation rule for scope's first drawing. A function which, given
+        -- next and total step numbers, returns wait time (in ms). See
+        -- |MiniIndentscope.gen_animation| for builtin options. To disable
+        -- animation, use `require('mini.indentscope').gen_animation.none()`.
+        animation = function()
+          return 0
+        end,
+
+        -- Symbol priority. Increase to display on top of more symbols.
+        priority = 2,
       },
-      scope = { enabled = false },
-      exclude = {
-        filetypes = {
+    },
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {
           "help",
           "alpha",
           "dashboard",
@@ -24,35 +42,17 @@ return {
           "toggleterm",
           "lazyterm",
         },
-      },
-    },
-    main = "ibl",
-  },
-  {
-    "echasnovski/mini.indentscope",
-    config = function()
-      require("mini.indentscope").setup({
-
-        opts = {
-          -- symbol = "│",
-          options = { try_as_border = true },
-        },
-        draw = {
-          -- Delay (in ms) between event and start of drawing scope indicator
-          delay = 0,
-
-          -- Animation rule for scope's first drawing. A function which, given
-          -- next and total step numbers, returns wait time (in ms). See
-          -- |MiniIndentscope.gen_animation| for builtin options. To disable
-          -- animation, use `require('mini.indentscope').gen_animation.none()`.
-          animation = require("mini.indentscope").gen_animation.none(),
-
-          -- Symbol priority. Increase to display on top of more symbols.
-          priority = 2,
-        },
-        -- symbol = "│",
-        symbol = "▏",
+        callback = function()
+          vim.b.miniindentscope_disable = true
+        end,
       })
     end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "LazyFile",
+    opts = {
+      scope = { enabled = false },
+    },
   },
 }

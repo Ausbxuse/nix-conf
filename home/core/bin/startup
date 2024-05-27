@@ -5,4 +5,4 @@
 /home/zhenyu/.local/bin/duo watch-backlight &>/dev/null 2>&1
 /home/zhenyu/.local/bin/duo bat-limit &>/dev/null 2>&1
 
-echo "$(date): Screen unlocked by $PAM_USER" >>/var/log/screen_unlock.log
+echo "$(date): Screen unlocked by $PAM_USER" >>/home/zhenyu/screen_unlock.log

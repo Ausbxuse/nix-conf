@@ -10,4 +10,4 @@ dbus-monitor --session "type='signal',interface='org.gnome.ScreenSaver'" |
 		*"boolean true"*) echo SCREEN_LOCKED ;;
 		*"boolean false"*) /home/zhenyu/.local/bin/duo set-displays &>/dev/null 2>&1 ;;
 		esac
-	done
+	done &

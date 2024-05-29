@@ -107,6 +107,8 @@
     nh
     nvd
     gdb
+    dict
+    dictdDBs.wordnet
   ];
 
   programs = {

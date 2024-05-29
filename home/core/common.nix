@@ -37,6 +37,8 @@
     gnomeExtensions.gtk4-desktop-icons-ng-ding
     gnome.cheese
     gnome-graphs
+    amberol
+    powertop
     xiccd
     moreutils
     kdeconnect

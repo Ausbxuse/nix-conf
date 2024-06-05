@@ -46,11 +46,12 @@ return {
       })
     end) ]]
 
-      require("lazy-lsp").setup {}
+      require("lazy-lsp").setup({})
     end,
   },
   {
     "neovim/nvim-lspconfig",
+    event = "VeryLazy",
     opts = {
       diagnostics = {
         underline = true,

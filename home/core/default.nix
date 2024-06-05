@@ -30,6 +30,10 @@
     ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./tmux}/ ${config.xdg.configHome}/tmux/
   '';
 
+  home.activation.installYazi = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./yazi}/ ${config.xdg.configHome}/yazi/
+  '';
+
   home.activation.installZsh = lib.hm.dag.entryAfter ["writeBoundary"] ''
     ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./zsh}/ ${config.xdg.configHome}/zsh/
   '';

@@ -24,7 +24,7 @@ alias \
 
 # These common commands are just too long! Abbreviate them.
 alias \
-	sdcv="sdcv -c -u 'WordNet® 3.0 (En-En)' " \
+	s="sdcv -c -u 'WordNet® 3.0 (En-En)' " \
 	ka="killall" \
 	se="sudoedit" \
 	ga="git commit -a" \

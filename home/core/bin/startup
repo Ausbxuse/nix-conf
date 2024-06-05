@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-/home/zhenyu/.local/bin/duo watch-rotation &>/dev/null 2>&1
-/home/zhenyu/.local/bin/duo watch-backlight &>/dev/null 2>&1
-/home/zhenyu/.local/bin/duo bat-limit &>/dev/null 2>&1
+/home/zhenyu/.local/bin/duo watch-rotation &>/dev/null 2>&1 &
+/home/zhenyu/.local/bin/duo watch-backlight &>/dev/null 2>&1 &
+/home/zhenyu/.local/bin/duo bat-limit &>/dev/null 2>&1 &
 
 dbus-monitor --session "type='signal',interface='org.gnome.ScreenSaver'" |
 	while read x; do

@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./common.nix
-    ./alacritty.nix
   ];
 
   home.sessionVariables = {

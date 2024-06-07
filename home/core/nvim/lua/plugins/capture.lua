@@ -9,6 +9,7 @@ end
 return {
   {
     "ausbxuse/snappy.nvim",
+    enabled = false,
     dir = set_path(home .. "/.local/src/public/capture.nvim"),
     config = function()
       require("capture").setup({

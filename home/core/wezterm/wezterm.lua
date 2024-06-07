@@ -98,7 +98,7 @@ config.colors = {
 	-- Overrides the cell background color when the current cell is occupied by the
 	-- cursor and the cursor style is set to Block
 	--
-	cursor_bg = "#ffffff",
+	cursor_bg = "#dfdcd8",
 	-- Overrides the text color when the current cell is occupied by the cursor
 	cursor_fg = "#000000",
 	-- Specifies the border color of the cursor when the cursor style is set to Block,
@@ -162,9 +162,9 @@ config.colors = {
 	copy_mode_inactive_highlight_fg = { AnsiColor = "White" },
 
 	quick_select_label_bg = { Color = "peru" },
-	quick_select_label_fg = { Color = "#ffffff" },
+	quick_select_label_fg = { Color = "#dfdcd8" },
 	quick_select_match_bg = { AnsiColor = "Navy" },
-	quick_select_match_fg = { Color = "#ffffff" },
+	quick_select_match_fg = { Color = "#dfdcd8" },
 }
 
 config.font_size = 12.0

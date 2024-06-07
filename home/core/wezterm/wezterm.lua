@@ -91,7 +91,7 @@ config.window_decorations = "NONE"
 config.cursor_blink_rate = 0
 config.colors = {
 	-- The default text color
-	foreground = "#eaeaea",
+	foreground = "#dfdcd8",
 	-- The default background color
 	background = "#121212",
 
@@ -107,7 +107,7 @@ config.colors = {
 	cursor_border = "#eaffea",
 
 	-- the foreground color of selected text
-	selection_fg = "#eaeaea",
+	selection_fg = "#dfdcd8",
 	-- the background color of selected text
 	selection_bg = "#404040",
 
@@ -125,7 +125,7 @@ config.colors = {
 		"#4fc1ff",
 		"#fc317e",
 		"#62d8f1",
-		"#eaeaea",
+		"#dfdcd8",
 	},
 	ansi = {
 		"#121212",
@@ -135,7 +135,7 @@ config.colors = {
 		"#4fc1ff",
 		"#fc317e",
 		"#62d8f1",
-		"#eaeaea",
+		"#dfdcd8",
 	},
 
 	-- Arbitrary colors of the palette in the range from 16 to 255

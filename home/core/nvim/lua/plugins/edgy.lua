@@ -46,7 +46,7 @@ return {
         end,
         size = { height = 0.5 },
       },
-      {
+      --[[ {
         title = "Neo-Tree Buffers",
         ft = "neo-tree",
         filter = function(buf)
@@ -54,7 +54,7 @@ return {
         end,
         pinned = true,
         open = "Neotree position=top buffers",
-      },
+      }, ]]
       -- any other neo-tree windows
       "neo-tree",
     },

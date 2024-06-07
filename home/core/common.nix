@@ -35,6 +35,7 @@
     gnomeExtensions.status-area-horizontal-spacing
     gnomeExtensions.dash-to-dock
     gnomeExtensions.gtk4-desktop-icons-ng-ding
+    gnomeExtensions.no-overview
     gnome.cheese
     gnome-graphs
     amberol

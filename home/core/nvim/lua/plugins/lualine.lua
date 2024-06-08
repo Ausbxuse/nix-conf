@@ -62,7 +62,7 @@ return {
     custom_theme.normal.a.bg = "NONE" -- rgb colors are supported
     custom_theme.normal.b.fg = "#5fdaff" -- rgb colors are supported
     custom_theme.normal.b.bg = "NONE" -- rgb colors are supported
-    custom_theme.normal.c.fg = "#eaeaea" -- rgb colors are supported
+    custom_theme.normal.c.fg = "#dfdcd8" -- rgb colors are supported
     custom_theme.normal.c.bg = "NONE" -- rgb colors are supported
 
     custom_theme.command.a.bg = "NONE" -- rgb colors are supported
@@ -200,7 +200,7 @@ return {
 
           {
             getWords,
-            color = { fg = "#333333", bg = "#eeeeee" },
+            color = { fg = "#333333", bg = "#dfdcd8" },
             separator = { left = "", right = "" },
           },
         },
@@ -226,7 +226,14 @@ return {
           },
         },
         lualine_z = {
-          { "progress" },
+          {
+            require("auto-session.lib").current_session_name,
+            separator = { left = "", right = "" },
+          },
+          {
+            "progress",
+            separator = { left = "", right = "" },
+          },
           --[[ function()
             return " " .. os.date("%R")
           end, ]]

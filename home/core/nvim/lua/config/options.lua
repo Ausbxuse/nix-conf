@@ -6,6 +6,7 @@ local opt = vim.opt
 
 local home = vim.fn.expand("$HOME")
 local default_options = {
+  list = false,
   listchars = {
     -- tab="→ ",
     -- space="·",

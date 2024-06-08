@@ -11,3 +11,9 @@ dbus-monitor --session "type='signal',interface='org.gnome.ScreenSaver'" |
 		*"boolean false"*) /home/zhenyu/.local/bin/duo set-displays &>/dev/null 2>&1 ;;
 		esac
 	done &
+
+sudo systemctl stop colord && xiccd &
+
+profile_id=$(colormgr get-profiles | grep -B 3 "built-in" | grep "Object Path" | awk '{print $3}')
+
+colormgr device-add-profile xrandr-eDP-1 $profile_id

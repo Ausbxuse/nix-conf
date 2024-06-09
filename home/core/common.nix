@@ -60,6 +60,7 @@
     lua-language-server
     ruff-lsp
     ltex-ls
+    clang-tools
     marksman
     nodePackages.pyright
     nodePackages.prettier

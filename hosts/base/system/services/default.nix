@@ -24,21 +24,21 @@
           "SSU23" = {id = "JQCGOJT-ZVSXGTS-A6LVBAN-X2MSWXI-KHDG4ZY-QQNEP4J-5AQXGMG-DIFYOAU";};
         };
         folders = {
-          "Public" = {
-            path = "${user-homedir}/Public"; # Which folder to add to Syncthing
-            devices = ["SSU23"]; # Which devices to share the folder with
-            ignorePerms = false; # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
-          };
-          "Fleeting" = {
-            path = "${user-homedir}/Documents/Fleeting"; 
-            devices = ["SSU23"]; 
-            ignorePerms = false; 
-          };
-          "Phone-Media" = {
-            path = "${user-homedir}/Media/Phone";
-            devices = ["SSU23"];
-            ignorePerms = false;
-          };
+          #"Public" = {
+          #  path = "${user-homedir}/Public"; # Which folder to add to Syncthing
+          #  devices = ["SSU23"]; # Which devices to share the folder with
+          #  ignorePerms = false; # By default, Syncthing doesn't sync file permissions. This line enables it for this folder.
+          #};
+          # "Fleeting" = {
+          #   path = "${user-homedir}/Documents/Fleeting"; 
+          #   devices = ["SSU23"]; 
+          #   ignorePerms = false; 
+          # };
+          # "Phone-Media" = {
+          #   path = "${user-homedir}/Media/Phone";
+          #   devices = ["SSU23"];
+          #   ignorePerms = false;
+          # };
         };
       };
     };

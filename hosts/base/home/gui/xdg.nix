@@ -71,12 +71,17 @@
       };
     };
 
-    # userDirs = {
-    #   enable = true;
-    #   createDirectories = true;
-    #   extraConfig = {
-    #     XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
-    #   };
-    # };
+    userDirs = {
+      enable = true;
+      createDirectories = false;
+      pictures = "${config.home.homeDirectory}/Media/Pictures";
+      videos = "${config.home.homeDirectory}/Media/Videos";
+      music = "${config.home.homeDirectory}/Media/Music";
+      publicShare = "${config.home.homeDirectory}/Public";
+      extraConfig = {
+        XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Media/Screenshots";
+        XDG_SCREENCASTS_DIR = "${config.home.homeDirectory}/Media/Screencasts";
+      };
+    };
   };
 }

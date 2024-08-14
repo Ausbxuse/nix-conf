@@ -4,6 +4,30 @@ for word in io.open(vim.fn.stdpath("config") .. "/spell/en.utf-8.add", "r"):line
 end
 
 return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "bash",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        -- "query",
+        "regex",
+        "nix",
+        -- "tsx",
+        -- "typescript",
+        "vim",
+        "yaml",
+        "just",
+        "toml",
+      },
+    },
+  },
   -- LSP keymaps
   -- {
   --   "williamboman/mason.nvim",

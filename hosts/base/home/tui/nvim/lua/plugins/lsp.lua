@@ -19,6 +19,7 @@ return {
         -- "query",
         "regex",
         "nix",
+        "latex",
         -- "tsx",
         -- "typescript",
         "vim",

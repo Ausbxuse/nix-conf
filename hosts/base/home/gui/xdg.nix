@@ -79,8 +79,7 @@
       music = "${config.home.homeDirectory}/Media/Music";
       publicShare = "${config.home.homeDirectory}/Public";
       extraConfig = {
-        XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Media/Screenshots";
-        XDG_SCREENCASTS_DIR = "${config.home.homeDirectory}/Media/Screencasts";
+        XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
       };
     };
   };

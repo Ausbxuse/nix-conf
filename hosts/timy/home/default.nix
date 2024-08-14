@@ -26,6 +26,7 @@
     brave
     #discord
     libreoffice
+    texliveFull
     # osu-lazer-bin
     gimp
     # font-manager

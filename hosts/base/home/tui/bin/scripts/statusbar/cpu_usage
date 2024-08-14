@@ -1,0 +1,16 @@
+#!/bin/bash
+
+float=$(ps -A -o %cpu | awk '{ cpu += $1} END {print cpu}')
+
+usage=$(echo "($float+0.5)/8/1" | bc)
+
+case $usage in
+	[0-9]) echo -e "\x0e▁" ;;
+	1[0-9]) echo -e "\x0e▂" ;;
+	2[0-9]) echo -e "\x0e▃" ;;
+	3[0-9]) echo -e "\x0e▄" ;;
+	4[0-9]) echo -e "\x0e▅" ;;
+	5[0-9]) echo -e "\x0e▆" ;;
+	6[0-9]) echo -e "\x0e▇" ;;
+	7[0-9]|8[0-9]|9[0-9]|10[0-9]) echo -e "\x0e█" ;;
+esac

@@ -25,6 +25,8 @@
     thunderbird-bin
     brave
     #discord
+    spotify
+    spotify-tray
     libreoffice
     texliveFull
     # osu-lazer-bin

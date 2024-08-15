@@ -65,7 +65,7 @@ swapon /dev/vg/swap
 nixos-generate-config --root /mnt
 cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/spacy/system/hardware-configuration.nix
 
-cp -r ../nix-conf /mnt/root/nix-conf
+#cp -r ../nix-conf /mnt/root/nix-conf
 
 nixos-install --root /mnt --flake .#spacy --option substituters "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org"
 
@@ -75,4 +75,3 @@ sync
 swapoff /mnt/swap/swapfile
 umount -R /mnt
 cryptsetup close /dev/mapper/crypted-nixos
-reboot

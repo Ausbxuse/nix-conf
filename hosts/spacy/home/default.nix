@@ -9,7 +9,7 @@
   imports = [
     ../../base/home/gui
     ../../base/home/gnome
-    ../../base/home/tui
+    ./tui
   ];
 
   home = {

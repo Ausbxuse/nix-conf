@@ -8,7 +8,7 @@
 }: {
   home.packages = with pkgs; [
     xdg-utils # provides cli tools such as `xdg-mime` `xdg-open`
-    xdg-user-dirs
+    #xdg-user-dirs
 
     tree-sitter
     fd

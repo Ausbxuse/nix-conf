@@ -8,7 +8,7 @@
 }: let
   pkgs_kernel = import (builtins.fetchTarball {
     url = "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable/nixexprs.tar.xz";
-    sha256 = "1y1zhbi91aajnnzg5faxlis59gg7kfqgc6ibq36j6ijxx4mkbx7d";
+    sha256 = "0pkafnl9hzg53pjmdr3cs493qpa4pdjsnhxwcnj2nf7n1710gsa2";
   }) {system = "x86_64-linux";};
 in {
   boot.initrd = {

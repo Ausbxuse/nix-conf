@@ -13,6 +13,9 @@
       enable = true;
       settings.PasswordAuthentication = true;
     };
-    printing.enable = true;
+    printing = {
+      enable = true;
+      drivers = with pkgs; [hplip];
+    };
   };
 }

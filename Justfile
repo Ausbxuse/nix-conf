@@ -3,7 +3,6 @@ set shell := ["bash", "-uc"]
 # GENERATION := $$(nixos-rebuild list-generations --flake ".\#" | grep current)
 # NIX_FILES := $$(fd .nix)
 
-
 #all: install
 
 gitgc:
@@ -13,9 +12,6 @@ gitgc:
 dconf: 
 	rsync -av ~/.config/dconf/ ./hosts/base/home/gnome/dconf
 
-commit: format
-	git commit -a
-
 show:
 	echo $(GENERATION) >> README.md
 
@@ -23,13 +19,10 @@ check:
 	nix flake check
 
 format:
-	alejandra . &>/dev/null
+	alejandra .
 
 push: 
-	git push origin stable
-
-build: dconf format
-	nixos-rebuild switch --flake . --use-remote-sudo |& nom
+	git push origin master
 
 install:
   ./scripts/install.sh
@@ -65,17 +58,11 @@ gc:
 	# Garbage collect all unused nix store entries
 	sudo nix-collect-garbage --delete-old
 
-zsh-clean:
-	rm -rf ${HOME}/.config/zsh
 zsh-test: zsh-clean
-	rsync -avz --copy-links --chmod=D2755,F744 ./home/core/zsh/ ${HOME}/.config/zsh
+	rsync -avz --delete --copy-links --chmod=D2755,F744 ./home/core/zsh/ ${HOME}/.config/zsh
 
-tmux-clean:
-	rm -rf ${HOME}/.config/tmux
 tmux-test: tmux-clean
-	rsync -avz --chmod=D2755,F744 ./home/core/tmux/ ${HOME}/.config/tmux
+	rsync -avz --delete --chmod=D2755,F744 ./home/core/tmux/ ${HOME}/.config/tmux
 
-nvim-clean:
-	rm -rf ${HOME}/.config/nvim
 nvim-test: nvim-clean
-	rsync -avz --copy-links --chmod=D2755,F744 ./hosts/base/home/tui/nvim/ ${HOME}/.config/nvim
+	rsync -avz --delete --copy-links --chmod=D2755,F744 ./hosts/base/home/tui/nvim/ ${HOME}/.config/nvim

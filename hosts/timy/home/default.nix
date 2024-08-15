@@ -41,6 +41,11 @@
     quickemu
   ];
 
+  services.syncthing = {
+    enable = true;
+    tray.enable = true;
+  };
+
   # Let Home Manager install and manage itself.
   #programs.home-manager.enable = true;
   # programs.home-manager.path = "$HOME/.local/src/public/nixos-conf/home";

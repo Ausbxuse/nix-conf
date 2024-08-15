@@ -47,34 +47,6 @@
     hostname-universal = "spacy";
   in {
     nixosConfigurations = {
-      myiso = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ({
-            pkgs,
-            modulesPath,
-            lib,
-            ...
-          }: {
-            imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
-
-            boot.kernelPackages = pkgs.linuxPackages_latest;
-
-            # Needed for https://github.com/NixOS/nixpkgs/issues/58959
-            boot.supportedFilesystems = lib.mkForce [ "btrfs" "reiserfs" "vfat" "f2fs" "xfs" "ntfs" "cifs" ];
-
-            # faster build time
-            isoImage.squashfsCompression = "gzip -Xcompression-level 1";
-
-            environment.systemPackages = with pkgs; [
-              tmux
-              git
-              just
-              rsync
-            ];
-          })
-        ];
-      };
       # Asus zennbook duo setup
       ${hostname-individual} = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

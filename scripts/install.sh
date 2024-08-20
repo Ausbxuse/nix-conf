@@ -67,7 +67,8 @@ cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/spacy/system/hardware-confi
 
 #cp -r ../nix-conf /mnt/root/nix-conf
 
-nixos-install --root /mnt --flake .#spacy --option substituters "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org"
+#nixos-install --root /mnt --flake .#spacy --option substituters "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org"
+nixos-install --root /mnt --flake .#spacy --option substituters "https://cache.nixos.org"
 
 nixos-enter
 

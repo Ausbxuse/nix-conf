@@ -10,7 +10,7 @@ host="spacy"
 
 lsblk
 
-if [ $disk_dev == "/dev/nvme0n1" ]; then
+if [ $disk_dev == "/dev/nvme0n1" ] || [ $disk_dev == "/dev/nvme1n1" ]; then
 	part_boot="${disk_dev}p1"
 	part_root="${disk_dev}p2"
 else
@@ -63,12 +63,12 @@ swapon /dev/vg/swap
 # TODO: finish this for spacy and timy
 
 nixos-generate-config --root /mnt
-cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/spacy/system/hardware-configuration.nix
+cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/${host}/system/hardware-configuration.nix
 
 #cp -r ../nix-conf /mnt/root/nix-conf
 
 #nixos-install --root /mnt --flake .#spacy --option substituters "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://cache.nixos.org"
-nixos-install --root /mnt --flake .#spacy --option substituters "https://cache.nixos.org"
+nixos-install --root /mnt --flake .#${host} --option substituters "https://cache.nixos.org"
 
 nixos-enter
 

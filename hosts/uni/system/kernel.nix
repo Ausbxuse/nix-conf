@@ -5,12 +5,7 @@
   options,
   pkgs,
   ...
-}: let
-  pkgs_kernel = import (builtins.fetchTarball {
-    url = "http://nixos.org/channels/nixos-24.05/nixexprs.tar.xz";
-    sha256 = "1bs4sl01pbxp47sr3hny9mipfibazw1ch2b9cd6vygi501ickx9w";
-  }) {system = "x86_64-linux";};
-in {
+}: {
   boot.initrd = {
     availableKernelModules = ["xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "usbhid" "sd_mod"];
     kernelModules = ["i915" "dm-snapshot"]; # Early KMS
@@ -33,20 +28,7 @@ in {
     };
   };
 
-  #boot.kernelPackages = pkgs.linuxPackages_6_9;
-  #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_9;
-  boot.kernelPackages = pkgs_kernel.linuxKernel.packages.linux_6_9;
-  boot.kernelPatches = [
-    #{
-    #  name = "zenbook-asus-hid";
-    #  patch = ./zenbook-asus-hid.patch;
-    #}
-    {
-      name = "zenbook-i915-revert-93cbc1accbcec2740231755774420934658e2b18";
-      patch = ./kernel-patch/zenbook-i915-revert-93cbc1accbcec2740231755774420934658e2b18.patch;
-    }
-  ];
-
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = [];
   boot.kernelParams = [
     "quiet"

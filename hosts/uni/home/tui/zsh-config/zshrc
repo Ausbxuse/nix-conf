@@ -1,0 +1,64 @@
+hash -d cac=$HOME/.cache
+hash -d cf=$HOME/.config
+hash -d D=$HOME/Downloads
+hash -d d=$HOME/Documents
+hash -d dt=$HOME/.local/share
+hash -d h=$HOME
+hash -d m=$HOME/Music
+hash -d mn=/mnt
+hash -d pp=$HOME/Pictures
+hash -d sc=$HOME/.local/bin
+hash -d src=$HOME/.local/src
+hash -d vv=$HOME/Videos
+
+source "$HOME/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOME/.config/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
+source "$HOME/.config/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+source "$HOME/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+source "$HOME/.config/zsh/plugins/zsh-nix-shell/nix-shell.plugin.zsh"
+source "$HOME/.config/zsh/plugins/fzf-tab/fzf-tab.zsh"
+source "$HOME/.config/zsh/plugins/better-prompt/better-prompt.zsh"
+
+export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=true
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview 'git diff $word | delta'
+zstyle ':fzf-tab:complete:git-log:*' fzf-preview 'git log --color=always $word'
+zstyle ':fzf-tab:complete:git-help:*' fzf-preview 'git help $word | bat -plman --color=always'
+zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
+'case "$group" in
+"commit tag") git show --color=always $word ;;
+*) git show --color=always $word | delta ;;
+esac'
+zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
+'case "$group" in
+"modified file") git diff $word | delta ;;
+"recent commit object name") git show --color=always $word | delta ;;
+*) git log --color=always $word ;;
+esac'
+zstyle ':fzf-tab:complete:_zlua:*' query-string input
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:*' switch-group '<' '>'
+zstyle ':fzf-tab:*' fzf-command fzf
+zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
+zstyle ':fzf-tab:*' accept-line enter
+zstyle ':fzf-tab:*' continuous-trigger '/'
+
+bindkey -M vicmd '^g' fzf-cd-widget
+bindkey -M viins '^g' fzf-cd-widget
+bindkey -M vicmd '^f' fzf-file-widget
+bindkey -M viins '^f' fzf-file-widget
+
+function jj() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}

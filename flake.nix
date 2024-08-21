@@ -45,6 +45,7 @@
     user-email = "peterzhaozzy@gmail.com";
     hostname-individual = "timy";
     hostname-universal = "spacy";
+    hostname-desktop = "uni";
   in {
     nixosConfigurations = {
       # Asus zennbook duo setup
@@ -55,7 +56,7 @@
           hostname = hostname-individual;
         };
         modules = [
-          ./hosts/timy/system
+          ./hosts/${hostname-individual}/system
           grub2-theme.nixosModules.default
           home-manager.nixosModules.home-manager
           {
@@ -64,7 +65,28 @@
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./hosts/timy/home;
+            home-manager.users.${username} = import ./hosts/${hostname-individual}/home;
+          }
+        ];
+      };
+
+      ${hostname-desktop} = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit username user-fullname user-homedir user-email;
+          hostname = hostname-individual;
+        };
+        modules = [
+          ./hosts/${hostname-desktop}/system
+          grub2-theme.nixosModules.default
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.extraSpecialArgs = {
+              inherit username user-fullname user-homedir user-email;
+            };
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${username} = import ./hosts/${hostname-desktop}/home;
           }
         ];
       };
@@ -77,7 +99,7 @@
           hostname = hostname-universal;
         };
         modules = [
-          ./hosts/spacy/system
+          ./hosts/${hostname-universal}/system
           grub2-theme.nixosModules.default
           home-manager.nixosModules.home-manager
           {
@@ -86,7 +108,7 @@
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./hosts/spacy/home;
+            home-manager.users.${username} = import ./hosts/${hostname-universal}/home;
           }
         ];
       };

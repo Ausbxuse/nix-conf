@@ -17,5 +17,6 @@
     ./hardware-configuration.nix
 
     ../../base/system/gaming.nix
+    ./nvidia.nix
   ];
 }

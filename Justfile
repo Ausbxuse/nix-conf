@@ -27,6 +27,9 @@ push:
 install:
   ./scripts/install.sh
 
+install-uni:
+	nixos-rebuild switch --flake .#uni --use-remote-sudo |& nom
+
 install-timy:
 	nixos-rebuild switch --flake .#timy --use-remote-sudo |& nom
 

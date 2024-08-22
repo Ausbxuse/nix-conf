@@ -38,7 +38,7 @@
     scrcpy
     xournalpp
     calibre
-    quickemu
+    #quickemu
   ];
 
   services.syncthing = {

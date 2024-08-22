@@ -61,11 +61,11 @@ gc:
 	# Garbage collect all unused nix store entries
 	sudo nix-collect-garbage --delete-old
 
-zsh-test:
+zsh:
 	rsync -avz --delete --copy-links --chmod=D2755,F744 ./home/core/zsh/ ${HOME}/.config/zsh
 
-tmux-test:
+tmux:
 	rsync -avz --delete --chmod=D2755,F744 ./home/core/tmux/ ${HOME}/.config/tmux
 
-nvim-test:
+nvim:
 	rsync -avz --delete --copy-links --chmod=D2755,F744 ./hosts/base/home/tui/nvim/ ${HOME}/.config/nvim

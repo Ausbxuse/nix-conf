@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cd ~/.config/zsh && git pull origin master
 cd ~/.config/tmux && git pull origin master

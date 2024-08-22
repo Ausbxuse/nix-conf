@@ -36,7 +36,6 @@
     obs-studio
     wl-clipboard
     scrcpy
-    xournalpp
     calibre
     #quickemu
   ];

@@ -31,7 +31,7 @@
       diff = "diff --color=auto";
       ccat = "highlight --out-format=ansi";
       # These common commands are just too long! Abbreviate them.
-      s = "sdcv -c -u 'WordNet® 3.0 (En-En)' | less";
+      s = "sdcv -c -u 'WordNet® 3.0 (En-En)'";
       ka = "killall";
       se = "sudoedit";
       ga = "git commit -a";

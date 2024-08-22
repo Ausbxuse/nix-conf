@@ -1,13 +1,12 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 echo syncing starts...
 dothome="/home/peter/.local/src/public-repos/snappy"
 folders=$(ls $dothome/.config | sed '/nvim/d')
 
 # Sync .config
-for folder in $folders
-do
-    rsync -av --delete ~/.config/$folder/ ~/.local/src/snappy/.config/$folder
+for folder in $folders; do
+  rsync -av --delete ~/.config/$folder/ ~/.local/src/snappy/.config/$folder
 done
 
 # Sync .local
@@ -23,11 +22,10 @@ git status
 echo "proceed commiting?"
 
 read choice
-if [ $choice = $(printf "\n") ]
-then
-    printf "Enter Commit message: " && read msg && git commit -m "$msg" && git push origin master
+if [ $choice = $(printf "\n") ]; then
+  printf "Enter Commit message: " && read msg && git commit -m "$msg" && git push origin master
 else # TODO: ctrl c should also be considered
-    git reset && exit 1
+  git reset && exit 1
 fi
 
 # manually sync fonts and cursor theme

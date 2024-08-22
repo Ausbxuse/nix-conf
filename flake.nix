@@ -75,7 +75,7 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit username user-fullname user-homedir user-email;
-          hostname = hostname-individual;
+          hostname = hostname-desktop;
         };
         modules = [
           ./hosts/${hostname-desktop}/system

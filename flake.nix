@@ -6,21 +6,6 @@
     #nixpkgs.url = "github:NixOS/nixpkgs?rev=b8fb460d5b2a6d2efdd40b5c4ec7035f64b89a4a";
     nixpkgs-old.url = "github:NixOS/nixpkgs?rev=e9be42459999a253a9f92559b1f5b72e1b44c13d";
 
-    #nixpkgs = import (builtins.fetchGit {
-    #  # Descriptive name to make the store path easier to identify
-    #  name = "my-old-revision";
-    #  url = "https://github.com/NixOS/nixpkgs/";
-    #  ref = "refs/heads/nixpkgs-unstable";
-    #  rev = "0c19708cf035f50d28eb4b2b8e7a79d4dc52f6bb";
-    #}) {};
-    # mypkgs = import (builtins.fetchTarball {
-    #   url = "https://github.com/NixOS/nixpkgs/archive/0c19708cf035f50d28eb4b2b8e7a79d4dc52f6bb.tar.gz"; # 46.1
-    #   #url="https://github.com/NixOS/nixpkgs/archive/67b4bf1df4ae54d6866d78ccbd1ac7e8a8db8b73.tar.gz"; # 46.2
-    #   sha256 = "0ngw2shvl24swam5pzhcs9hvbwrgzsbcdlhpvzqc7nfk8lc28sp3";
-    # }) {system = "x86_64-linux";};
-
-    #nixpkgs.url = "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixpkgs-unstable/nixexprs.tar.xz";
-    #home-manager.url = "github:nix-community/home-manager";
     home-manager = {
       url = "github:nix-community/home-manager";
       # The `follows` keyword in inputs is used for inheritance.
@@ -47,72 +32,54 @@
     hostname-individual = "timy";
     hostname-universal = "spacy";
     hostname-desktop = "uni";
+
+    specialArgs = {
+      inherit username user-fullname user-homedir user-email;
+    };
+
+    configureHost = {
+      hostname,
+      system,
+    }: {
+      system = system;
+      specialArgs = {
+            #  inherit specialArgs;
+      inherit username user-fullname user-homedir user-email;
+        hostname = hostname;
+      };
+      modules = [
+        ./hosts/${hostname}/system
+        grub2-theme.nixosModules.default
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            extraSpecialArgs = {inherit username user-fullname user-homedir user-email;};
+                #extraSpecialArgs = specialArgs;
+            backupFileExtension = "backup";
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.${username} = import ./hosts/${hostname}/home;
+          };
+        }
+      ];
+    };
   in {
     nixosConfigurations = {
       # Asus zennbook duo setup
-      ${hostname-individual} = nixpkgs-old.lib.nixosSystem {
+      ${hostname-individual} = nixpkgs-old.lib.nixosSystem (configureHost {
+        hostname = "${hostname-individual}";
         system = "x86_64-linux";
-        specialArgs = {
-          inherit username user-fullname user-homedir user-email;
-          hostname = hostname-individual;
-        };
-        modules = [
-          ./hosts/${hostname-individual}/system
-          grub2-theme.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.extraSpecialArgs = {
-              inherit username user-fullname user-homedir user-email;
-            };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./hosts/${hostname-individual}/home;
-          }
-        ];
-      };
-
-      ${hostname-desktop} = nixpkgs.lib.nixosSystem {
+      });
+      # Universal duo setup
+      ${hostname-universal} = nixpkgs.lib.nixosSystem (configureHost {
+        hostname = "${hostname-individual}";
         system = "x86_64-linux";
-        specialArgs = {
-          inherit username user-fullname user-homedir user-email;
-          hostname = hostname-desktop;
-        };
-        modules = [
-          ./hosts/${hostname-desktop}/system
-          grub2-theme.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.extraSpecialArgs = {
-              inherit username user-fullname user-homedir user-email;
-            };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./hosts/${hostname-desktop}/home;
-          }
-        ];
-      };
-
-      # Universal setup
-      ${hostname-universal} = nixpkgs.lib.nixosSystem {
+      });
+      # Alienware setup
+      ${hostname-desktop} = nixpkgs.lib.nixosSystem (configureHost {
+        hostname = "${hostname-individual}";
         system = "x86_64-linux";
-        specialArgs = {
-          inherit username user-fullname user-homedir user-email;
-          hostname = hostname-universal;
-        };
-        modules = [
-          ./hosts/${hostname-universal}/system
-          grub2-theme.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.extraSpecialArgs = {
-              inherit username user-fullname user-homedir user-email;
-            };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./hosts/${hostname-universal}/home;
-          }
-        ];
-      };
+      });
     };
 
     homeConfigurations = {

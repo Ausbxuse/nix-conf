@@ -8,7 +8,7 @@
 }: {
   # Audio
   #sound.enable = false;
-  # security.rtkit.enable = true;
+  security.rtkit.enable = true;
   hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;

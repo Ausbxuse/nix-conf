@@ -7,7 +7,7 @@
   ...
 }: let
   pkgs_kernel = import (builtins.fetchTarball {
-url = "http://nixos.org/channels/nixos-24.05/nixexprs.tar.xz";
+    url = "http://nixos.org/channels/nixos-24.05/nixexprs.tar.xz";
     sha256 = "1bs4sl01pbxp47sr3hny9mipfibazw1ch2b9cd6vygi501ickx9w";
   }) {system = "x86_64-linux";};
 in {

@@ -7,8 +7,8 @@
   ...
 }: let
   pkgs_kernel = import (builtins.fetchTarball {
-    url = "http://nixos.org/channels/nixos-24.05/nixexprs.tar.xz";
-    sha256 = "1yyn41qmi6qa5dgyadcvq7q7nphr9br8304nz3h5q0sawj2ysxg8";
+    url = "https://github.com/NixOS/nixpkgs/archive/8348deaf95ec17e19753ff689abb753a5832912c.tar.gz";
+    sha256 = "0nk8mi6wjwkqw85gpa2xr3pfjpmgl2zk2qqpzkwqjxgpyykp7inf";
   }) {system = "x86_64-linux";};
 in {
   boot.initrd = {

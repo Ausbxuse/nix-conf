@@ -43,8 +43,8 @@
     }: {
       system = system;
       specialArgs = {
-            #  inherit specialArgs;
-      inherit username user-fullname user-homedir user-email;
+        #  inherit specialArgs;
+        inherit username user-fullname user-homedir user-email;
         hostname = hostname;
       };
       modules = [
@@ -53,9 +53,8 @@
         home-manager.nixosModules.home-manager
         {
           home-manager = {
-            extraSpecialArgs = {inherit username user-fullname user-homedir user-email;};
-                #extraSpecialArgs = specialArgs;
-            backupFileExtension = "backup";
+            extraSpecialArgs = specialArgs;
+                #backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${username} = import ./hosts/${hostname}/home;
@@ -72,12 +71,12 @@
       });
       # Universal duo setup
       ${hostname-universal} = nixpkgs.lib.nixosSystem (configureHost {
-        hostname = "${hostname-individual}";
+        hostname = "${hostname-universal}";
         system = "x86_64-linux";
       });
       # Alienware setup
       ${hostname-desktop} = nixpkgs.lib.nixosSystem (configureHost {
-        hostname = "${hostname-individual}";
+        hostname = "${hostname-desktop}";
         system = "x86_64-linux";
       });
     };

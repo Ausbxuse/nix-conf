@@ -1,6 +1,5 @@
 {
   pkgs,
-  nix-gaming,
   user-homedir,
   ...
 }: {

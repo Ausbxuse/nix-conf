@@ -15,7 +15,6 @@
     };
     printing = {
       enable = true;
-      drivers = with pkgs; [hplip];
     };
   };
 }

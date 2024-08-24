@@ -47,7 +47,7 @@
       magit = "nvim -c MagitOnly";
       #ref="shortcuts >/dev/null; source ${config.xdg.configHome}/shortcutrc ; source ${config.xdg.configHome}/zshnameddirrc" ;
       weath = "less -S ${config.xdg.dataHome}/weatherreport";
-      tmux = "tmux -f ${config.xdg.configHome}/tmux/tmux.conf attach -t main";
+      tmux = "tmux -f ${config.xdg.configHome}/tmux/tmux.conf attach -t 0";
       yarn = "yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config";
       lf = "yazi";
       cf = "cd $HOME/.config && ls -a";

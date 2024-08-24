@@ -14,6 +14,8 @@
     ./services
     ./hardware
     ./firmware
+    ./luks.nix
+    ./kernel.nix
   ];
 
   networking.hostName = "${hostname}";

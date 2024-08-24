@@ -10,13 +10,10 @@
 }: {
   imports = [
     ../../base/system
-
-    ./kernel.nix
-    ./luks.nix
+    ../../base/system/gaming.nix
 
     ./hardware-configuration.nix
 
-    ../../base/system/gaming.nix
     ./nvidia.nix
   ];
 }

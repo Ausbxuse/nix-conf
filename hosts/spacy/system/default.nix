@@ -10,8 +10,6 @@
 }: {
   imports = [
     ../../base/system
-    ./kernel.nix
-    ./luks.nix
     ./hardware-configuration.nix
   ];
 }

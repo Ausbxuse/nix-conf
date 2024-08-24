@@ -7,17 +7,18 @@
   ...
 }: {
   imports = [
-    ../../base/home/gui
-    ../../base/home/gnome
-    ./tui
+    ../../base/home
   ];
 
-  home = {
-    username = "${username}";
-    homeDirectory = "${user-homedir}";
-    stateVersion = "24.05";
-  };
+  # Overrides
+  programs.zsh.initExtra = builtins.readFile ./tui/zsh-config/zshrc;
+  programs.tmux.extraConfig = builtins.readFile ./tui/tmux-config/tmux.conf;
 
+  home.activation.installStartupScript = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./tui/bin}/ ${config.home.homeDirectory}/.local/bin/
+  '';
+
+  # packages
   home.packages = with pkgs; [
     # Non essentials
     jupyter
@@ -41,12 +42,9 @@
     quickemu
   ];
 
+  # Services
   services.syncthing = {
     enable = true;
     tray.enable = true;
   };
-
-  # Let Home Manager install and manage itself.
-  #programs.home-manager.enable = true;
-  # programs.home-manager.path = "$HOME/.local/src/public/nixos-conf/home";
 }

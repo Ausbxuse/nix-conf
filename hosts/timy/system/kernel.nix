@@ -8,7 +8,7 @@
 }: let
   pkgs_kernel = import (builtins.fetchTarball {
     url = "http://nixos.org/channels/nixos-24.05/nixexprs.tar.xz";
-    sha256 = "1bs4sl01pbxp47sr3hny9mipfibazw1ch2b9cd6vygi501ickx9w";
+    sha256 = "1yyn41qmi6qa5dgyadcvq7q7nphr9br8304nz3h5q0sawj2ysxg8";
   }) {system = "x86_64-linux";};
 in {
   boot.initrd = {
@@ -35,6 +35,7 @@ in {
 
   #boot.kernelPackages = pkgs.linuxPackages_6_9;
   #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_9;
+  #boot.kernelPackages = pkgs_kernel.linuxKernel.packages.linux_6_9;
   boot.kernelPackages = pkgs_kernel.linuxKernel.packages.linux_6_9;
   boot.kernelPatches = [
     #{
@@ -45,15 +46,5 @@ in {
       name = "zenbook-i915-revert-93cbc1accbcec2740231755774420934658e2b18";
       patch = ./kernel-patch/zenbook-i915-revert-93cbc1accbcec2740231755774420934658e2b18.patch;
     }
-  ];
-
-  boot.extraModulePackages = [];
-  boot.kernelParams = [
-    "quiet"
-    "splash"
-    "vga=current"
-    "rd.systemd.show_status=false"
-    "rd.udev.log_level=3"
-    "udev.log_priority=3"
   ];
 }

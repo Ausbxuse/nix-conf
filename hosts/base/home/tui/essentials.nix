@@ -60,8 +60,8 @@
     fzf = {
       enable = true;
       enableZshIntegration = true;
-      fileWidgetCommand = "fd -H --max-depth 10 -t f -t l";
-      changeDirWidgetCommand = "fd -H --max-depth 12 -t d";
+      fileWidgetCommand = "fd --exclude .git -H --max-depth 10 -t f -t l";
+      changeDirWidgetCommand = "fd --exclude .git -H --max-depth 12 -t d";
     };
 
     zoxide = {

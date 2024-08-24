@@ -10,6 +10,6 @@
     ./tmux-config
   ];
 
-  #programs.zsh.initExtra = builtins.readFile ./zsh-config/zshrc;
-  #programs.tmux.extraConfig = builtins.readFile ./tmux-config/tmux.conf;
+  programs.zsh.initExtra = lib.mkDefault (builtins.readFile ./zsh-config/zshrc);
+  programs.tmux.extraConfig = lib.mkDefault (builtins.readFile ./tmux-config/tmux.conf);
 }

@@ -15,7 +15,7 @@
   programs.tmux.extraConfig = builtins.readFile ./tui/tmux-config/tmux.conf;
   programs.wezterm.extraConfig = builtins.readFile ./gui/wezterm/wezterm.lua;
 
-  home.activation.installStartupScript = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.installUniStartupScript = lib.hm.dag.entryAfter ["writeBoundary"] ''
     ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./tui/bin}/ ${config.home.homeDirectory}/.local/bin/
   '';
 

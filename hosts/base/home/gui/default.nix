@@ -45,7 +45,7 @@
       enable = true;
       profiles.betterfox = {
         extraConfig = builtins.readFile ./user.js;
-        search.default = "Kagi";
+        #search.default = "Kagi";
         #search.engines = {
         #  "Nix Packages" = {
         #    urls = [

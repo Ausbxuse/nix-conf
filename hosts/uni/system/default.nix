@@ -16,4 +16,9 @@
 
     ./nvidia.nix
   ];
+
+  environment.systemPackages = with pkgs; [
+    sof-firmware
+  ];
+
 }

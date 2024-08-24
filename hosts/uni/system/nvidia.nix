@@ -11,7 +11,7 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
 
-  boot.kernelParams = ["module_blacklist=i915"];
+  boot.kernelParams = ["module_blacklist=i915" "snd-intel-dspcfg.dsp_driver=1"];
   boot.initrd.kernelModules = ["nvidia"];
   boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
   #hardware.nvidia.forceFullCompositionPipeline = true;

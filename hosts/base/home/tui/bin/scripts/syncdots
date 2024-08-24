@@ -1,36 +1,24 @@
 #!/usr/bin/env bash
 
-homeDir=~
+source_dir=/mnt/zhenyu
+target_dir=/home/zhenyu
 
-dstRepo=~/.local/src/public-repos/dots
+folders=("Media" "Public" "Documents" "Media-Phone" "Archive" ".ssh" "WIP" ".local/src" ".local/share/mail")
 
-#klaunchrc kded_device_automounterrc ksmserverrc
-configFiles=(plasma-org.kde.plasma.desktop-appletsrc Trolltech.conf breezerc kcminputrc kwinrulesrc kwinrc khotkeysrc kglobalshortcutsrc krunnerrc plasma-localerc ktimezonedrc kdeglobals kxkbrc kcmfonts systemsettingsrc mimeapps.list user-dirs.dirs lightlyshaders.conf)
-#spectaclerc
-
-# get rid of some wallpapers
-folders=(".config/gtk-2.0" ".config/gtk-3.0" ".config/gtk-4.0" ".local/share/kwin" ".local/share/plasma" ".local/share/fonts" ".local/share/icons" ".local/share/color-schemes" ".local/share/kservices5" ".local/share/wallpapers" ".config/nvim" ".config/alacritty" ".config/mpv" ".config/zathura" ".config/sxiv" ".config/lf" ".config/shell" ".config/wget" ".config/tmux" ".config/zsh" ".config/touchegg" ".config/kdedefaults" ".config/htop" ".config/paru" ".local/share/themes/Orchis-dark" ".config/x11" ".local/share/stardict" ".local/src/public-repos/matter" ".local/share/zinit" ".local/bin/scripts")
-
-# extra files
-# /etc/NetworkManager/system-connections
-
-syncConfigFile() {
-	rsync -av --delete ${homeDir}/.config/$1 ${dstRepo}/.config/$1
+load() {
+  for folder in ${folders[@]}; do
+    rsync -avp ${source_dir}/${folder}/ ${target_dir}/${folder} # remove last folder name
+  done
 }
 
-syncFolders() {
-	rsync -av --delete ${homeDir}/$1 ${dstRepo}/$(echo $1 | sed "s/\(^.*\)\/.*$/\1/g") # remove last folder name
+backup() {
+  for folder in ${folders[@]}; do
+    rsync -avp ${target_dir}/${folder}/ ${source_dir}/${folder} # remove last folder name
+  done
 }
 
-for file in ${configFiles[@]}; do
-	syncConfigFile $file
-done
-
-rsync -av --delete ~/.xprofile ${dstRepo}
-rsync -av --delete ~/.zprofile ${dstRepo}
-rsync -av --delete ~/.profile ${dstRepo}
-rsync -av --delete ~/.Xresources ${dstRepo}
-
-for folder in ${folders[@]}; do
-	syncFolders $folder
-done
+case $1 in
+'') printf "Usage: $status\n  syncdots backup to backup\n  syncdots load to load\n" ;;
+backup) backup ;;
+load) load ;;
+esac

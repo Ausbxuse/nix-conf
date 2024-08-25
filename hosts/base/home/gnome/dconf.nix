@@ -259,7 +259,7 @@ with lib.hm.gvariant;
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
       binding = "<Super>space";
-      command = "alacritty";
+      command = "wezterm";
       name = "Terminal";
     };
 

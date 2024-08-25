@@ -42,9 +42,7 @@
       system,
     }: {
       system = system;
-      specialArgs = {
-        #  inherit specialArgs;
-        inherit username user-fullname user-homedir user-email;
+      specialArgs = specialArgs // {
         hostname = hostname;
       };
       modules = [
@@ -62,29 +60,20 @@
         }
       ];
     };
-  in {
-    nixosConfigurations = {
-      # Asus zennbook duo setup
-      ${hostname-individual} = nixpkgs-old.lib.nixosSystem (configureHost {
-        hostname = "${hostname-individual}";
-        system = "x86_64-linux";
-      });
-      # Universal duo setup
-      ${hostname-universal} = nixpkgs.lib.nixosSystem (configureHost {
-        hostname = "${hostname-universal}";
-        system = "x86_64-linux";
-      });
-      # Alienware setup
-      ${hostname-desktop} = nixpkgs.lib.nixosSystem (configureHost {
-        hostname = "${hostname-desktop}";
-        system = "x86_64-linux";
-      });
+
+    hosts = {
+      "${hostname-individual}" = {system = "x86_64-linux"; nixpkgs = nixpkgs-old;};
+      "${hostname-universal}" = {system = "x86_64-linux"; nixpkgs = nixpkgs;};
+      "${hostname-desktop}" = {system = "x86_64-linux"; nixpkgs = nixpkgs;};
     };
+
+  in {
+    nixosConfigurations = builtins.mapAttrs (hostname: params: params.nixpkgs.lib.nixosSystem (configureHost {hostname=hostname; system = params.system;})) hosts;
 
     homeConfigurations = {
       spacy-tui = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs username user-fullname user-homedir user-email;};
+        extraSpecialArgs = specialArgs // {inherit inputs outputs;};
         modules = [
           ./home/tui
         ];

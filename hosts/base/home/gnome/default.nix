@@ -4,6 +4,10 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./dconf.nix
+  ];
+
   home.packages = with pkgs; [
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
 
@@ -52,7 +56,7 @@
     imv
   ];
 
-  home.activation.installDconf = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./dconf}/ ${config.xdg.configHome}/dconf/
-  '';
+  #home.activation.installDconf = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  #  ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./dconf}/ ${config.xdg.configHome}/dconf/
+  #'';
 }

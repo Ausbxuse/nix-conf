@@ -8,6 +8,7 @@
 }: {
   imports = [
     ../../base/home
+    ./gui/dconf.nix
   ];
 
   # Overrides

@@ -3,7 +3,6 @@
     # minegrub-theme.url = "github:Lxtharia/minegrub-theme";
     grub2-theme.url = "github:vinceliuice/grub2-themes";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    #nixpkgs.url = "github:NixOS/nixpkgs?rev=b8fb460d5b2a6d2efdd40b5c4ec7035f64b89a4a";
     nixpkgs-old.url = "github:NixOS/nixpkgs?rev=e9be42459999a253a9f92559b1f5b72e1b44c13d";
 
     home-manager = {

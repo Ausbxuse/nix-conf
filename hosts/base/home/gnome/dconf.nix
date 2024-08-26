@@ -1,18 +1,17 @@
 # Generated via dconf2nix: https://github.com/gvolpe/dconf2nix
-{ lib, 
-user-homedir,
-... }:
-
-with lib.hm.gvariant;
-
 {
+  lib,
+  user-homedir,
+  ...
+}:
+with lib.hm.gvariant; {
   dconf.settings = {
     "org/freedesktop/tracker/miner/files" = {
-      index-recursive-directories = [ "&DESKTOP" "&DOCUMENTS" "&MUSIC" "&PICTURES" "&VIDEOS" "${user-homedir}/Media/Music" ];
+      index-recursive-directories = ["&DESKTOP" "&DOCUMENTS" "&MUSIC" "&PICTURES" "&VIDEOS" "${user-homedir}/Media/Music"];
     };
 
     "org/gnome/Totem" = {
-      active-plugins = [ "skipto" "variable-rate" "apple-trailers" "open-directory" "rotation" "save-file" "screensaver" "vimeo" "screenshot" "mpris" "movie-properties" "autoload-subtitles" "recent" ];
+      active-plugins = ["skipto" "variable-rate" "apple-trailers" "open-directory" "rotation" "save-file" "screensaver" "vimeo" "screenshot" "mpris" "movie-properties" "autoload-subtitles" "recent"];
       subtitle-encoding = "UTF-8";
     };
 
@@ -33,24 +32,24 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/app-folders" = {
-      folder-children = [ "Utilities" "YaST" "Pardus" ];
+      folder-children = ["Utilities" "YaST" "Pardus"];
     };
 
     "org/gnome/desktop/app-folders/folders/Pardus" = {
-      categories = [ "X-Pardus-Apps" ];
+      categories = ["X-Pardus-Apps"];
       name = "X-Pardus-Apps.directory";
       translate = true;
     };
 
     "org/gnome/desktop/app-folders/folders/Utilities" = {
-      apps = [ "gnome-abrt.desktop" "gnome-system-log.desktop" "nm-connection-editor.desktop" "org.gnome.baobab.desktop" "org.gnome.Connections.desktop" "org.gnome.DejaDup.desktop" "org.gnome.Dictionary.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.Evince.desktop" "org.gnome.FileRoller.desktop" "org.gnome.fonts.desktop" "org.gnome.Loupe.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.tweaks.desktop" "org.gnome.Usage.desktop" "vinagre.desktop" ];
-      categories = [ "X-GNOME-Utilities" ];
+      apps = ["gnome-abrt.desktop" "gnome-system-log.desktop" "nm-connection-editor.desktop" "org.gnome.baobab.desktop" "org.gnome.Connections.desktop" "org.gnome.DejaDup.desktop" "org.gnome.Dictionary.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.Evince.desktop" "org.gnome.FileRoller.desktop" "org.gnome.fonts.desktop" "org.gnome.Loupe.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.tweaks.desktop" "org.gnome.Usage.desktop" "vinagre.desktop"];
+      categories = ["X-GNOME-Utilities"];
       name = "X-GNOME-Utilities.directory";
       translate = true;
     };
 
     "org/gnome/desktop/app-folders/folders/YaST" = {
-      categories = [ "X-SuSE-YaST" ];
+      categories = ["X-SuSE-YaST"];
       name = "suse-yast.directory";
       translate = true;
     };
@@ -77,9 +76,9 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/input-sources" = {
-      mru-sources = [ (mkTuple [ "xkb" "us" ]) ];
-      sources = [ (mkTuple [ "xkb" "us" ]) ];
-      xkb-options = [ "terminate:ctrl_alt_bksp" "caps:escape" "compose:rctrl" "lv3:menu_switch" "altwin:swap_lalt_lwin" ];
+      mru-sources = [(mkTuple ["xkb" "us"])];
+      sources = [(mkTuple ["xkb" "us"])];
+      xkb-options = ["terminate:ctrl_alt_bksp" "caps:escape" "compose:rctrl" "lv3:menu_switch" "altwin:swap_lalt_lwin"];
     };
 
     "org/gnome/desktop/interface" = {
@@ -140,7 +139,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/search-providers" = {
-      sort-order = [ "org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Nautilus.desktop" ];
+      sort-order = ["org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Nautilus.desktop"];
     };
 
     "org/gnome/desktop/session" = {
@@ -154,45 +153,45 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/wm/keybindings" = {
       activate-window-menu = [];
-      close = [ "<Super>a" ];
+      close = ["<Super>a"];
       cycle-windows = [];
       cycle-windows-backward = [];
       maximize = [];
       minimize = [];
-      move-to-monitor-down = [ "<Shift><Super>j" ];
-      move-to-monitor-left = [ "<Shift><Super>h" ];
-      move-to-monitor-right = [ "<Shift><Super>l" ];
-      move-to-monitor-up = [ "<Shift><Super>k" ];
-      move-to-workspace-1 = [ "<Shift><Super>q" ];
-      move-to-workspace-2 = [ "<Shift><Super>w" ];
-      move-to-workspace-3 = [ "<Shift><Super>e" ];
-      move-to-workspace-4 = [ "<Shift><Super>r" ];
-      move-to-workspace-down = [ "<Control><Shift><Alt>Down" ];
-      move-to-workspace-left = [ "<Super><Shift>Page_Up" "<Super><Shift><Alt>Left" "<Control><Shift><Alt>Left" ];
-      move-to-workspace-right = [ "<Super><Shift>Page_Down" "<Super><Shift><Alt>Right" "<Control><Shift><Alt>Right" ];
-      move-to-workspace-up = [ "<Control><Shift><Alt>Up" ];
-      switch-applications = [ "<Super>Tab" "<Alt>Tab" ];
-      switch-applications-backward = [ "<Shift><Super>Tab" "<Shift><Alt>Tab" ];
-      switch-group = [ "<Super>Above_Tab" "<Alt>Above_Tab" ];
-      switch-group-backward = [ "<Shift><Super>Above_Tab" "<Shift><Alt>Above_Tab" ];
-      switch-input-source = [ "<Shift><Control>space" ];
-      switch-input-source-backward = [ "<Control>space" ];
-      switch-panels = [ "<Control><Alt>Tab" ];
-      switch-panels-backward = [ "<Shift><Control><Alt>Tab" ];
-      switch-to-workspace-1 = [ "<Super>q" ];
-      switch-to-workspace-2 = [ "<Super>w" ];
-      switch-to-workspace-3 = [ "<Super>e" ];
-      switch-to-workspace-4 = [ "<Super>r" ];
-      switch-to-workspace-last = [ "<Super>End" ];
-      switch-to-workspace-left = [ "<Super>Page_Up" "<Super><Alt>Left" "<Control><Alt>Left" ];
-      switch-to-workspace-right = [ "<Super>Page_Down" "<Super><Alt>Right" "<Control><Alt>Right" ];
-      toggle-fullscreen = [ "<Super>f" ];
-      unmaximize = [ "<Super>Down" "<Alt>F5" ];
+      move-to-monitor-down = ["<Shift><Super>j"];
+      move-to-monitor-left = ["<Shift><Super>h"];
+      move-to-monitor-right = ["<Shift><Super>l"];
+      move-to-monitor-up = ["<Shift><Super>k"];
+      move-to-workspace-1 = ["<Shift><Super>q"];
+      move-to-workspace-2 = ["<Shift><Super>w"];
+      move-to-workspace-3 = ["<Shift><Super>e"];
+      move-to-workspace-4 = ["<Shift><Super>r"];
+      move-to-workspace-down = ["<Control><Shift><Alt>Down"];
+      move-to-workspace-left = ["<Super><Shift>Page_Up" "<Super><Shift><Alt>Left" "<Control><Shift><Alt>Left"];
+      move-to-workspace-right = ["<Super><Shift>Page_Down" "<Super><Shift><Alt>Right" "<Control><Shift><Alt>Right"];
+      move-to-workspace-up = ["<Control><Shift><Alt>Up"];
+      switch-applications = ["<Super>Tab" "<Alt>Tab"];
+      switch-applications-backward = ["<Shift><Super>Tab" "<Shift><Alt>Tab"];
+      switch-group = ["<Super>Above_Tab" "<Alt>Above_Tab"];
+      switch-group-backward = ["<Shift><Super>Above_Tab" "<Shift><Alt>Above_Tab"];
+      switch-input-source = ["<Shift><Control>space"];
+      switch-input-source-backward = ["<Control>space"];
+      switch-panels = ["<Control><Alt>Tab"];
+      switch-panels-backward = ["<Shift><Control><Alt>Tab"];
+      switch-to-workspace-1 = ["<Super>q"];
+      switch-to-workspace-2 = ["<Super>w"];
+      switch-to-workspace-3 = ["<Super>e"];
+      switch-to-workspace-4 = ["<Super>r"];
+      switch-to-workspace-last = ["<Super>End"];
+      switch-to-workspace-left = ["<Super>Page_Up" "<Super><Alt>Left" "<Control><Alt>Left"];
+      switch-to-workspace-right = ["<Super>Page_Down" "<Super><Alt>Right" "<Control><Alt>Right"];
+      toggle-fullscreen = ["<Super>f"];
+      unmaximize = ["<Super>Down" "<Alt>F5"];
     };
 
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "icon:minimize,maximize,close";
-      workspace-names = [ "Workspace 1" "Workspace 2" "Workspace 3" "Workspace 4" ];
+      workspace-names = ["Workspace 1" "Workspace 2" "Workspace 3" "Workspace 4"];
     };
 
     "org/gnome/mutter" = {
@@ -204,13 +203,13 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/mutter/keybindings" = {
-      cancel-input-capture = [ "<Super><Shift>Escape" ];
-      toggle-tiled-left = [ "<Super>Left" ];
-      toggle-tiled-right = [ "<Super>Right" ];
+      cancel-input-capture = ["<Super><Shift>Escape"];
+      toggle-tiled-left = ["<Super>Left"];
+      toggle-tiled-right = ["<Super>Right"];
     };
 
     "org/gnome/mutter/wayland/keybindings" = {
-      restore-shortcuts = [ "<Super>Escape" ];
+      restore-shortcuts = ["<Super>Escape"];
     };
 
     "org/gnome/nautilus/preferences" = {
@@ -222,7 +221,7 @@ with lib.hm.gvariant;
 
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = true;
-      night-light-last-coordinates = mkTuple [ 30.582886232884718 114.2681 ];
+      night-light-last-coordinates = mkTuple [30.582886232884718 114.2681];
       night-light-schedule-automatic = false;
       night-light-schedule-from = 16.0;
       night-light-schedule-to = 4.0;
@@ -230,19 +229,19 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/" ];
-      logout = [ "<Shift><Super>a" ];
-      magnifier = [ "<Super>slash" ];
-      magnifier-zoom-in = [ "<Super>z" ];
-      magnifier-zoom-out = [ "<Shift><Super>z" ];
-      rfkill-static = [ "XF86UWB" "XF86RFKill" ];
-      rotate-video-lock-static = [ "<Super>o" "XF86RotationLockToggle" ];
+      custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"];
+      logout = ["<Shift><Super>a"];
+      magnifier = ["<Super>slash"];
+      magnifier-zoom-in = ["<Super>z"];
+      magnifier-zoom-out = ["<Shift><Super>z"];
+      rfkill-static = ["XF86UWB" "XF86RFKill"];
+      rotate-video-lock-static = ["<Super>o" "XF86RotationLockToggle"];
       screenreader = [];
-      screensaver = [ "<Super>Delete" ];
-      search = [ "<Super>d" ];
-      volume-down = [ "<Super>comma" ];
-      volume-mute = [ "<Super>m" ];
-      volume-up = [ "<Super>period" ];
+      screensaver = ["<Super>Delete"];
+      search = ["<Super>d"];
+      volume-down = ["<Super>comma"];
+      volume-mute = ["<Super>m"];
+      volume-up = ["<Super>period"];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -280,13 +279,13 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell" = {
-      command-history = [ "lg" "xiccdf" "xiccd" ];
+      command-history = ["lg" "xiccdf" "xiccd"];
       disable-user-extensions = false;
-      disabled-extensions = [ "light-style@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "tiling-assistant@leleat-on-github" "Rounded_Corners@lennart-k" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "Vitals@CoreCoding.com" "netspeedsimplified@prateekmedia.extension" "apps-menu@gnome-shell-extensions.gcampax.github.com" "cronomix@zagortenay333" "gnomebedtime@ionutbortis.gmail.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "paperwm@paperwm.github.com" "rounded-window-corners@fxgn" "gtk4-ding@smedius.gitlab.com" "window-list@gnome-shell-extensions.gcampax.github.com" ];
-      enabled-extensions = [ "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "kimpanel@kde.org" "gsconnect@andyholmes.github.io" "night-light-slider-updated@vilsbeg.codeberg.org" "CoverflowAltTab@palatis.blogspot.com" "color-picker@tuberry" "caffeine@patapon.info" "Bluetooth-Battery-Meter@maniacx.github.com" "hide-cursor@elcste.com" "just-perfection-desktop@just-perfection" "monitor@astraext.github.io" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "unite@hardpixel.eu" "mediacontrols@cliffniff.github.com" "dash-to-dock@micxgx.gmail.com" "status-area-horizontal-spacing@mathematical.coffee.gmail.com" "system-monitor-next@paradoxxx.zero.gmail.com" "forge@jmmaranan.com" "no-overview@fthx" "user-theme@gnome-shell-extensions.gcampax.github.com" "azwallpaper@azwallpaper.gitlab.com" "blur-my-shell@aunetx" ];
-      favorite-apps = [ "org.gnome.Settings.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Extensions.desktop" "org.gnome.Calendar.desktop" "firefox.desktop" "steam.desktop" "org.wezfurlong.wezterm.desktop" "com.github.xournalpp.xournalpp.desktop" ];
+      disabled-extensions = ["light-style@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "tiling-assistant@leleat-on-github" "Rounded_Corners@lennart-k" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "Vitals@CoreCoding.com" "netspeedsimplified@prateekmedia.extension" "apps-menu@gnome-shell-extensions.gcampax.github.com" "cronomix@zagortenay333" "gnomebedtime@ionutbortis.gmail.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "paperwm@paperwm.github.com" "rounded-window-corners@fxgn" "gtk4-ding@smedius.gitlab.com" "window-list@gnome-shell-extensions.gcampax.github.com"];
+      enabled-extensions = ["screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "kimpanel@kde.org" "gsconnect@andyholmes.github.io" "night-light-slider-updated@vilsbeg.codeberg.org" "CoverflowAltTab@palatis.blogspot.com" "color-picker@tuberry" "caffeine@patapon.info" "Bluetooth-Battery-Meter@maniacx.github.com" "hide-cursor@elcste.com" "just-perfection-desktop@just-perfection" "monitor@astraext.github.io" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "unite@hardpixel.eu" "mediacontrols@cliffniff.github.com" "dash-to-dock@micxgx.gmail.com" "status-area-horizontal-spacing@mathematical.coffee.gmail.com" "system-monitor-next@paradoxxx.zero.gmail.com" "forge@jmmaranan.com" "no-overview@fthx" "user-theme@gnome-shell-extensions.gcampax.github.com" "azwallpaper@azwallpaper.gitlab.com" "blur-my-shell@aunetx"];
+      favorite-apps = ["org.gnome.Settings.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Extensions.desktop" "org.gnome.Calendar.desktop" "firefox.desktop" "steam.desktop" "org.wezfurlong.wezterm.desktop" "com.github.xournalpp.xournalpp.desktop"];
       last-selected-power-profile = "power-saver";
-      looking-glass-history = [ "Flags" ];
+      looking-glass-history = ["Flags"];
       welcome-dialog-last-shown-version = "45.5";
     };
 
@@ -359,9 +358,9 @@ with lib.hm.gvariant;
     "org/gnome/shell/extensions/azwallpaper" = {
       slideshow-current-wallpapper = "city.jpg";
       slideshow-directory = "${user-homedir}/.local/share/wallpapers";
-      slideshow-slide-duration = mkTuple [ 1 0 0 ];
+      slideshow-slide-duration = mkTuple [1 0 0];
       slideshow-timer-remaining = 3600;
-      slideshow-wallpaper-queue = [ "\34183\23572\33673\29305\&1.png" "deer.jpg" "\20113\38544\32321\26143\&2.png" "\24052\23665\22812\38632.png" ];
+      slideshow-wallpaper-queue = ["\34183\23572\33673\29305\&1.png" "deer.jpg" "\20113\38544\32321\26143\&2.png" "\24052\23665\22812\38632.png"];
     };
 
     "org/gnome/shell/extensions/bedtime-mode" = {
@@ -399,7 +398,7 @@ with lib.hm.gvariant;
       enable-all = false;
       opacity = 255;
       sigma = 60;
-      whitelist = [ "Alacritty" "org.wezfurlong.wezterm" ];
+      whitelist = ["Alacritty" "org.wezfurlong.wezterm"];
     };
 
     "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
@@ -444,7 +443,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/color-picker" = {
-      color-history = [ (mkUint32 2368548) 3507428 ];
+      color-history = [(mkUint32 2368548) 3507428];
       enable-shortcut = true;
       enable-systray = false;
     };
@@ -458,7 +457,7 @@ with lib.hm.gvariant;
       icon-has-shadow = true;
       icon-style = "Overlay";
       position = "Top";
-      switcher-background-color = mkTuple [ 1.0 1.0 1.0 ];
+      switcher-background-color = mkTuple [1.0 1.0 1.0];
       switcher-looping-method = "Flip Stack";
       switcher-style = "Coverflow";
     };
@@ -500,45 +499,45 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/forge/keybindings" = {
-      con-split-horizontal = [ "<Super>z" ];
-      con-split-layout-toggle = [ "<Super>g" ];
-      con-split-vertical = [ "<Super>v" ];
-      con-stacked-layout-toggle = [ "<Shift><Super>s" ];
-      con-tabbed-layout-toggle = [ "<Shift><Super>t" ];
-      con-tabbed-showtab-decoration-toggle = [ "<Control><Alt>y" ];
-      focus-border-toggle = [ "<Super>x" ];
+      con-split-horizontal = ["<Super>z"];
+      con-split-layout-toggle = ["<Super>g"];
+      con-split-vertical = ["<Super>v"];
+      con-stacked-layout-toggle = ["<Shift><Super>s"];
+      con-tabbed-layout-toggle = ["<Shift><Super>t"];
+      con-tabbed-showtab-decoration-toggle = ["<Control><Alt>y"];
+      focus-border-toggle = ["<Super>x"];
       prefs-open = [];
       prefs-tiling-toggle = [];
-      window-focus-down = [ "<Super>j" ];
-      window-focus-left = [ "<Super>h" ];
-      window-focus-right = [ "<Super>l" ];
-      window-focus-up = [ "<Super>k" ];
-      window-gap-size-decrease = [ "<Control><Super>minus" ];
-      window-gap-size-increase = [ "<Control><Super>plus" ];
-      window-move-down = [ "<Shift><Super>j" ];
-      window-move-left = [ "<Shift><Super>h" ];
-      window-move-right = [ "<Shift><Super>l" ];
-      window-move-up = [ "<Shift><Super>k" ];
-      window-resize-bottom-decrease = [ "<Shift><Control><Super>i" ];
-      window-resize-bottom-increase = [ "<Control><Super>u" ];
-      window-resize-left-decrease = [ "<Shift><Control><Super>o" ];
-      window-resize-left-increase = [ "<Control><Super>y" ];
-      window-resize-right-decrease = [ "<Shift><Control><Super>y" ];
-      window-resize-right-increase = [ "<Control><Super>o" ];
-      window-resize-top-decrease = [ "<Shift><Control><Super>u" ];
-      window-resize-top-increase = [ "<Control><Super>i" ];
-      window-snap-center = [ "<Control><Alt>c" ];
-      window-snap-one-third-left = [ "<Control><Alt>d" ];
-      window-snap-one-third-right = [ "<Control><Alt>g" ];
-      window-snap-two-third-left = [ "<Control><Alt>e" ];
-      window-snap-two-third-right = [ "<Control><Alt>t" ];
-      window-swap-down = [ "<Control><Super>j" ];
-      window-swap-last-active = [ "<Super>Return" ];
-      window-swap-left = [ "<Control><Super>h" ];
-      window-swap-right = [ "<Control><Super>l" ];
-      window-swap-up = [ "<Control><Super>k" ];
-      window-toggle-always-float = [ "<Shift><Super>c" ];
-      window-toggle-float = [ "<Shift><Super>f" ];
+      window-focus-down = ["<Super>j"];
+      window-focus-left = ["<Super>h"];
+      window-focus-right = ["<Super>l"];
+      window-focus-up = ["<Super>k"];
+      window-gap-size-decrease = ["<Control><Super>minus"];
+      window-gap-size-increase = ["<Control><Super>plus"];
+      window-move-down = ["<Shift><Super>j"];
+      window-move-left = ["<Shift><Super>h"];
+      window-move-right = ["<Shift><Super>l"];
+      window-move-up = ["<Shift><Super>k"];
+      window-resize-bottom-decrease = ["<Shift><Control><Super>i"];
+      window-resize-bottom-increase = ["<Control><Super>u"];
+      window-resize-left-decrease = ["<Shift><Control><Super>o"];
+      window-resize-left-increase = ["<Control><Super>y"];
+      window-resize-right-decrease = ["<Shift><Control><Super>y"];
+      window-resize-right-increase = ["<Control><Super>o"];
+      window-resize-top-decrease = ["<Shift><Control><Super>u"];
+      window-resize-top-increase = ["<Control><Super>i"];
+      window-snap-center = ["<Control><Alt>c"];
+      window-snap-one-third-left = ["<Control><Alt>d"];
+      window-snap-one-third-right = ["<Control><Alt>g"];
+      window-snap-two-third-left = ["<Control><Alt>e"];
+      window-snap-two-third-right = ["<Control><Alt>t"];
+      window-swap-down = ["<Control><Super>j"];
+      window-swap-last-active = ["<Super>Return"];
+      window-swap-left = ["<Control><Super>h"];
+      window-swap-right = ["<Control><Super>l"];
+      window-swap-up = ["<Control><Super>k"];
+      window-toggle-always-float = ["<Shift><Super>c"];
+      window-toggle-float = ["<Shift><Super>f"];
       workspace-active-tile-toggle = [];
     };
 
@@ -650,10 +649,10 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/keybindings" = {
-      focus-active-notification = [ "<Super>n" ];
-      shift-overview-down = [ "<Super><Alt>Down" ];
-      shift-overview-up = [ "<Super><Alt>Up" ];
-      show-screenshot-ui = [ "<Super>p" ];
+      focus-active-notification = ["<Super>n"];
+      shift-overview-down = ["<Super><Alt>Down"];
+      shift-overview-up = ["<Super><Alt>Up"];
+      show-screenshot-ui = ["<Super>p"];
       toggle-application-view = [];
       toggle-message-tray = [];
       toggle-quick-settings = [];
@@ -697,6 +696,5 @@ with lib.hm.gvariant;
       sort-order = "descending";
       type-format = "category";
     };
-
   };
 }

@@ -182,5 +182,4 @@
     enable = true;
     tray.enable = true;
   };
-
 }

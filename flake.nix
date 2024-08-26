@@ -41,9 +41,11 @@
       system,
     }: {
       system = system;
-      specialArgs = specialArgs // {
-        hostname = hostname;
-      };
+      specialArgs =
+        specialArgs
+        // {
+          hostname = hostname;
+        };
       modules = [
         ./hosts/${hostname}/system
         grub2-theme.nixosModules.default
@@ -51,7 +53,7 @@
         {
           home-manager = {
             extraSpecialArgs = specialArgs;
-                #backupFileExtension = "backup";
+            #backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${username} = import ./hosts/${hostname}/home;
@@ -61,13 +63,26 @@
     };
 
     hosts = {
-      "${hostname-individual}" = {system = "x86_64-linux"; nixpkgs = nixpkgs-old;};
-      "${hostname-universal}" = {system = "x86_64-linux"; nixpkgs = nixpkgs;};
-      "${hostname-desktop}" = {system = "x86_64-linux"; nixpkgs = nixpkgs;};
+      "${hostname-individual}" = {
+        system = "x86_64-linux";
+        nixpkgs = nixpkgs-old;
+      };
+      "${hostname-universal}" = {
+        system = "x86_64-linux";
+        nixpkgs = nixpkgs;
+      };
+      "${hostname-desktop}" = {
+        system = "x86_64-linux";
+        nixpkgs = nixpkgs;
+      };
     };
-
   in {
-    nixosConfigurations = builtins.mapAttrs (hostname: params: params.nixpkgs.lib.nixosSystem (configureHost {hostname=hostname; system = params.system;})) hosts;
+    nixosConfigurations = builtins.mapAttrs (hostname: params:
+      params.nixpkgs.lib.nixosSystem (configureHost {
+        hostname = hostname;
+        system = params.system;
+      }))
+    hosts;
 
     homeConfigurations = {
       spacy-tui = home-manager.lib.homeManagerConfiguration {

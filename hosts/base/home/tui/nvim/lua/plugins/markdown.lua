@@ -3,6 +3,10 @@ return {
     "preservim/vim-markdown",
     enabled = false,
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    enabled = true,
+  },
 
   {
     "echasnovski/mini.pairs",

@@ -257,7 +257,7 @@ with lib.hm.gvariant;
       name = "Bright down";
     };
 
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = lib.mkDefault {
       binding = "<Super>space";
       command = "wezterm";
       name = "Terminal";

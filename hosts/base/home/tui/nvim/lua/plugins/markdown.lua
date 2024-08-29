@@ -1,5 +1,9 @@
 return {
   {
+    "lervag/vimtex",
+    enabled = true,
+  },
+  {
     "preservim/vim-markdown",
     enabled = false,
   },

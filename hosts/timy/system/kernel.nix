@@ -36,15 +36,15 @@ in {
   #boot.kernelPackages = pkgs.linuxPackages_6_9;
   #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_9;
   #boot.kernelPackages = pkgs_kernel.linuxKernel.packages.linux_6_9;
-  boot.kernelPackages = pkgs_kernel.linuxKernel.packages.linux_6_9;
-  boot.kernelPatches = [
-    #{
-    #  name = "zenbook-asus-hid";
-    #  patch = ./zenbook-asus-hid.patch;
-    #}
-    {
-      name = "zenbook-i915-revert-93cbc1accbcec2740231755774420934658e2b18";
-      patch = ./kernel-patch/zenbook-i915-revert-93cbc1accbcec2740231755774420934658e2b18.patch;
-    }
-  ];
+  #boot.kernelPackages = pkgs_kernel.linuxKernel.packages.linux_6_9;
+  #boot.kernelPatches = [
+  #  #{
+  #  #  name = "zenbook-asus-hid";
+  #  #  patch = ./zenbook-asus-hid.patch;
+  #  #}
+  #  {
+  #    name = "zenbook-i915-revert-93cbc1accbcec2740231755774420934658e2b18";
+  #    patch = ./kernel-patch/zenbook-i915-revert-93cbc1accbcec2740231755774420934658e2b18.patch;
+  #  }
+  #];
 }

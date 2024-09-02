@@ -17,4 +17,7 @@
 
     ../../base/system/gaming.nix
   ];
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
 }

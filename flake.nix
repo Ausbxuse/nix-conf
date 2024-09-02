@@ -53,7 +53,6 @@
         {
           home-manager = {
             extraSpecialArgs = specialArgs;
-            #backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
             users.${username} = import ./hosts/${hostname}/home;
@@ -85,11 +84,11 @@
     hosts;
 
     homeConfigurations = {
-      spacy-tui = home-manager.lib.homeManagerConfiguration {
+      earthy = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = specialArgs // {inherit inputs outputs;};
         modules = [
-          ./home/tui
+          ./hosts/base/home/tui
         ];
       };
     };

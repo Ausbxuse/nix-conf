@@ -6,7 +6,6 @@
   user-homedir,
   ...
 }: {
-
   home = {
     username = "${username}";
     homeDirectory = "${user-homedir}";

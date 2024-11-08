@@ -21,7 +21,7 @@ return {
     event = "VeryLazy",
     config = function()
       require("luasnip-latex-snippets").setup({
-        allow_on_markdown = true,
+        allow_on_markdown = false,
       })
       -- Modify existing snippets using higher priority and util function from luasnip-latex-snippets
       local ls = require("luasnip")

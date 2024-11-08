@@ -4,6 +4,13 @@ local telescope = require("telescope")
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+vim.keymap.set("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>")
+vim.keymap.set("n", "<leader>dt", "<cmd>DapTerminate<CR>")
+vim.keymap.set("n", "<leader>dc", "<cmd>DapContinue<CR>")
+vim.keymap.set("n", "<leader>dn", "<cmd>DapStepOver<CR>")
+vim.keymap.set("n", "<leader>di", "<cmd>DapStepInto<CR>")
+vim.keymap.set("n", "<leader>do", "<cmd>DapStepOut<CR>")
+
 -- vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set("n", "<Esc>", "<cmd>nohl|lua require('notify').dismiss()<CR>")
 vim.keymap.set("n", "n", "nzzzv")

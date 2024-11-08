@@ -49,7 +49,7 @@ return {
     },
     jump = {
       -- save location in the jumplist
-      jumplist = true,
+      jumplist = false,
       -- jump position
       pos = "start", ---@type "start" | "end" | "range"
       -- add pattern to search history
@@ -59,7 +59,7 @@ return {
       -- clear highlight after jump
       nohlsearch = true,
       -- automatically jump when there is only one match
-      autojump = true,
+      autojump = false,
       -- You can force inclusive/exclusive jumps by setting the
       -- `inclusive` option. By default it will be automatically
       -- set based on the mode.

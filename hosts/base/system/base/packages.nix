@@ -12,6 +12,7 @@
   environment.systemPackages = with pkgs;
     [
       # ESSENTIALs
+      cachix
       gcc
       rsync
       gnupg
@@ -61,7 +62,7 @@
     ]
     ++ [
     ];
-
+  programs.direnv.enable = true;
   services.locate = {
     enable = true;
     localuser = null;

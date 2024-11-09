@@ -14,6 +14,15 @@
   programs.nix-ld.libraries = with pkgs; [
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
+    glibc
+    glib
+    libGL
+    zlib
+    fontconfig
+    xorg.libX11
+    libxkbcommon
+    freetype
+    dbus
   ];
 
   nix.settings = {
@@ -24,11 +33,15 @@
     trusted-users = ["${username}"];
 
     substituters = [
+"https://cuda-maintainers.cachix.org"
       # cache mirror located in China
       #"https://mirror.sjtu.edu.cn/nix-channels/store"
       #"https://mirrors.ustc.edu.cn/nix-channels/store"
       #"https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      "https://cache.nixos.org"
+      # "https://cache.nixos.org"
+    ];
+    trusted-public-keys = [
+    "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
     ];
   };
 }

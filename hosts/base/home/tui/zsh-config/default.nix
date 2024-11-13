@@ -91,8 +91,14 @@
     '';
 
     initExtra = builtins.readFile ./zshrc;
-    #profileExtra = ''
-    #  source ~/.nix-profile/etc/profile.d/nix.sh
-    #'';
+    profileExtra = ''
+
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+    . ~/.nix-profile/etc/profile.d/nix.sh
+elif [ -e /etc/profile.d/nix.sh ]; then
+    . /etc/profile.d/nix.sh
+fi
+    '';
+    # source ~/.nix-profile/etc/profile.d/nix.sh
   }];
 }

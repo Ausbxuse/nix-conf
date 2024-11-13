@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  programs.zsh = {
+  programs.zsh = lib.mkMerge [{
     dotDir = ".config/zsh";
     enable = true;
     enableCompletion = true;
@@ -93,5 +93,5 @@
     #profileExtra = ''
     #  source ~/.nix-profile/etc/profile.d/nix.sh
     #'';
-  };
+  }];
 }

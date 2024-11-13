@@ -90,6 +90,7 @@
       export KEYTIMEOUT=1
     '';
 
+    initExtra = builtins.readFile ./zshrc;
     #profileExtra = ''
     #  source ~/.nix-profile/etc/profile.d/nix.sh
     #'';

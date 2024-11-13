@@ -58,32 +58,32 @@ return {
 
     local custom_theme = require("lualine.themes.auto")
     -- Change the background of lualine_c section for normal mode
-    custom_theme.normal.a.fg = "#5fdaff" -- rgb colors are supported
-    custom_theme.normal.a.bg = "NONE" -- rgb colors are supported
-    custom_theme.normal.b.fg = "#5fdaff" -- rgb colors are supported
-    custom_theme.normal.b.bg = "NONE" -- rgb colors are supported
-    custom_theme.normal.c.fg = "#dfdcd8" -- rgb colors are supported
-    custom_theme.normal.c.bg = "NONE" -- rgb colors are supported
+    custom_theme.normal.a.fg = "#5fdaff"     -- rgb colors are supported
+    custom_theme.normal.a.bg = "NONE"        -- rgb colors are supported
+    custom_theme.normal.b.fg = "#5fdaff"     -- rgb colors are supported
+    custom_theme.normal.b.bg = "NONE"        -- rgb colors are supported
+    custom_theme.normal.c.fg = "#dfdcd8"     -- rgb colors are supported
+    custom_theme.normal.c.bg = "NONE"        -- rgb colors are supported
 
-    custom_theme.command.a.bg = "NONE" -- rgb colors are supported
-    custom_theme.command.b.bg = "NONE" -- rgb colors are supported
+    custom_theme.command.a.bg = "NONE"       -- rgb colors are supported
+    custom_theme.command.b.bg = "NONE"       -- rgb colors are supported
     custom_theme.command.a.fg = colors.cyan2 -- rgb colors are supported
     custom_theme.command.b.fg = colors.cyan2 -- rgb colors are supported
 
-    custom_theme.replace.a.bg = "#ff4a00" -- rgb colors are supported
-    custom_theme.replace.a.fg = "NONE" -- rgb colors are supported
-    custom_theme.replace.b.fg = "#ff4a00" -- rgb colors are supported
-    custom_theme.replace.b.bg = "NONE" -- rgb colors are supported
+    custom_theme.replace.a.bg = "#ff4a00"    -- rgb colors are supported
+    custom_theme.replace.a.fg = "NONE"       -- rgb colors are supported
+    custom_theme.replace.b.fg = "#ff4a00"    -- rgb colors are supported
+    custom_theme.replace.b.bg = "NONE"       -- rgb colors are supported
     -- custom_theme.replace.c.bg = "#171920" -- rgb colors are supported
-    custom_theme.visual.a.fg = "#bd93f9" -- rgb colors are supported
-    custom_theme.visual.a.bg = "NONE" -- rgb colors are supported
-    custom_theme.visual.b.fg = "#bd93f9" -- rgb colors are supported
-    custom_theme.visual.b.bg = "NONE" -- rgb colors are supported
+    custom_theme.visual.a.fg = "#bd93f9"     -- rgb colors are supported
+    custom_theme.visual.a.bg = "NONE"        -- rgb colors are supported
+    custom_theme.visual.b.fg = "#bd93f9"     -- rgb colors are supported
+    custom_theme.visual.b.bg = "NONE"        -- rgb colors are supported
     -- custom_theme.visual.c.bg = "#171920" -- rgb colors are supported
-    custom_theme.insert.a.fg = "#abe15b" -- rgb colors are supported
-    custom_theme.insert.a.bg = "NONE" -- rgb colors are supported
-    custom_theme.insert.b.fg = "#abe15b" -- rgb colors are supported
-    custom_theme.insert.b.bg = "NONE" -- rgb colors are supported
+    custom_theme.insert.a.fg = "#abe15b"     -- rgb colors are supported
+    custom_theme.insert.a.bg = "NONE"        -- rgb colors are supported
+    custom_theme.insert.b.fg = "#abe15b"     -- rgb colors are supported
+    custom_theme.insert.b.bg = "NONE"        -- rgb colors are supported
     -- custom_theme.insert.c.bg = "#171920" -- rgb colors are supported
     --
     local function getWords()
@@ -123,7 +123,7 @@ return {
           {
             "branch",
             icon = "",
-            color = { fg = colors.cyan2 }, -- Set branch color to rose
+            color = { fg = colors.cyan2 },     -- Set branch color to rose
             -- separator = { right = " ", left = " " },
             padding = { left = 0, right = 0 }, -- Adjust the right padding to 1 },
           },
@@ -145,7 +145,7 @@ return {
 
         lualine_c = {
           -- Util.lualine.root_dir(),
-          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+          { "filetype", icon_only = true,                 separator = "", padding = { left = 1, right = 0 } },
           -- { Util.lualine.pretty_path() },
           {
             -- getMyCwd,
@@ -175,25 +175,25 @@ return {
           },
         },
         lualine_x = {
-            -- stylua: ignore
+          -- stylua: ignore
           --
-            {
-              function() return require("noice").api.status.command.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-              color = function() return Util.ui.fg("Constant") end,
-            },
-            -- stylua: ignore
-            {
-              function() return require("noice").api.status.mode.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-              color = function() return Util.ui.fg("Constant") end,
-            },
-            -- stylua: ignore
-            {
-              function() return "  " .. require("dap").status() end,
-              cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
-              color = Util.ui.fg("Debug"),
-            },
+          {
+            function() return require("noice").api.status.command.get() end,
+            cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+            color = function() return Util.ui.fg("Constant") end,
+          },
+          -- stylua: ignore
+          {
+            function() return require("noice").api.status.mode.get() end,
+            cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+            color = function() return Util.ui.fg("Constant") end,
+          },
+          -- stylua: ignore
+          {
+            function() return "  " .. require("dap").status() end,
+            cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
+            color = Util.ui.fg("Debug"),
+          },
           { "searchcount" },
           {
             require("lazy.status").updates,

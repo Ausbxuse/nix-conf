@@ -256,50 +256,129 @@ return {
     },
   },
   -- LSP keymaps
-  -- {
-  --   "williamboman/mason.nvim",
-  --   enabled = false,
-  --   opts = {
-  --     ensure_installed = {},
-  --     PATH = "append",
-  --   },
-  -- },
-  -- {
-  --   "williamboman/mason-lspconfig.nvim",
-  --   enabled = false,
-  --   --[[ opts = {
-  --       ensure_installed = {},
-  --     },
-  --     config = function()
-  --       require("mason-lspconfig").setup({
-  --         ensured_installed = {},
-  --       })
-  --     end, ]]
-  -- },
+  {
+    "williamboman/mason.nvim",
+    enabled = false,
+    opts = {
+      ensure_installed = {},
+      PATH = "append",
+    },
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    enabled = false,
+    --[[ opts = {
+        ensure_installed = {},
+      },
+      config = function()
+        require("mason-lspconfig").setup({
+          ensured_installed = {},
+        })
+      end, ]]
+  },
   -- { "VonHeikemen/lsp-zero.nvim" },
-  -- {
-  --   "dundalek/lazy-lsp.nvim",
-  --   enabled = false,
-  --   dependencies = {
-  --     "neovim/nvim-lspconfig",
-  --     { "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
-  --     "hrsh7th/cmp-nvim-lsp",
-  --     "hrsh7th/nvim-cmp",
-  --   },
-  --   config = function()
-  --     --[[ local lsp_zero = require("lsp-zero")
+  {
+    "dundalek/lazy-lsp.nvim",
+    enabled = true,
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      -- { "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      --[[ local lsp_zero = require("lsp-zero")
 
-  --   lsp_zero.on_attach(function(client, bufnr)
-  --     -- see :help lsp-zero-keybindings to learn the available actions
-  --     lsp_zero.default_keymaps({
-  --       buffer = bufnr,
-  --       preserve_mappings = false
-  --     })
-  --   end) ]]
+      lsp_zero.on_attach(function(client, bufnr)
+        -- see :help lsp-zero-keybindings to learn the available actions
+        lsp_zero.default_keymaps({
+          buffer = bufnr,
+          preserve_mappings = false,
+        })
+      end) ]]
 
-  --     require("lazy-lsp").setup({})
-  --   end,
-  -- },
+      require("lazy-lsp").setup({
+        -- By default all available servers are set up. Exclude unwanted or misbehaving servers.
+        excluded_servers = {
+          "ccls",
+          "zk",
+          "ts_ls",
+          "buf_ls",
+          "c3_lsp",
+        },
+        -- Alternatively specify preferred servers for a filetype (others will be ignored).
+        preferred_servers = {
+          markdown = {},
+          python = { "pyright" },
+        },
+        prefer_local = true, -- Prefer locally installed servers over nix-shell
+        -- Default config passed to all servers to specify on_attach callback and other options.
+        default_config = {
+          flags = {
+            debounce_text_changes = 150,
+          },
+          -- on_attach = on_attach,
+          -- capabilities = capabilities,
+        },
+        -- Override config for specific servers that will passed down to lspconfig setup.
+        -- Note that the default_config will be merged with this specific configuration so you don't need to specify everything twice.
+        configs = {
+          lua_ls = {
+            -- mason = false, -- set to false if you don't want this server to be installed with mason
+            -- Use this to add any additional keymaps
+            -- for specific lsp servers
+            -- keys = {},
+            settings = {
+              Lua = {
+                workspace = {
+                  checkThirdParty = false,
+                },
+                codeLens = {
+                  enable = true,
+                },
+                completion = {
+                  callSnippet = "Replace",
+                },
+              },
+            },
+          },
+          ltex = {
+            settings = {
+              ltex = {
+                enabled = {
+                  "bibtex",
+                  "gitcommit",
+                  "markdown",
+                  "org",
+                  "tex",
+                  "restructuredtext",
+                  "rsweave",
+                  "latex",
+                  "quarto",
+                  "rmd",
+                  "context",
+                  "html",
+                  "xhtml",
+                },
+                workspace = {
+                  checkThirdParty = false,
+                },
+                codeLens = {
+                  enable = false,
+                },
+                completion = {
+                  callSnippet = "Replace",
+                },
+                dictionary = {
+                  ["en-US"] = words,
+                },
+              },
+            },
+          },
+        },
+      })
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
     event = "VeryLazy",
@@ -346,60 +425,7 @@ return {
         formatting_options = nil,
         timeout_ms = nil,
       },
-      servers = {
-        lua_ls = {
-          -- mason = false, -- set to false if you don't want this server to be installed with mason
-          -- Use this to add any additional keymaps
-          -- for specific lsp servers
-          -- keys = {},
-          settings = {
-            Lua = {
-              workspace = {
-                checkThirdParty = false,
-              },
-              codeLens = {
-                enable = true,
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          },
-        },
-        ltex = {
-          settings = {
-            ltex = {
-              enabled = {
-                "bibtex",
-                "gitcommit",
-                "markdown",
-                "org",
-                "tex",
-                "restructuredtext",
-                "rsweave",
-                "latex",
-                "quarto",
-                "rmd",
-                "context",
-                "html",
-                "xhtml",
-              },
-              workspace = {
-                checkThirdParty = false,
-              },
-              codeLens = {
-                enable = false,
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
-              dictionary = {
-                ["en-US"] = words,
-              },
-            },
-          },
-        },
-      },
+      servers = {},
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
       setup = {

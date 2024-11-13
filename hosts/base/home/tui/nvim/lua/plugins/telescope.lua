@@ -33,6 +33,7 @@ return {
   keys = {
 
     { "<leader>fg", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
+    { "<leader>qf", "<cmd>Telescope quickfix<cr>",               desc = "Quickfix List" },
   },
   -- keys = {
   --   {

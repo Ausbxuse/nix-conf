@@ -24,7 +24,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<leader><space>", "<cmd>e #<cr>")
 vim.keymap.set("n", "<leader>/", ":Telescope current_buffer_fuzzy_find<cr>")
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>")
--- vim.keymap.set("n", "<leader>fd", telescope.extensions.zoxide.list)
+vim.keymap.set("n", "<leader>fd", telescope.extensions.zoxide.list)
 vim.keymap.set("n", "<leader>fj", "<cmd>Telescope commands<cr>")
 
 vim.keymap.set("n", "<leader>u", "<cmd>lua require('telescope').extensions.dict.synonyms()<cr>")

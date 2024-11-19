@@ -8,21 +8,21 @@ return {
     "folke/trouble.nvim",
     -- opts will be merged with the parent spec
     opts = {
-      auto_close = false, -- auto close when there are no items
-      auto_open = false, -- auto open when there are items
-      auto_preview = true, -- automatically open preview when on an item
-      auto_refresh = true, -- auto refresh when open
-      auto_jump = false, -- auto jump to the item when there's only one
-      focus = false, -- Focus the window when opened
-      restore = true, -- restores the last location in the list when opening
-      follow = true, -- Follow the current item
-      indent_guides = true, -- show indent guides
-      max_items = 200, -- limit number of items that can be displayed per section
-      multiline = true, -- render multi-line messages
-      pinned = false, -- When pinned, the opened trouble window will be bound to the current buffer
-      warn_no_results = true, -- show a warning when there are no results
+      auto_close = false,      -- auto close when there are no items
+      auto_open = false,       -- auto open when there are items
+      auto_preview = true,     -- automatically open preview when on an item
+      auto_refresh = true,     -- auto refresh when open
+      auto_jump = false,       -- auto jump to the item when there's only one
+      focus = false,           -- Focus the window when opened
+      restore = true,          -- restores the last location in the list when opening
+      follow = true,           -- Follow the current item
+      indent_guides = true,    -- show indent guides
+      max_items = 200,         -- limit number of items that can be displayed per section
+      multiline = true,        -- render multi-line messages
+      pinned = false,          -- When pinned, the opened trouble window will be bound to the current buffer
+      warn_no_results = true,  -- show a warning when there are no results
       open_no_results = false, -- open the trouble window when there are no results
-      win = {}, -- window options for the results window. Can be a split or a floating window.
+      win = {},                -- window options for the results window. Can be a split or a floating window.
       -- Window options for the preview window. Can be a split, floating window,
       -- or `main` to show the preview in the main editor window.
       preview = {
@@ -35,10 +35,10 @@ return {
       -- Throttle/Debounce settings. Should usually not be changed.
       ---@type table<string, number|{ms:number, debounce?:boolean}>
       throttle = {
-        refresh = 20, -- fetches new data when needed
-        update = 10, -- updates the window
-        render = 10, -- renders the window
-        follow = 100, -- follows the current item
+        refresh = 20,                            -- fetches new data when needed
+        update = 10,                             -- updates the window
+        render = 10,                             -- renders the window
+        follow = 100,                            -- follows the current item
         preview = { ms = 100, debounce = true }, -- shows the preview for the current item
       },
       -- Key mappings can be set to the name of a builtin action,
@@ -152,49 +152,49 @@ return {
           },
         },
       },
-  -- stylua: ignore
-  icons = {
-    indent = {
-      top           = "│ ",
-      middle        = "├╴",
-      last          = "└╴",
-      -- last          = "-╴",
-      -- last       = "╰╴", -- rounded
-      fold_open     = " ",
-      fold_closed   = " ",
-      ws            = "  ",
-    },
-    folder_closed   = " ",
-    folder_open     = " ",
-    kinds = {
-      Array         = " ",
-      Boolean       = "󰨙 ",
-      Class         = " ",
-      Constant      = "󰏿 ",
-      Constructor   = " ",
-      Enum          = " ",
-      EnumMember    = " ",
-      Event         = " ",
-      Field         = " ",
-      File          = " ",
-      Function      = "󰊕 ",
-      Interface     = " ",
-      Key           = " ",
-      Method        = "󰊕 ",
-      Module        = " ",
-      Namespace     = "󰦮 ",
-      Null          = " ",
-      Number        = "󰎠 ",
-      Object        = " ",
-      Operator      = " ",
-      Package       = " ",
-      Property      = " ",
-      String        = " ",
-      Struct        = "󰆼 ",
-      TypeParameter = " ",
-      Variable      = "󰀫 ",
-    },
-  },
+      -- stylua: ignore
+      icons = {
+        indent        = {
+          top         = "│ ",
+          middle      = "├╴",
+          last        = "└╴",
+          -- last          = "-╴",
+          -- last       = "╰╴", -- rounded
+          fold_open   = " ",
+          fold_closed = " ",
+          ws          = "  ",
+        },
+        folder_closed = " ",
+        folder_open   = " ",
+        kinds         = {
+          Array         = " ",
+          Boolean       = "󰨙 ",
+          Class         = " ",
+          Constant      = "󰏿 ",
+          Constructor   = " ",
+          Enum          = " ",
+          EnumMember    = " ",
+          Event         = " ",
+          Field         = " ",
+          File          = " ",
+          Function      = "󰊕 ",
+          Interface     = " ",
+          Key           = " ",
+          Method        = "󰊕 ",
+          Module        = " ",
+          Namespace     = "󰦮 ",
+          Null          = " ",
+          Number        = "󰎠 ",
+          Object        = " ",
+          Operator      = " ",
+          Package       = " ",
+          Property      = " ",
+          String        = " ",
+          Struct        = "󰆼 ",
+          TypeParameter = " ",
+          Variable      = "󰀫 ",
+        },
+      },
     },
   },
   {
@@ -206,17 +206,17 @@ return {
       end, { silent = true })
 
       require("treesitter-context").setup({
-        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-        max_lines = 1, -- How many lines the window should span. Values <= 0 mean no limit.
-        min_window_height = 1, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+        enable = true,           -- Enable this plugin (Can be enabled/disabled later via commands)
+        max_lines = 1,           -- How many lines the window should span. Values <= 0 mean no limit.
+        min_window_height = 1,   -- Minimum editor window height to enable context. Values <= 0 mean no limit.
         line_numbers = true,
         multiline_threshold = 1, -- Maximum number of lines to show for a single context
-        trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-        mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
+        trim_scope = "outer",    -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+        mode = "cursor",         -- Line used to calculate context. Choices: 'cursor', 'topline'
         -- Separator between context and content. Should be a single character string, like '-'.
         -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
         separator = nil,
-        zindex = 20, -- The Z-index of the context window
+        zindex = 20,     -- The Z-index of the context window
         on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
       })
     end,
@@ -305,6 +305,7 @@ return {
           "ts_ls",
           "buf_ls",
           "c3_lsp",
+          "sourcekit"
         },
         -- Alternatively specify preferred servers for a filetype (others will be ignored).
         preferred_servers = {

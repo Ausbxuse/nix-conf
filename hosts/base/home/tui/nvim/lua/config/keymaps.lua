@@ -1,8 +1,10 @@
 local Util = require("lazyvim.util")
-local telescope = require("telescope")
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+for i = 1, 6 do
+  vim.keymap.set("n", "<leader>" .. i, ":b" .. i .. "<CR>", { noremap = true, silent = true })
+end
 
 vim.keymap.set("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>")
 vim.keymap.set("n", "<leader>dt", "<cmd>DapTerminate<CR>")

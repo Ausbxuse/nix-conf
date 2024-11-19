@@ -62,10 +62,10 @@ gc:
 	sudo nix-collect-garbage --delete-old
 
 zsh:
-	rsync -avz --delete --copy-links --chmod=D2755,F744 ./home/core/zsh/ ${HOME}/.config/zsh
+	rsync -avz --delete --copy-links --chmod=D2755,F744 ./hosts/base/home/tui/zsh-config/zsh/ ${HOME}/.config/zsh
 
 tmux:
-	rsync -avz --delete --chmod=D2755,F744 ./home/core/tmux/ ${HOME}/.config/tmux
+	rsync -avz --delete --chmod=D2755,F744 ./hosts/base/home/tui/tmux-config/tmux/ ${HOME}/.config/tmux
 
 nvim:
 	rsync -avz --delete --copy-links --chmod=D2755,F744 ./hosts/base/home/tui/nvim/ ${HOME}/.config/nvim

@@ -33,7 +33,9 @@
     trusted-users = ["${username}"];
 
     substituters = [
-"https://cuda-maintainers.cachix.org"
+      "https://cuda-maintainers.cachix.org"
+      "substituters = https://cache.nixos.org"
+      "https://ausbxuse.cachix.org"
       # cache mirror located in China
       #"https://mirror.sjtu.edu.cn/nix-channels/store"
       #"https://mirrors.ustc.edu.cn/nix-channels/store"
@@ -41,7 +43,8 @@
       # "https://cache.nixos.org"
     ];
     trusted-public-keys = [
-    "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
     ];
   };
 }

@@ -33,7 +33,7 @@ return {
   keys = {
 
     { "<leader>fg", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
-    { "<leader>qf", "<cmd>Telescope quickfix<cr>",               desc = "Quickfix List" },
+    { "<leader>qf", "<cmd>Telescope quickfix<cr>", desc = "Quickfix List" },
   },
   -- keys = {
   --   {
@@ -132,6 +132,7 @@ return {
 
     return {
       defaults = {
+        layout_strategy = "center",
 
         borderchars = {
           prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
@@ -147,7 +148,7 @@ return {
         prompt_title = "",
         selection_caret = " ",
         sorting_strategy = "ascending",
-        theme = {
+        --[[ theme = {
           show_line = false,
           results_title = false,
           layout_config = {
@@ -163,20 +164,18 @@ return {
             height = 0.80,
             preview_cutoff = 120,
           },
-        },
+        }, ]]
 
+        hl_result_eol = true,
+        results_title = false,
         layout_config = {
-          horizontal = {
-            prompt_position = "top",
-            preview_width = 0.55,
-            results_width = 0.8,
+          center = {
+            anchor = "S",
+            height = 0.4,
+            width = function(_, max_columns, _)
+              return max_columns
+            end,
           },
-          vertical = {
-            mirror = false,
-          },
-          width = 0.87,
-          height = 0.80,
-          preview_cutoff = 120,
         },
         -- open files in the first window that is an actual file.
         -- use the current window if no other window is available.

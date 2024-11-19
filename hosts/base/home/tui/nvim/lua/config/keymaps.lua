@@ -15,6 +15,8 @@ vim.keymap.set("n", "<leader>do", "<cmd>DapStepOut<CR>")
 vim.keymap.set("n", "<Esc>", "<cmd>nohl|lua require('notify').dismiss()<CR>")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 vim.keymap.set("n", "<leader>r", "<cmd>call Compile() <CR>")
 

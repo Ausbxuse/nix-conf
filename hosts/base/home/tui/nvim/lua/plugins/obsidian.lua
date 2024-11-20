@@ -1,5 +1,6 @@
 return {
   "epwalsh/obsidian.nvim",
+  enabled = false,
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
@@ -85,7 +86,7 @@ return {
     end,
     new_notes_location = "notes_subdir",
     ui = {
-      enable = true, -- set to false to disable all additional syntax features
+      enable = true,         -- set to false to disable all additional syntax features
       update_debounce = 200, -- update delay after a text change (in milliseconds)
       -- Define how various check-boxes are displayed
       checkboxes = {

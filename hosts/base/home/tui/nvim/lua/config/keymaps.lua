@@ -88,12 +88,12 @@ vim.keymap.set("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
 
 -- Terminal vim.keymap.setpings
 -- vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Normal" })
-vim.keymap.del("t", "<C-h>")
+--[[ vim.keymap.del("t", "<C-h>")
 vim.keymap.del("t", "<C-j>")
 vim.keymap.del("t", "<C-k>")
 vim.keymap.del("t", "<C-l>")
 vim.keymap.del("t", "<C-/>")
-vim.keymap.del("t", "<c-_>")
+vim.keymap.del("t", "<c-_>") ]]
 
 vim.keymap.del("n", "<C-h>")
 vim.keymap.del("n", "<C-j>")

@@ -88,10 +88,12 @@ return {
           sorting_strategy = "ascending",
           hl_result_eol = true,
           results_title = false,
+          border = true,
           layout_config = {
             center = {
+              preview_cutoff = 1,
               anchor = "S",
-              height = 0.4,
+              height = 0.3,
               width = function(_, max_columns, _)
                 return max_columns
               end,

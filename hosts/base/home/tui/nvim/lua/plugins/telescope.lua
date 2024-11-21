@@ -112,7 +112,7 @@ return {
           }
         },
         defaults = {
-          layout_strategy = "center",
+          layout_strategy = "vertical",
 
           borderchars = {
             prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
@@ -134,8 +134,22 @@ return {
           layout_config = {
             center = {
               preview_cutoff = 1,
+              mirror = true,
               anchor = "S",
               height = 0.3,
+              width = function(_, max_columns, _)
+                return max_columns
+              end,
+            },
+            vertical = {
+              preview_cutoff = 1,
+              preview_height = 0.7,
+              -- mirror = true,
+              prompt_position = "top",
+              -- anchor = "S",
+              height = function(_, max_rows, _)
+                return max_rows
+              end,
               width = function(_, max_columns, _)
                 return max_columns
               end,

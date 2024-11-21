@@ -4,7 +4,7 @@ return {
   vscode = true,
   ---@type Flash.Config
   opts = {
-    labels = "abcdefghijklmnopqrstuvwxyz",
+    labels = "0123456789abcdef",
     -- labels = "asdfghjklqwertyuiopzxcvbnm",
     search = {
       -- search/jump in all windows
@@ -23,7 +23,7 @@ return {
       --   mode = function(str)
       --     return "\\<" .. str
       --   end,
-      mode = "fuzzy",
+      mode = "exact",
       -- behave like `incsearch`
       incremental = false,
       -- Excluded filetypes and custom window filters
@@ -59,7 +59,7 @@ return {
       -- clear highlight after jump
       nohlsearch = true,
       -- automatically jump when there is only one match
-      autojump = false,
+      autojump = true,
       -- You can force inclusive/exclusive jumps by setting the
       -- `inclusive` option. By default it will be automatically
       -- set based on the mode.
@@ -165,22 +165,23 @@ return {
           -- disable jump labels when not enabled, when using a count,
           -- or when recording/executing registers
           opts.jump_labels = opts.jump_labels
-            and vim.v.count == 0
-            and vim.fn.reg_executing() == ""
-            and vim.fn.reg_recording() == ""
+              and vim.v.count == 0
+              and vim.fn.reg_executing() == ""
+              and vim.fn.reg_recording() == ""
 
           -- Show jump labels only in operator-pending mode
           -- opts.jump_labels = vim.v.count == 0 and vim.fn.mode(true):find("o")
         end,
         -- hide after jump when not using jump labels
-        autohide = false,
+        autohide = true,
         -- show jump labels
-        jump_labels = false,
+        jump_labels = true,
         -- set to `false` to use the current line only
-        multi_line = true,
+        multi_line = false,
         -- When using jump labels, don't use these keys
         -- This allows using those keys directly after the motion
         label = { exclude = "hjkliardc" },
+        labels = "0123456789",
         -- by default all keymaps are enabled, but you can disable some of them,
         -- by removing them from the list.
         -- If you rather use another key, you can map them
@@ -237,8 +238,8 @@ return {
         relative = "editor",
         width = 1, -- when <=1 it's a percentage of the editor width
         height = 1,
-        row = -1, -- when negative it's an offset from the bottom
-        col = 0, -- when negative it's an offset from the right
+        row = -1,  -- when negative it's an offset from the bottom
+        col = 0,   -- when negative it's an offset from the right
         zindex = 1000,
       },
     },
@@ -254,12 +255,12 @@ return {
       motion = false,
     },
   },
-    -- stylua: ignore
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    },
+  -- stylua: ignore
+  keys = {
+    { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+    { "S",     mode = { "n", "o", "x" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+    { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+    { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+    { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+  },
 }

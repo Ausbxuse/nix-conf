@@ -34,6 +34,12 @@ return {
       end
     end
 
+    local function empty()
+      return function(str)
+        return ""
+      end
+    end
+
     local colors = {
       _nc = "#16141f",
       base = "#191724",
@@ -114,19 +120,14 @@ return {
         lualine_a = {
           {
             "mode",
-            icon = "",
+            -- icon = "",
+            icon = "",
 
-            fmt = trunc(200, 4, nil, true),
-            padding = { left = 1, right = 1 },
+            -- fmt = trunc(200, 4, nil, true),
+            fmt = empty(),
+            padding = { left = 0, right = 0 },
           },
 
-          {
-            "branch",
-            icon = "",
-            color = { fg = colors.cyan2 },     -- Set branch color to rose
-            -- separator = { right = " ", left = " " },
-            padding = { left = 0, right = 0 }, -- Adjust the right padding to 1 },
-          },
           -- { "windows", mode = 2 },
           -- { "windows", mode = 2 },
           --[[ {
@@ -155,14 +156,21 @@ return {
             path = 1,
             shorting_target = 30,
             symbols = {
-              modified = "🤔", -- Text to show when the file is modified.
-              readonly = "🔴", -- Text to show when the file is non-modifiable or readonly.
-              unnamed = "😶", -- Text to show for unnamed buffers.
-              newfile = "🙂", -- Text to show for new created file before first writting
+              modified = "", -- Text to show when the file is modified.
+              readonly = "", -- Text to show when the file is non-modifiable or readonly.
+              unnamed = "", -- Text to show for unnamed buffers.
+              newfile = "", -- Text to show for new created file before first writting
             },
             padding = { left = 0, right = 0 },
           },
           { "filesize", padding = { left = 0, right = 0 } },
+          {
+            "branch",
+            icon = "",
+            color = { fg = colors.cyan2 },     -- Set branch color to rose
+            -- separator = { right = " ", left = " " },
+            padding = { left = 0, right = 0 }, -- Adjust the right padding to 1 },
+          },
 
           {
             "diagnostics",

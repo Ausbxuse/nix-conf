@@ -11,7 +11,7 @@
 
   # Overrides
   programs.zsh.initExtra = builtins.readFile ./tui/zsh-config/zshrc;
-  programs.tmux.extraConfig = builtins.readFile ./tui/tmux-config/tmux.conf;
+  programs.tmux.extraConfig = builtins.readFile ../../base/home/tui/tmux-config/tmux.conf + "\n" + builtins.readFile ./tui/tmux-config/tmux.conf;
   programs.wezterm.extraConfig = builtins.readFile ./gui/wezterm/wezterm.lua;
 
   home.activation.installUniStartupScript = lib.hm.dag.entryAfter ["writeBoundary"] ''

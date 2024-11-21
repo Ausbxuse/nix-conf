@@ -437,7 +437,7 @@ with lib.hm.gvariant; {
       sigma = 30;
     };
 
-    "org/gnome/shell/extensions/caffeine" = {
+    "org/gnome/shell/extensions/caffeine" = lib.mkDefault {
       indicator-position-max = 2;
       toggle-state = false;
     };

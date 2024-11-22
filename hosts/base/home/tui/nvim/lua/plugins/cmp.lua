@@ -9,11 +9,22 @@ end
 return {
   {
     "L3MON4D3/LuaSnip",
-    event = "VeryLazy",
-    enabled = true,
-    keys = function()
-      return {}
-    end,
+    lazy = true,
+    build = (not LazyVim.is_win())
+        and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
+        or nil,
+    dependencies = {
+      {
+        "rafamadriz/friendly-snippets",
+        config = function()
+          require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+      },
+    },
+    opts = {
+      history = true,
+      delete_check_events = "TextChanged",
+    },
   },
   {
     "ausbxuse/luasnip-latex-snippets.nvim",
@@ -50,10 +61,11 @@ return {
     "hrsh7th/nvim-cmp",
 
     dependencies = {
+      "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      "hrsh7th/cmp-calc", -- nvim-cmp source for math calculation.
+      "hrsh7th/cmp-calc",  -- nvim-cmp source for math calculation.
       "hrsh7th/cmp-emoji", -- nvim-cmp source for math calculation.
     },
 
@@ -70,8 +82,8 @@ return {
 
       opts.experimental.ghost_text = true
       opts.sources = cmp.config.sources({
-        { name = "nvim_lsp" },
         { name = "luasnip" },
+        { name = "nvim_lsp" },
         { name = "path" },
         { name = "spell" },
         { name = "emoji" },

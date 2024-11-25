@@ -77,12 +77,12 @@
           enabled = false;
         };
         manager = {
-          linemode = "modifeid";
+          linemode = "modified";
           show_symlink = true;
           scrolloff = 5;
           sort_sensitive = true;
           show_hidden = true;
-          sort_by = "modifeid";
+          sort_by = "modified";
           sort_dir_first = true;
           sort_reverse = true;
         };

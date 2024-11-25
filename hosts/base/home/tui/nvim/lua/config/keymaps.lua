@@ -1,4 +1,3 @@
-local Util = require("lazyvim.util")
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -17,8 +16,8 @@ vim.keymap.set("n", "<leader>do", "<cmd>DapStepOut<CR>")
 vim.keymap.set("n", "<Esc>", "<cmd>nohl|lua require('notify').dismiss()<CR>")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+--[[ vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz") ]]
 
 vim.keymap.set("n", "<leader>r", "<cmd>call Compile() <CR>")
 
@@ -27,11 +26,28 @@ vim.keymap.set("n", "<leader><space>", "<cmd>e #<cr>")
 vim.keymap.set("n", "<leader>/", ":Telescope current_buffer_fuzzy_find<cr>")
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>")
 vim.keymap.set("n", "<leader>fd", require("telescope").extensions.zoxide.list)
-vim.keymap.set("n", "<leader>fj", "<cmd>Telescope commands<cr>")
+vim.keymap.set("n", "<leader>fc", "<cmd>Telescope commands<cr>")
+vim.keymap.set("n", "<leader>fk", "<cmd>Telescope commands<cr>")
+
+vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
+vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Grep (cwd)" })
+vim.keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Recent file" })
+vim.keymap.set("n", "<leader>qf", "<cmd>Telescope quickfix<cr>", { desc = "Quickfix List" })
 
 vim.keymap.set("n", "<leader>u", "<cmd>lua require('telescope').extensions.dict.synonyms()<cr>")
 
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
+
+vim.keymap.set("n", "<leader>n",
+  "<cmd>lua require('neo-tree.command').execute({ toggle = true, dir = vim.loop.cwd() })<cr>",
+  { desc = "Explorer NeoTree (cwd)" })
+--[[ { "<leader>n", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
+      { "<leader>N", "<leader>fE", desc = "Explorer NeoTree (cwd)",      remap = true }, ]]
+vim.keymap.set("n", "<leader>ge",
+  "<cmd>lua require('neo-tree.command').execute({ source = 'git_status', toggle = true })<cr>", { desc = "Git explorer" })
+
+
+vim.keymap.set("n", "<leader>k", "<cmd>Capture<cr>", { desc = "Quickfix List" })
 
 vim.keymap.set("n", "<C-p>", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
 vim.keymap.set("n", "<C-n>", "<cmd>lua vim.diagnostic.goto_next()<cr>")
@@ -75,7 +91,7 @@ vim.keymap.set("x", "al", function()
 end, NS) -- Aligns to a string, looking left and with previews
 
 -- floating terminal
-local lazyterm = function()
+--[[ local lazyterm = function()
   Util.terminal(nil, { cwd = Util.root() })
 end
 vim.keymap.set("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
@@ -84,7 +100,7 @@ vim.keymap.set("n", "<leader>fT", function()
 end, { desc = "Terminal (cwd)" })
 vim.keymap.set("n", "<c-/>", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("n", "<leader>\\", lazyterm, { desc = "Terminal (root dir)" })
-vim.keymap.set("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
+vim.keymap.set("n", "<c-_>", lazyterm, { desc = "which_key_ignore" }) ]]
 
 -- Terminal vim.keymap.setpings
 -- vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Normal" })
@@ -95,7 +111,7 @@ vim.keymap.del("t", "<C-l>")
 vim.keymap.del("t", "<C-/>")
 vim.keymap.del("t", "<c-_>") ]]
 
-vim.keymap.del("n", "<C-h>")
+--[[ vim.keymap.del("n", "<C-h>")
 vim.keymap.del("n", "<C-j>")
 vim.keymap.del("n", "<C-k>")
 vim.keymap.del("n", "<C-l>")
@@ -106,7 +122,7 @@ vim.keymap.del("n", "<c-_>")
 vim.keymap.del("n", "<leader>be")
 vim.keymap.del("n", "<leader>bD")
 vim.keymap.del("n", "<leader>bd")
-vim.keymap.del("n", "<leader>bb")
+vim.keymap.del("n", "<leader>bb") ]]
 -- vim.keymap.del("n", "<c-_>")
 
 vim.keymap.set("x", "p", "P", { desc = "Better paste" })

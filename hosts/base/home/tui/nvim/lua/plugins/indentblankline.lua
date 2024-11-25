@@ -5,8 +5,9 @@ return {
   {
     "echasnovski/mini.indentscope",
     version = false, -- wait till new 0.7.0 release to put it back on semver
-    event = "LazyFile",
-    opts = {
+    -- event = "LazyFile",
+    config = function ()
+      require("mini.indentscope").setup({
       symbol = "▏",
       options = { try_as_border = true },
 
@@ -25,7 +26,8 @@ return {
         -- Symbol priority. Increase to display on top of more symbols.
         priority = 2,
       },
-    },
+      })
+    end,
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
@@ -49,10 +51,12 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = "LazyFile",
-    opts = {
+    -- event = "LazyFile",
+    config = function() 
+      require("ibl").setup({
       scope = { enabled = false },
       indent = { char = "▏" },
-    },
+      })
+    end
   },
 }

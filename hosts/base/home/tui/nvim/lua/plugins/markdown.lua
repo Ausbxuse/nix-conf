@@ -64,7 +64,8 @@ return {
   {
     "echasnovski/mini.pairs",
     event = "VeryLazy",
-    opts = {
+    config = function()
+      require("mini.pairs").setup({
       modes = { insert = true, command = false, terminal = false },
       -- skip autopair when next character is one of these
       skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
@@ -75,9 +76,7 @@ return {
       skip_unbalanced = true,
       -- better deal with markdown code blocks
       markdown = true,
-    },
-    config = function(_, opts)
-      LazyVim.mini.pairs(opts)
+})
     end,
   },
 

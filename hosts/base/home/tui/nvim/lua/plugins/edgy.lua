@@ -25,7 +25,7 @@ return {
         end,
       },
       "Trouble",
-      { ft = "qf", title = "QuickFix" },
+      { ft = "qf",            title = "QuickFix" },
       {
         ft = "help",
         size = { height = 0.95 },
@@ -38,14 +38,14 @@ return {
     },
     left = {
       -- Neo-tree filesystem always takes half the screen height
-      {
+      --[[ {
         title = "Neo-Tree",
         ft = "neo-tree",
         filter = function(buf)
           return vim.b[buf].neo_tree_source == "filesystem"
         end,
         size = { height = 0.5 },
-      },
+      }, ]]
       --[[ {
         title = "Neo-Tree Buffers",
         ft = "neo-tree",
@@ -56,7 +56,7 @@ return {
         open = "Neotree position=top buffers",
       }, ]]
       -- any other neo-tree windows
-      "neo-tree",
+      -- "neo-tree",
     },
   },
 }

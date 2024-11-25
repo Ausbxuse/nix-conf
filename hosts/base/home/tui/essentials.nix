@@ -5,8 +5,15 @@
   user-fullname,
   user-email,
   ...
-}: {
+}: let
+  nvim-pkg = import (builtins.fetchTarball {
+    name = "neovim-10.0";
+    url = "https://github.com/NixOS/nixpkgs/archive/05bbf675397d5366259409139039af8077d695ce.tar.gz"; # nvim 10.0
+    sha256 = "1r26vjqmzgphfnby5lkfihz6i3y70hq84bpkwd43qjjvgxkcyki0";
+  }) {system = "x86_64-linux";};
+in {
   home.packages = with pkgs; [
+    nvim-pkg.neovim
     xdg-utils # provides cli tools such as `xdg-mime` `xdg-open`
     #xdg-user-dirs
 
@@ -18,7 +25,7 @@
     ueberzugpp
     #ltex-ls
     #clang-tools
-    marksman
+    #marksman
     #nodePackages.pyright
     bat
     nyancat
@@ -77,12 +84,12 @@
           enabled = false;
         };
         manager = {
-          linemode = "modifeid";
+          linemode = "modified";
           show_symlink = true;
           scrolloff = 5;
           sort_sensitive = true;
           show_hidden = true;
-          sort_by = "modifeid";
+          sort_by = "modified";
           sort_dir_first = true;
           sort_reverse = true;
         };
@@ -90,7 +97,7 @@
     };
 
     neovim = {
-      enable = true;
+      #enable = true;
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;

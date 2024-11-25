@@ -48,31 +48,28 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    enabled = function()
-      return LazyVim.pick.want() == "telescope"
-    end,
+    enabled = true,
     version = false, -- telescope did only one release, so use HEAD for now
     keys = {
 
-      { "<leader>fg", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
-      { "<leader>qf", "<cmd>Telescope quickfix<cr>",               desc = "Quickfix List" },
+      -- { "<leader>fg", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
     },
     opts = function()
       local actions = require("telescope.actions")
 
-      local open_with_trouble = function(...)
+      --[[ local open_with_trouble = function(...)
         return require("trouble.sources.telescope").open(...)
-      end
-      local find_files_no_ignore = function()
+      end ]]
+      --[[ local find_files_no_ignore = function()
         local action_state = require("telescope.actions.state")
         local line = action_state.get_current_line()
         LazyVim.pick("find_files", { no_ignore = true, default_text = line })()
-      end
-      local find_files_with_hidden = function()
+      end ]]
+      --[[ local find_files_with_hidden = function()
         local action_state = require("telescope.actions.state")
         local line = action_state.get_current_line()
         LazyVim.pick("find_files", { hidden = true, default_text = line })()
-      end
+      end ]]
 
       local function find_command()
         if 1 == vim.fn.executable("rg") then
@@ -113,7 +110,6 @@ return {
         },
         defaults = {
           layout_strategy = "vertical",
-
           borderchars = {
             prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
             results = { " ", " ", " ", " ", " ", " ", " ", " " },
@@ -132,15 +128,6 @@ return {
           results_title = false,
           border = true,
           layout_config = {
-            center = {
-              preview_cutoff = 1,
-              mirror = true,
-              anchor = "S",
-              height = 0.3,
-              width = function(_, max_columns, _)
-                return max_columns
-              end,
-            },
             vertical = {
               preview_cutoff = 1,
               preview_height = 0.7,
@@ -170,10 +157,10 @@ return {
           end,
           mappings = {
             i = {
-              ["<c-t>"] = open_with_trouble,
-              ["<a-t>"] = open_with_trouble,
-              ["<a-i>"] = find_files_no_ignore,
-              ["<a-h>"] = find_files_with_hidden,
+              -- ["<c-t>"] = open_with_trouble,
+              -- ["<a-t>"] = open_with_trouble,
+              -- ["<a-i>"] = find_files_no_ignore,
+              -- ["<a-h>"] = find_files_with_hidden,
               ["<C-Down>"] = actions.cycle_history_next,
               ["<C-Up>"] = actions.cycle_history_prev,
               ["<C-f>"] = actions.preview_scrolling_down,

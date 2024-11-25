@@ -1,18 +1,4 @@
-local LazyVim = require("lazyvim.util")
 return {
-  {
-    "folke/trouble.nvim",
-    optional = true,
-    opts = {
-      preview = {
-        type = "main",
-        -- when a buffer is not yet loaded, the preview window will be created
-        -- in a scratch buffer with only syntax highlighting enabled.
-        -- Set to false, if you want the preview to always be a real loaded buffer.
-        scratch = false,
-      },
-    },
-  },
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
@@ -30,18 +16,18 @@ return {
       -- ]]
       --
 
-      local logo = [[                                                                       
-                                                                     
-       ████ ██████           █████      ██                     
-      ███████████             █████                             
-      █████████ ███████████████████ ███   ███████████   
-     █████████  ███    █████████████ █████ ██████████████   
-    █████████ ██████████ █████████ █████ █████ ████ █████   
-  ███████████ ███    ███ █████████ █████ █████ ████ █████  
- ██████  █████████████████████ ████ █████ █████ ████ ██████ 
+      local logo = [[
+                                              
+       ████ ██████           █████      ██
+      ███████████             █████ 
+      █████████ ███████████████████ ███   ███████████
+     █████████  ███    █████████████ █████ ██████████████
+    █████████ ██████████ █████████ █████ █████ ████ █████
+  ███████████ ███    ███ █████████ █████ █████ ████ █████
+ ██████  █████████████████████ ████ █████ █████ ████ ██████
         ]]
 
-      local thingy = io.popen('echo "$(date "+%I:%M %p %a, %b %d %Y")" | tr -d "\n"')
+      local thingy = io.popen('echo "$(date "+%I:%M %p %A, %b %d %Y")" | tr -d "\n"')
       local date = thingy:read("*a")
       thingy:close()
 
@@ -65,15 +51,15 @@ return {
       dashboard.section.header.val = vim.split(logo, "\n")
       -- stylua: ignore
       dashboard.section.buttons.val = {
-        dashboard.button("f", " " .. " Find file",       LazyVim.pick()),
-        dashboard.button("n", " " .. " New file",        [[<cmd> ene <BAR> startinsert <cr>]]),
-        dashboard.button("r", " " .. " Recent files",    LazyVim.pick("oldfiles")),
-        dashboard.button("g", " " .. " Find text",       LazyVim.pick("live_grep")),
-        dashboard.button("c", " " .. " Config",          LazyVim.pick.config_files()),
+        dashboard.button("f", " " .. " Find file", [[<cmd> Telescope find_files <cr>]]),
+        dashboard.button("n", " " .. " New file", [[<cmd> ene <BAR> startinsert <cr>]]),
+        dashboard.button("r", " " .. " Recent files", [[<cmd> Telescope oldfiles <cr>]]),
+        dashboard.button("g", " " .. " Find text", [[<cmd> Telescope live_grep <cr>]]),
+        dashboard.button("c", " " .. " Config", [[<cmd> e ~/.local/src/public/nix-conf/hosts/base/home/tui/nvim/]]),
         dashboard.button("s", " " .. " Restore Session", [[<cmd> lua require("persistence").load() <cr>]]),
-        dashboard.button("x", " " .. " Lazy Extras",     "<cmd> LazyExtras <cr>"),
-        dashboard.button("l", "󰒲 " .. " Lazy",            "<cmd> Lazy <cr>"),
-        dashboard.button("q", " " .. " Quit",            "<cmd> qa <cr>"),
+        dashboard.button("x", " " .. " Lazy Extras", "<cmd> LazyExtras <cr>"),
+        dashboard.button("l", "󰒲 " .. " Lazy", "<cmd> Lazy <cr>"),
+        dashboard.button("q", " " .. " Quit", "<cmd> qa <cr>"),
       }
       for _, button in ipairs(dashboard.section.buttons.val) do
         button.opts.hl = "AlphaButtons"
@@ -82,8 +68,7 @@ return {
       dashboard.section.header.opts.hl = "AlphaHeader"
       dashboard.section.buttons.opts.hl = "AlphaButtons"
       dashboard.section.footer.opts.hl = "AlphaFooter"
-      -- dashboard.opts.layout[1].val = 8
-      --
+
       local section = dashboard.section
 
       dashboard.opts = {
@@ -101,7 +86,6 @@ return {
         },
         opts = { margin = 5 },
       }
-
       return dashboard
     end,
     config = function(_, dashboard)
@@ -117,9 +101,7 @@ return {
         })
       end
 
-      require("alpha").setup(dashboard.opts)
-
-      local fortune = require("alpha.fortune")()
+      local fortune = require("alpha.fortune")
       --[[ local footer = {
         type = "text",
         val = fortune,
@@ -127,9 +109,11 @@ return {
       } ]]
 
       dashboard.section.footer.val = fortune
+      require("alpha").setup(dashboard.opts)
+
       vim.api.nvim_create_autocmd("User", {
         once = true,
-        pattern = "LazyVimStarted",
+        pattern = "AlphaReady",
         callback = function()
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)

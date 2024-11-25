@@ -10,6 +10,7 @@ vim.api.nvim_create_autocmd("BufRead", {
   end,
 })
 vim.cmd([[
+    autocmd User TelescopePreviewerLoaded setlocal number
     "autocmd Filetype tex,markdown set wrap linebreak wrapmargin=8
     "autocmd Filetype tex,markdown setlocal foldmethod=expr | setlocal foldexpr=vimtex#fold#level(v:lnum) | setlocal foldtext=vimtex#fold#text()
     " "au BufRead *.vim setlocal foldmethod=marker
@@ -51,13 +52,13 @@ vim.cmd([[
           \ 'styles': 1,
           \}
 
-    
+
     let g:vimtex_syntax_conceal_cites = {
           \ 'type': 'brackets',
           \ 'icon': '📖',
           \ 'verbose': v:true,
           \}
-    
+
 let g:vim_markdown_math=1
 let g:vim_markdown_conceal=2
 let g:vim_markdown_no_default_key_mappings = 1

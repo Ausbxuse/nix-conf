@@ -71,7 +71,7 @@ return {
 
   {
     'hedyhli/outline.nvim',
-    enabled = false,
+    enabled = true,
     config = function()
       -- Example mapping to toggle outline
       vim.keymap.set('n', '<leader>o', '<cmd>Outline<CR>', { desc = 'Toggle Outline' })
@@ -607,14 +607,14 @@ return {
             {
               function() return require("noice").api.status.command.get() end,
               cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-              color = { fg = "#333333", bg = "#dfdcd8" },
+              color = { fg = "#9ece6a"},
               -- color = function() return Util.ui.fg("Constant") end,
             },
             -- stylua: ignore
             {
               function() return require("noice").api.status.mode.get() end,
               cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-              color = { fg = "#333333", bg = "#dfdcd8" },
+              color = { fg = "#9ece6a"},
               -- color = function() return Util.ui.fg("Constant") end,
             },
             -- stylua: ignore

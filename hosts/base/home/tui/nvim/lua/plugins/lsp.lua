@@ -21,7 +21,6 @@ return {
       'neovim/nvim-lspconfig',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/nvim-cmp',
-      { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
       -- Add cmp_nvim_lsp capabilities settings to lspconfig

@@ -580,7 +580,7 @@ return {
                 unnamed = '', -- Text to show for unnamed buffers.
                 newfile = '', -- Text to show for new created file before first writting
               },
-              padding = { left = 0, right = 0 },
+              padding = { left = 1, right = 0 },
             },
             { 'filesize', padding = { left = 0, right = 0 } },
             {

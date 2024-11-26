@@ -13,6 +13,7 @@
   }) {system = "x86_64-linux";};
 in {
   home.packages = with pkgs; [
+    fortune
     nvim-pkg.neovim
     xdg-utils # provides cli tools such as `xdg-mime` `xdg-open`
     #xdg-user-dirs

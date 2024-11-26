@@ -1,8 +1,8 @@
 return {
   {
-    "mfussenegger/nvim-dap",
+    'mfussenegger/nvim-dap',
     config = function()
-      local dap = require("dap")
+      local dap = require 'dap'
 
       local last_executable = nil
       local last_arguments = nil
@@ -12,7 +12,7 @@ return {
         local executables = {}
 
         for _, file in ipairs(vim.fn.readdir(cwd)) do
-          local filepath = cwd .. "/" .. file
+          local filepath = cwd .. '/' .. file
           if vim.fn.executable(filepath) == 1 then
             table.insert(executables, filepath)
           end
@@ -23,54 +23,54 @@ return {
 
       local function get_executable()
         if last_executable and vim.fn.executable(last_executable) == 1 then
-          last_executable = vim.fn.input("Select executable: ", last_executable, "file")
+          last_executable = vim.fn.input('Select executable: ', last_executable, 'file')
           return last_executable
         end
 
         local executables = probe_executables()
 
         -- Suggest the first detected executable, or prompt for input if none found
-        local suggested_executable = executables[1] or vim.fn.getcwd() .. "/"
+        local suggested_executable = executables[1] or vim.fn.getcwd() .. '/'
 
         -- Prompt user to confirm or select executable
-        last_executable = vim.fn.input("Select executable: ", suggested_executable, "file")
+        last_executable = vim.fn.input('Select executable: ', suggested_executable, 'file')
         return last_executable
       end
 
       -- Function to get program arguments from user, with caching
       local function get_arguments()
         -- Use last cached arguments as default input
-        local default_args = last_arguments or ""
-        last_arguments = vim.fn.input("Args: ", default_args)
-        return vim.split(last_arguments, " ")
+        local default_args = last_arguments or ''
+        last_arguments = vim.fn.input('Args: ', default_args)
+        return vim.split(last_arguments, ' ')
       end
 
-      vim.fn.sign_define("DapBreakpoint", {
-        text = "", -- nerdfonts icon here
-        texthl = "Debug",
+      vim.fn.sign_define('DapBreakpoint', {
+        text = '', -- nerdfonts icon here
+        texthl = 'Debug',
         -- linehl = "DapBreakpoint",
         -- numhl = "DapBreakpoint",
       })
-      vim.fn.sign_define("DapStopped", {
-        text = "", -- nerdfonts icon here
-        texthl = "rainbowcol3",
+      vim.fn.sign_define('DapStopped', {
+        text = '', -- nerdfonts icon here
+        texthl = 'rainbowcol3',
         -- linehl = "DapBreakpoint",
         -- numhl = "DapBreakpoint",
       })
 
       dap.adapters.gdb = {
-        type = "executable",
-        command = "gdb",
-        args = { "-q", "--interpreter=dap", "--eval-command", "set print pretty on" },
+        type = 'executable',
+        command = 'gdb',
+        args = { '-q', '--interpreter=dap', '--eval-command', 'set print pretty on' },
       }
       dap.configurations.c = {
         {
-          name = "Launch",
-          type = "gdb",
-          request = "launch",
+          name = 'Launch',
+          type = 'gdb',
+          request = 'launch',
           program = get_executable,
           args = get_arguments,
-          cwd = "${workspaceFolder}",
+          cwd = '${workspaceFolder}',
           stopAtBeginningOfMainSubprogram = false,
         },
         --[[ {
@@ -102,67 +102,67 @@ return {
   },
 
   {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
     config = function()
-      local dap, dapui = require("dap"), require("dapui")
-      dapui.setup({
+      local dap, dapui = require 'dap', require 'dapui'
+      dapui.setup {
         controls = {
-          element = "repl",
+          element = 'repl',
           enabled = true,
           icons = {
-            disconnect = "",
-            pause = "",
-            play = "",
-            run_last = "",
-            step_back = "",
-            step_into = "",
-            step_out = "",
-            step_over = "",
-            terminate = "",
+            disconnect = '',
+            pause = '',
+            play = '',
+            run_last = '',
+            step_back = '',
+            step_into = '',
+            step_out = '',
+            step_over = '',
+            terminate = '',
           },
         },
         element_mappings = {},
         expand_lines = true,
         floating = {
-          border = "single",
+          border = 'single',
           mappings = {
-            close = { "q", "<Esc>" },
+            close = { 'q', '<Esc>' },
           },
         },
         force_buffers = true,
         icons = {
-          collapsed = "",
-          current_frame = "",
-          expanded = "",
+          collapsed = '',
+          current_frame = '',
+          expanded = '',
         },
         layouts = {
           {
             elements = {
               {
-                id = "scopes",
+                id = 'scopes',
                 size = 0.25,
               },
               {
-                id = "breakpoints",
+                id = 'breakpoints',
                 size = 0.25,
               },
               {
-                id = "stacks",
+                id = 'stacks',
                 size = 0.25,
               },
               {
-                id = "watches",
+                id = 'watches',
                 size = 0.25,
               },
             },
-            position = "left",
+            position = 'left',
             size = 40,
           },
           {
             elements = {
               {
-                id = "repl",
+                id = 'repl',
                 size = 1,
               },
               --[[ {
@@ -170,23 +170,23 @@ return {
                 size = 0.5,
               }, ]]
             },
-            position = "bottom",
+            position = 'bottom',
             size = 10,
           },
         },
         mappings = {
-          edit = "e",
-          expand = { "<CR>", "<2-LeftMouse>" },
-          open = "o",
-          remove = "d",
-          repl = "r",
-          toggle = "t",
+          edit = 'e',
+          expand = { '<CR>', '<2-LeftMouse>' },
+          open = 'o',
+          remove = 'd',
+          repl = 'r',
+          toggle = 't',
         },
         render = {
           indent = 1,
           max_value_lines = 100,
         },
-      })
+      }
 
       dap.listeners.before.attach.dapui_config = function()
         dapui.open()
@@ -200,6 +200,12 @@ return {
       dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
       end
+      vim.keymap.set('n', '<leader>db', '<cmd>DapToggleBreakpoint<CR>')
+      vim.keymap.set('n', '<leader>dt', '<cmd>DapTerminate<CR>')
+      vim.keymap.set('n', '<leader>dc', '<cmd>DapContinue<CR>')
+      vim.keymap.set('n', '<leader>dn', '<cmd>DapStepOver<CR>')
+      vim.keymap.set('n', '<leader>di', '<cmd>DapStepInto<CR>')
+      vim.keymap.set('n', '<leader>do', '<cmd>DapStepOut<CR>')
     end,
   },
 }

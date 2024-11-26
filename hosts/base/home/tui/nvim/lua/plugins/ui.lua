@@ -85,127 +85,6 @@ return {
     end,
   },
   {
-    'stevearc/aerial.nvim',
-    opts = function()
-      local icons = {
-        Array = ' ',
-        Boolean = '󰨙 ',
-        Class = ' ',
-        Codeium = '󰘦 ',
-        Color = ' ',
-        Control = ' ',
-        Collapsed = ' ',
-        Constant = '󰏿 ',
-        Constructor = ' ',
-        Copilot = ' ',
-        Enum = ' ',
-        EnumMember = ' ',
-        Event = ' ',
-        Field = ' ',
-        File = ' ',
-        Folder = ' ',
-        Function = '󰊕 ',
-        Interface = ' ',
-        Key = ' ',
-        Keyword = ' ',
-        Method = '󰊕 ',
-        Module = ' ',
-        Namespace = '󰦮 ',
-        Null = ' ',
-        Number = '󰎠 ',
-        Object = ' ',
-        Operator = ' ',
-        Package = ' ',
-        Property = ' ',
-        Reference = ' ',
-        Snippet = ' ',
-        String = ' ',
-        Struct = '󰆼 ',
-        TabNine = '󰏚 ',
-        Text = ' ',
-        TypeParameter = ' ',
-        Unit = ' ',
-        Value = ' ',
-        Variable = '󰀫 ',
-      }
-
-      -- HACK: fix lua's weird choice for `Package` for control
-      -- structures like if/else/for/etc.
-      icons.lua = { Package = icons.Control }
-
-      local filter_kind = {
-        default = {
-          'Class',
-          'Constructor',
-          'Enum',
-          'Field',
-          'Function',
-          'Interface',
-          'Method',
-          'Module',
-          'Namespace',
-          'Package',
-          'Property',
-          'Struct',
-          'Trait',
-        },
-        markdown = false,
-        help = false,
-        -- you can specify a different filter for each filetype
-        lua = {
-          'Class',
-          'Constructor',
-          'Enum',
-          'Field',
-          'Function',
-          'Interface',
-          'Method',
-          'Module',
-          'Namespace',
-          -- "Package", -- remove package since luals uses it for control flow structures
-          'Property',
-          'Struct',
-          'Trait',
-        },
-      }
-      filter_kind._ = filter_kind.default
-      filter_kind.default = nil
-
-      local opts = {
-        attach_mode = 'global',
-        backends = { 'lsp', 'treesitter', 'markdown', 'man' },
-        show_guides = true,
-        layout = {
-          default_direction = 'prefer_left',
-          resize_to_content = true,
-          min_width = 25,
-          win_opts = {
-            winhl = 'Normal:NormalFloat,FloatBorder:NormalFloat,SignColumn:SignColumnSB',
-            signcolumn = 'yes',
-            statuscolumn = ' ',
-          },
-        },
-        icons = icons,
-        filter_kind = filter_kind,
-        -- stylua: ignore
-        guides = {
-          mid_item   = "├╴",
-          last_item  = "└╴",
-          nested_top = "│ ",
-          whitespace = "  ",
-        },
-      }
-      return opts
-    end,
-    --[[ keys = {
-      { '<leader>o', '<cmd>AerialToggle<cr>', desc = 'Aerial (Symbols)' },
-    }, ]]
-    config = function(_, opts)
-      require('telescope').load_extension 'aerial'
-      require('aerial').setup(opts.opts)
-    end,
-  },
-  {
     'shellRaining/hlchunk.nvim',
     enabled = true,
     event = { 'BufReadPre', 'BufNewFile' },
@@ -218,7 +97,7 @@ return {
       },
       indent = {
         enable = true,
-        chars = { '▏' },
+        chars = { '│' },
       },
     },
   },
@@ -278,66 +157,6 @@ return {
         indent = { char = '▏' },
         exclude = { filetypes = { 'snacks_dashboard' } },
       }
-    end,
-  },
-  {
-    'karb94/neoscroll.nvim',
-    config = function()
-      local neoscroll = require 'neoscroll'
-      neoscroll.setup {
-        mappings = { -- Keys to be mapped to their corresponding default scrolling animation
-          '<C-u>',
-          '<C-d>',
-          '<C-b>',
-          '<C-f>',
-          '<C-y>',
-          '<C-e>',
-          'zt',
-          'zz',
-          'zb',
-        },
-        hide_cursor = true, -- Hide cursor while scrolling
-        stop_eof = true, -- Stop at <EOF> when scrolling downwards
-        respect_scrolloff = true, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        easing = 'quadratic', -- Default easing function
-        pre_hook = nil, -- Function to run before the scrolling animation starts
-        post_hook = nil, -- Function to run after the scrolling animation ends
-        performance_mode = false, -- Disable "Performance Mode" on all buffers.
-        ignored_events = { -- Events ignored while scrolling
-          'WinScrolled',
-          'CursorMoved',
-        },
-      }
-      local keymap = {
-        -- Use the "sine" easing function
-        ['<C-u>'] = function()
-          neoscroll.ctrl_u { duration = 200, easing = 'sine' }
-          vim.cmd 'normal! zz'
-        end,
-        ['<C-d>'] = function()
-          neoscroll.ctrl_d { duration = 150, easing = 'sine' }
-          vim.cmd 'normal! zz'
-        end,
-        -- Use the "circular" easing function
-        ['<C-b>'] = function()
-          neoscroll.ctrl_b { duration = 350, easing = 'circular' }
-        end,
-        ['<C-f>'] = function()
-          neoscroll.ctrl_f { duration = 350, easing = 'circular' }
-        end,
-        -- When no value is passed the `easing` option supplied in `setup()` is used
-        ['<C-y>'] = function()
-          neoscroll.scroll(-0.1, { move_cursor = false, duration = 100 })
-        end,
-        ['<C-e>'] = function()
-          neoscroll.scroll(0.1, { move_cursor = false, duration = 100 })
-        end,
-      }
-      local modes = { 'n', 'v', 'x' }
-      for key, func in pairs(keymap) do
-        vim.keymap.set(modes, key, func)
-      end
     end,
   },
   {
@@ -458,56 +277,36 @@ return {
         end
       end
 
-      local colors = {
-        _nc = '#16141f',
-        base = '#191724',
-        surface = '#1f1d2e',
-        overlay = '#26233a',
-        muted = '#6e6a86',
-        subtle = '#908caa',
-        text = '#e0def4',
-        magenta = '#fc317e',
-        orange = '#f69c5e',
-        yellow = '#f6c177',
-        green = '#9cce6a',
-        blue = '#4fc1ff',
-        cyan = '#62d8f1',
-        cyan2 = '#89ddff',
-        purple = '#bd93f9',
-        highlight_low = '#21202e',
-        highlight_med = '#403d52',
-        highlight_high = '#524f67',
-        none = 'NONE',
-      }
+      local cyan2 = '#89ddff'
 
       local custom_theme = require 'lualine.themes.auto'
       -- Change the background of lualine_c section for normal mode
-      custom_theme.normal.a.fg = '#5fdaff' -- rgb colors are supported
-      custom_theme.normal.a.bg = 'NONE' -- rgb colors are supported
-      custom_theme.normal.b.fg = '#5fdaff' -- rgb colors are supported
-      custom_theme.normal.b.bg = 'NONE' -- rgb colors are supported
-      custom_theme.normal.c.fg = '#dfdcd8' -- rgb colors are supported
-      custom_theme.normal.c.bg = 'NONE' -- rgb colors are supported
+      custom_theme.normal.a.fg = '#5fdaff'  -- rgb colors are supported
+      custom_theme.normal.a.bg = 'NONE'     -- rgb colors are supported
+      custom_theme.normal.b.fg = '#5fdaff'  -- rgb colors are supported
+      custom_theme.normal.b.bg = 'NONE'     -- rgb colors are supported
+      custom_theme.normal.c.fg = '#dfdcd8'  -- rgb colors are supported
+      custom_theme.normal.c.bg = 'NONE'     -- rgb colors are supported
 
-      custom_theme.command.a.bg = 'NONE' -- rgb colors are supported
-      custom_theme.command.b.bg = 'NONE' -- rgb colors are supported
-      custom_theme.command.a.fg = colors.cyan2 -- rgb colors are supported
-      custom_theme.command.b.fg = colors.cyan2 -- rgb colors are supported
+      custom_theme.command.a.bg = 'NONE'    -- rgb colors are supported
+      custom_theme.command.b.bg = 'NONE'    -- rgb colors are supported
+      custom_theme.command.a.fg = cyan2     -- rgb colors are supported
+      custom_theme.command.b.fg = cyan2     -- rgb colors are supported
 
       custom_theme.replace.a.bg = '#ff4a00' -- rgb colors are supported
-      custom_theme.replace.a.fg = 'NONE' -- rgb colors are supported
+      custom_theme.replace.a.fg = 'NONE'    -- rgb colors are supported
       custom_theme.replace.b.fg = '#ff4a00' -- rgb colors are supported
-      custom_theme.replace.b.bg = 'NONE' -- rgb colors are supported
+      custom_theme.replace.b.bg = 'NONE'    -- rgb colors are supported
       -- custom_theme.replace.c.bg = "#171920" -- rgb colors are supported
-      custom_theme.visual.a.fg = '#bd93f9' -- rgb colors are supported
-      custom_theme.visual.a.bg = 'NONE' -- rgb colors are supported
-      custom_theme.visual.b.fg = '#bd93f9' -- rgb colors are supported
-      custom_theme.visual.b.bg = 'NONE' -- rgb colors are supported
+      custom_theme.visual.a.fg = '#bd93f9'  -- rgb colors are supported
+      custom_theme.visual.a.bg = 'NONE'     -- rgb colors are supported
+      custom_theme.visual.b.fg = '#bd93f9'  -- rgb colors are supported
+      custom_theme.visual.b.bg = 'NONE'     -- rgb colors are supported
       -- custom_theme.visual.c.bg = "#171920" -- rgb colors are supported
-      custom_theme.insert.a.fg = '#abe15b' -- rgb colors are supported
-      custom_theme.insert.a.bg = 'NONE' -- rgb colors are supported
-      custom_theme.insert.b.fg = '#abe15b' -- rgb colors are supported
-      custom_theme.insert.b.bg = 'NONE' -- rgb colors are supported
+      custom_theme.insert.a.fg = '#abe15b'  -- rgb colors are supported
+      custom_theme.insert.a.bg = 'NONE'     -- rgb colors are supported
+      custom_theme.insert.b.fg = '#abe15b'  -- rgb colors are supported
+      custom_theme.insert.b.bg = 'NONE'     -- rgb colors are supported
       -- custom_theme.insert.c.bg = "#171920" -- rgb colors are supported
       --
       local function getWords()
@@ -564,7 +363,7 @@ return {
 
           lualine_c = {
             -- Util.lualine.root_dir(),
-            { 'filetype', icon_only = true, separator = '', padding = { left = 1, right = 0 } },
+            { 'filetype', icon_only = true,                 separator = '', padding = { left = 1, right = 0 } },
             -- { Util.lualine.pretty_path() },
             {
               -- getMyCwd,
@@ -586,7 +385,7 @@ return {
             {
               'branch',
               icon = '',
-              color = { fg = colors.cyan2 }, -- Set branch color to rose
+              color = { fg = cyan2 },            -- Set branch color to rose
               -- separator = { right = " ", left = " " },
               padding = { left = 0, right = 0 }, -- Adjust the right padding to 1 },
             },
@@ -607,14 +406,14 @@ return {
             {
               function() return require("noice").api.status.command.get() end,
               cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-              color = { fg = "#9ece6a"},
+              color = { fg = "#9ece6a" },
               -- color = function() return Util.ui.fg("Constant") end,
             },
             -- stylua: ignore
             {
               function() return require("noice").api.status.mode.get() end,
               cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-              color = { fg = "#9ece6a"},
+              color = { fg = "#9ece6a" },
               -- color = function() return Util.ui.fg("Constant") end,
             },
             -- stylua: ignore
@@ -674,7 +473,7 @@ return {
 
       table.insert(opts.sections.lualine_c, {
         'aerial',
-        sep = ' ', -- separator between symbols
+        sep = ' ',     -- separator between symbols
         sep_icon = '', -- separator between icon and symbol
 
         -- The number of symbols to render top-down. In order to render only 'N' last
@@ -710,36 +509,6 @@ return {
         on_colors = function(colors)
           colors.hint = colors.orange
           colors.error = '#ff0000'
-        end,
-        on_highlights = function(hl, c)
-          local prompt = '#2d3149'
-          hl.TelescopeNormal = {
-            bg = c.bg_dark,
-            fg = c.fg_dark,
-          }
-          hl.TelescopeBorder = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
-          }
-          hl.TelescopePromptNormal = {
-            bg = prompt,
-          }
-          hl.TelescopePromptBorder = {
-            bg = prompt,
-            fg = prompt,
-          }
-          hl.TelescopePromptTitle = {
-            bg = prompt,
-            fg = prompt,
-          }
-          hl.TelescopePreviewTitle = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
-          }
-          hl.TelescopeResultsTitle = {
-            bg = c.bg_dark,
-            fg = c.bg_dark,
-          }
         end,
       }
     end,

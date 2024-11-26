@@ -1,11 +1,4 @@
-{
-  config,
-  lib,
-  inputs,
-  options,
-  pkgs,
-  ...
-}: {
+{...}: {
   environment.sessionVariables = rec {
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
@@ -17,6 +10,7 @@
       "${XDG_BIN_HOME}/scripts"
       "${XDG_BIN_HOME}/scripts/statusbar"
     ];
+    EDITOR = "nvim";
 
     XCURSOR_THEME = "capitaine-cursors-white";
     NPM_PACKAGES = "$HOME/.local/share/npm";

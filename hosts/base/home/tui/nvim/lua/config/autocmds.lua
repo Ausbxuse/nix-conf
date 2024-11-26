@@ -60,6 +60,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
     vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', '<cmd>lua _G.auto_check_checkbox()<CR>', { noremap = true, silent = true })
   end,
 })
+vim.g.netrw_liststyle = 3
 
 vim.cmd [[
 " save last position in file

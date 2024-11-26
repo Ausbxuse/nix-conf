@@ -4,7 +4,7 @@ return { -- Autoformat
   cmd = { 'ConformInfo' },
   keys = {
     {
-      '<leader>f',
+      '<leader>fm',
       function()
         require('conform').format { async = true, lsp_format = 'fallback' }
       end,
@@ -28,7 +28,7 @@ return { -- Autoformat
       return {
         timeout_ms = 500,
         -- lsp_format = lsp_format_opt,
-        lsp_fallback = false,
+        lsp_fallback = true,
       }
     end,
     formatters_by_ft = {
@@ -42,3 +42,4 @@ return { -- Autoformat
     },
   },
 }
+

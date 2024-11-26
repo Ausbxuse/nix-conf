@@ -1,6 +1,6 @@
 vim.keymap.set('n', '<Esc>', "<cmd>nohl|lua require('notify').dismiss()<CR>")
--- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>n', vim.cmd.Ex)
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -13,11 +13,15 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 --  Use CTRL+<hjkl> to switch between windows
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('n', '<c-d>', '<c-d>zz')
+vim.keymap.set('n', '<c-u>', '<c-u>zz')
 
 vim.keymap.set('x', 'K', ":move '<-2<CR>gv=gv")
 vim.keymap.set('x', 'J', ":move '>+1<CR>gv=gv")
-
+vim.keymap.set('n', 'J', 'mzJ`z')
 vim.keymap.set('x', 'p', 'P', { desc = 'Better paste' })
+
+vim.keymap.set('n', '<leader>u', ':UndotreeToggle', { desc = 'Toggle Undotree' })
 
 function Toggle_window()
   if vim.g.help_window_maximized then

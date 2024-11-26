@@ -7,7 +7,6 @@ return {
     opts = {
       provider = 'openai',
       hints = { enabled = false },
-      -- add any opts here
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = 'make',
@@ -147,14 +146,6 @@ return {
           -- number between 1 and 9
           shade = 5,
         },
-        -- With `format`, you can change how the label is rendered.
-        -- Should return a list of `[text, highlight]` tuples.
-        ---@class Flash.Format
-        ---@field state Flash.State
-        ---@field match Flash.Match
-        ---@field hl_group string
-        ---@field after boolean
-        ---@type fun(opts:Flash.Format): string[][]
         format = function(opts)
           return { { opts.match.label, opts.hl_group } }
         end,
@@ -337,73 +328,6 @@ return {
       vim.api.nvim_set_keymap('n', 'gl', '<Plug>kommentary_line_default', {})
       vim.api.nvim_set_keymap('n', 'gc', '<Plug>kommentary_motion_default', {})
       vim.api.nvim_set_keymap('v', 'gl', '<Plug>kommentary_visual_default<C-c>', {})
-    end,
-  },
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    version = '*',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-      'MunifTanjim/nui.nvim',
-    },
-    cmd = 'Neotree',
-    keys = {
-      -- { '<leader>n', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
-      {
-        '<leader>n',
-        function()
-          require('neo-tree.command').execute { toggle = true, dir = vim.loop.cwd(), position = 'current' }
-        end,
-        desc = 'Explorer NeoTree (cwd)',
-      },
-    },
-    opts = {
-      filesystem = {
-        window = {
-          mappings = {
-            ['<leader>n'] = 'close_window',
-            ['<space>'] = {
-              'toggle_node',
-              nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
-            },
-            ['l'] = 'open',
-          },
-        },
-      },
-    },
-  },
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    -- Optional dependency
-    dependencies = { 'hrsh7th/nvim-cmp' },
-    config = function()
-      require('nvim-autopairs').setup {}
-      -- If you want to automatically add `(` after selecting a function or method
-      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-      local cmp = require 'cmp'
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-    end,
-  },
-  { -- Collection of various small independent plugins/modules
-    'echasnovski/mini.nvim',
-    config = function()
-      -- Better Around/Inside textobjects
-      --
-      -- Examples:
-      --  - va)  - [V]isually select [A]round [)]paren
-      --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-      --  - ci'  - [C]hange [I]nside [']quote
-      require('mini.ai').setup { n_lines = 500 }
-
-      -- Add/delete/replace surroundings (brackets, quotes, etc.)
-      --
-      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-      -- - sd'   - [S]urround [D]elete [']quotes
-      -- - sr)'  - [S]urround [R]eplace [)] [']
-
-      --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
 }

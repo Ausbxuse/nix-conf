@@ -1,5 +1,5 @@
 local opt = vim.opt
-local home = vim.fn.expand '$HOME'
+local home = vim.fn.expand('$HOME')
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -10,7 +10,7 @@ end)
 
 local default_options = {
   laststatus = 0, -- global statusline
-  spellfile = '$HOME/.config/nvim/spell/en.utf-8.add',
+  spellfile = home .. '/.config/nvim/spell/en.utf-8.add',
   number = true,
   relativenumber = true,
   mouse = 'a',
@@ -61,7 +61,7 @@ local default_options = {
   wrap = true, -- display long lines with wrap
   wrapmargin = 0,
   linebreak = true,
-  spell = false,
+  spell = true,
   spelllang = 'en',
   sidescrolloff = 8,
   pumblend = 20,

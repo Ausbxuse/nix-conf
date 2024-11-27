@@ -3,7 +3,18 @@
 --   table.insert(words, word)
 -- end
 return {
-  {'folke/trouble.nvim'},
+	{'folke/trouble.nvim', 
+		opts = {
+		},
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>o",
+				"<cmd>Trouble symbols toggle win.position=left focus=false <cr>",
+				desc = "Symbols (Trouble)",
+			},
+		}
+	},
   {
     'folke/lazydev.nvim',
     ft = 'lua',
@@ -137,6 +148,7 @@ return {
         },
       }
       local on_attach = function(client, bufnr)
+				client.server_capabilities.semanticTokensProvider = nil
         -- Preserve the original 'notify' method if it hasn't been done already
         if not client._original_notify then
           client._original_notify = client.notify

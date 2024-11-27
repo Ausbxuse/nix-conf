@@ -1,4 +1,5 @@
 return {
+	-- 'folke/trouble.nvim',
   {
     'yetone/avante.nvim',
     event = 'VeryLazy',

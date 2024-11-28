@@ -174,6 +174,7 @@ return {
 	{
 		'nvim-lualine/lualine.nvim',
 		event = 'VeryLazy',
+		-- dependencies = { 'folke/trouble.nvim' },
 		init = function()
 			--[[ vim.g.lualine_laststatus = vim.o.laststatus
       if vim.fn.argc(-1) > 0 then
@@ -309,7 +310,7 @@ return {
 
 					lualine_c = {
 						-- Util.lualine.root_dir(),
-						{ 'filetype', icon_only = true,                 separator = '', padding = { left = 1, right = 0 } },
+						-- { 'filetype', icon_only = true, separator = '', padding = { left = 1, right = 0 } },
 						-- { Util.lualine.pretty_path() },
 						{
 							-- getMyCwd,
@@ -327,7 +328,7 @@ return {
 							},
 							padding = { left = 1, right = 0 },
 						},
-						{ 'filesize', padding = { left = 0, right = 0 } },
+						-- { 'filesize', padding = { left = 0, right = 0 } },
 						{
 							'branch',
 							icon = '',
@@ -406,24 +407,6 @@ return {
 				},
 				extensions = { 'neo-tree', 'lazy' },
 			}
-
-
-			local trouble = require("trouble")
-			local symbols = trouble.statusline({
-				mode = "symbols",
-				groups = {},
-				title = false,
-				filter = { range = true },
-				format = "{kind_icon}{symbol.name:Normal}",
-				hl_group = "lualine_c_normal",
-			})
-			table.insert(opts.sections.lualine_c, {
-				symbols and symbols.get,
-				cond = function()
-					return vim.b.trouble_lualine ~= false and symbols.has()
-				end
-			}
-			)
 
 			return opts
 		end,

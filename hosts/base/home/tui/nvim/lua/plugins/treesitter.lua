@@ -26,7 +26,7 @@ return { -- Highlight, edit, and navigate code
   --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   {
     'nvim-treesitter/nvim-treesitter-context',
-    enabled = true,
+    enabled = false,
     config = function()
       vim.keymap.set('n', 'gk', function()
         require('treesitter-context').go_to_context(vim.v.count1)

@@ -21,7 +21,8 @@ vim.keymap.set('x', 'J', ":move '>+1<CR>gv=gv")
 vim.keymap.set('n', 'J', 'mzJ`z')
 vim.keymap.set('x', 'p', 'P', { desc = 'Better paste' })
 
-vim.keymap.set('n', '<leader>u', ':UndotreeToggle', { desc = 'Toggle Undotree' })
+vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <cr>', { desc = 'Toggle Undotree' })
+vim.keymap.set('n', '<leader>p', '<cmd> lua require("dropbar.api").pick() <cr>', { desc = 'Toggle Undotree' })
 
 function Toggle_window()
   if vim.g.help_window_maximized then

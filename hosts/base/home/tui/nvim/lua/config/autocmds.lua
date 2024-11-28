@@ -60,9 +60,17 @@ vim.api.nvim_create_autocmd('BufEnter', {
     vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', '<cmd>lua _G.auto_check_checkbox()<CR>', { noremap = true, silent = true })
   end,
 })
-vim.g.netrw_liststyle = 3
 
+vim.g.netrw_banner = 0
+vim.g.netrw_sizestyle = "h"
 vim.cmd [[
 " save last position in file
     autocmd BufReadPost * if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'  |   exe "normal! g`\""  | endif
+		autocmd filetype netrw nmap <buffer> h -
+		autocmd filetype netrw nmap <buffer> l <CR>
+		autocmd filetype netrw nmap <buffer> a %
+		autocmd filetype netrw nmap <buffer> A %
+		autocmd filetype netrw nmap <buffer> r R
+		autocmd filetype netrw nmap <buffer> . gh
+		let g:netrw_list_hide= '.*\.swp$,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
 ]]

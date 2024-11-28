@@ -1,16 +1,14 @@
 vim.keymap.set('n', '<Esc>', "<cmd>nohl|lua require('notify').dismiss()<CR>")
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set('n', '<leader>n', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>n', function()
+    if vim.bo.filetype == 'netrw' then
+			vim.cmd([[b#]])
+    else
+        vim.cmd([[Explore]])
+    end
+end, { noremap = true, silent = true })
 
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
--- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', '<c-d>', '<c-d>zz')
@@ -21,6 +19,7 @@ vim.keymap.set('x', 'J', ":move '>+1<CR>gv=gv")
 vim.keymap.set('n', 'J', 'mzJ`z')
 vim.keymap.set('x', 'p', 'P', { desc = 'Better paste' })
 
+vim.keymap.set('n', '<leader><tab>', '<C-^>', { desc = 'Alt-tab prev buffer' })
 vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <cr>', { desc = 'Toggle Undotree' })
 vim.keymap.set('n', '<leader>p', '<cmd> lua require("dropbar.api").pick() <cr>', { desc = 'Toggle Undotree' })
 

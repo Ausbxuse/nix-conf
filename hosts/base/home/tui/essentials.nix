@@ -85,7 +85,7 @@ in {
           enabled = false;
         };
         manager = {
-          linemode = "modified";
+          linemode = "mtime";
           show_symlink = true;
           scrolloff = 5;
           sort_sensitive = true;

@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
 })
 
 vim.g.netrw_banner = 0
-vim.g.netrw_sizestyle = "h"
+vim.g.netrw_sizestyle = 'h'
 vim.cmd [[
 " save last position in file
     autocmd BufReadPost * if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'  |   exe "normal! g`\""  | endif
@@ -72,5 +72,6 @@ vim.cmd [[
 		autocmd filetype netrw nmap <buffer> A %
 		autocmd filetype netrw nmap <buffer> r R
 		autocmd filetype netrw nmap <buffer> . gh
+		autocmd filetype netrw nmap <buffer> q <cmd>bd<cr>
 		let g:netrw_list_hide= '.*\.swp$,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
 ]]

@@ -76,7 +76,9 @@ syn region mkdMath matchgroup=mkdDelimiter start="\\\@<!\\\[" end="\\\]"
 	{
 		'brenoprata10/nvim-highlight-colors',
 		config = function()
-			require('nvim-highlight-colors').setup {}
+			require('nvim-highlight-colors').setup {
+				enable_named_colors = false,
+			}
 		end,
 	},
 	{                     -- Useful plugin to show you pending keybinds.

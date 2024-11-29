@@ -104,8 +104,8 @@ with lib.hm.gvariant; {
     };
 
     "org/gnome/desktop/peripherals/keyboard" = {
-      delay = mkUint32 173;
-      repeat-interval = mkUint32 8;
+      delay = mkUint32 150;
+      repeat-interval = mkUint32 5;
     };
 
     "org/gnome/desktop/peripherals/mouse" = {
@@ -117,10 +117,10 @@ with lib.hm.gvariant; {
 
     "org/gnome/desktop/peripherals/touchpad" = {
       accel-profile = "flat";
-      click-method = "areas";
+      click-method = "fingers";
       edge-scrolling-enabled = false;
       natural-scroll = true;
-      tap-to-click = false;
+      tap-to-click = true;
       two-finger-scrolling-enabled = true;
     };
 
@@ -460,29 +460,6 @@ with lib.hm.gvariant; {
       switcher-background-color = mkTuple [1.0 1.0 1.0];
       switcher-looping-method = "Flip Stack";
       switcher-style = "Coverflow";
-    };
-
-    "org/gnome/shell/extensions/dash-to-dock" = {
-      apply-custom-theme = false;
-      background-color = "rgb(222,221,218)";
-      background-opacity = 0.4;
-      custom-background-color = true;
-      custom-theme-shrink = true;
-      customize-alphas = false;
-      dash-max-icon-size = 48;
-      disable-overview-on-startup = true;
-      dock-position = "BOTTOM";
-      height-fraction = 0.9;
-      hot-keys = false;
-      isolate-monitors = false;
-      max-alpha = 0.8;
-      min-alpha = 1.0;
-      multi-monitor = false;
-      preferred-monitor = -2;
-      preferred-monitor-by-connector = "eDP-1";
-      running-indicator-style = "DEFAULT";
-      show-mounts-network = true;
-      transparency-mode = "FIXED";
     };
 
     "org/gnome/shell/extensions/forge" = {

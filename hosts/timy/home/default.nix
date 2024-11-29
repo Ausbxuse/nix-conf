@@ -40,6 +40,8 @@
     xournalpp
     calibre
     quickemu
+
+    sct
   ];
 
   # Services

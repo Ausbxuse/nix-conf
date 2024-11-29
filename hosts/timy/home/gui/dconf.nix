@@ -10,10 +10,4 @@ with lib.hm.gvariant; {
     command = "${user-homedir}/.local/bin/duo toggle";
     name = "Toggle duo screen mode";
   };
-
-  dconf.settings."org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-    binding = "<Super>space";
-    command = "wezterm";
-    name = "Terminal";
-  };
 }

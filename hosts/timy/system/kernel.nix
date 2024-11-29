@@ -1,16 +1,4 @@
-{
-  config,
-  lib,
-  inputs,
-  options,
-  pkgs,
-  ...
-}: let
-  pkgs_kernel = import (builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/8348deaf95ec17e19753ff689abb753a5832912c.tar.gz";
-    sha256 = "0nk8mi6wjwkqw85gpa2xr3pfjpmgl2zk2qqpzkwqjxgpyykp7inf";
-  }) {system = "x86_64-linux";};
-in {
+{...}: {
   boot.initrd = {
     availableKernelModules = ["xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "usbhid" "sd_mod"];
     kernelModules = ["i915" "dm-snapshot"]; # Early KMS
@@ -32,19 +20,4 @@ in {
       '';
     };
   };
-
-  #boot.kernelPackages = pkgs.linuxPackages_6_9;
-  #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_9;
-  #boot.kernelPackages = pkgs_kernel.linuxKernel.packages.linux_6_9;
-  #boot.kernelPackages = pkgs_kernel.linuxKernel.packages.linux_6_9;
-  #boot.kernelPatches = [
-  #  #{
-  #  #  name = "zenbook-asus-hid";
-  #  #  patch = ./zenbook-asus-hid.patch;
-  #  #}
-  #  {
-  #    name = "zenbook-i915-revert-93cbc1accbcec2740231755774420934658e2b18";
-  #    patch = ./kernel-patch/zenbook-i915-revert-93cbc1accbcec2740231755774420934658e2b18.patch;
-  #  }
-  #];
 }

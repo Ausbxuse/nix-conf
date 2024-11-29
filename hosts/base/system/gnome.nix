@@ -52,15 +52,18 @@ in {
   ];
   environment.gnome.excludePackages = with pkgs; [
     #baobab      # disk usage analyzer
-    gnome.cheese # photo booth
-    gnome.eog # image viewer
+    # gnome.cheese # photo booth
+    cheese # photo booth
+    # gnome.eog # image viewer
+    eog # image viewer
     epiphany # web browser
     simple-scan # document scanner
-    gnome.totem # video player
+    # gnome.totem # video player
+    totem # video player
     yelp # help viewer
     evince # document viewer
-    gnome.file-roller # archive manager
-    gnome.geary # email client
+    file-roller # archive manager
+    geary # email client
     #seahorse # password manager
     gedit # text editor
     gnome-connections
@@ -68,13 +71,13 @@ in {
     # these should be self explanatory
     #gnome-calculator
     #gnome-calendar
-    gnome.gnome-characters # input methods have it
-    gnome.gnome-clocks
-    gnome.gnome-contacts
+    gnome-characters # input methods have it
+    gnome-clocks
+    gnome-contacts
     #gnome-font-viewer
     #gnome.gnome-logs
     #gnome-maps
-    gnome.gnome-music
+    gnome-music
     #gnome-photos
     #gnome-screenshot
     #gnome-system-monitor

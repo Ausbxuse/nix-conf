@@ -64,7 +64,7 @@
     hosts = {
       "${hostname-individual}" = {
         system = "x86_64-linux";
-        nixpkgs = nixpkgs-old;
+        nixpkgs = nixpkgs;
       };
       "${hostname-universal}" = {
         system = "x86_64-linux";

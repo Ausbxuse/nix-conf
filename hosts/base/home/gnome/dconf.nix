@@ -88,7 +88,7 @@ with lib.hm.gvariant; {
       cursor-blink = false;
       cursor-size = 24;
       cursor-theme = "capitaine-cursors-white";
-      enable-animations = true;
+      enable-animations = false;
       enable-hot-corners = false;
       font-antialiasing = "grayscale";
       font-hinting = "slight";

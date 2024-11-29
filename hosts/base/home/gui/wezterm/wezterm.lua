@@ -193,7 +193,8 @@ config.enable_tab_bar = false
 } ]]
 
 config.window_background_opacity = 0.78
-config.enable_wayland = true
+config.front_end = "WebGpu"
+config.enable_wayland = false
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages

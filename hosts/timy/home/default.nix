@@ -10,6 +10,7 @@
   ];
 
   # Overrides
+
   programs.zsh.initExtra = builtins.readFile ./tui/zsh-config/zshrc;
   programs.tmux.extraConfig = builtins.readFile ../../base/home/tui/tmux-config/tmux.conf + "\n" + builtins.readFile ./tui/tmux-config/tmux.conf;
 

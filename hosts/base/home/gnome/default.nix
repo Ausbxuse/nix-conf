@@ -11,11 +11,11 @@
   home.packages = with pkgs; [
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
 
-    gnome.pomodoro
-    gnome.dconf-editor
-    gnome.gnome-tweaks
-    gnome.gnome-shell-extensions
-    gnome.networkmanager-openvpn
+    pomodoro
+    dconf-editor
+    gnome-tweaks
+    gnome-shell-extensions
+    networkmanager-openvpn
     gnome-extension-manager
     gnomeExtensions.astra-monitor
     gnomeExtensions.colortint
@@ -28,7 +28,7 @@
     gnomeExtensions.unite
     gnomeExtensions.blur-my-shell
     gnomeExtensions.forge
-    gnomeExtensions.rounded-window-corners
+    # gnomeExtensions.rounded-window-corners
     gnomeExtensions.kimpanel
     #gnomeExtensions.system-monitor-next
     #gnomeExtensions.net-speed-simplified
@@ -50,7 +50,7 @@
     powertop
     xiccd
     moreutils
-    kdeconnect
+    plasma5Packages.kdeconnect-kde
     plots
     mpv
     imv

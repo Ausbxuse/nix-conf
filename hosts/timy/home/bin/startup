@@ -12,3 +12,4 @@ dbus-monitor --session "type='signal',interface='org.gnome.ScreenSaver'" |
 		*"boolean false"*) $HOME/.local/bin/duo set-displays &>/dev/null 2>&1 ;;
 		esac
 	done &
+sct 3700

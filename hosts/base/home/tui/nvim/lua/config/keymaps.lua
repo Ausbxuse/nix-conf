@@ -1,12 +1,12 @@
 vim.keymap.set('n', '<Esc>', "<cmd>nohl|lua require('notify').dismiss()<CR>")
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set('n', '<leader>n', function()
-    if vim.bo.filetype == 'netrw' then
-			vim.cmd([[b#]])
-    else
-        vim.cmd([[Explore]])
-    end
-end, { noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>n', function()
+--     if vim.bo.filetype == 'netrw' then
+-- 			vim.cmd([[b#]])
+--     else
+--         vim.cmd([[Explore]])
+--     end
+-- end, { noremap = true, silent = true })
 
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', 'n', 'nzzzv')

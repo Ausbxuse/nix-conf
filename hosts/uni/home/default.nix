@@ -37,6 +37,10 @@
     calibre
     quickemu
     sct
+
+    stylua
+    black
+    isort
   ];
 
   services.syncthing = {

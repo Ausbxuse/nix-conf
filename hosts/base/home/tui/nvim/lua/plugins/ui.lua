@@ -20,6 +20,27 @@ return {
 		'folke/noice.nvim',
 		config = function()
 			require('noice').setup {
+				routes = {
+					{
+						filter = {
+							event = "msg_show",
+							any = {
+								{ find = "%d+L, %d+B" },
+								{ find = "; after #%d+" },
+								{ find = "; before #%d+" },
+							},
+						},
+						view = "mini",
+					},
+					{
+						view = "split",
+						filter = { event = "msg_show", min_height = 20 },
+					},
+					{
+						filter = { event = "msg_show", kind = "search_count" },
+						opts = { skip = true },
+					},
+				},
 				views = {
 					cmdline_popup = {
 						position = {
@@ -51,26 +72,17 @@ return {
 					},
 				},
 				presets = {
-					lsp_doc_border = true,
+					bottom_search = true, -- use a classic bottom cmdline for search
+					command_palette = true, -- position the cmdline and popupmenu together
+					long_message_to_split = true, -- long messages will be sent to a split
+					inc_rename = false, -- enables an input dialog for inc-rename.nvim
+					lsp_doc_border = true, -- add a border to hover docs and signature help
 				},
 				lsp = {
-					hover = {
-						enabled = true,
-						silent = false, -- set to true to not show a message if hover is not available
-						opts = {
-							size = {
-								max_height = 10,
-								max_width = 40,
-							},
-						}, -- merged with defaults from documentation
-					},
-					signature = {
-						opts = {
-							size = {
-								height = 10,
-								max_width = 40,
-							},
-						},
+					override = {
+						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+						["vim.lsp.util.stylize_markdown"] = true,
+						["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
 					},
 				},
 			}
@@ -79,21 +91,6 @@ return {
 	{ 'rcarriga/nvim-notify' },
 	{ 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-	--[[ {
-		'hedyhli/outline.nvim',
-		enabled = true,
-		config = function()
-			-- Example mapping to toggle outline
-			vim.keymap.set('n', '<leader>o', '<cmd>Outline<CR>', { desc = 'Toggle Outline' })
-
-			require('outline').setup {
-				-- Your setup opts here (leave empty to use defaults)
-				outline_window = {
-					position = 'left',
-				},
-			}
-		end,
-	}, ]]
 	{
 		'shellRaining/hlchunk.nvim',
 		enabled = true,
@@ -187,13 +184,13 @@ return {
 		-- dependencies = { 'folke/trouble.nvim' },
 		init = function()
 			--[[ vim.g.lualine_laststatus = vim.o.laststatus
-      if vim.fn.argc(-1) > 0 then
-        -- set an empty statusline till lualine loads
-        vim.o.statusline = " "
-      else
-        -- hide the statusline on the starter page
-        vim.o.laststatus = 0
-      end ]]
+			if vim.fn.argc(-1) > 0 then
+				-- set an empty statusline till lualine loads
+				vim.o.statusline = " "
+			else
+				-- hide the statusline on the starter page
+				vim.o.laststatus = 0
+			end ]]
 		end,
 		opts = function()
 			-- PERF: we don't need this lualine require madness 🤷
@@ -265,6 +262,21 @@ return {
 			custom_theme.insert.b.fg = '#abe15b' -- rgb colors are supported
 			custom_theme.insert.b.bg = 'NONE'  -- rgb colors are supported
 			-- custom_theme.insert.c.bg = "#171920" -- rgb colors are supported
+			--[[ custom_theme.inactive = {
+				a = {
+					fg = colors.gray,
+					bg = colors.outerbg,
+					gui = "bold"
+				},
+				b = {
+					fg = colors.gray,
+					bg = colors.outerbg
+				},
+				c = {
+					fg = colors.gray,
+					bg = colors.innerbg
+				}
+			} ]]
 			--
 			local function getWords()
 				if vim.bo.filetype == 'md' or vim.bo.filetype == 'txt' or vim.bo.filetype == 'markdown' then
@@ -287,7 +299,7 @@ return {
 					component_separators = { left = ' ', right = ' ' },
 					section_separators = { left = ' ', right = ' ' },
 					theme = custom_theme,
-					globalstatus = true,
+					globalstatus = false,
 					disabled_filetypes = { statusline = { 'dashboard', 'alpha', 'starter' } },
 				},
 				sections = {
@@ -305,15 +317,15 @@ return {
 						-- { "windows", mode = 2 },
 						-- { "windows", mode = 2 },
 						--[[ {
-            "buffers",
-            buffers_color = {
-              -- Same values as the general color option can be used here.
-              active = Util.ui.fg("ModeMsg"),
-              inactive = Util.ui.fg("MiniCursorword"),
-            },
-            mode = 0,
-            padding = { left = 0, right = 0 },
-          }, ]]
+						"buffers",
+						buffers_color = {
+							-- Same values as the general color option can be used here.
+							active = Util.ui.fg("ModeMsg"),
+							inactive = Util.ui.fg("MiniCursorword"),
+						},
+						mode = 0,
+						padding = { left = 0, right = 0 },
+					}, ]]
 					},
 
 					lualine_b = {},

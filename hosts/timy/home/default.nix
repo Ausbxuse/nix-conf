@@ -39,6 +39,10 @@
     calibre
     quickemu
     sct
+
+    stylua
+    black
+    isort
   ];
 
   #### Services

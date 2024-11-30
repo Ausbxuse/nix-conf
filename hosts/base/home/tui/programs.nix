@@ -132,6 +132,13 @@
     zsh = {
       enable = true;
       dotDir = ".config/zsh";
+      enableCompletion = true;
+      autosuggestion.enable = false;
+      syntaxHighlighting.enable = false;
+      syntaxHighlighting.styles = {
+        path = "fg=magenta,bold";
+      };
+      historySubstringSearch.enable = false;
       shellAliases = {
         ll = "ls -l";
         cp = "cp -iv";

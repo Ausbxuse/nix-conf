@@ -1,5 +1,5 @@
 local opt = vim.opt
-local home = vim.fn.expand('$HOME')
+local home = vim.fn.expand '$HOME'
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -61,7 +61,7 @@ local default_options = {
   wrap = true, -- display long lines with wrap
   wrapmargin = 0,
   linebreak = true,
-  spell = true,
+  spell = false,
   spelllang = 'en',
   sidescrolloff = 8,
   pumblend = 20,

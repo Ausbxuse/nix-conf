@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-$HOME/.local/bin/duo bat-limit &>/dev/null 2>&1 &

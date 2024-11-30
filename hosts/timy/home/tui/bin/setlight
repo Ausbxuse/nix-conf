@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-sudo systemctl stop colord && xiccd &
-
-sleep 2 && colormgr device-add-profile xrandr-eDP-1 $(colormgr get-profiles | grep -B 3 "built-in" | grep "Object Path" | awk '{print $3}')

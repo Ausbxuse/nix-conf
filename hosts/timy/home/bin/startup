@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+$HOME/.local/bin/duo watch-displays &>/dev/null 2>&1 &
 $HOME/.local/bin/duo watch-rotation &>/dev/null 2>&1 &
 $HOME/.local/bin/duo watch-backlight &>/dev/null 2>&1 &
 $HOME/.local/bin/duo bat-limit &>/dev/null 2>&1 &

@@ -1,11 +1,4 @@
-{
-  config,
-  lib,
-  inputs,
-  options,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.localBinInPath = true;
@@ -59,6 +52,9 @@
       inotify-tools
       openvpn
       gtop
+
+      # gui
+      xsel
     ]
     ++ [
     ];

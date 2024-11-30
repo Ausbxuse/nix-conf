@@ -173,7 +173,7 @@ return {
 
 			-- See `:help telescope.builtin`
 			local builtin = require 'telescope.builtin'
-			vim.keymap.set('n', '<leader>fz', require('telescope').extensions.zoxide.list)
+			vim.keymap.set('n', '<leader>cd', require('telescope').extensions.zoxide.list)
 			vim.keymap.set('n', '<leader>z',
 				"<cmd> lua require('telescope.builtin').spell_suggest(require('telescope.themes').get_cursor({}))<cr>")
 			-- vim.keymap.set('n', '<leader>u', "<cmd>lua require('telescope').extensions.dict.synonyms()<cr>")

@@ -174,7 +174,7 @@
 
     wezterm = {
       enable = true;
-      enableZshIntegration = true;
+      enableZshIntegration = false;
       enableBashIntegration = true;
       extraConfig = lib.mkDefault (builtins.readFile ./wezterm/wezterm.lua);
     };
@@ -218,7 +218,7 @@
         #  };
         #};
       };
-      package = pkgs.firefox-wayland;
+      # package = pkgs.firefox-wayland;
     };
     zathura = {
       enable = true;

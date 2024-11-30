@@ -3,7 +3,7 @@
     # minegrub-theme.url = "github:Lxtharia/minegrub-theme";
     grub2-theme.url = "github:vinceliuice/grub2-themes";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-old.url = "github:NixOS/nixpkgs?rev=e9be42459999a253a9f92559b1f5b72e1b44c13d";
+    # nixpkgs-old.url = "github:NixOS/nixpkgs?rev=e9be42459999a253a9f92559b1f5b72e1b44c13d";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -18,7 +18,7 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-old,
+    # nixpkgs-old,
     home-manager,
     grub2-theme,
     ...

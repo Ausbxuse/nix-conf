@@ -1,8 +1,4 @@
 {
-  config,
-  lib,
-  inputs,
-  options,
   pkgs,
   username,
   user-homedir,

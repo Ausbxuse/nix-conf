@@ -9,16 +9,15 @@
     ./gui/dconf.nix
   ];
 
-  # Overrides
-
+  #### Extra configs
   programs.zsh.initExtra = builtins.readFile ./tui/zsh-config/zshrc;
-  programs.tmux.extraConfig = builtins.readFile ../../base/home/tui/tmux-config/tmux.conf + "\n" + builtins.readFile ./tui/tmux-config/tmux.conf;
+  programs.tmux.extraConfig = builtins.readFile ../../base/home/tui/tmux.conf + "\n" + builtins.readFile ./tui/tmux-config/tmux.conf;
 
   home.activation.installTimyScripts = lib.hm.dag.entryAfter ["writeBoundary"] ''
     ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./tui/bin}/ ${config.home.homeDirectory}/.local/bin/
   '';
 
-  # packages
+  #### packages
   home.packages = with pkgs; [
     # Non essentials
     jupyter
@@ -35,16 +34,14 @@
     # font-manager
     foliate
     obs-studio
-    wl-clipboard
     scrcpy
     xournalpp
     calibre
     quickemu
-
     sct
   ];
 
-  # Services
+  #### Services
   services.syncthing = {
     enable = true;
     tray.enable = true;

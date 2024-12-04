@@ -6,7 +6,6 @@
 }: {
   imports = [
     ../../base/home
-    ./dconf.nix
   ];
 
   #### Extra configs

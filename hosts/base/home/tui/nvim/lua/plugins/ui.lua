@@ -7,6 +7,11 @@ local function set_path(file_path)
 end
 return {
   {
+    'sphamba/smear-cursor.nvim',
+    enabled = true,
+    opts = {},
+  },
+  {
     'OXY2DEV/markview.nvim',
     lazy = false, -- Recommended
     -- ft = "markdown" -- If you decide to lazy-load anyway

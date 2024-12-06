@@ -1,16 +1,16 @@
 {pkgs, ...}: {
   imports = [
     ../../../home/gui
-    ../../../home/tui/env
-    ../../../home/tui/zsh
-    ../../../home/tui/nvim
-    ../../../home/tui/tmux
-    ../../../home/tui/programs.nix
+    ../../../home/env
+    ../../../home/zsh
+    ../../../home/nvim
+    ../../../home/tmux
+    ../../../home/programs.nix
     ../../../home/gnome
   ];
 
   programs.zsh.initExtra = builtins.readFile ./zshrc;
-  programs.tmux.extraConfig = builtins.readFile ../../../home/tui/tmux/tmux.conf + "\n" + builtins.readFile ./tmux.conf;
+  programs.tmux.extraConfig = builtins.readFile ../../../home/tmux/tmux.conf + "\n" + builtins.readFile ./tmux.conf;
 
   home.packages = with pkgs; [
     # Non essentials

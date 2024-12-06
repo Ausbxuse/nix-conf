@@ -1,3 +1,0 @@
-#!/bin/sh
-
-while IFS= read -r line; do echo -e "$line"; done < $1

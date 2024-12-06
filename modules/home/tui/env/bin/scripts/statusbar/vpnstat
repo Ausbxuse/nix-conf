@@ -1,4 +1,0 @@
-#!/bin/sh
-
-[[ $(openvpn3 sessions-list | grep Status | awk '{print $4}') == connected ]] && vpnicon="嬨" || vpnicon=""
-echo $vpnicon

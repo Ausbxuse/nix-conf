@@ -1,6 +1,16 @@
 {pkgs, ...}: {
   imports = [
-    ../../../home/gui
+    ../../../home/applications
+    ../../../home/wallpapers
+    ../../../home/xdg.nix
+    ../../../home/themes
+    ../../../home/zathura
+    ../../../home/input.nix
+    ../../../home/gaming.nix
+    ../../../home/firefox
+    ../../../home/wezterm
+    ../../../home/stardict
+    ../../../home/fonts
     ../../../home/env
     ../../../home/zsh
     ../../../home/nvim

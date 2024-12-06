@@ -1,20 +1,9 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{
-  config,
-  lib,
-  inputs,
-  options,
-  pkgs,
-  hostname,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
-    ../../base/system
-    ../../base/system/gaming.nix
-
     ./hardware-configuration.nix
-
-    ./nvidia.nix
+    ../../modules/common/normie/system.nix
+    ../../modules/nixos/hardware/nvidia.nix
   ];
 
   environment.systemPackages = with pkgs; [

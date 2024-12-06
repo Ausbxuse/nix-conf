@@ -1,16 +1,10 @@
 {
   inputs = {
-    # minegrub-theme.url = "github:Lxtharia/minegrub-theme";
     grub2-theme.url = "github:vinceliuice/grub2-themes";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs-old.url = "github:NixOS/nixpkgs?rev=e9be42459999a253a9f92559b1f5b72e1b44c13d";
     nixpkgs-6-10.url = "github:NixOS/nixpkgs?rev=617e308893df2bc4455615bdcec4d95cbab49c8c";
     home-manager = {
       url = "github:nix-community/home-manager";
-      # The `follows` keyword in inputs is used for inheritance.
-      # Here, `inputs.nixpkgs` of home-manager is kept consistent with
-      # the `inputs.nixpkgs` of the current flake,
-      # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -18,7 +12,6 @@
   outputs = {
     self,
     nixpkgs,
-    # nixpkgs-old,
     nixpkgs-6-10,
     home-manager,
     grub2-theme,
@@ -40,6 +33,8 @@
     configureHost = {
       hostname,
       system,
+      config,
+      home-config,
     }: {
       system = system;
       specialArgs =

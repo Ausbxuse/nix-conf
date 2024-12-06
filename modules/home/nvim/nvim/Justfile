@@ -1,0 +1,4 @@
+set shell := ["bash", "-uc"]
+
+nvim:
+	rsync -avz --delete --copy-links --chmod=D2755,F744 ./ ${HOME}/.config/nvim

@@ -18,25 +18,22 @@ show:
 check:
 	nix flake check
 
-format:
-	alejandra .
-
 push: 
 	git push origin master
 
 install:
   ./scripts/install.sh
 
-install-uni:
+uni:
 	nixos-rebuild switch --flake .#uni --use-remote-sudo |& nom
 
-install-timy:
-	nixos-rebuild switch --flake .#timy --use-remote-sudo |& nom
+timy:
+	nixos-rebuild switch --flake .#timy --use-remote-sudo --show-trace --option max-call-depth 10000 |& nom
 
-install-spacy:
+spacy:
 	nixos-rebuild switch --flake .#spacy --use-remote-sudo |& nom
 
-debug: format
+debug: 
 	nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose
 
 update:

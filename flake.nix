@@ -48,7 +48,7 @@
           hostname = hostname;
         };
       modules = [
-        ./hosts/${hostname}/system
+        ./hosts/${hostname}
         grub2-theme.nixosModules.default
         home-manager.nixosModules.home-manager
         {
@@ -89,7 +89,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = specialArgs // {inherit inputs outputs;};
         modules = [
-          ./hosts/base/home/tui
+          ./modules/common/user/home.nix
         ];
       };
     };

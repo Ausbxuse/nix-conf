@@ -10,81 +10,92 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     nixpkgs-6-10,
     home-manager,
     grub2-theme,
     ...
   } @ inputs: let
-    inherit (self) outputs;
-    username = "zhenyu";
-    user-fullname = "Zhenyu Zhao";
-    user-homedir = "/home/zhenyu";
-    user-email = "peterzhaozzy@gmail.com";
-    hostname-individual = "timy";
-    hostname-universal = "spacy";
-    hostname-desktop = "uni";
+    hostnames = builtins.attrNames (builtins.readDir ./hosts);
 
-    specialArgs = {
-      inherit username user-fullname user-homedir user-email;
-    };
-
-    configureHost = {
+    mkHost = {
       hostname,
-      system,
-      config,
-      home-config,
-    }: {
+      system ? "x86_64-linux",
+      pkgs ? nixpkgs,
+    }: let
+      userConfigPath = ./hosts/${hostname}/user.nix;
+      homeConfigPath = ./hosts/${hostname}/home.nix;
+
+      userConfig =
+        if builtins.pathExists userConfigPath
+        then import userConfigPath
+        else import ./modules/common/normie/user.nix;
+      config = import ./hosts/${hostname}/default.nix;
+      homeConfig =
+        if builtins.pathExists homeConfigPath
+        then import homeConfigPath
+        else import ./modules/common/normie/home;
+    in {
       system = system;
-      specialArgs =
-        specialArgs
-        // {
-          hostname = hostname;
-        };
-      modules = [
-        ./hosts/${hostname}
-        grub2-theme.nixosModules.default
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            extraSpecialArgs = specialArgs;
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.${username} = import ./hosts/${hostname}/home;
-          };
-        }
-      ];
+      nixpkgs = pkgs;
+
+      specialArgs = {
+        inherit (userConfig) username user-fullname user-homedir user-email;
+        hostname = hostname;
+      };
+
+      config = config;
+      homeConfig = homeConfig;
     };
 
-    hosts = {
-      "${hostname-individual}" = {
-        system = "x86_64-linux";
-        nixpkgs = nixpkgs;
-      };
-      "${hostname-universal}" = {
-        system = "x86_64-linux";
-        nixpkgs = nixpkgs;
-      };
-      "${hostname-desktop}" = {
-        system = "x86_64-linux";
-        nixpkgs = nixpkgs-6-10;
-      };
-    };
+    hosts = builtins.listToAttrs (map (hostname: {
+        name = hostname;
+        value = mkHost {
+          hostname = hostname;
+          pkgs =
+            if hostname == "uni"
+            then nixpkgs-6-10
+            else nixpkgs;
+        };
+      })
+      hostnames);
   in {
-    nixosConfigurations = builtins.mapAttrs (hostname: params:
-      params.nixpkgs.lib.nixosSystem (configureHost {
-        hostname = hostname;
-        system = params.system;
-      }))
-    hosts;
+    nixosConfigurations =
+      builtins.mapAttrs (
+        name: params:
+          params.nixpkgs.lib.nixosSystem {
+            system = params.system;
+            specialArgs = params.specialArgs;
+            modules = [
+              params.config
+              grub2-theme.nixosModules.default
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  extraSpecialArgs = params.specialArgs;
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users.${params.specialArgs.username} = params.homeConfig;
+                };
+              }
+            ];
+          }
+      )
+      hosts;
 
     homeConfigurations = {
       earthy = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = specialArgs // {inherit inputs outputs;};
+        pkgs = nixpkgs.packages.x86_64-linux;
+        extraSpecialArgs = {
+          username = "earthy";
+          user-fullname = "Earthy User";
+          user-homedir = "/home/earthy";
+          user-email = "earthy@example.com";
+          hostname = "earthy-host";
+          inherit inputs;
+        };
         modules = [
-          ./modules/common/user/home.nix
+          ./modules/common/minimal/home
         ];
       };
     };

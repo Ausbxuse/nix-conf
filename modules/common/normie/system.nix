@@ -10,7 +10,6 @@
     ../../nixos/hardware/usb.nix
   ];
   environment.systemPackages = with pkgs; [
-    sdcv
     openvpn
   ];
 }

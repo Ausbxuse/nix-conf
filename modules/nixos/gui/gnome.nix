@@ -12,11 +12,11 @@
   services.gnome.sushi.enable = true;
 
   environment.systemPackages = with pkgs; [
-    capitaine-cursors
+    # capitaine-cursors
     xsel
   ];
   environment.gnome.excludePackages = with pkgs; [
-    #baobab      # disk usage analyzer
+    baobab # disk usage analyzer
     cheese # photo booth
     eog # image viewer
     epiphany # web browser
@@ -31,29 +31,29 @@
     gnome-connections
 
     # these should be self explanatory
-    #gnome-calculator
-    #gnome-calendar
+    gnome-calculator
+    gnome-calendar
     gnome-characters # input methods have it
     gnome-clocks
     gnome-contacts
-    #gnome-font-viewer
-    #gnome.gnome-logs
-    #gnome-maps
+    gnome-font-viewer
+    gnome.gnome-logs
+    gnome-maps
     gnome-music
-    #gnome-photos
-    #gnome-screenshot
-    #gnome-system-monitor
-    #gnome-weather
-    #gnome-disk-utility
+    gnome-photos
+    # gnome-screenshot
+    gnome-system-monitor
+    gnome-weather
+    gnome-disk-utility
   ];
 
   fonts = {
     fontDir.enable = true;
     packages = with pkgs; [
       #      jetbrains-mono
-      noto-fonts-emoji-blob-bin
-      source-han-sans
-      wqy_zenhei # Need by steam for Chinese
+      # noto-fonts-emoji-blob-bin
+      # source-han-sans
+      # wqy_zenhei # Need by steam for Chinese
     ];
   };
 }

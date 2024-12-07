@@ -5,7 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    lua51Packages.luarocks-nix
+    # lua51Packages.luarocks-nix
     fortune
     nodejs
     tree-sitter
@@ -14,8 +14,8 @@
     ripgrep
     pre-commit
     file
-    jdk
-    cargo
+    # jdk
+    # cargo
     gcc
   ];
 

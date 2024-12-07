@@ -47,6 +47,7 @@
     calibre
     quickemu
     sct
+    gnome-monitor-config
 
     stylua
     black

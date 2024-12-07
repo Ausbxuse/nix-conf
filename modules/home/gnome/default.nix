@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./dconf.nix
   ];
@@ -15,6 +10,7 @@
     gnome-shell-extensions
     networkmanager-openvpn
     gnome-extension-manager
+    gnome-tweaks
     gnomeExtensions.astra-monitor
     gnomeExtensions.colortint
     gnomeExtensions.media-controls

@@ -63,6 +63,3 @@ zsh:
 
 tmux:
 	rsync -avz --delete --chmod=D2755,F744 ./hosts/base/home/tui/tmux-config/tmux/ ${HOME}/.config/tmux
-
-nvim:
-	rsync -avz --delete --copy-links --chmod=D2755,F744 ./hosts/base/home/tui/nvim/ ${HOME}/.config/nvim

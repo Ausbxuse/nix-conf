@@ -34,7 +34,7 @@
 
     substituters = [
       "https://cuda-maintainers.cachix.org"
-      "substituters = https://cache.nixos.org"
+      "https://cache.nixos.org"
       "https://ausbxuse.cachix.org"
       # cache mirror located in China
       #"https://mirror.sjtu.edu.cn/nix-channels/store"

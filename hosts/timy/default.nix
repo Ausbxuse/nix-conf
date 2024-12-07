@@ -4,6 +4,7 @@
     ./kernel.nix
     ./hardware-configuration.nix
     ../../modules/common/normie/system.nix
+    ../../modules/nixos/hardware/rotate-sensor.nix
   ];
 
   virtualisation.virtualbox.host.enable = true;

@@ -3,7 +3,12 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  # path to your nvim config directory
+  nvimPath = "${config.home.homeDirectory}/.local/src/public/nix-conf/modules/home/nvim/nvim";
+in {
+  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
+
   home.packages = with pkgs; [
     # lua51Packages.luarocks-nix
     fortune
@@ -41,7 +46,7 @@
     ];
   };
 
-  home.activation.installNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./nvim}/ ${config.xdg.configHome}/nvim/
-  '';
+  # home.activation.installNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  #   ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./nvim}/ ${config.xdg.configHome}/nvim/
+  # '';
 }

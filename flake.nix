@@ -24,7 +24,7 @@
       pkgs ? nixpkgs,
     }: let
       userConfigPath = ./hosts/${hostname}/user.nix;
-      homeConfigPath = ./hosts/${hostname}/home.nix;
+      homeConfigPath = ./hosts/${hostname}/home;
 
       userConfig =
         if builtins.pathExists userConfigPath

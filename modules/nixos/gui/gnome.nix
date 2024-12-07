@@ -12,7 +12,7 @@
   services.gnome.sushi.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # capitaine-cursors
+    capitaine-cursors
     xsel
   ];
   environment.gnome.excludePackages = with pkgs; [

@@ -1,22 +1,28 @@
 {pkgs, ...}: {
   imports = [
-    ../../../home/applications
-    ../../../home/wallpapers
-    ../../../home/xdg.nix
-    ../../../home/themes
     ../../../home/zathura
-    ../../../home/input.nix
-    ../../../home/gaming.nix
     ../../../home/firefox
     ../../../home/wezterm
-    ../../../home/stardict
-    ../../../home/fonts
-    ../../../home/env
+
     ../../../home/zsh
     ../../../home/nvim
     ../../../home/tmux
+
+    ../../../home/stardict
     ../../../home/programs.nix
+
     ../../../home/gnome
+    ../../../home/input.nix
+
+    ../../../home/autostart
+    ../../../home/applications
+    ../../../home/xdg.nix
+    ../../../home/themes
+    ../../../home/fonts
+    ../../../home/wallpapers
+    ../../../home/env
+
+    ../../../home/gaming.nix
   ];
 
   programs.zsh.initExtra = builtins.readFile ./zshrc;

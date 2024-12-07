@@ -37,7 +37,7 @@
     gnome-clocks
     gnome-contacts
     gnome-font-viewer
-    gnome.gnome-logs
+    gnome-logs
     gnome-maps
     gnome-music
     gnome-photos

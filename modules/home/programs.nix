@@ -35,6 +35,7 @@
     gdb
     eza
     btop
+    lazygit
     #texlive.combined.scheme-full
   ];
 }

@@ -364,7 +364,7 @@ return {
   {
     'ausbxuse/snappy.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
-    dir = set_path(home .. '/.local/src/public/snappy.nvim'),
+    dir = set_path(home .. '/src/public/snappy.nvim'),
     init = function()
       vim.cmd.colorscheme 'snappy'
     end,

@@ -5,7 +5,7 @@
   ...
 }: let
   # path to your nvim config directory
-  nvimPath = "${config.home.homeDirectory}/src/public/nix-conf/modules/home/nvim/nvim";
+  nvimPath = "${config.home.homeDirectory}/src/public/nix-conf/modules/home/nvim-minimal/nvim";
 in {
   xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink nvimPath;
 

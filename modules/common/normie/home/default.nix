@@ -5,7 +5,7 @@
     ../../../home/wezterm
 
     ../../../home/zsh
-    ../../../home/nvim
+    ../../../home/nvim-minimal
     ../../../home/tmux
 
     ../../../home/stardict

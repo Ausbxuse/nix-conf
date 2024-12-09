@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-float=$(free --mebi | sed -n '2{p;q}' | awk '{printf ("%2.2f/%2.2f\n", ( $3 / 1024), ($2 / 1024))}')
-percentage=${$((float*100))%.*}
+#!/usr/bin/env bash
+status=$(free --mebi | sed -n '2{p;q}' | awk '{printf ("%2.0f/%2.0fG\n", ( $3 / 1024), ($2 / 1024))}')
 
 # case $percentage in
 # 	[0-9]) echo -e "\x0f▁" ;;
@@ -12,9 +11,5 @@ percentage=${$((float*100))%.*}
 # 	6[0-9]) echo -e "\x0f▇" ;;
 # 	7[0-9]|8[0-9]|9[0-9]|10[0-9]) echo -e "\x0f█" ;;
 # esac
-if (( percentage > 75 )); then
-    color="#ff2640" 
-else
-    color="#89ddff"
-fi
-echo "#[fg=$color,bg=default,bold] #[nobold]#[fg=$color]${percentage}%"
+color="#89ddff"
+echo "#[fg=$color,bg=default,bold]#[nobold]#[fg=$color]${status}"

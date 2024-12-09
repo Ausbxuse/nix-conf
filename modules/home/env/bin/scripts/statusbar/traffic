@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Module showing network traffic. Shows how much data has been received (RX) or
 # transmitted (TX) since the previous time this script ran. So if run every
@@ -19,9 +19,7 @@ update() {
 rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
 tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
 
-#icons  祝
-       
 case $1 in
-  -i) printf "%5sB/s" $(numfmt --to=iec $rx) ;;
-  -o) printf "%5sB/s" $(numfmt --to=iec $tx) ;;
+  -i) printf "󰇚%5sB/s" $(numfmt --to=iec $rx) ;;
+  -o) printf "󰕒%5sB/s" $(numfmt --to=iec $tx) ;;
 esac

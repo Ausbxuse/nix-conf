@@ -1,11 +1,30 @@
-#!/bin/bash
-temp=$(sensors | awk '/Core 0/ {print $3}' | awk -F'[^0-9]*' '$0=$2')
-case $temp in
-	[0-9]|1[0-9]) printf "\x10%3s°C" $temp;;
-	2[0-9]|3[0-9]) printf "\x10%3s°C" $temp;;
-	4[0-9]|5[0-9]) printf "\x10%3s°C" $temp;;
-	6[0-9]|7[0-9]) printf "\x10%3s°C" $temp;;
-	8[0-9]|9[0-9]) printf "\x10%3s°C" $temp;;
-esac
+#!/usr/bin/env bash
 
-#printf "\x0c%s%s°C" "$icon" "$temp" 
+cpu_temp=$(sensors | awk '/Core 0/ {print $3}' |  awk -F'[^0-9]*' '$0=$2')
+gpu_temp=$(sensors | awk '/GPU/ {print $2}' |  awk -F'[^0-9]*' '$0=$2')
+
+if [ "$cpu_temp" -ge 0 ] && [ "$cpu_temp" -le 60 ]; then
+    printf "#[fg=#9ece6a]%3s°C" "$cpu_temp"
+elif [ "$cpu_temp" -ge 61 ] && [ "$cpu_temp" -le 84 ]; then
+    printf "#[fg=#f4bf75]%3s°C" "$cpu_temp" 
+elif [ "$cpu_temp" -ge 85 ] && [ "$cpu_temp" -le 95 ]; then
+    printf "#[fg=#f69c5e]%3s°C" "$cpu_temp" 
+elif [ "$cpu_temp" -ge 96 ]; then
+    printf "#[fg=#ff2640]%3s°C" "$cpu_temp"
+else
+    printf "#[fg=#ff2640]%3s°C" "$cpu_temp"
+fi
+
+if [ -n "$gpu_temp" ]; then
+	if [ "$gpu_temp" -ge 0 ] && [ "$gpu_temp" -le 60 ]; then
+		printf "#[fg=#9ece6a]%3s°C" "$gpu_temp"
+	elif [ "$gpu_temp" -ge 61 ] && [ "$gpu_temp" -le 84 ]; then
+		printf "#[fg=#f4bf75]%3s°C" "$gpu_temp" 
+	elif [ "$gpu_temp" -ge 85 ] && [ "$gpu_temp" -le 95 ]; then
+		printf "#[fg=#f69c5e]%3s°C" "$gpu_temp" 
+	elif [ "$gpu_temp" -ge 96 ]; then
+		printf "#[fg=#ff2640]%3s°C" "$gpu_temp"
+	else
+		printf "#[fg=#ff2640]%3s°C" "$gpu_temp"
+	fi
+fi

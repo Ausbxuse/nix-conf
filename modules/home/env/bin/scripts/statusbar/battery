@@ -33,7 +33,7 @@ then
     esac
 elif [ "${status}" = "Full" ]
 then
-    printf ""
+    printf "#[fg=#9ece6a,bold]"
 else
     printf ""
 fi

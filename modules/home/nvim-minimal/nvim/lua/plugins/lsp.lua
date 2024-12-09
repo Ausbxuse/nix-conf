@@ -32,8 +32,8 @@ return {
         border = 'single', -- "rounded", "double", "solid", "none"
         -- or an array with eight chars building up the border in a clockwise fashion
         -- starting with the top-left corner. eg: { "╔", "═" ,"╗", "║", "╝", "═", "╚", "║" }.
-        size = '100%', -- Or table format example: { height = "40%", width = "100%"}
-        position = '50%', -- Or table format example: { row = "100%", col = "0%"}
+        size = { height = '30%', width = '100%' },
+        position = { row = '100%', col = '0%' },
         scrolloff = nil, -- scrolloff value within navbuddy window
         sections = {
           left = {
@@ -46,8 +46,7 @@ return {
           },
           right = {
             border = nil,
-            preview = 'leaf', -- Right section can show previews too.
-            -- Options: "leaf", "always" or "never"
+            preview = 'never', -- Options: "leaf", "always" or "never"
           },
         },
       },

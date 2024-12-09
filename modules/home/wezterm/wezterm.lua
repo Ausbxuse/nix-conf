@@ -1,6 +1,9 @@
 local wezterm = require("wezterm")
 local config = {}
 
+config.use_ime = true
+config.xim_im_name = "fcitx"
+
 config.font = wezterm.font_with_fallback({
 	{ family = "JetBrainsMono NF" },
 	{ family = "Source Han Sans SC" },

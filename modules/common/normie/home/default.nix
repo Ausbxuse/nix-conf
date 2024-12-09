@@ -12,7 +12,7 @@
     ../../../home/programs.nix
 
     ../../../home/gnome
-    ../../../home/input.nix
+    ../../../home/fcitx5
 
     ../../../home/autostart
     ../../../home/applications

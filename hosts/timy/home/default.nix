@@ -6,6 +6,7 @@
 }: {
   imports = [
     ../../../modules/common/normie/home
+    ./dconf.nix
   ];
 
   #### Extra configs

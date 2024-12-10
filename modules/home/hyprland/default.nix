@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: {
   imports = [inputs.gBar.homeManagerModules.x86_64-linux.default];
@@ -41,7 +42,17 @@
     '';
   };
   programs.hyprlock.enable = true;
-  services.hyprpaper.enable = true;
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      preload = ["${config.xdg.dataHome}/wallpapers/1310342.jpg"];
+      wallpaper = [
+        "DP-2,${config.xdg.dataHome}/wallpapers/1310342.jpg"
+        "DP-1,${config.xdg.dataHome}/wallpapers/1310342.jpg"
+      ];
+    };
+  };
   services.swayosd.enable = true;
   services.swayosd.display = "eDP-1";
   services.wlsunset = {

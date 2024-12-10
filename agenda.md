@@ -16,4 +16,6 @@
 - [ ] waybar rice
 - [ ] hyprplugisn: colorpicker
 - [ ] xwayland(spotify)
-- [ ] rice bar
+- [x] rice bar
+- [ ] wallpaper
+- [ ] bar  tool tip delay

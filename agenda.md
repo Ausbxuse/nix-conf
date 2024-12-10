@@ -19,3 +19,4 @@
 - [x] rice bar
 - [ ] wallpaper
 - [ ] bar  tool tip delay
+- [ ] hypr duo status in tmux

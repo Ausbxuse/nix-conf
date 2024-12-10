@@ -48,8 +48,8 @@
       ipc = "on";
       preload = ["${config.xdg.dataHome}/wallpapers/1310342.jpg"];
       wallpaper = [
-        "DP-2,${config.xdg.dataHome}/wallpapers/1310342.jpg"
-        "DP-1,${config.xdg.dataHome}/wallpapers/1310342.jpg"
+        "eDP-2,${config.xdg.dataHome}/wallpapers/1310342.jpg"
+        "eDP-1,${config.xdg.dataHome}/wallpapers/1310342.jpg"
       ];
     };
   };

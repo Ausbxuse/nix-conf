@@ -42,6 +42,7 @@
       specialArgs = {
         inherit (userConfig) username user-fullname user-homedir user-email;
         hostname = hostname;
+        inherit inputs;
       };
 
       config = config;

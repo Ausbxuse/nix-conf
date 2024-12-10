@@ -1,34 +1,28 @@
-{...}: {
-  wayland.windowManager.hyprland.enable = true;
-  services.gammastep = {
+{pkgs, ...}: {
+  wayland.windowManager.hyprland = {
     enable = true;
-    # add a gammastep icon in the system tray
-    # has problem with wayland, so disable it
-    tray = false;
-    temperature = {
-      day = 5000;
-      night = 3400;
-    };
-    # https://gitlab.com/chinstrap/gammastep/-/blob/master/gammastep.conf.sample?ref_type=heads
-    settings = {
-      general = {
-        fade = "1"; # gradually apply the new screen temperature/brightness over a couple of seconds.
-        # it is a fake brightness adjustment obtained by manipulating the gamma ramps,
-        # which means that it does not reduce the backlight　of the screen.
-        # Preferably only use it if your normal backlight adjustment is too coarse-grained.
-        brightness-day = "1.0";
-        brightness-night = "0.8";
-        location-provider = "manual";
-
-        # by default, Redshift will use the current elevation of the sun
-        # to determine whether it is daytime, night or in transition (dawn/dusk).
-        # dawn-time = "6:00-8:45";
-        # dusk-time = "18:35-20:15";
-      };
-      manual = {
-        lat = "34"; # latitude
-        lon = "-118"; # longitude
-      };
-    };
+    extraConfig = builtins.readFile ./hyprland.conf;
+    # plugins = with pkgs; [
+    # hyprlandPlugins.hypr-dynamic-cursors
+    # hyprlandPlugins.hyprexpo
+    # ];
+  };
+  home.packages = with pkgs; [
+    hyprpolkitagent
+    hyprpicker
+    dunst
+    waybar
+    walker
+    flameshot
+    wl-clipboard
+  ];
+  programs.hyprlock.enable = true;
+  services.hyprpaper.enable = true;
+  services.swayosd.enable = true;
+  services.swayosd.display = "eDP-1";
+  services.wlsunset = {
+    enable = true;
+    sunrise = "07:00";
+    sunset = "14:00";
   };
 }

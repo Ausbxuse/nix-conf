@@ -1,0 +1,7 @@
+#/usr/bin/env bash
+
+current_brightness=$(cat /sys/class/backlight/intel_backlight/brightness)
+case $1 in
+	up) sudo tee /sys/class/backlight/intel_backlight/brightness <<< $((current_brightness+25));;
+	down) sudo tee /sys/class/backlight/intel_backlight/brightness <<< $((current_brightness-25));;
+	esac

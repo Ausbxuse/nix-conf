@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+function set_displays {
+    # Check if ASUS keyboard (ID 0b05:1b2c) is present
+    if lsusb | grep -q "0b05:1b2c"; then
+				hyprctl keyword monitor "eDP-1, 2880x1800@120, 0x0, 2"
+        hyprctl keyword monitor "eDP-2, disable"
+    else
+				hyprctl keyword monitor "eDP-1, 2880x1800@120, 0x0, 2"
+				hyprctl keyword monitor "eDP-2, 2880x1800@120, 0x900, 2"
+    fi
+
+}
+
+while inotifywait -e attrib /dev/bus/usb/*/; do
+# TODO: handle external monitor case (ignore when not builtin monitor"
+    set_displays
+done

@@ -14,6 +14,7 @@ function set_displays {
 
 }
 
+set_displays
 while inotifywait -e attrib /dev/bus/usb/*/; do
 # TODO: handle external monitor case (ignore when not builtin monitor"
     set_displays

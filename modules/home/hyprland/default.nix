@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [inputs.gBar.homeManagerModules.x86_64-linux.default];
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = builtins.readFile ./hyprland.conf;
@@ -15,7 +20,26 @@
     walker
     flameshot
     wl-clipboard
+    playerctl
+    brightnessctl
   ];
+  programs.gBar = {
+    enable = true;
+    config = {
+      SNIIconSize = {
+        Discord = 26;
+        OBS = 23;
+      };
+      CenterTime = false;
+      DateTimeStyle = "%a %D - %H:%M";
+      WorkspaceSymbols = [" " " "];
+      NetworkAdapter = "wlo1";
+      BatteryFolder = "/sys/class/power_supply/BAT0";
+    };
+    extraConfig = ''
+
+    '';
+  };
   programs.hyprlock.enable = true;
   services.hyprpaper.enable = true;
   services.swayosd.enable = true;

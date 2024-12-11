@@ -4,18 +4,22 @@
   config,
   ...
 }: {
-  imports = [inputs.gBar.homeManagerModules.x86_64-linux.default];
+  # TODO: some important features from hyprpanel
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = builtins.readFile ./hyprland.conf;
-    # plugins = with pkgs; [
-    # hyprlandPlugins.hypr-dynamic-cursors
-    # hyprlandPlugins.hyprexpo
-    # ];
+    plugins = [
+      # hyprlandPlugins.hypr-dynamic-cursors
+      # pkgs.hyprlandPlugins.borders-plus-plus
+      pkgs.hyprlandPlugins.hyprexpo
+      pkgs.hyprlandPlugins.hyprspace
+    ];
   };
   home.packages = with pkgs; [
+    inputs.hyprswitch.packages.x86_64-linux.default
     hyprpolkitagent
     hyprpicker
+    wluma
     dunst
     waybar
     walker
@@ -24,24 +28,47 @@
     playerctl
     brightnessctl
   ];
-  programs.gBar = {
-    enable = true;
-    config = {
-      SNIIconSize = {
-        Discord = 26;
-        OBS = 23;
-      };
-      CenterTime = false;
-      DateTimeStyle = "%a %D - %H:%M";
-      WorkspaceSymbols = [" " " "];
-      NetworkAdapter = "wlo1";
-      BatteryFolder = "/sys/class/power_supply/BAT0";
-    };
-    extraConfig = ''
+  # programs.gBar = {
+  #   enable = true;
+  #   config = {
+  #     SNIIconSize = {
+  #       Discord = 26;
+  #       OBS = 23;
+  #     };
+  #     CenterTime = false;
+  #     DateTimeStyle = "%a %D - %H:%M";
+  #     WorkspaceSymbols = [" " " "];
+  #     NetworkAdapter = "wlo1";
+  #     BatteryFolder = "/sys/class/power_supply/BAT0";
+  #   };
+  #   extraConfig = ''
 
-    '';
-  };
+  #   '';
+  # };
+
   programs.hyprlock.enable = true;
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+        ignore_dbus_inhibit = false;
+        lock_cmd = "hyprlock";
+      };
+
+      listener = [
+        {
+          timeout = 500;
+          on-timeout = "hyprlock";
+        }
+        {
+          timeout = 1200;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+      ];
+    };
+  };
   services.hyprpaper = {
     enable = true;
     settings = {

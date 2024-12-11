@@ -13,10 +13,18 @@
 - [x] easy mouse transimtion between monitors
 - [ ] disable touchpad when detached 
 - [x] no focus in fullscreen
-- [ ] waybar rice
+- [x] waybar rice
 - [ ] hyprplugisn: colorpicker
-- [ ] xwayland(spotify)
+- [x] xwayland(spotify)
 - [x] rice bar
-- [ ] wallpaper
+- [x] wallpaper
 - [ ] bar  tool tip delay
 - [ ] hypr duo status in tmux
+- [ ] greetd
+- [ ] input method config
+- [ ] workspace swipe behavior
+- [ ] hypridle dim in hte middle of timeout
+- [ ] cursor in xwayland and walker
+- [ ] contrl-shift-v not working in wezterm
+- [ ] multi monitor work space
+- [ ] hyprswitch style

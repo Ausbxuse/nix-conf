@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    gBar.url = "github:scorpion-26/gBar";
+    hyprswitch.url = "github:h3rmt/hyprswitch/release";
   };
 
   outputs = {

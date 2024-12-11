@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+MONITOR_OUTPUT="$(hyprctl monitors)"
+
+EDP1_DISABLED=$(echo "$MONITOR_OUTPUT" | awk '/Monitor eDP-1/,/disabled:/{if (/disabled:/) print $2}')
+
+EDP2_DISABLED=$(echo "$MONITOR_OUTPUT" | awk '/Monitor eDP-2/,/disabled:/{if (/disabled:/) print $2}')
+
+if [ "$EDP1_DISABLED" = "false" ]; then
+    if [ -z "$EDP2_DISABLED" ] || [ "$EDP2_DISABLED" = "true" ]; then
+        echo "top"
+        exit 0
+    fi
+fi
+
+if [ "$EDP1_DISABLED" = "false" ] && [ "$EDP2_DISABLED" = "false" ]; then
+    echo "both"
+    exit 0
+fi
+

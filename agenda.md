@@ -19,12 +19,25 @@
 - [x] rice bar
 - [x] wallpaper
 - [ ] bar  tool tip delay
-- [ ] hypr duo status in tmux
+- [x] hypr duo status in tmux
 - [ ] greetd
 - [ ] input method config
 - [ ] workspace swipe behavior
-- [ ] hypridle dim in hte middle of timeout
 - [ ] cursor in xwayland and walker
 - [ ] contrl-shift-v not working in wezterm
 - [ ] multi monitor work space
 - [ ] hyprswitch style
+- [ ] screenshots
+- [ ] do not max volume on startup hypanel
+
+# useful gnome features to be implemented in my hyprlnad setup
+- [ ] way to check current workspace status
+- [ ] synced workspace?
+- [ ] alt tab
+- [ ] auto rotate
+- [ ] auto brightness
+- [ ] network traffic statusbar
+- [ ] cursor
+- [ ] easier bluetooth and wifi?
+- [ ] privacy indicator (waybar has it)
+- [ ] 

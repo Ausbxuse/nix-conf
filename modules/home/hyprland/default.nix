@@ -6,7 +6,7 @@
 }: {
   # TODO: some important features from hyprpanel
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = false;
     extraConfig = builtins.readFile ./hyprland.conf;
     plugins = [
       # hyprlandPlugins.hypr-dynamic-cursors
@@ -27,6 +27,8 @@
     wl-clipboard
     playerctl
     brightnessctl
+    hyprpanel
+    libnotify
   ];
   # programs.gBar = {
   #   enable = true;
@@ -62,7 +64,7 @@
           on-timeout = "hyprlock";
         }
         {
-          timeout = 1200;
+          timeout = 600;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
@@ -80,8 +82,6 @@
       ];
     };
   };
-  services.swayosd.enable = true;
-  services.swayosd.display = "eDP-1";
   services.wlsunset = {
     enable = true;
     sunrise = "07:00";

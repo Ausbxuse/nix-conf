@@ -9,10 +9,6 @@
     enable = false;
     extraConfig = builtins.readFile ./hyprland.conf;
     plugins = [
-      # hyprlandPlugins.hypr-dynamic-cursors
-      # pkgs.hyprlandPlugins.borders-plus-plus
-      pkgs.hyprlandPlugins.hyprexpo
-      pkgs.hyprlandPlugins.hyprspace
     ];
   };
   home.packages = with pkgs; [
@@ -23,31 +19,15 @@
     dunst
     waybar
     walker
-    flameshot
+    slurp
+    grim
     wl-clipboard
     playerctl
     brightnessctl
     hyprpanel
     libnotify
+    jq
   ];
-  # programs.gBar = {
-  #   enable = true;
-  #   config = {
-  #     SNIIconSize = {
-  #       Discord = 26;
-  #       OBS = 23;
-  #     };
-  #     CenterTime = false;
-  #     DateTimeStyle = "%a %D - %H:%M";
-  #     WorkspaceSymbols = [" " " "];
-  #     NetworkAdapter = "wlo1";
-  #     BatteryFolder = "/sys/class/power_supply/BAT0";
-  #   };
-  #   extraConfig = ''
-
-  #   '';
-  # };
-
   programs.hyprlock.enable = true;
   services.hypridle = {
     enable = true;

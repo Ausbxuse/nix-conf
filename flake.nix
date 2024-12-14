@@ -4,6 +4,7 @@
     grub2-theme.url = "github:vinceliuice/grub2-themes";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-6-10.url = "github:NixOS/nixpkgs?rev=617e308893df2bc4455615bdcec4d95cbab49c8c";
+    wezterm.url = "github:wez/wezterm?dir=nix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,8 +16,6 @@
     nixpkgs,
     nixpkgs-6-10,
     home-manager,
-    grub2-theme,
-    hyprpanel,
     ...
   } @ inputs: let
     hostnames = builtins.attrNames (builtins.readDir ./hosts);
@@ -73,7 +72,7 @@
             modules = [
               {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
               params.config
-              grub2-theme.nixosModules.default
+              inputs.grub2-theme.nixosModules.default
               home-manager.nixosModules.home-manager
               {
                 home-manager = {

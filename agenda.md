@@ -2,9 +2,9 @@
 
 - [x] brightnessctl script  (intel_backlight)
 - [x] workplace keybinds 
-- [ ] volume/brightness osd
+- [x] volume/brightness osd
 - [x] battery limit
-- [ ] wezterm spawn
+- [x] wezterm spawn
 - [x] command runner
 - [x] clipboard
 - [x] duo screen setup
@@ -14,30 +14,33 @@
 - [ ] disable touchpad when detached 
 - [x] no focus in fullscreen
 - [x] waybar rice
-- [ ] hyprplugisn: colorpicker
+- [x] hyprplugisn: colorpicker
 - [x] xwayland(spotify)
 - [x] rice bar
 - [x] wallpaper
-- [ ] bar  tool tip delay
+- [~] bar tool tip delay
 - [x] hypr duo status in tmux
 - [ ] greetd
 - [ ] input method config
-- [ ] workspace swipe behavior
+- [x] workspace swipe behavior
 - [ ] cursor in xwayland and walker
-- [ ] contrl-shift-v not working in wezterm
-- [ ] multi monitor work space
-- [ ] hyprswitch style
+- [x] contrl-shift-v not working in wezterm
+- [x] multi monitor work space
+- [x] hyprswitch style
 - [ ] screenshots
 - [ ] do not max volume on startup hypanel
 
 # useful gnome features to be implemented in my hyprlnad setup
-- [ ] way to check current workspace status
-- [ ] synced workspace?
-- [ ] alt tab
-- [ ] auto rotate
+- [x] way to check current workspace status
+- [x] synced workspace?
+- [x] alt tab
+- [x] auto rotate
 - [ ] auto brightness
-- [ ] network traffic statusbar
+- [x] network traffic statusbar
 - [ ] cursor
-- [ ] easier bluetooth and wifi?
+- [x] easier bluetooth and wifi?
 - [ ] privacy indicator (waybar has it)
-- [ ] 
+    - can use `pw-cli ls Node`
+- [x] printer?
+- [ ] duo screen brightness is not synced
+- [ ] bluetooth widget still not working right

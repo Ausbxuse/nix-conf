@@ -19,7 +19,4 @@ update() {
 rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
 tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
 
-case $1 in
-  -i) printf "󰇚%5sB/s" $(numfmt --to=iec $rx) ;;
-  -o) printf "󰕒%5sB/s" $(numfmt --to=iec $tx) ;;
-esac
+printf "󰇚%4sB/s 󰕒%4sB/s" $(numfmt --to=iec $rx) $(numfmt --to=iec $tx) 

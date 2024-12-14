@@ -59,4 +59,19 @@
     enable = true;
     # tray.enable = true;
   };
+
+  home.pointerCursor = {
+    name = "capitaine-cursors-white";
+    package = pkgs.bibata-cursors;
+    size = 64;
+    gtk.enable = true;
+    x11.enable = true;
+    x11.defaultCursor = "capitaine-cursors-white";
+  };
+
+  # gtk = {
+  #   enable = true;
+  #   cursorTheme.name = "capitaine-cursors-white";
+  #   cursorTheme.size = 32;
+  # };
 }

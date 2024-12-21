@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprswitch.url = "github:h3rmt/hyprswitch/release";
+
+    ags = {
+      url = "github:aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

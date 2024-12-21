@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ../../nixos/core
     ../../nixos/dev-tools.nix
@@ -11,5 +15,10 @@
   ];
   environment.systemPackages = with pkgs; [
     openvpn
+    distrobox
   ];
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 }

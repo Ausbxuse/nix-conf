@@ -21,9 +21,6 @@ check:
 push: 
 	git push origin master
 
-install:
-  ./scripts/install.sh
-
 uni:
 	nixos-rebuild switch --flake .#uni --use-remote-sudo |& nom
 

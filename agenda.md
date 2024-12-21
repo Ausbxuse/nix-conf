@@ -44,3 +44,7 @@
 - [x] printer?
 - [ ] duo screen brightness is not synced
 - [ ] bluetooth widget still not working right
+- [ ] screenshot notification with preview. 
+- [ ] screenshot copy path
+- [ ] ags
+- [ ] hypridle issues

@@ -12,6 +12,26 @@
     ];
   };
   home.packages = with pkgs; [
+    (inputs.ags.packages.x86_64-linux.default.override {
+      extraPackages = [
+        inputs.ags.packages.x86_64-linux.battery
+        inputs.ags.packages.x86_64-linux.network
+        inputs.ags.packages.x86_64-linux.hyprland
+        inputs.ags.packages.x86_64-linux.greet
+        inputs.ags.packages.x86_64-linux.bluetooth
+        inputs.ags.packages.x86_64-linux.auth
+        inputs.ags.packages.x86_64-linux.mpris
+        inputs.ags.packages.x86_64-linux.wireplumber
+        inputs.ags.packages.x86_64-linux.tray
+        # cherry pick packages
+      ];
+    })
+    rofi-wayland-unwrapped
+    rofi-vpn
+    rofi-systemd
+    pinentry-rofi
+    rofi-power-menu
+    rofi-bluetooth
     inputs.hyprswitch.packages.x86_64-linux.default
     hyprpolkitagent
     hyprpicker
@@ -33,20 +53,30 @@
     enable = true;
     settings = {
       general = {
+        before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on";
         ignore_dbus_inhibit = false;
-        lock_cmd = "hyprlock";
+        lock_cmd = "pidof hyprlock || hyprlock";
       };
 
       listener = [
         {
-          timeout = 500;
-          on-timeout = "hyprlock";
+          timeout = 120;
+          on-timeout = "brightnessctl -d intel_backlight -s set 10 ";
+          on-resume = "brightnessctl -d intel_backlight -r ";
         }
         {
-          timeout = 600;
+          timeout = 180;
+          on-timeout = "loginctl lock-session";
+        }
+        {
+          timeout = 200;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 240;
+          on-timeout = "systemctl suspend";
         }
       ];
     };

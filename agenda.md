@@ -27,7 +27,7 @@
 - [x] contrl-shift-v not working in wezterm
 - [x] multi monitor work space
 - [x] hyprswitch style
-- [ ] screenshots
+- [x] screenshots
 - [ ] do not max volume on startup hypanel
 
 # useful gnome features to be implemented in my hyprlnad setup
@@ -37,14 +37,28 @@
 - [x] auto rotate
 - [ ] auto brightness
 - [x] network traffic statusbar
-- [ ] cursor
+- [x] cursor
 - [x] easier bluetooth and wifi?
-- [ ] privacy indicator (waybar has it)
+- [x] privacy indicator (waybar has it)
     - can use `pw-cli ls Node`
 - [x] printer?
-- [ ] duo screen brightness is not synced
-- [ ] bluetooth widget still not working right
-- [ ] screenshot notification with preview. 
-- [ ] screenshot copy path
-- [ ] ags
-- [ ] hypridle issues
+- [x] duo screen brightness is not synced
+- [x] bluetooth widget still not working right
+- [x] screenshot notification with preview. 
+- [x] screenshot copy path
+- [x] ags
+- [x] hypridle issues
+- [ ] quicksettings (https://www.reddit.com/r/unixporn/comments/1fsc8to/hyprlandand_ignis_i_made_my_own_gtk4_shell/)
+    - [x] show speaker/mic volume (`pactl list sources short;pactl set-source-volume <source_name> 80%`)
+    - [ ] show speaker/mic devices
+    - [x] show wifi and available networks
+    - [x] show bluetooth and available devices
+    - [x] show vpn
+    - [x] show media player
+    - [ ] notification 
+    - [x] volume and brightness osd
+- [x] pause playing when sound device disconnect
+- [ ] deploy setup to new host
+- [ ] wayland share screen
+- [ ] share screen resolution why halfed?
+- [ ] netstat widget in ags

@@ -6,7 +6,7 @@
 }: {
   # TODO: some important features from hyprpanel
   wayland.windowManager.hyprland = {
-    enable = false;
+    enable = true;
     extraConfig = builtins.readFile ./hyprland.conf;
     plugins = [
     ];
@@ -28,9 +28,9 @@
     })
     rofi-wayland-unwrapped
     rofi-vpn
-    rofi-systemd
+    rofi-calc
+    rofi-file-browser
     pinentry-rofi
-    rofi-power-menu
     rofi-bluetooth
     inputs.hyprswitch.packages.x86_64-linux.default
     hyprpolkitagent
@@ -38,7 +38,6 @@
     wluma
     dunst
     waybar
-    walker
     slurp
     grim
     wl-clipboard
@@ -47,6 +46,8 @@
     hyprpanel
     libnotify
     jq
+    pomodoro-gtk
+    bluetui
   ];
   programs.hyprlock.enable = true;
   services.hypridle = {
@@ -54,7 +55,7 @@
     settings = {
       general = {
         before_sleep_cmd = "loginctl lock-session";
-        after_sleep_cmd = "hyprctl dispatch dpms on";
+        # after_sleep_cmd = "hyprctl dispatch dpms on";
         ignore_dbus_inhibit = false;
         lock_cmd = "pidof hyprlock || hyprlock";
       };

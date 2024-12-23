@@ -129,7 +129,9 @@ return {
             horizontal = {
               prompt_position = 'top',
               height = 20,
-              width = 90,
+              width = function(_, max_columns, _)
+                return max_columns
+              end,
             },
             vertical = {
               preview_cutoff = 1,

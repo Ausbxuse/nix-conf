@@ -12,7 +12,7 @@
     ../../../home/programs.nix
 
     ../../../home/gnome
-    ../../../home/hyprland
+    # ../../../home/hyprland
     ../../../home/fcitx5
 
     ../../../home/autostart

@@ -198,7 +198,7 @@ config.enable_tab_bar = false
 
 config.window_background_opacity = 0.78
 config.front_end = "WebGpu"
-config.enable_wayland = true
+config.enable_wayland = false
 config.hide_mouse_cursor_when_typing = false
 
 -- In newer versions of wezterm, use the config_builder which will

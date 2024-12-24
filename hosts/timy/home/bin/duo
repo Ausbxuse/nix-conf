@@ -46,8 +46,10 @@ case "$1" in
   normal|bottom-up)
     if lsusb|grep 0b05:1b2c ; then
       "$0" top
+			gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
     else
       "$0" both
+			gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
     fi
     ;;
   top)

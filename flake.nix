@@ -1,6 +1,5 @@
 {
   inputs = {
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     grub2-theme.url = "github:vinceliuice/grub2-themes";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-6-10.url = "github:NixOS/nixpkgs?rev=617e308893df2bc4455615bdcec4d95cbab49c8c";
@@ -9,7 +8,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprswitch.url = "github:h3rmt/hyprswitch/release";
 
     ags = {
       url = "github:aylur/ags";
@@ -75,7 +73,7 @@
             system = params.system;
             specialArgs = params.specialArgs;
             modules = [
-              {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
+              {nixpkgs.overlays = [(import ./overlays/mutter.nix)];}
               params.config
               inputs.grub2-theme.nixosModules.default
               home-manager.nixosModules.home-manager

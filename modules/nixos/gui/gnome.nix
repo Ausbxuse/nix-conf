@@ -20,6 +20,7 @@
     xsel
   ];
   environment.gnome.excludePackages = with pkgs; [
+    mutter
     baobab # disk usage analyzer
     cheese # photo booth
     eog # image viewer

@@ -42,7 +42,7 @@
         scrolloff = 5;
         sort_sensitive = true;
         show_hidden = true;
-        sort_by = "modified";
+        sort_by = "mtime";
         sort_dir_first = true;
         sort_reverse = true;
       };

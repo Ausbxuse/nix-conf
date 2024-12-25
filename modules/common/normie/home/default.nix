@@ -8,7 +8,6 @@
     ../../../home/nvim-minimal
     ../../../home/tmux
 
-    ../../../home/stardict
     ../../../home/programs.nix
 
     ../../../home/gnome
@@ -20,7 +19,6 @@
     ../../../home/xdg.nix
     ../../../home/themes
     ../../../home/fonts
-    ../../../home/wallpapers
     ../../../home/env
 
     ../../../home/gaming.nix

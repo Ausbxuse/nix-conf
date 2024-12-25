@@ -3,14 +3,14 @@
     grub2-theme.url = "github:vinceliuice/grub2-themes";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-6-10.url = "github:NixOS/nixpkgs?rev=617e308893df2bc4455615bdcec4d95cbab49c8c";
-    wezterm.url = "github:wez/wezterm?dir=nix";
+    wallpapers = {
+      url = "github:ausbxuse/wallpapers";
+    };
+    stardict = {
+      url = "github:ausbxuse/stardict";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    ags = {
-      url = "github:aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -73,7 +73,6 @@
             system = params.system;
             specialArgs = params.specialArgs;
             modules = [
-              {nixpkgs.overlays = [(import ./overlays/mutter.nix)];}
               params.config
               inputs.grub2-theme.nixosModules.default
               home-manager.nixosModules.home-manager
@@ -82,7 +81,15 @@
                   extraSpecialArgs = params.specialArgs;
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  users.${params.specialArgs.username} = params.homeConfig;
+                  users.${params.specialArgs.username} = params.nixpkgs.lib.mkMerge [
+                    params.homeConfig
+                    {
+                      imports = [
+                        inputs.wallpapers.homeManagerModules.wallpaper
+                        inputs.stardict.homeManagerModules.stardict
+                      ];
+                    }
+                  ];
                 };
               }
             ];

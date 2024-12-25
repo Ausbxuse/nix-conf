@@ -1,7 +1,6 @@
 {
   inputs,
   lib,
-  pkgs,
   ...
 }: {
   programs = {
@@ -10,8 +9,7 @@
       enableZshIntegration = false;
       enableBashIntegration = true;
       extraConfig = lib.mkDefault (builtins.readFile ./wezterm.lua);
-      #TODO: package = git
-      package = inputs.wezterm.packages.x86_64-linux.default;
+      # package = inputs.wezterm.packages.x86_64-linux.default;
     };
   };
 }

@@ -25,7 +25,7 @@
   ];
 
   programs.zsh.initExtra = builtins.readFile ./zshrc;
-  programs.tmux.extraConfig = builtins.readFile ../../../home/tmux/tmux.conf + "\n" + builtins.readFile ./tmux.conf;
+  programs.tmux.extraConfig = builtins.readFile ./tmux.conf;
 
   home.packages = with pkgs; [
     # Non essentials

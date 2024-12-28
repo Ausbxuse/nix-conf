@@ -7,7 +7,7 @@ config.max_fps = 120
 
 config.font = wezterm.font_with_fallback({
 	{ family = "JetBrainsMono NF" },
-	{ family = "Source Han Sans SC" },
+	{ family = "Source Han Sans TC Normal" },
 })
 
 config.font_rules = {

@@ -22,6 +22,7 @@
       pkg-config
       killall
       unzip
+      pass
     ]
     ++ [
     ];

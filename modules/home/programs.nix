@@ -16,7 +16,7 @@
     htop
     gnupg
     iftop
-    neofetch
+    fastfetch
     nix-output-monitor
     shfmt
     nmap

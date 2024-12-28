@@ -3,16 +3,22 @@
 source_dir=/mnt/zhenyu
 target_dir=/home/zhenyu
 
-folders=("Media" "Public" "Documents" "Media-Phone" "Archive" ".ssh" "WIP" ".local/src" ".local/share/mail")
+folders=("Media" "Public" "Research" "Documents" "Archive" ".ssh" "WIP" "src")
 
 load() {
   for folder in ${folders[@]}; do
+		if [ ! -d "${target_dir}/${folder}" ]; then
+			mkdir -p ${target_dir}/${folder}
+		fi
     rsync -avp ${source_dir}/${folder}/ ${target_dir}/${folder} # remove last folder name
   done
 }
 
 backup() {
   for folder in ${folders[@]}; do
+		if [ ! -d "${source_dir}/${folder}" ]; then
+			mkdir -p ${source_dir}/${folder}
+		fi
     rsync -avp ${target_dir}/${folder}/ ${source_dir}/${folder} # remove last folder name
   done
 }

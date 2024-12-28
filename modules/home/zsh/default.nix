@@ -80,6 +80,7 @@
     };
     historySubstringSearch.enable = false;
     shellAliases = {
+      ncdu = "ncdu --color dark -e -q -L";
       ll = "ls -l";
       cp = "cp -iv";
       mv = "mv -i";

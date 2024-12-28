@@ -7,11 +7,6 @@ local function set_path(file_path)
 end
 return {
   {
-    'sphamba/smear-cursor.nvim',
-    enabled = false,
-    opts = {},
-  },
-  {
     'folke/noice.nvim',
     config = function()
       require('noice').setup {
@@ -85,21 +80,33 @@ return {
   },
   { 'rcarriga/nvim-notify' },
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
   {
-    'shellRaining/hlchunk.nvim',
-    enabled = true,
-    event = { 'BufReadPre', 'BufNewFile' },
+    'echasnovski/mini.indentscope',
+    config = function()
+      require('mini.indentscope').setup {
+        draw = { animation = require('mini.indentscope').gen_animation.none() },
+        symbol = '│',
+      }
+    end,
+  },
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    ---@module "ibl"
+    ---@type ibl.config
     opts = {
-      chunk = {
-        enable = true,
-        style = {
-          { fg = '#7aa2f7' },
-        },
-      },
       indent = {
-        enable = true,
-        chars = { '│' },
+        char = '│',
+      },
+      scope = {
+        enabled = false,
+        show_end = false,
+        show_start = false,
+        show_exact_scope = true,
+        injected_languages = false,
+        highlight = { 'Function', 'Label' },
+        priority = 500,
+        char = '│',
       },
     },
   },

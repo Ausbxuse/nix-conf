@@ -7,21 +7,6 @@ local function set_path(file_path)
 end
 return {
   {
-    'sphamba/smear-cursor.nvim',
-    enabled = true,
-    opts = {},
-  },
-  {
-    'OXY2DEV/markview.nvim',
-    lazy = false, -- Recommended
-    -- ft = "markdown" -- If you decide to lazy-load anyway
-
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons',
-    },
-  },
-  {
     'folke/noice.nvim',
     config = function()
       require('noice').setup {
@@ -46,39 +31,13 @@ return {
             opts = { skip = true },
           },
         },
-        views = {
-          cmdline_popup = {
-            position = {
-              row = '45%',
-              col = '50%',
-            },
-            size = {
-              width = 'auto',
-              height = 'auto',
-            },
-          },
-          popupmenu = {
-            relative = 'editor',
-            position = {
-              row = 8,
-              col = '50%',
-            },
-            size = {
-              width = 20,
-              height = 10,
-            },
-            border = {
-              style = 'single',
-              padding = { 0, 1 },
-            },
-            win_options = {
-              winhighlight = { Normal = 'Normal', FloatBorder = 'DiagnosticInfo' },
-            },
-          },
+        cmdline = {
+          view = 'cmdline',
         },
+        views = {},
         presets = {
           bottom_search = true, -- use a classic bottom cmdline for search
-          command_palette = true, -- position the cmdline and popupmenu together
+          command_palette = false, -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
           inc_rename = false, -- enables an input dialog for inc-rename.nvim
           lsp_doc_border = true, -- add a border to hover docs and signature help
@@ -95,36 +54,36 @@ return {
   },
   { 'rcarriga/nvim-notify' },
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
   {
-    'shellRaining/hlchunk.nvim',
-    enabled = true,
-    event = { 'BufReadPre', 'BufNewFile' },
-    opts = {
-      chunk = {
-        enable = true,
-        style = {
-          { fg = '#7aa2f7' },
-        },
-      },
-      indent = {
-        enable = true,
-        chars = { '│' },
-      },
-    },
-  },
-  {
-    'kevinhwang91/nvim-ufo',
-    dependencies = 'kevinhwang91/promise-async',
+    'echasnovski/mini.indentscope',
     config = function()
-      require('ufo').setup {
-        provider_selector = function(bufnr, filetype, buftype)
-          return { 'treesitter', 'indent' }
-        end,
+      require('mini.indentscope').setup {
+        draw = { animation = require('mini.indentscope').gen_animation.none() },
+        symbol = '│',
       }
     end,
   },
-
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {
+      indent = {
+        char = '│',
+      },
+      scope = {
+        enabled = false,
+        show_end = false,
+        show_start = false,
+        show_exact_scope = true,
+        injected_languages = false,
+        highlight = { 'Function', 'Label' },
+        priority = 500,
+        char = '│',
+      },
+    },
+  },
   {
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',

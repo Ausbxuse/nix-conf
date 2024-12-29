@@ -27,7 +27,8 @@ local default_options = {
   splitright = true,
   splitbelow = true,
   list = true,
-  listchars = { tab = '» ', trail = '·', nbsp = '␣' },
+  -- listchars = { tab = '» ', trail = '·', nbsp = '␣' },
+  listchars = { tab = '  ', trail = '·', nbsp = '␣' },
   -- Preview substitutions live, as you type!,
   inccommand = 'nosplit',
   cursorline = true,
@@ -54,7 +55,7 @@ local default_options = {
   -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
   undodir = home .. '/.cache/nvim/undo', -- set an undo directory
   writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-  expandtab = false, -- convert tabs to spaces
+  expandtab = true, -- convert tabs to spaces
   shiftwidth = 2, -- the number of spaces inserted for each indentation
   tabstop = 2, -- insert 2 spaces for a tab
   numberwidth = 4, -- set number column width to 2 {default 4}

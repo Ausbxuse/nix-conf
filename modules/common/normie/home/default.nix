@@ -9,7 +9,7 @@
     ../../../home/wezterm
 
     ../../../home/zsh
-    ../../../home/nvim-minimal
+    ../../../home/nvim
     ../../../home/tmux
 
     ../../../home/programs.nix

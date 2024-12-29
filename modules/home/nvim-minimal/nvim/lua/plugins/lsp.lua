@@ -131,6 +131,7 @@ return {
       -- This should be executed before you configure any language server
       local lspconfig_defaults = require('lspconfig').util.default_config
       lspconfig_defaults.capabilities = vim.tbl_deep_extend('force', lspconfig_defaults.capabilities, require('cmp_nvim_lsp').default_capabilities())
+      local fzf = require 'fzf-lua'
 
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
@@ -145,21 +146,21 @@ return {
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          map('gd', fzf.lsp_definitions, '[G]oto [D]efinition')
+          map('gr', fzf.lsp_references, '[G]oto [R]eferences')
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
-          map('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+          map('gi', fzf.lsp_implementations, '[G]oto [I]mplementation')
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
-          map('<leader>ltd', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          map('<leader>ltd', fzf.lsp_typedefs, 'Type [D]efinition')
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+          map('<leader>ds', fzf.lsp_document_symbols, '[D]ocument [S]ymbols')
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('<leader>ws', fzf.lsp_live_workspace_symbols, '[W]orkspace [S]ymbols')
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -222,7 +223,7 @@ return {
       vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
       vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
 
-      vim.diagnostic.config = {
+      --[[ vim.diagnostic.config = {
         underline = true,
         update_in_insert = false,
         virtual_text = {
@@ -239,7 +240,7 @@ return {
             [vim.diagnostic.severity.INFO] = ' ',
           },
         },
-      }
+      } ]]
       local on_attach = function(client, bufnr)
         client.server_capabilities.semanticTokensProvider = nil
         --[[ vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })

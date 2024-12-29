@@ -1,4 +1,5 @@
 vim.keymap.set('n', '<Esc>', "<cmd>nohl|lua require('notify').dismiss()<CR>")
+vim.keymap.set('i', '<S-Tab>', '<C-d>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 -- vim.keymap.set('n', '<leader>n', function()
 --     if vim.bo.filetype == 'netrw' then

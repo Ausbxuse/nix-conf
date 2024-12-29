@@ -2,7 +2,6 @@
   inputs = {
     grub2-theme.url = "github:vinceliuice/grub2-themes";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-6-10.url = "github:NixOS/nixpkgs?rev=617e308893df2bc4455615bdcec4d95cbab49c8c";
     wallpapers = {
       url = "github:ausbxuse/wallpapers";
     };
@@ -17,7 +16,6 @@
 
   outputs = {
     nixpkgs,
-    nixpkgs-6-10,
     home-manager,
     ...
   } @ inputs: let
@@ -58,10 +56,7 @@
         name = hostname;
         value = mkHost {
           hostname = hostname;
-          pkgs =
-            if hostname == "uni"
-            then nixpkgs-6-10
-            else nixpkgs;
+          pkgs = nixpkgs;
         };
       })
       hostnames);

@@ -78,7 +78,7 @@ with lib.hm.gvariant; {
     "org/gnome/desktop/input-sources" = {
       mru-sources = [(mkTuple ["xkb" "us"])];
       sources = [(mkTuple ["xkb" "us"])];
-      xkb-options = ["terminate:ctrl_alt_bksp" "caps:escape" "compose:rctrl" "lv3:menu_switch" "altwin:swap_lalt_lwin"];
+      xkb-options = ["terminate:ctrl_alt_bksp" "compose:rctrl" "lv3:menu_switch" "altwin:swap_lalt_lwin"];
     };
 
     "org/gnome/desktop/interface" = {

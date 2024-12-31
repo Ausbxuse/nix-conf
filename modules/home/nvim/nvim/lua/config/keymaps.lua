@@ -1,6 +1,13 @@
 vim.keymap.set('n', '<Esc>', "<cmd>nohl|lua require('notify').dismiss()<CR>")
-vim.keymap.set('i', '<S-Tab>', '<C-d>')
+vim.keymap.set('i', '<c-h>', '<c-g>u<c-h>')
+vim.keymap.set('i', '<c-j>', '<C-]><C-G>u<c-j>')
+vim.keymap.set('i', '<c-b>', '<c-o>b')
+vim.keymap.set('i', '<c-c>', '<Esc>')
+vim.keymap.set('i', '<c-l>', '<Esc>')
+vim.keymap.set('i', '<c-b>', '<c-left>')
+vim.keymap.set('i', '<c-e>', '<c-right>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
 -- vim.keymap.set('n', '<leader>n', function()
 --     if vim.bo.filetype == 'netrw' then
 -- 			vim.cmd([[b#]])
@@ -24,7 +31,6 @@ vim.keymap.set('x', 'p', 'P', { desc = 'Better paste' })
 
 vim.keymap.set('n', '<leader><tab>', '<C-^>', { desc = 'Alt-tab prev buffer' })
 vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <cr>', { desc = 'Toggle Undotree' })
-vim.keymap.set('n', '<leader>p', '<cmd> lua require("dropbar.api").pick() <cr>', { desc = 'Toggle Undotree' })
 
 function Toggle_window()
   if vim.g.help_window_maximized then

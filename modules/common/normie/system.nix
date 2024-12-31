@@ -17,6 +17,8 @@
     openvpn
     distrobox
   ];
+
+  boot.binfmt.emulatedSystems = ["aarch64-linux"]; # for distrobox to emulate arm
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;

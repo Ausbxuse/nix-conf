@@ -61,64 +61,6 @@ return {
     },
   },
   {
-    'Bekaboo/dropbar.nvim',
-    -- optional, but required for fuzzy finder support
-    opts = {
-      icons = {
-        enable = true,
-      },
-      menu = {
-        quick_navigation = false,
-        keymaps = {
-          ['h'] = '<C-w>q',
-          ['<Esc>'] = '<C-w>q',
-          ['<LeftMouse>'] = function()
-            local utils = require 'dropbar.utils'
-            local menu = utils.menu.get_current()
-            if not menu then
-              return
-            end
-            local mouse = vim.fn.getmousepos()
-            local clicked_menu = utils.menu.get { win = mouse.winid }
-            -- If clicked on a menu, invoke the corresponding click action,
-            -- else close all menus and set the cursor to the clicked window
-            if clicked_menu then
-              clicked_menu:click_at({ mouse.line, mouse.column - 1 }, nil, 1, 'l')
-              return
-            end
-            utils.menu.exec 'close'
-            utils.bar.exec 'update_current_context_hl'
-            if vim.api.nvim_win_is_valid(mouse.winid) then
-              vim.api.nvim_set_current_win(mouse.winid)
-            end
-          end,
-          ['l'] = function()
-            local utils = require 'dropbar.utils'
-            local menu = utils.menu.get_current()
-            if not menu then
-              return
-            end
-            local cursor = vim.api.nvim_win_get_cursor(menu.win)
-            local component = menu.entries[cursor[1]]:first_clickable(cursor[2])
-            if component then
-              menu:click_on(component, nil, 1, 'l')
-            end
-          end,
-          ['/'] = function()
-            local utils = require 'dropbar.utils'
-            local menu = utils.menu.get_current()
-            if not menu then
-              return
-            end
-            menu:fuzzy_find_open()
-          end,
-        },
-      },
-    },
-    --[[ config = function()
-		end ]]
-  },
-  {
     'dundalek/lazy-lsp.nvim',
     enabled = true,
     dependencies = {

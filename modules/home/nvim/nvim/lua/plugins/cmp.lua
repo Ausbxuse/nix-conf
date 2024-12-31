@@ -99,13 +99,13 @@ return {
           ['<C-p>'] = cmp.mapping.select_prev_item(),
 
           -- Scroll the documentation window [b]ack / [f]orward
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          --['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          --['<C-f>'] = cmp.mapping.scroll_docs(4),
 
-          -- Accept ([y]es) the completion.
-          --  This will auto-import if your LSP supports it.
-          --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ---- Accept ([y]es) the completion.
+          ----  This will auto-import if your LSP supports it.
+          ----  This will expand snippets if the LSP sent a snippet.
+          --['<C-y>'] = cmp.mapping.confirm { select = true },
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
@@ -126,68 +126,68 @@ return {
           --
           -- <c-l> will move you to the right of each of the expansion locations.
           -- <c-h> is similar, except moving you backwards.
-          ['<C-l>'] = cmp.mapping(function()
-            if luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
-            end
-          end, { 'i', 's' }),
-          ['<C-h>'] = cmp.mapping(function()
-            if luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            end
-          end, { 'i', 's' }),
+          -- ['<C-l>'] = cmp.mapping(function()
+          --   if luasnip.expand_or_locally_jumpable() then
+          --     luasnip.expand_or_jump()
+          --   end
+          -- end, { 'i', 's' }),
+          -- ['<C-h>'] = cmp.mapping(function()
+          --   if luasnip.locally_jumpable(-1) then
+          --     luasnip.jump(-1)
+          --   end
+          -- end, { 'i', 's' }),
 
           ['<CR>'] = cmp.config.disable,
-          ['<tab>'] = cmp.mapping(function(fallback)
-            if luasnip.locally_jumpable(1) then
-              luasnip.jump(1)
-            elseif cmp.visible() then
-              -- you could replace select_next_item() with confirm({ select = true }) to get vs code autocompletion behavior
-              -- cmp.select_next_item()
-              cmp.confirm { select = true }
-            elseif has_words_before() then
-              cmp.complete()
-            elseif vim.api.nvim_get_current_line():match '^%s*-%s' then
-              local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-              vim.cmd 'normal! >>'
-              vim.api.nvim_win_set_cursor(0, { row, col + 2 })
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-          ['<s-tab>'] = cmp.mapping(function(fallback)
-            if luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            elseif cmp.visible() then
-              cmp.select_next_item()
-            elseif vim.api.nvim_get_current_line():match '^%s*-%s' then
-              local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-              vim.cmd 'normal! <<'
-              if col > 7 then
-                vim.api.nvim_win_set_cursor(0, { row, col - 2 })
-              else
-                vim.api.nvim_win_set_cursor(0, { row, 6 })
-              end
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
+          -- ['<tab>'] = cmp.mapping(function(fallback)
+          --   if luasnip.locally_jumpable(1) then
+          --     luasnip.jump(1)
+          --   elseif cmp.visible() then
+          --     -- you could replace select_next_item() with confirm({ select = true }) to get vs code autocompletion behavior
+          --     -- cmp.select_next_item()
+          --     cmp.confirm { select = true }
+          --   elseif has_words_before() then
+          --     cmp.complete()
+          --   elseif vim.api.nvim_get_current_line():match '^%s*-%s' then
+          --     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+          --     vim.cmd 'normal! >>'
+          --     vim.api.nvim_win_set_cursor(0, { row, col + 2 })
+          --   else
+          --     fallback()
+          --   end
+          -- end, { 'i', 's' }),
+          -- ['<s-tab>'] = cmp.mapping(function(fallback)
+          --   if luasnip.locally_jumpable(-1) then
+          --     luasnip.jump(-1)
+          --   elseif cmp.visible() then
+          --     cmp.select_next_item()
+          --   elseif vim.api.nvim_get_current_line():match '^%s*-%s' then
+          --     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+          --     vim.cmd 'normal! <<'
+          --     if col > 7 then
+          --       vim.api.nvim_win_set_cursor(0, { row, col - 2 })
+          --     else
+          --       vim.api.nvim_win_set_cursor(0, { row, 6 })
+          --     end
+          --   else
+          --     fallback()
+          --   end
+          -- end, { 'i', 's' }),
 
-          ['<c-j>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
+          -- ['<c-j>'] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_next_item()
+          --   else
+          --     fallback()
+          --   end
+          -- end, { 'i', 's' }),
 
-          ['<c-k>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
+          -- ['<c-k>'] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_prev_item()
+          --   else
+          --     fallback()
+          --   end
+          -- end, { 'i', 's' }),
 
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps

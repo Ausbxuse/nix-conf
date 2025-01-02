@@ -54,22 +54,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-6-10": {
-      "locked": {
-        "lastModified": 1727976588,
-        "narHash": "sha256-9oEl9r9qirnvIieJTXM7oRKcMttgiAQ1vDhFb1pjtj4=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "617e308893df2bc4455615bdcec4d95cbab49c8c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "617e308893df2bc4455615bdcec4d95cbab49c8c",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1734649271,
@@ -103,7 +87,6 @@
         "grub2-theme": "grub2-theme",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-6-10": "nixpkgs-6-10",
         "stardict": "stardict",
         "wallpapers": "wallpapers"
       }

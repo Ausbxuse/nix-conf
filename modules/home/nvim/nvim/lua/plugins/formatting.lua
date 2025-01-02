@@ -35,6 +35,7 @@ return { -- Autoformat
       lua = { 'stylua' },
       nix = { 'alejandra' },
       python = { 'isort', 'black' },
+      markdown = { 'prettier' },
     },
   },
 }

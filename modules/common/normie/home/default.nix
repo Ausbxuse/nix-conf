@@ -55,6 +55,7 @@
     stylua
     black
     isort
+    nodePackages.prettier
   ];
 
   services.syncthing = {

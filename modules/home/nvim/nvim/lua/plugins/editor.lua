@@ -23,7 +23,6 @@ return {
       yazi_floating_window_border = 'single',
       keymaps = {
         show_help = '<f1>',
-        change_working_directory = 'c',
       },
     },
     config = function(_, opts)

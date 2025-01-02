@@ -69,8 +69,7 @@ return {
       'hrsh7th/nvim-cmp',
     },
     config = function()
-      -- Add cmp_nvim_lsp capabilities settings to lspconfig
-      -- This should be executed before you configure any language server
+      -- Customize the LSP signature help window
       local lspconfig_defaults = require('lspconfig').util.default_config
       lspconfig_defaults.capabilities = vim.tbl_deep_extend('force', lspconfig_defaults.capabilities, require('cmp_nvim_lsp').default_capabilities())
       local fzf = require 'fzf-lua'

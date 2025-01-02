@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-if [ $(gsettings get org.gnome.desktop.peripherals.touchpad send-events) == "'enabled'" ]; then
-    echo "Switching off"
-    gsettings set org.gnome.desktop.peripherals.touchpad send-events disabled
+if [ "$(gsettings get org.gnome.desktop.peripherals.touchpad tap-to-click)" == "true" ]; then
+    echo "Disabling tap-to-click"
+    gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 else
-    echo "Switching on"
-    gsettings set org.gnome.desktop.peripherals.touchpad send-events enabled
+    echo "Enabling tap-to-click"
+    gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 fi

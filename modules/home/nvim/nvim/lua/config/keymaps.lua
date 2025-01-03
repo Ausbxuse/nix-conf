@@ -1,4 +1,4 @@
-vim.keymap.set('n', '<Esc>', '<cmd>nohl')
+vim.keymap.set('n', '<Esc>', '<cmd>nohl<cr>')
 vim.keymap.set('i', '<c-h>', '<c-g>u<c-h>')
 vim.keymap.set('i', '<c-j>', '<C-]><C-G>u<c-j>')
 vim.keymap.set('i', '<c-b>', '<c-o>b')

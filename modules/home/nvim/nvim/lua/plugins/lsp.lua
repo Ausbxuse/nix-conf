@@ -116,6 +116,7 @@ return {
           map('gs', vim.lsp.buf.signature_help, 'Signature [H]elp')
           map('<C-p>', vim.diagnostic.goto_prev, 'LSP diagnostic Prev')
           map('<C-n>', vim.diagnostic.goto_next, 'LSP diagnostic Next')
+          vim.keymap.set('i', '<c-s>', vim.lsp.buf.signature_help)
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -163,6 +164,10 @@ return {
       vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
       vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
       vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
+
+      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single', max_width = 60, max_height = 40 })
+
+      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single', max_width = 60, max_height = 40 })
 
       --[[ vim.diagnostic.config = {
         underline = true,

@@ -6,6 +6,10 @@ return {
     config = function()
       local fzf = require 'fzf-lua'
       fzf.setup {
+        fzf_colors = {
+          ['gutter'] = '-1',
+          ['scrollbar'] = { 'bg', { 'Comment', 'Normal' }, 'bold', 'underline' },
+        },
         winopts = {
           -- fullscreen=true,
           height = 0.8,

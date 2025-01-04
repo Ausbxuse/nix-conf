@@ -1,4 +1,3 @@
-local home = vim.fn.expand '$HOME'
 return {
   {
     'ibhagwan/fzf-lua',
@@ -16,7 +15,7 @@ return {
           width = 1,
           -- split = 'below new',
           border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-          backdrop = 100,
+          backdrop = 0,
         },
         previewer = {
           border = 'noborder',

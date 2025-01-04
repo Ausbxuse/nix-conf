@@ -5,12 +5,12 @@ return {
     event = 'VeryLazy',
     keys = {
       {
-        '<leader>n',
+        '<leader>N',
         '<cmd>Yazi<cr>',
         desc = 'Open yazi at the current file',
       },
       {
-        '<leader>N',
+        '<leader>n',
         '<cmd>Yazi cwd<cr>',
         desc = "Open the file manager in nvim's working directory",
       },
@@ -18,9 +18,6 @@ return {
     ---@type YaziConfig
     opts = {
       open_for_directories = true,
-      floating_window_scaling_factor = 0.8,
-
-      yazi_floating_window_border = 'single',
       keymaps = {
         show_help = '<f1>',
       },

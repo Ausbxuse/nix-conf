@@ -3,13 +3,14 @@ local home = vim.fn.expand '$HOME'
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.g.have_nerd_font = true
 vim.schedule(function() -- Schedule decreases startup time,
   opt.clipboard = 'unnamedplus'
 end)
 
 local default_options = {
-  laststatus = 0, -- global statusline
+  laststatus = 2, -- global statusline
+  statusline = '%f %m %r %=%l/%L',
+  showcmd = false,
   spellfile = home .. '/.config/nvim/spell/en.utf-8.add',
   number = true,
   relativenumber = true,
@@ -27,7 +28,6 @@ local default_options = {
   splitright = true,
   splitbelow = true,
   list = true,
-  -- listchars = { tab = '» ', trail = '·', nbsp = '␣' },
   listchars = { tab = '  ', trail = '·', nbsp = '␣' },
   -- Preview substitutions live, as you type!,
   inccommand = 'nosplit',
@@ -66,7 +66,7 @@ local default_options = {
   spelllang = 'en',
   sidescrolloff = 8,
   pumblend = 20,
-  winblend = 00, -- keep notify transparent
+  winblend = 20, -- keep notify transparent
   textwidth = 0,
   colorcolumn = '', -- fixes indentline for now
 } ---  VIM ONLY COMMANDS  ---cmd "filetype plugin on"cmd('let &titleold="' .. TERMINAL .. '"')cmd "set inccommand=split"cmd "set iskeyword+=-"

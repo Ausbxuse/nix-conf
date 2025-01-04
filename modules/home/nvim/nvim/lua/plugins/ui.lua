@@ -6,321 +6,40 @@ local function set_path(file_path)
   return path_variable
 end
 return {
-  {
-    'folke/noice.nvim',
-    config = function()
-      require('noice').setup {
-        routes = {
-          {
-            filter = {
-              event = 'msg_show',
-              any = {
-                { find = '%d+L, %d+B' },
-                { find = '; after #%d+' },
-                { find = '; before #%d+' },
-              },
-            },
-            view = 'mini',
-          },
-          {
-            view = 'split',
-            filter = { event = 'msg_show', min_height = 20 },
-          },
-          {
-            filter = { event = 'msg_show', kind = 'search_count' },
-            opts = { skip = true },
-          },
-        },
-        cmdline = {
-          view = 'cmdline',
-        },
-        views = {},
-        presets = {
-          bottom_search = true, -- use a classic bottom cmdline for search
-          command_palette = false, -- position the cmdline and popupmenu together
-          long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = true, -- add a border to hover docs and signature help
-        },
-        lsp = {
-          override = {
-            ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-            ['vim.lsp.util.stylize_markdown'] = true,
-          },
-          signature = {
-            enabled = false,
-          },
-        },
-      }
-    end,
-  },
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-  {
-    'echasnovski/mini.indentscope',
-    config = function()
-      require('mini.indentscope').setup {
-        draw = { animation = require('mini.indentscope').gen_animation.none() },
-        symbol = '│',
-      }
-    end,
-  },
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    ---@module "ibl"
-    ---@type ibl.config
+  { 'folke/zen-mode.nvim' },
+  { -- Useful plugin to show you pending keybinds.
+    'folke/which-key.nvim',
+    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
-      indent = {
-        char = '│',
+      icons = {
+        -- set icon mappings to true if you have a Nerd Font
+        mappings = true,
+        -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
+        -- default which-key.nvim defined Nerd Font icons, otherwise define a string table
+        keys = {},
       },
-      scope = {
-        enabled = false,
-        show_end = false,
-        show_start = false,
-        show_exact_scope = true,
-        injected_languages = false,
-        highlight = { 'Function', 'Label' },
-        priority = 500,
-        char = '│',
+
+      -- Document existing key chains
+      spec = {
+        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
+        { '<leader>d', group = '[D]ocument' },
+        { '<leader>r', group = '[R]ename' },
+        { '<leader>s', group = '[S]earch' },
+        { '<leader>w', group = '[W]orkspace' },
+        { '<leader>t', group = '[T]oggle' },
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
   },
   {
-    'nvim-lualine/lualine.nvim',
-    event = 'VeryLazy',
-    -- dependencies = { 'folke/trouble.nvim' },
-    init = function()
-      --[[ vim.g.lualine_laststatus = vim.o.laststatus
-			if vim.fn.argc(-1) > 0 then
-				-- set an empty statusline till lualine loads
-				vim.o.statusline = " "
-			else
-				-- hide the statusline on the starter page
-				vim.o.laststatus = 0
-			end ]]
-    end,
-    opts = function()
-      -- PERF: we don't need this lualine require madness 🤷
-      local lualine_require = require 'lualine_require'
-      lualine_require.require = require
-
-      local icons = {
-        diagnostics = {
-          Error = ' ',
-          Warn = ' ',
-          Hint = ' ',
-          Info = ' ',
-        },
-        git = {
-          added = ' ',
-          modified = ' ',
-          removed = ' ',
-        },
+    'brenoprata10/nvim-highlight-colors',
+    config = function()
+      require('nvim-highlight-colors').setup {
+        enable_named_colors = false,
       }
-
-      vim.o.laststatus = vim.g.lualine_laststatus
-
-      local cyan2 = '#89ddff'
-      local custom_theme = require 'lualine.themes.auto'
-      -- Change the background of lualine_c section for normal mode
-      custom_theme.normal.a.fg = '#5fdaff' -- rgb colors are supported
-      custom_theme.normal.a.bg = 'NONE' -- rgb colors are supported
-      custom_theme.normal.b.fg = '#5fdaff' -- rgb colors are supported
-      custom_theme.normal.b.bg = 'NONE' -- rgb colors are supported
-      custom_theme.normal.c.fg = '#dfdcd8' -- rgb colors are supported
-      custom_theme.normal.c.bg = 'NONE' -- rgb colors are supported
-
-      custom_theme.command.a.bg = 'NONE' -- rgb colors are supported
-      custom_theme.command.b.bg = 'NONE' -- rgb colors are supported
-      custom_theme.command.a.fg = cyan2 -- rgb colors are supported
-      custom_theme.command.b.fg = cyan2 -- rgb colors are supported
-
-      custom_theme.replace.a.bg = '#ff4a00' -- rgb colors are supported
-      custom_theme.replace.a.fg = 'NONE' -- rgb colors are supported
-      custom_theme.replace.b.fg = '#ff4a00' -- rgb colors are supported
-      custom_theme.replace.b.bg = 'NONE' -- rgb colors are supported
-      -- custom_theme.replace.c.bg = "#171920" -- rgb colors are supported
-      custom_theme.visual.a.fg = '#bd93f9' -- rgb colors are supported
-      custom_theme.visual.a.bg = 'NONE' -- rgb colors are supported
-      custom_theme.visual.b.fg = '#bd93f9' -- rgb colors are supported
-      custom_theme.visual.b.bg = 'NONE' -- rgb colors are supported
-      -- custom_theme.visual.c.bg = "#171920" -- rgb colors are supported
-      custom_theme.insert.a.fg = '#abe15b' -- rgb colors are supported
-      custom_theme.insert.a.bg = 'NONE' -- rgb colors are supported
-      custom_theme.insert.b.fg = '#abe15b' -- rgb colors are supported
-      custom_theme.insert.b.bg = 'NONE' -- rgb colors are supported
-      -- custom_theme.insert.c.bg = "#171920" -- rgb colors are supported
-
-      local function getWords()
-        if vim.bo.filetype == 'md' or vim.bo.filetype == 'txt' or vim.bo.filetype == 'markdown' then
-          if vim.fn.wordcount().visual_words == 1 then
-            return tostring(vim.fn.wordcount().visual_words) .. ' word'
-          elseif not (vim.fn.wordcount().visual_words == nil) then
-            return tostring(vim.fn.wordcount().visual_words) .. ' words'
-          else
-            return tostring(vim.fn.wordcount().words) .. ' words'
-          end
-        else
-          return ''
-        end
-      end
-      local opts = {
-        options = {
-          icons_enabled = true,
-          -- component_separators = { left = "", right = "" },
-          -- section_separators = { left = "", right = "" },
-          component_separators = { left = ' ', right = ' ' },
-          section_separators = { left = ' ', right = ' ' },
-          theme = custom_theme,
-          globalstatus = false,
-          disabled_filetypes = { statusline = { 'dashboard', 'alpha', 'starter' } },
-        },
-        sections = {
-          lualine_a = {
-            {
-              'mode',
-              -- icon = "",
-              icon = '',
-
-              -- fmt = trunc(200, 4, nil, true),
-              fmt = function(str)
-                return ''
-              end,
-              padding = { left = 0, right = 0 },
-            },
-
-            -- { "windows", mode = 2 },
-            -- { "windows", mode = 2 },
-            --[[ {
-						"buffers",
-						buffers_color = {
-							-- Same values as the general color option can be used here.
-							active = Util.ui.fg("ModeMsg"),
-							inactive = Util.ui.fg("MiniCursorword"),
-						},
-						mode = 0,
-						padding = { left = 0, right = 0 },
-					}, ]]
-          },
-
-          lualine_b = {},
-
-          lualine_c = {
-            -- Util.lualine.root_dir(),
-            -- { 'filetype', icon_only = true, separator = '', padding = { left = 1, right = 0 } },
-            -- { Util.lualine.pretty_path() },
-            {
-              -- getMyCwd,
-              'filename',
-              -- color = Util.ui.fg("ModeMsg"),
-              file_status = true,
-              path = 1,
-              shorting_target = 30,
-
-              symbols = {
-                modified = '🤯', -- Text to show when the file is modified.
-                readonly = '🚫', -- Text to show when the file is non-modifiable or readonly.
-                unnamed = '', -- Text to show for unnamed buffers.
-                newfile = '', -- Text to show for new created file before first writting
-              },
-              padding = { left = 1, right = 0 },
-            },
-            -- { 'filesize', padding = { left = 0, right = 0 } },
-            {
-              'branch',
-              icon = '',
-              color = { fg = cyan2 }, -- Set branch color to rose
-              -- separator = { right = " ", left = " " },
-              padding = { left = 0, right = 0 }, -- Adjust the right padding to 1 },
-            },
-
-            {
-              'diagnostics',
-              symbols = {
-                error = icons.diagnostics.Error,
-                warn = icons.diagnostics.Warn,
-                info = icons.diagnostics.Info,
-                hint = icons.diagnostics.Hint,
-              },
-            },
-          },
-          lualine_x = {
-            {
-              function()
-                return require('noice').api.status.command.get()
-              end,
-              cond = function()
-                return package.loaded['noice'] and require('noice').api.status.command.has()
-              end,
-              color = { fg = '#9ece6a' },
-              -- color = Util.ui.fg("Special"),
-            },
-            {
-              function()
-                return require('noice').api.status.mode.get()
-              end,
-              cond = function()
-                return package.loaded['noice'] and require('noice').api.status.mode.has()
-              end,
-              color = { fg = '#9ece6a' },
-            },
-            {
-              function()
-                return '  ' .. require('dap').status()
-              end,
-              cond = function()
-                return package.loaded['dap'] and require('dap').status() ~= ''
-              end,
-              color = { fg = '#333333', bg = '#dfdcd8' },
-            },
-            { 'searchcount' },
-            {
-              require('lazy.status').updates,
-              cond = require('lazy.status').has_updates,
-              color = { fg = '#333333', bg = '#dfdcd8' },
-            },
-
-            {
-              getWords,
-              color = { fg = '#333333', bg = '#dfdcd8' },
-              separator = { left = '', right = '' },
-            },
-          },
-
-          lualine_y = {
-            {
-              'diff',
-              symbols = {
-                added = icons.git.added,
-                modified = icons.git.modified,
-                removed = icons.git.removed,
-              },
-              source = function()
-                local gitsigns = vim.b.gitsigns_status_dict
-                if gitsigns then
-                  return {
-                    added = gitsigns.added,
-                    modified = gitsigns.changed,
-                    removed = gitsigns.removed,
-                  }
-                end
-              end,
-            },
-          },
-          lualine_z = {
-            {
-              'progress',
-              separator = { left = '', right = '' },
-            },
-          },
-        },
-        extensions = { 'neo-tree', 'lazy' },
-      }
-
-      return opts
     end,
   },
-
   {
     'ausbxuse/snappy.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.

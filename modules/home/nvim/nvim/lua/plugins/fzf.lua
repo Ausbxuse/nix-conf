@@ -7,27 +7,13 @@ return {
       fzf.setup {
         fzf_colors = {
           true, -- inherit fzf colors that aren't specified below from
-          -- the auto-generated theme similar to `fzf_colors=true`
-          ['gutter'] = '-1',
           ['scrollbar'] = { 'fg', { 'SignColumn', 'Normal' }, 'bold' },
-          ['fg'] = { 'fg', 'CursorLine' },
-          ['bg'] = { 'bg', 'Normal' },
-          ['hl'] = { 'fg', 'Statement' },
-          ['fg+'] = { 'fg', 'Normal' },
-          ['bg+'] = { 'bg', { 'CursorLine', 'Normal' } },
-          ['hl+'] = { 'fg', 'Statement' },
-          ['info'] = { 'fg', 'PreProc' },
           ['prompt'] = { 'fg', 'Conditional' },
-          ['pointer'] = { 'fg', 'Exception' },
           ['marker'] = { 'fg', 'Keyword' },
-          ['spinner'] = { 'fg', 'Label' },
-          ['header'] = { 'fg', 'Comment' },
         },
         winopts = {
-          -- fullscreen=true,
           height = 0.8,
           width = 1,
-          -- split = 'below new',
           border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
           backdrop = 100,
         },
@@ -63,54 +49,12 @@ return {
         fzf.grep_cWORD()
       end, { desc = '[f]ind [S]earch word' })
       vim.keymap.set('n', '<leader>fr', fzf.oldfiles, { desc = '[S]earch Recent Files ' })
-      vim.keymap.set('n', '<leader><leader>', fzf.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>o', fzf.lsp_document_symbols, { desc = 'Symb[o]ls ' })
+      vim.keymap.set('n', '<leader><leader>', fzf.buffers, { desc = 'Find existing buffers' })
 
-      -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         fzf.blines()
       end, { desc = '[/] Fuzzily search in current buffer' })
-    end,
-  },
-  {
-    'ThePrimeagen/harpoon',
-    branch = 'harpoon2',
-    opts = {
-      menu = {
-        width = vim.api.nvim_win_get_width(0) - 4,
-      },
-      settings = {
-        save_on_toggle = true,
-      },
-    },
-    keys = function()
-      local keys = {
-        {
-          '<leader>H',
-          function()
-            require('harpoon'):list():add()
-          end,
-          desc = 'Harpoon File',
-        },
-        {
-          '<leader>h',
-          function()
-            local harpoon = require 'harpoon'
-            harpoon.ui:toggle_quick_menu(harpoon:list())
-          end,
-          desc = 'Harpoon Quick Menu',
-        },
-      }
-
-      for i = 1, 5 do
-        table.insert(keys, {
-          '<leader>' .. i,
-          function()
-            require('harpoon'):list():select(i)
-          end,
-          desc = 'Harpoon to File ' .. i,
-        })
-      end
-      return keys
     end,
   },
 }

@@ -10,53 +10,6 @@ return {
     },
   },
   {
-    'SmiteshP/nvim-navbuddy',
-    dependencies = {
-      'SmiteshP/nvim-navic',
-      'MunifTanjim/nui.nvim',
-    },
-    opts = {
-      node_markers = {
-        enabled = true,
-        icons = {
-          leaf = '  ',
-          leaf_selected = ' → ',
-          branch = ' ',
-        },
-      },
-      window = {
-        border = 'single', -- "rounded", "double", "solid", "none"
-        -- or an array with eight chars building up the border in a clockwise fashion
-        -- starting with the top-left corner. eg: { "╔", "═" ,"╗", "║", "╝", "═", "╚", "║" }.
-        size = { height = '30%', width = '100%' },
-        position = { row = '100%', col = '0%' },
-        scrolloff = nil, -- scrolloff value within navbuddy window
-        sections = {
-          left = {
-            size = '20%',
-            border = nil, -- You can set border style for each section individually as well.
-          },
-          mid = {
-            size = '40%',
-            border = nil,
-          },
-          right = {
-            border = nil,
-            preview = 'never', -- Options: "leaf", "always" or "never"
-          },
-        },
-      },
-      lsp = { auto_attach = true },
-    },
-    keys = {
-      {
-        '<leader>o',
-        '<cmd>Navbuddy <cr>',
-        desc = 'Navbuddy',
-      },
-    },
-  },
-  {
     'dundalek/lazy-lsp.nvim',
     enabled = true,
     dependencies = {
@@ -182,8 +135,8 @@ return {
           },
         },
       }
-      local on_attach = function(client, bufnr)
-        -- client.server_capabilities.semanticTokensProvider = nil -- FIXME: sometimes errs in lua files
+      require('lspconfig').util.default_config.on_init = function(client, _)
+        client.server_capabilities.semanticTokensProvider = nil
       end
 
       -- TODO: add inlay hints and code lens
@@ -210,7 +163,6 @@ return {
           flags = {
             debounce_text_changes = 150,
           },
-          on_attach = on_attach,
         },
         -- Override config for specific servers that will passed down to lspconfig setup.
         -- Note that the default_config will be merged with this specific configuration so you don't need to specify everything twice.

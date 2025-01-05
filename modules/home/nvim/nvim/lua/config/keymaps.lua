@@ -3,7 +3,6 @@ vim.keymap.set('i', '<c-h>', '<c-g>u<c-h>')
 vim.keymap.set('i', '<c-j>', '<C-]><C-G>u<c-j>')
 vim.keymap.set('i', '<c-b>', '<c-o>b')
 vim.keymap.set('i', '<c-c>', '<Esc>')
-vim.keymap.set('i', '<c-l>', '<Esc>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- vim.keymap.set('n', '<leader>n', function()

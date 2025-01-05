@@ -6,8 +6,22 @@ return {
       local fzf = require 'fzf-lua'
       fzf.setup {
         fzf_colors = {
+          true, -- inherit fzf colors that aren't specified below from
+          -- the auto-generated theme similar to `fzf_colors=true`
           ['gutter'] = '-1',
-          ['scrollbar'] = { 'bg', { 'Comment', 'Normal' }, 'bold', 'underline' },
+          ['scrollbar'] = { 'fg', { 'SignColumn', 'Normal' }, 'bold' },
+          ['fg'] = { 'fg', 'CursorLine' },
+          ['bg'] = { 'bg', 'Normal' },
+          ['hl'] = { 'fg', 'Statement' },
+          ['fg+'] = { 'fg', 'Normal' },
+          ['bg+'] = { 'bg', { 'CursorLine', 'Normal' } },
+          ['hl+'] = { 'fg', 'Statement' },
+          ['info'] = { 'fg', 'PreProc' },
+          ['prompt'] = { 'fg', 'Conditional' },
+          ['pointer'] = { 'fg', 'Exception' },
+          ['marker'] = { 'fg', 'Keyword' },
+          ['spinner'] = { 'fg', 'Label' },
+          ['header'] = { 'fg', 'Comment' },
         },
         winopts = {
           -- fullscreen=true,
@@ -15,7 +29,7 @@ return {
           width = 1,
           -- split = 'below new',
           border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-          backdrop = 0,
+          backdrop = 100,
         },
         previewer = {
           border = 'noborder',

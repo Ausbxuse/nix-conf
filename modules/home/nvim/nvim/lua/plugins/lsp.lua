@@ -1,7 +1,3 @@
---[[ local words = {}
-for word in io.open(vim.fn.stdpath 'config' .. '/nvim/spell/en.utf-8.add', 'r'):lines() do
-	table.insert(words, word)
-end ]]
 return {
   {
     'folke/lazydev.nvim',
@@ -56,7 +52,7 @@ return {
       {
         '<leader>o',
         '<cmd>Navbuddy <cr>',
-        desc = 'Symbols (Trouble)',
+        desc = 'Navbuddy',
       },
     },
   },
@@ -65,13 +61,12 @@ return {
     enabled = true,
     dependencies = {
       'neovim/nvim-lspconfig',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/nvim-cmp',
+      'Saghen/blink.cmp',
     },
     config = function()
       -- Customize the LSP signature help window
       local lspconfig_defaults = require('lspconfig').util.default_config
-      lspconfig_defaults.capabilities = vim.tbl_deep_extend('force', lspconfig_defaults.capabilities, require('cmp_nvim_lsp').default_capabilities())
+      lspconfig_defaults.capabilities = require('blink.cmp').get_lsp_capabilities(lspconfig_defaults.capabilities)
       local fzf = require 'fzf-lua'
 
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -169,7 +164,7 @@ return {
 
       vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single', max_width = 60, max_height = 40 })
 
-      --[[ vim.diagnostic.config = {
+      vim.diagnostic.config = {
         underline = true,
         update_in_insert = false,
         virtual_text = {
@@ -186,51 +181,9 @@ return {
             [vim.diagnostic.severity.INFO] = ' ',
           },
         },
-      } ]]
+      }
       local on_attach = function(client, bufnr)
-        client.server_capabilities.semanticTokensProvider = nil
-        --[[ vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-				-- Preserve the original 'notify' method if it hasn't been done already
-				if not client._original_notify then
-					client._original_notify = client.notify
-
-					-- Override the 'notify' method
-					client.notify = function(method, params)
-						-- Check if we are supposed to suppress notifications
-						if client._suppress_notifications then
-							return -- Skip sending notifications
-						else
-							-- Call the original 'notify' method if not suppressed
-							client._original_notify(method, params)
-						end
-					end
-				end
-
-				-- Autocommand to suppress notifications in insert mode
-				vim.api.nvim_create_autocmd({ 'BufEnter', 'InsertEnter' }, {
-					buffer = bufnr,
-					callback = function()
-						client._suppress_notifications = true
-					end,
-				})
-
-				-- Autocommand to allow notifications upon leaving insert mode
-				vim.api.nvim_create_autocmd('InsertLeave', {
-					buffer = bufnr,
-					callback = function()
-						client._suppress_notifications = false
-						local text = table.concat(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false), '\n')
-						local params = {
-							textDocument = {
-								uri = vim.uri_from_bufnr(bufnr),
-								version = 0, -- You might need to manage version numbers if your server requires it
-							},
-							contentChanges = { { text = text } },
-						}
-						-- Notify the server about the change
-						client._original_notify('textDocument/didChange', params)
-					end,
-				}) ]]
+        -- client.server_capabilities.semanticTokensProvider = nil -- FIXME: sometimes errs in lua files
       end
 
       -- TODO: add inlay hints and code lens
@@ -258,7 +211,6 @@ return {
             debounce_text_changes = 150,
           },
           on_attach = on_attach,
-          -- capabilities = capabilities,
         },
         -- Override config for specific servers that will passed down to lspconfig setup.
         -- Note that the default_config will be merged with this specific configuration so you don't need to specify everything twice.

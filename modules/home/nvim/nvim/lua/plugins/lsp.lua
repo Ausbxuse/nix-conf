@@ -117,7 +117,7 @@ return {
 
       vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single', max_width = 60, max_height = 40 })
 
-      vim.diagnostic.config = {
+      vim.diagnostic.config {
         underline = true,
         update_in_insert = false,
         virtual_text = {
@@ -127,12 +127,10 @@ return {
         },
         severity_sort = true,
         signs = {
-          text = {
-            [vim.diagnostic.severity.ERROR] = ' ',
-            [vim.diagnostic.severity.WARN] = ' ',
-            [vim.diagnostic.severity.HINT] = ' ',
-            [vim.diagnostic.severity.INFO] = ' ',
-          },
+          [vim.diagnostic.severity.ERROR] = '',
+          [vim.diagnostic.severity.WARN] = '',
+          [vim.diagnostic.severity.HINT] = '',
+          [vim.diagnostic.severity.INFO] = '',
         },
       }
       require('lspconfig').util.default_config.on_init = function(client, _)

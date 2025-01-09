@@ -1,6 +1,14 @@
 -- See `:help gitsigns` to understand what the configuration keys do
 return {
-  'tpope/vim-fugitive',
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
+      'ibhagwan/fzf-lua', -- optional
+    },
+    config = true,
+  },
   {
     'lewis6991/gitsigns.nvim',
     opts = {

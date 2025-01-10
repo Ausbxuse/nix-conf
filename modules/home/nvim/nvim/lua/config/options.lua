@@ -3,12 +3,9 @@ local home = vim.fn.expand '$HOME'
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.schedule(function() -- Schedule decreases startup time,
-  opt.clipboard = 'unnamedplus'
-end)
 
 local default_options = {
-  laststatus = 2, -- global statusline
+  clipboard = 'unnamedplus',
   statusline = '%f %m %r %= %k %S (%l:%L)',
   spellfile = home .. '/.config/nvim/spell/en.utf-8.add',
   number = true,
@@ -18,34 +15,23 @@ local default_options = {
   ignorecase = true,
   smartcase = true,
   signcolumn = 'yes',
-  -- updatetime = 250,
-  -- timeoutlen = 300,
+  updatetime = 250,
+  timeoutlen = 300,
   splitright = true,
   splitbelow = true,
   list = true,
   listchars = { tab = '  ', trail = '·', nbsp = '␣' },
-  -- Preview substitutions live, as you type!,
-  inccommand = 'nosplit',
   cursorline = true,
   scrolloff = 10,
   fillchars = 'eob: ',
-  backup = false, -- creates a backup file
-  cmdheight = 1, -- more space in the neovim command line for displaying messages
-  completeopt = { 'menuone', 'noselect' },
-  -- conceallevel = 0, -- so that `` is visible in markdown files
-  fileencoding = 'utf-8', -- the encoding written to a file
-  -- foldmethod = "expr", -- folding, set to "expr" for treesitter based folding
-  -- foldexpr = "nvim_treesitter#foldexpr()", -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
-  -- foldminlines       = 5,
+  foldmethod = 'expr',
+  foldexpr = 'nvim_treesitter#foldexpr()',
   foldlevel = 999,
-  guifont = 'JetBrains Mono:h10', -- the font used in graphical neovim applications
   hidden = true, -- required to keep multiple buffers and open multiple buffers
-  hlsearch = true, -- highlight all matches on previous search pattern
   pumheight = 10, -- pop up menu height
   showtabline = 0, -- always show tabs
   swapfile = false, -- creates a swapfile
   termguicolors = true, -- set term gui colors (most terminals support this)
-  title = true, -- set the title of window to the value of the titlestring
   undodir = home .. '/.cache/nvim/undo', -- set an undo directory
   writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
   expandtab = true, -- convert tabs to spaces
@@ -53,18 +39,13 @@ local default_options = {
   tabstop = 2, -- insert 2 spaces for a tab
   numberwidth = 4, -- set number column width to 2 {default 4}
   wrap = true, -- display long lines with wrap
-  wrapmargin = 0,
   linebreak = true,
   spell = false,
-  spelllang = 'en',
   sidescrolloff = 8,
-  pumblend = 20,
-  winblend = 20, -- keep notify transparent
-  textwidth = 0,
+  pumblend = 10,
+  winblend = 10, -- keep notify transparent
   colorcolumn = '80', -- fixes indentline for now
 }
-
----  SETTINGS  ---
 
 opt.shortmess:append 'c'
 opt.iskeyword:append '-'

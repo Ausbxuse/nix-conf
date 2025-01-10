@@ -1,6 +1,3 @@
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -12,15 +9,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 _G.auto_insert_checkbox = function()
   local current_line = vim.api.nvim_get_current_line()
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-  -- Capture the leading whitespace and the checkbox pattern
-  local indent, checkbox = string.match(current_line, '^(%s*)(%-%s*%[%s%])')
-  if checkbox and col == #vim.api.nvim_get_current_line() then
-    -- If a checkbox is found, insert a new line with the same indentation followed by the checkbox
+  local indent, checkbox = string.match(current_line, '^(%s*)(%-%s*%[[~x%s]%])')
+  local dash_indent, dash = string.match(current_line, '^(%s*)(%-%s*)')
+  if checkbox and col == #current_line then
     vim.api.nvim_put({ '' }, 'l', true, false)
     local new_line = indent .. '- [ ] '
     vim.api.nvim_put({ new_line }, 'c', true, true)
+  elseif dash and col == #current_line then
+    vim.api.nvim_put({ '' }, 'l', true, false)
+    local new_line = dash_indent .. '- '
+    vim.api.nvim_put({ new_line }, 'c', true, true)
   else
-    -- If no checkbox, handle as a normal Enter by splitting at the cursor position
     local before_cursor = current_line:sub(1, col)
     local after_cursor = current_line:sub(col + 1)
 
@@ -61,10 +60,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
   end,
 })
 
-vim.g.netrw_banner = 0
-vim.g.netrw_sizestyle = 'h'
 vim.cmd [[
-" save last position in file
     autocmd BufReadPost * if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'  |   exe "normal! g`\""  | endif
 		autocmd filetype netrw nmap <buffer> h -
 		autocmd filetype netrw nmap <buffer> l <CR>

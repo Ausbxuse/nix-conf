@@ -62,8 +62,6 @@ return {
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           map('gs', vim.lsp.buf.signature_help, 'Signature [H]elp')
-          map('<C-p>', vim.diagnostic.goto_prev, 'LSP diagnostic Prev')
-          map('<C-n>', vim.diagnostic.goto_next, 'LSP diagnostic Next')
           vim.keymap.set('i', '<c-s>', vim.lsp.buf.signature_help)
 
           -- The following two autocommands are used to highlight references of the

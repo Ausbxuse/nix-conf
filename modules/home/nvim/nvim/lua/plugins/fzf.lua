@@ -16,6 +16,9 @@ return {
           width = 1,
           border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
           backdrop = 100,
+          preview = {
+            border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+          },
         },
         previewer = {
           border = 'noborder',

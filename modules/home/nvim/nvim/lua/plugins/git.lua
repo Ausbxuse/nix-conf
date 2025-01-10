@@ -8,6 +8,16 @@ return {
       'ibhagwan/fzf-lua', -- optional
     },
     config = true,
+    keys = {
+      {
+        '<leader>gg',
+        function()
+          vim.cmd [[Neogit]]
+        end,
+        mode = '',
+        desc = '[G]it [G]it',
+      },
+    },
   },
   {
     'lewis6991/gitsigns.nvim',

@@ -9,22 +9,17 @@ end)
 
 local default_options = {
   laststatus = 2, -- global statusline
-  statusline = '%f %m %r %=%l/%L',
-  showcmd = false,
+  statusline = '%f %m %r %= %k %S (%l:%L)',
   spellfile = home .. '/.config/nvim/spell/en.utf-8.add',
   number = true,
   relativenumber = true,
-  mouse = 'a',
-  showmode = false,
   breakindent = true,
   undofile = true,
   ignorecase = true,
   smartcase = true,
   signcolumn = 'yes',
-  updatetime = 250,
-  -- Decrease mapped sequence wait time,
-  -- Displays which-key popup sooner,
-  timeoutlen = 300,
+  -- updatetime = 250,
+  -- timeoutlen = 300,
   splitright = true,
   splitbelow = true,
   list = true,
@@ -50,9 +45,7 @@ local default_options = {
   showtabline = 0, -- always show tabs
   swapfile = false, -- creates a swapfile
   termguicolors = true, -- set term gui colors (most terminals support this)
-  -- timeoutlen = 500, -- time to wait for a mapped sequence to complete (in milliseconds)
   title = true, -- set the title of window to the value of the titlestring
-  -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
   undodir = home .. '/.cache/nvim/undo', -- set an undo directory
   writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
   expandtab = true, -- convert tabs to spaces
@@ -68,8 +61,8 @@ local default_options = {
   pumblend = 20,
   winblend = 20, -- keep notify transparent
   textwidth = 0,
-  colorcolumn = '', -- fixes indentline for now
-} ---  VIM ONLY COMMANDS  ---cmd "filetype plugin on"cmd('let &titleold="' .. TERMINAL .. '"')cmd "set inccommand=split"cmd "set iskeyword+=-"
+  colorcolumn = '80', -- fixes indentline for now
+}
 
 ---  SETTINGS  ---
 

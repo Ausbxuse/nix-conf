@@ -50,16 +50,6 @@ return {
   },
   { 'folke/zen-mode.nvim' },
   {
-    'folke/which-key.nvim',
-    event = 'VimEnter',
-    opts = {
-      icons = {
-        mappings = true,
-        keys = {},
-      },
-    },
-  },
-  {
     'brenoprata10/nvim-highlight-colors',
     config = function()
       require('nvim-highlight-colors').setup {

@@ -29,6 +29,9 @@ return {
             ['ctrl-g'] = false,
           },
         },
+        keymaps = {
+          winopts = { preview = { layout = 'horizontal' } },
+        },
         oldfiles = {
           previewer = false,
         },

@@ -44,7 +44,7 @@ local default_options = {
   sidescrolloff = 8,
   pumblend = 10,
   winblend = 10, -- keep notify transparent
-  colorcolumn = '80', -- fixes indentline for now
+  colorcolumn = '', -- fixes indentline for now
 }
 
 opt.shortmess:append 'c'

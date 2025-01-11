@@ -51,7 +51,6 @@ _G.auto_check_checkbox = function()
   end
 end
 
--- Set up the autocmd
 vim.api.nvim_create_autocmd('BufEnter', {
   pattern = '*.md',
   callback = function()
@@ -62,12 +61,4 @@ vim.api.nvim_create_autocmd('BufEnter', {
 
 vim.cmd [[
     autocmd BufReadPost * if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'  |   exe "normal! g`\""  | endif
-		autocmd filetype netrw nmap <buffer> h -
-		autocmd filetype netrw nmap <buffer> l <CR>
-		autocmd filetype netrw nmap <buffer> a %
-		autocmd filetype netrw nmap <buffer> A %
-		autocmd filetype netrw nmap <buffer> r R
-		autocmd filetype netrw nmap <buffer> . gh
-		autocmd filetype netrw nmap <buffer> q <cmd>bd<cr>
-		let g:netrw_list_hide= '.*\.swp$,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
 ]]

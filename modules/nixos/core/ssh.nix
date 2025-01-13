@@ -5,4 +5,5 @@
       settings.PasswordAuthentication = true;
     };
   };
+  programs.ssh.askPassword = "";
 }

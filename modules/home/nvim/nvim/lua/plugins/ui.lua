@@ -35,7 +35,7 @@ return {
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = { 'ruby' },
-        disable = { 'gitcommit', 'latex' },
+        disable = { 'gitcommit', 'latex', 'tmux' },
         language_tree = true,
         is_supported = function()
           if vim.fn.strwidth(vim.fn.getline '.') > 300 or vim.fn.getfsize(vim.fn.expand '%') > 1024 * 1024 then

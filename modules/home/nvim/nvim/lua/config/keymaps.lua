@@ -1,6 +1,3 @@
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-vim.keymap.set('i', '<c-h>', '<c-g>u<c-h>')
-vim.keymap.set('i', '<c-j>', '<C-]><C-G>u<c-j>')
 vim.keymap.set('i', '<c-c>', '<Esc>')
 vim.keymap.set('n', '<Esc>', '<cmd>nohl<cr>')
 vim.keymap.set('n', 'n', 'nzzzv')
@@ -29,3 +26,26 @@ function Toggle_window()
 end
 
 vim.keymap.set('n', '<leader>=', ':silent lua Toggle_window()<CR>', { desc = 'Toggle Window' })
+
+local comment_styles = {
+  lua = { start = '-- stylua: ignore start', stop = '-- stylua: ignore end' },
+  python = { start = '# fmt: off', stop = '# fmt: on' },
+  markdown = { start = '<!-- prettier-ignore-start -->', stop = '<!-- prettier-ignore-end -->' },
+  javascript = { start = '// prettier-ignore-start', stop = '// prettier-ignore-end' },
+  typescript = { start = '// prettier-ignore-start', stop = '// prettier-ignore-end' },
+}
+
+function Add_formatting_comments()
+  local ft = vim.bo.filetype
+  local style = comment_styles[ft]
+  if not style then
+    vim.notify('No comment style defined for filetype: ' .. ft, vim.log.levels.WARN)
+    return
+  end
+
+  local cursor_line = vim.fn.line '.'
+  vim.api.nvim_buf_set_lines(0, cursor_line - 1, cursor_line - 1, false, { style.start })
+  vim.api.nvim_buf_set_lines(0, cursor_line, cursor_line, false, { style.stop })
+end
+
+vim.keymap.set('n', '<leader>df', Add_formatting_comments, { noremap = true, silent = true, desc = 'Add disable-formatting comments around current line' })

@@ -56,6 +56,9 @@ vim.api.nvim_create_autocmd('BufEnter', {
   callback = function()
     vim.api.nvim_buf_set_keymap(0, 'i', '<CR>', '<cmd>lua _G.auto_insert_checkbox()<CR>', { noremap = true, silent = true })
     vim.api.nvim_buf_set_keymap(0, 'n', '<CR>', '<cmd>lua _G.auto_check_checkbox()<CR>', { noremap = true, silent = true })
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.expandtab = true
   end,
 })
 

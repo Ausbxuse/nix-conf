@@ -11,6 +11,7 @@
     ]
     ++ [
       # tools
+      devenv
       sshfs
       just
       gtop

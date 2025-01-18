@@ -22,6 +22,7 @@
     enableZshIntegration = true;
     fileWidgetCommand = "fd --exclude .git -H --max-depth 10 -t f -t l";
     changeDirWidgetCommand = "fd --exclude .git -H --max-depth 12 -t d";
+    defaultOptions = "--reverse";
   };
 
   programs.zoxide = {
@@ -124,7 +125,7 @@
       pp = "cd $HOME/Pictures && ls -a";
       usc = "cd $HOME/Documents/USC";
       sc = "cd $HOME/.local/bin && ls -a";
-      src = "cd $HOME/.local/src/public && ls -a";
+      src = "cd $HOME/src/public && ls -a";
       vv = "cd $HOME/Videos && ls -a";
       bf = "$EDITOR $HOME/.config/shell/bm-files";
       bd = "$EDITOR $HOME/.config/shell/bm-dirs";

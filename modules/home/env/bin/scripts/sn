@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+folders=(~/src/public ~/src/school ~/Research ~/.config/ ~/src/public/nix-conf/modules/home ~/Documents)
+
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(find ~/src/public ~/Research ~/.config/ ~/src/public/nix-conf/modules/home -mindepth 1 -maxdepth 1 -type d | fzf)
+  selected=$(fd . --type d --exact-depth 1 "${folders[@]}" | fzf --reverse)
 fi
 
 if [[ -z $selected ]]; then

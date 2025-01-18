@@ -53,6 +53,9 @@ bindkey -M vicmd '^g' fzf-cd-widget
 bindkey -M viins '^g' fzf-cd-widget
 bindkey -M vicmd '^f' fzf-file-widget
 bindkey -M viins '^f' fzf-file-widget
+bindkey -M viins '^w' backward-kill-word
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 function jj() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

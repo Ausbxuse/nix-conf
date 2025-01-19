@@ -18,7 +18,7 @@
   environment.systemPackages = with pkgs; [
     capitaine-cursors
     xsel
-    wl-clipboard
+    wl-clipboard-x11
   ];
   environment.gnome.excludePackages = with pkgs; [
     mutter

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-folders=(~/src/public ~/src/school ~/Research ~/.config/ ~/src/public/nix-conf/modules/home ~/Documents)
+folders=(~/src/public ~/src/school ~/Research ~/src/public/nix-conf/modules/home ~/Documents)
 
 if [[ $# -eq 1 ]]; then
   selected=$1

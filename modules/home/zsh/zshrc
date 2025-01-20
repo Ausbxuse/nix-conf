@@ -3,13 +3,8 @@ hash -d cf=$HOME/.config
 hash -d D=$HOME/Downloads
 hash -d d=$HOME/Documents
 hash -d dt=$HOME/.local/share
-hash -d h=$HOME
-hash -d m=$HOME/Music
-hash -d mn=/mnt
-hash -d pp=$HOME/Pictures
+hash -d m=$HOME/Media
 hash -d sc=$HOME/.local/bin
-hash -d src=$HOME/.local/src
-hash -d vv=$HOME/Videos
 
 source "$HOME/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 #source "$HOME/.config/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"

@@ -18,5 +18,6 @@
   #### extra packages
   home.packages = with pkgs; [
     xournalpp
+    wl-clipboard
   ];
 }

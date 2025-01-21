@@ -20,6 +20,9 @@ return {
             border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
           },
         },
+        buffers = {
+          mru = true,
+        },
         previewer = {
           border = 'noborder',
         },

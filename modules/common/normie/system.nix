@@ -18,6 +18,15 @@
     distrobox
   ];
 
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [
+      pinyin
+      libpinyin
+      typing-booster-unwrapped
+    ];
+  };
+
   boot.binfmt.emulatedSystems = ["aarch64-linux"]; # for distrobox to emulate arm
   virtualisation.podman = {
     enable = true;

@@ -16,7 +16,7 @@
 
     ../../../home/gnome
     # ../../../home/hyprland
-    ../../../home/fcitx5
+    # ../../../home/fcitx5
 
     ../../../home/autostart
     ../../../home/applications

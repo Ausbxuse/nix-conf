@@ -5,12 +5,12 @@ return {
     event = 'VeryLazy',
     keys = {
       {
-        '<leader>N',
+        '<leader>n',
         '<cmd>Yazi<cr>',
         desc = 'Open yazi at the current file',
       },
       {
-        '<leader>n',
+        '<leader>N',
         '<cmd>Yazi cwd<cr>',
         desc = "Open the file manager in nvim's working directory",
       },

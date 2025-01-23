@@ -110,7 +110,6 @@
       #ref="shortcuts >/dev/null; source ${config.xdg.configHome}/shortcutrc ; source ${config.xdg.configHome}/zshnameddirrc" ;
       weath = "less -S ${config.xdg.cacheHome}/weatherreport";
       tmux = "tmux -f ${config.xdg.configHome}/tmux/tmux.conf attach -t main || tmux -f ${config.xdg.configHome}/tmux/tmux.conf new-session -s main";
-      lf = "yazi";
       cf = "cd $HOME/.config && ls -a";
       cac = "cd ${config.xdg.cacheHome} && ls -a";
       D = "cd $HOME/Downloads && ls -a";

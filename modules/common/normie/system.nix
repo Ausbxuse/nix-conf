@@ -21,7 +21,6 @@
   i18n.inputMethod = {
     enabled = "ibus";
     ibus.engines = with pkgs.ibus-engines; [
-      pinyin
       libpinyin
       typing-booster-unwrapped
     ];

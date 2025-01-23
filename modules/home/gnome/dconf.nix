@@ -76,9 +76,9 @@ with lib.hm.gvariant; {
     };
 
     "org/gnome/desktop/input-sources" = {
-      mru-sources = [(mkTuple ["xkb" "us"]) (mkTuple ["ibus" "pinyin"])];
+      mru-sources = [(mkTuple ["xkb" "us"]) (mkTuple ["ibus" "libpinyin"])];
       per-window = true;
-      sources = [(mkTuple ["xkb" "us"]) (mkTuple ["ibus" "pinyin"])];
+      sources = [(mkTuple ["xkb" "us"]) (mkTuple ["ibus" "libpinyin"])];
       xkb-options = ["terminate:ctrl_alt_bksp" "compose:rctrl" "lv3:menu_switch" "altwin:swap_lalt_lwin"];
     };
 

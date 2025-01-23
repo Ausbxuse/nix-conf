@@ -1,13 +1,11 @@
 local wezterm = require("wezterm")
 local config = {}
 
-config.use_ime = true
-config.xim_im_name = "fcitx"
 config.max_fps = 120
 
 config.font = wezterm.font_with_fallback({
 	{ family = "JetBrainsMono NF" },
-	{ family = "Source Han Sans TC Normal" },
+	{ family = "Source Han Sans" },
 })
 
 config.font_rules = {

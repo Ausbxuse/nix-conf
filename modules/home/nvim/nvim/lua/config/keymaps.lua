@@ -1,5 +1,7 @@
 vim.keymap.set('i', '<c-c>', '<Esc>')
 vim.keymap.set('n', '<Esc>', '<cmd>nohl<cr>')
+vim.keymap.set('n', 'j', 'gj')
+vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', '<c-d>', '<c-d>zz')
@@ -13,6 +15,17 @@ vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <cr>', { desc = 'Toggle U
 vim.keymap.set('x', 'K', ":move '<-2<CR>gv=gv")
 vim.keymap.set('x', 'J', ":move '>+1<CR>gv=gv")
 vim.keymap.set('x', 'p', 'P', { desc = 'Better paste' })
+
+local prefixes = "m'"
+local letters = 'abcdefghijklmnopqrstuvwxyz'
+for i = 1, #prefixes do
+  local prefix = prefixes:sub(i, i)
+  for j = 1, #letters do
+    local lower_letter = letters:sub(j, j)
+    local upper_letter = string.upper(lower_letter)
+    vim.keymap.set({ 'n', 'v' }, prefix .. lower_letter, prefix .. upper_letter, { desc = 'Mark ' .. upper_letter })
+  end
+end
 
 function Toggle_window()
   if vim.g.help_window_maximized then

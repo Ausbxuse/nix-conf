@@ -37,7 +37,7 @@ return {
           map('<leader>ws', fzf.lsp_live_workspace_symbols, '[W]orkspace [S]ymbols')
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
           map('K', vim.lsp.buf.hover, 'Loo[K]up')
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+          map('<leader>ca', fzf.lsp_code_actions, '[C]ode [A]ction', { 'n', 'x' })
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
           map('gs', vim.lsp.buf.signature_help, 'Signature [H]elp')
           vim.keymap.set('i', '<c-s>', vim.lsp.buf.signature_help)

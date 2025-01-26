@@ -11,8 +11,8 @@
   programs.hyprland.enable = true;
   programs.iio-hyprland.enable = true;
 
-  # services.gnome.tinysparql.enable = true;
-  services.gnome.tracker.enable = true;
+  services.gnome.tinysparql.enable = true;
+  # services.gnome.tracker.enable = true;
   services.gnome.sushi.enable = true;
 
   environment.systemPackages = with pkgs; [

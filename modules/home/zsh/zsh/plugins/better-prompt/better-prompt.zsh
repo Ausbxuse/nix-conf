@@ -58,7 +58,7 @@ prompt_command_execution_time() {
     fi
 
     # Customize the color and formatting here as needed
-    echo "${formatted_time}"
+    echo "(${formatted_time}) "
 }
 
 preexec() {
@@ -88,6 +88,6 @@ non_zero_return_value="%(0?..%F{1}%f)"
 
 PROMPT="%F{3}%n%F{2}@%F{6}%m%f:$truncated_path "
 
-RPROMPT='$background_jobs $non_zero_return_value %F{cyan}${vcs_info_msg_0_}%f %F{10}$(prompt_command_execution_time)'
+RPROMPT='$background_jobs $non_zero_return_value %F{cyan}${vcs_info_msg_0_}%f %F{10}$(prompt_command_execution_time)%F{8}%D{%H:%M:%S %m-%d}'
 zle_highlight=(default:bold)
 

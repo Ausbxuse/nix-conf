@@ -7,15 +7,15 @@
     # (nerdfonts.override {fonts = ["JetBrainsMono"];})
     nerd-fonts.jetbrains-mono
 
-    pinentry
+    # pinentry
     gnome-shell-extensions
     networkmanager-openvpn
-    gnome-extension-manager
+    # gnome-extension-manager
     gnome-tweaks
     gnomeExtensions.astra-monitor
-    gnomeExtensions.colortint
+    # gnomeExtensions.colortint
     gnomeExtensions.media-controls
-    gnomeExtensions.gnome-bedtime
+    # gnomeExtensions.gnome-bedtime
     gnomeExtensions.night-light-slider-updated
     gnomeExtensions.hide-cursor
     gnomeExtensions.unite
@@ -23,7 +23,7 @@
     gnomeExtensions.forge
     gnomeExtensions.gsconnect
     gnomeExtensions.caffeine
-    gnomeExtensions.coverflow-alt-tab
+    # gnomeExtensions.coverflow-alt-tab
     gnomeExtensions.color-picker
     gnomeExtensions.bluetooth-battery-meter
     gnomeExtensions.just-perfection

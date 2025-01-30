@@ -169,7 +169,7 @@ config.colors = {
 	quick_select_match_fg = { Color = "#dfdcd8" },
 }
 
-config.font_size = 12.0
+config.font_size = 10.0
 config.enable_tab_bar = false
 
 --[[ config.window_frame = {

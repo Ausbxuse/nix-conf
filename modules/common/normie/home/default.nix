@@ -7,6 +7,7 @@
     ../../../home/zathura
     ../../../home/firefox
     ../../../home/wezterm
+    ../../../home/ghostty
 
     ../../../home/zsh
     ../../../home/nvim

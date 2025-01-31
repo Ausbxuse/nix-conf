@@ -169,7 +169,7 @@ config.colors = {
 	quick_select_match_fg = { Color = "#dfdcd8" },
 }
 
-config.font_size = 10.0
+config.font_size = 12.0
 config.enable_tab_bar = false
 
 --[[ config.window_frame = {
@@ -195,7 +195,6 @@ config.enable_tab_bar = false
 } ]]
 
 config.window_background_opacity = 0.78
-config.front_end = "WebGpu"
 config.enable_wayland = false
 config.hide_mouse_cursor_when_typing = false
 

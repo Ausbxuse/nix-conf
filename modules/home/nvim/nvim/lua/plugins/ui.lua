@@ -50,13 +50,14 @@ return {
   },
   { 'folke/zen-mode.nvim' },
   {
-    'brenoprata10/nvim-highlight-colors',
-    config = function()
-      require('nvim-highlight-colors').setup {
-        enable_named_colors = false,
-        enable_short_hex = false,
-      }
-    end,
+    'catgoose/nvim-colorizer.lua',
+    event = 'VeryLazy',
+    opts = { -- set to setup table
+      lazy_load = true,
+      user_default_options = {
+        names = false,
+      },
+    },
   },
   {
     'ausbxuse/snappy.nvim',

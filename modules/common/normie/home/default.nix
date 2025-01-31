@@ -8,6 +8,7 @@
     ../../../home/firefox
     ../../../home/wezterm
     ../../../home/ghostty
+    ../../../home/alacritty
 
     ../../../home/zsh
     ../../../home/nvim

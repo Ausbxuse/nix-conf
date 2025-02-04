@@ -169,7 +169,7 @@ config.colors = {
 	quick_select_match_fg = { Color = "#dfdcd8" },
 }
 
-config.font_size = 12.0
+config.font_size = 11.0
 config.enable_tab_bar = false
 
 --[[ config.window_frame = {
@@ -194,8 +194,7 @@ config.enable_tab_bar = false
   inactive_titlebar_bg = '#333333',
 } ]]
 
-config.window_background_opacity = 0.78
-config.enable_wayland = false
+config.window_background_opacity = 0.70
 config.hide_mouse_cursor_when_typing = false
 
 -- In newer versions of wezterm, use the config_builder which will

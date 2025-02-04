@@ -16,18 +16,6 @@ return {
           end,
           draw = {
             columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind', gap = 1 } },
-            components = {
-              kind_icon = {
-                text = function(ctx)
-                  local icon = ctx.kind_icon
-                  return icon .. ctx.icon_gap
-                end,
-                highlight = function(ctx)
-                  local highlight = 'CmpKind' .. ctx.kind
-                  return highlight
-                end,
-              },
-            },
           },
         },
         ghost_text = {

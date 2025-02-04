@@ -1,3 +1,31 @@
+local function goto_buffer(n)
+  local buffers = {}
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.fn.buflisted(buf) == 1 then
+      table.insert(buffers, buf)
+    end
+  end
+  if n <= #buffers then
+    vim.api.nvim_set_current_buf(buffers[n])
+  end
+end
+
+vim.keymap.set('n', '<leader>q', function()
+  goto_buffer(1)
+end, { silent = true })
+vim.keymap.set('n', '<leader>w', function()
+  goto_buffer(2)
+end, { silent = true })
+vim.keymap.set('n', '<leader>e', function()
+  goto_buffer(3)
+end, { silent = true })
+vim.keymap.set('n', '<leader>r', function()
+  goto_buffer(4)
+end, { silent = true })
+vim.keymap.set('n', '<leader>t', function()
+  goto_buffer(5)
+end, { silent = true })
+
 vim.keymap.set('i', '<c-c>', '<Esc>')
 vim.keymap.set('n', '<Esc>', '<cmd>nohl<cr>')
 vim.keymap.set('n', 'n', 'nzzzv')

@@ -6,7 +6,7 @@ vim.g.maplocalleader = ' '
 
 local default_options = {
   clipboard = 'unnamedplus',
-  statusline = '%f %m %r %= %k %S <%n> (%l:%L)',
+  statusline = ' %f %m %r %= %k %S [%n] %l:%L ',
   spellfile = home .. '/.config/nvim/spell/en.utf-8.add',
   number = true,
   relativenumber = true,

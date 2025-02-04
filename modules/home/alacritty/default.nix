@@ -1,4 +1,11 @@
-{...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [
+    ueberzugpp
+  ];
   programs.alacritty = {
     enable = true;
     settings = {
@@ -55,13 +62,13 @@
         TERM = "xterm-256color";
       };
       font = {
-        size = 12;
+        size = 11;
         bold = {
-          family = "JetBrainsMono NF";
+          family = "JetBrainsMono Nerd Font";
           style = "Bold";
         };
         bold_italic = {
-          family = "JetBrainsMono NF";
+          family = "JetBrainsMono Nerd Font";
           style = "Bold Italic";
         };
         italic = {
@@ -69,7 +76,7 @@
           style = "Italic";
         };
         normal = {
-          family = "JetBrainsMono NF";
+          family = "JetBrainsMono Nerd Font";
           style = "Regular";
         };
         offset = {
@@ -127,7 +134,7 @@
       };
       window = {
         dynamic_padding = true;
-        opacity = 0.70;
+        opacity = 0.57;
         decorations = "None";
       };
       mouse = {
@@ -135,4 +142,8 @@
       };
     };
   };
+
+  home.activation.cleanFontCache = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.fontconfig}/bin/fc-cache -vr
+  '';
 }

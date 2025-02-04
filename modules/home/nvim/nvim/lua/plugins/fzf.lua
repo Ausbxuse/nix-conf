@@ -6,10 +6,17 @@ return {
       local fzf = require 'fzf-lua'
       fzf.setup {
         fzf_colors = {
-          true, -- inherit fzf colors that aren't specified below from
+          false, -- inherit fzf colors that aren't specified below from
           ['scrollbar'] = { 'fg', { 'SignColumn', 'Normal' }, 'bold' },
           ['prompt'] = { 'fg', 'Conditional' },
           ['marker'] = { 'fg', 'Keyword' },
+          ['fg'] = { 'fg', 'MsgArea' },
+          ['bg'] = { 'bg', 'SpecialKey' },
+          ['hl'] = { 'fg', 'Debug' },
+          ['fg+'] = { 'fg', 'Normal' },
+          ['bg+'] = { 'bg', { 'CursorLine', 'MsgArea' } },
+          ['hl+'] = { 'fg', 'Debug' },
+          ['info'] = { 'fg', 'PreProc' },
         },
         winopts = {
           height = 0.8,

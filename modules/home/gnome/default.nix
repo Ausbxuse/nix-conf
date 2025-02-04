@@ -26,7 +26,7 @@
     # gnomeExtensions.coverflow-alt-tab
     gnomeExtensions.color-picker
     gnomeExtensions.bluetooth-battery-meter
-    gnomeExtensions.just-perfection
+    # gnomeExtensions.just-perfection
     gnomeExtensions.status-area-horizontal-spacing
     gnomeExtensions.no-overview
     amberol

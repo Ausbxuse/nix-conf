@@ -98,7 +98,7 @@ with lib.hm.gvariant; {
       icon-theme = "Adwaita";
       locate-pointer = false;
       scaling-factor = mkUint32 1;
-      show-battery-percentage = false;
+      show-battery-percentage = true;
       text-scaling-factor = 1.0;
       toolbar-style = "text";
       toolkit-accessibility = false;
@@ -259,7 +259,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = lib.mkDefault {
       binding = "<Super>space";
-      command = "wezterm";
+      command = "alacritty";
       name = "Terminal";
     };
 
@@ -283,7 +283,7 @@ with lib.hm.gvariant; {
       command-history = ["lg" "xiccdf" "xiccd"];
       disable-user-extensions = false;
       disabled-extensions = ["light-style@gnome-shell-extensions.gcampax.github.com" "native-window-placement@gnome-shell-extensions.gcampax.github.com" "tiling-assistant@leleat-on-github" "Rounded_Corners@lennart-k" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "Vitals@CoreCoding.com" "netspeedsimplified@prateekmedia.extension" "apps-menu@gnome-shell-extensions.gcampax.github.com" "cronomix@zagortenay333" "gnomebedtime@ionutbortis.gmail.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "paperwm@paperwm.github.com" "rounded-window-corners@fxgn" "gtk4-ding@smedius.gitlab.com" "window-list@gnome-shell-extensions.gcampax.github.com"];
-      enabled-extensions = ["screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "kimpanel@kde.org" "gsconnect@andyholmes.github.io" "night-light-slider-updated@vilsbeg.codeberg.org" "CoverflowAltTab@palatis.blogspot.com" "color-picker@tuberry" "caffeine@patapon.info" "Bluetooth-Battery-Meter@maniacx.github.com" "hide-cursor@elcste.com" "just-perfection-desktop@just-perfection" "monitor@astraext.github.io" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "unite@hardpixel.eu" "mediacontrols@cliffniff.github.com" "dash-to-dock@micxgx.gmail.com" "status-area-horizontal-spacing@mathematical.coffee.gmail.com" "system-monitor-next@paradoxxx.zero.gmail.com" "forge@jmmaranan.com" "no-overview@fthx" "user-theme@gnome-shell-extensions.gcampax.github.com" "azwallpaper@azwallpaper.gitlab.com" "blur-my-shell@aunetx"];
+      enabled-extensions = ["screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "kimpanel@kde.org" "gsconnect@andyholmes.github.io" "night-light-slider-updated@vilsbeg.codeberg.org" "color-picker@tuberry" "caffeine@patapon.info" "Bluetooth-Battery-Meter@maniacx.github.com" "hide-cursor@elcste.com" "monitor@astraext.github.io" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "unite@hardpixel.eu" "mediacontrols@cliffniff.github.com" "system-monitor-next@paradoxxx.zero.gmail.com" "forge@jmmaranan.com" "no-overview@fthx" "user-theme@gnome-shell-extensions.gcampax.github.com" "azwallpaper@azwallpaper.gitlab.com" "blur-my-shell@aunetx"];
       favorite-apps = ["org.gnome.Settings.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Extensions.desktop" "org.gnome.Calendar.desktop" "firefox.desktop" "steam.desktop" "org.wezfurlong.wezterm.desktop" "com.github.xournalpp.xournalpp.desktop"];
       last-selected-power-profile = "power-saver";
       looking-glass-history = ["Flags"];
@@ -364,23 +364,9 @@ with lib.hm.gvariant; {
       slideshow-wallpaper-queue = ["\34183\23572\33673\29305\&1.png" "deer.jpg" "\20113\38544\32321\26143\&2.png" "\24052\23665\22812\38632.png"];
     };
 
-    "org/gnome/shell/extensions/bedtime-mode" = {
-      automatic-schedule = true;
-      bedtime-mode-active = true;
-      color-tone-factor = 75;
-      color-tone-preset = "grayscale";
-      ondemand-button-bar-manual-position = true;
-      ondemand-button-bar-onoff-indicator = true;
-      ondemand-button-bar-position-value = 7;
-      ondemand-button-bar-scroll-enabled = true;
-      ondemand-button-location = "menu";
-      ondemand-button-visibility = "active-schedule";
-      schedule-start-hours = 23;
-    };
-
     "org/gnome/shell/extensions/blur-my-shell" = {
       brightness = 0.79;
-      hacks-level = 0;
+      hacks-level = 1;
       noise-amount = 0.57;
       noise-lightness = 1.01;
       settings-version = 2;
@@ -517,37 +503,6 @@ with lib.hm.gvariant; {
       window-toggle-always-float = ["<Shift><Super>c"];
       window-toggle-float = ["<Shift><Super>f"];
       workspace-active-tile-toggle = [];
-    };
-
-    "org/gnome/shell/extensions/just-perfection" = {
-      accessibility-menu = true;
-      background-menu = true;
-      clock-menu-position = 1;
-      clock-menu-position-offset = 20;
-      controls-manager-spacing-size = 0;
-      dash = true;
-      dash-icon-size = 0;
-      double-super-to-appgrid = true;
-      notification-banner-position = 0;
-      osd = true;
-      overlay-key = true;
-      panel = true;
-      panel-in-overview = true;
-      ripple-box = true;
-      search = true;
-      show-apps-button = true;
-      startup-status = 1;
-      theme = false;
-      window-demands-attention-focus = false;
-      window-picker-icon = true;
-      window-preview-caption = true;
-      window-preview-close-button = true;
-      workspace = true;
-      workspace-background-corner-size = 0;
-      workspace-popup = true;
-      workspace-switcher-should-show = false;
-      workspaces-in-app-grid = true;
-      world-clock = true;
     };
 
     "org/gnome/shell/extensions/mediacontrols" = {

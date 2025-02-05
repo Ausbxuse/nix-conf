@@ -1,11 +1,6 @@
 local function goto_buffer(n)
-  local buffers = {}
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.fn.buflisted(buf) == 1 then
-      table.insert(buffers, buf)
-    end
-  end
-  if n <= #buffers then
+  local buffers = vim.fn.filter(vim.api.nvim_list_bufs(), 'buflisted(v:val)')
+  if n > 0 and n <= #buffers then
     vim.api.nvim_set_current_buf(buffers[n])
   end
 end
@@ -35,7 +30,7 @@ vim.keymap.set('n', '<c-u>', '<c-u>zz')
 vim.keymap.set('n', 'H', '<cmd>bp<cr>')
 vim.keymap.set('n', 'L', '<cmd>bn<cr>')
 vim.keymap.set('n', 'J', 'mzJ`z')
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfix [l]ist' })
 vim.keymap.set('n', '<leader><tab>', '<C-^>', { desc = 'Alt-tab prev buffer' })
 vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <cr>', { desc = 'Toggle Undotree' })
 vim.keymap.set('x', 'K', ":move '<-2<CR>gv=gv")

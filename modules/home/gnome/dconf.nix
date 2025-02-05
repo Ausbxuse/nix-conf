@@ -259,7 +259,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = lib.mkDefault {
       binding = "<Super>space";
-      command = "alacritty";
+      command = "ghostty";
       name = "Terminal";
     };
 
@@ -385,7 +385,7 @@ with lib.hm.gvariant; {
       enable-all = false;
       opacity = 255;
       sigma = 60;
-      whitelist = ["Alacritty" "org.wezfurlong.wezterm"];
+      whitelist = ["Alacritty" "org.wezfurlong.wezterm" "com.mitchellh.ghostty"];
     };
 
     "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {

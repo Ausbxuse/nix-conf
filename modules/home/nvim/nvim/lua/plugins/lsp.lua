@@ -1,3 +1,16 @@
+-- Adds custom words to lsp
+local words = {}
+local spellfile = vim.fn.stdpath 'config' .. '/spell/en.utf-8.add'
+local file = io.open(spellfile, 'r')
+if file then
+  for line in file:lines() do
+    table.insert(words, line)
+  end
+  file:close()
+else
+  print('Error: Unable to open spell file at ' .. spellfile)
+end
+
 return {
   {
     'folke/lazydev.nvim',
@@ -74,13 +87,13 @@ return {
         end,
       })
 
-      vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
-      vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
-      vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
-      vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
+      vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError', numhl = 'DiagnosticSignError' })
+      vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn', numhl = 'DiagnosticSignWarn' })
+      vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo', numhl = 'DiagnosticSignInfo' })
+      vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint', numhl = 'DiagnosticSignHint' })
 
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single', max_width = 60, max_height = 40 })
-      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single', max_width = 60, max_height = 40 })
+      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'none', max_width = 60, max_height = 40 })
+      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'none', max_width = 60, max_height = 40 })
 
       vim.diagnostic.config {
         underline = true,
@@ -92,10 +105,21 @@ return {
         },
         severity_sort = true,
         signs = {
-          [vim.diagnostic.severity.ERROR] = '',
-          [vim.diagnostic.severity.WARN] = '',
-          [vim.diagnostic.severity.HINT] = '',
-          [vim.diagnostic.severity.INFO] = '',
+          -- [vim.diagnostic.severity.ERROR] = '',
+          -- [vim.diagnostic.severity.WARN] = '',
+          -- [vim.diagnostic.severity.HINT] = '',
+          -- [vim.diagnostic.severity.INFO] = '',
+          [vim.diagnostic.severity.ERROR] = '',
+          [vim.diagnostic.severity.WARN] = '',
+          [vim.diagnostic.severity.HINT] = '',
+          [vim.diagnostic.severity.INFO] = '',
+        },
+
+        numhl = {
+          [vim.diagnostic.severity.WARN] = 'DiagnosticSignError',
+          [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+          [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
+          [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
         },
       }
       require('lspconfig').util.default_config.on_init = function(client, _)
@@ -186,9 +210,9 @@ return {
                 completion = {
                   callSnippet = 'Replace',
                 },
-                --[[ dictionary = {
-									['en-US'] = words,
-								}, ]]
+                dictionary = {
+                  ['en-US'] = words,
+                },
               },
             },
           },

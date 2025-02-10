@@ -1,36 +1,30 @@
 local function goto_buffer(n)
-  local buffers = vim.fn.filter(vim.api.nvim_list_bufs(), 'buflisted(v:val)')
-  if n > 0 and n <= #buffers then
-    vim.api.nvim_set_current_buf(buffers[n])
+  local bufs = vim.fn.getbufinfo { buflisted = 1 }
+  if bufs[n] then
+    vim.api.nvim_cmd({ cmd = 'buffer', args = { bufs[n].bufnr } }, {})
+  else
+    vim.notify 'No such buffer'
   end
 end
 
-vim.keymap.set('n', '<leader>q', function()
-  goto_buffer(1)
-end, { silent = true })
-vim.keymap.set('n', '<leader>w', function()
-  goto_buffer(2)
-end, { silent = true })
-vim.keymap.set('n', '<leader>e', function()
-  goto_buffer(3)
-end, { silent = true })
-vim.keymap.set('n', '<leader>r', function()
-  goto_buffer(4)
-end, { silent = true })
-vim.keymap.set('n', '<leader>t', function()
-  goto_buffer(5)
-end, { silent = true })
+local keys = { 'q', 'w', 'e', 'r', 't' }
+for i, key in ipairs(keys) do
+  vim.keymap.set('n', '<leader>' .. key, function()
+    goto_buffer(i)
+  end, { silent = true })
+end
 
 vim.keymap.set('i', '<c-c>', '<Esc>')
 vim.keymap.set('n', '<Esc>', '<cmd>nohl<cr>')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('n', '<leader>b', '<cmd>ls<cr>:b ')
 vim.keymap.set('n', '<c-d>', '<c-d>zz')
 vim.keymap.set('n', '<c-u>', '<c-u>zz')
 vim.keymap.set('n', 'H', '<cmd>bp<cr>')
 vim.keymap.set('n', 'L', '<cmd>bn<cr>')
 vim.keymap.set('n', 'J', 'mzJ`z')
-vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfix [l]ist' })
+vim.keymap.set('n', '<leader>lql', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfix [l]ist' })
 vim.keymap.set('n', '<leader><tab>', '<C-^>', { desc = 'Alt-tab prev buffer' })
 vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <cr>', { desc = 'Toggle Undotree' })
 vim.keymap.set('x', 'K', ":move '<-2<CR>gv=gv")

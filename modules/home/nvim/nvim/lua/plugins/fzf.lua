@@ -30,6 +30,11 @@ return {
         buffers = {
           previewer = false,
           mru = true,
+          winopts = {
+            -- height = 0.4,
+            row = 1,
+            col = 0,
+          },
         },
         previewer = {
           border = 'noborder',

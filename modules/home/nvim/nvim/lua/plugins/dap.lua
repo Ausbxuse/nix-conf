@@ -47,7 +47,7 @@ return {
       end
 
       vim.fn.sign_define('DapBreakpoint', {
-        text = '', -- nerdfonts icon here
+        text = '●', -- nerdfonts icon here
         texthl = 'Debug',
         -- linehl = "DapBreakpoint",
         -- numhl = "DapBreakpoint",

@@ -46,7 +46,7 @@ return {
           map('gr', fzf.lsp_references, '[G]oto [R]eferences')
           map('gi', fzf.lsp_implementations, '[G]oto [I]mplementation')
           map('<leader>td', fzf.lsp_typedefs, 'Type [D]efinition')
-          map('<leader>ds', fzf.lsp_document_symbols, '[D]ocument [S]ymbols')
+          map('<leader>ls', fzf.lsp_document_symbols, '[L]sp [S]ymbols')
           map('<leader>ws', fzf.lsp_live_workspace_symbols, '[W]orkspace [S]ymbols')
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
           map('K', vim.lsp.buf.hover, 'Loo[K]up')
@@ -92,8 +92,8 @@ return {
       vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo', numhl = 'DiagnosticSignInfo' })
       vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint', numhl = 'DiagnosticSignHint' })
 
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'none', max_width = 60, max_height = 40 })
-      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'none', max_width = 60, max_height = 40 })
+      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'noborder', max_width = 60, max_height = 40 })
+      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'noborder', max_width = 60, max_height = 40 })
 
       vim.diagnostic.config {
         underline = true,

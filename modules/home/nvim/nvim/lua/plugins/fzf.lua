@@ -28,6 +28,7 @@ return {
           },
         },
         buffers = {
+          previewer = false,
           mru = true,
         },
         previewer = {

@@ -53,8 +53,8 @@ return {
         -- numhl = "DapBreakpoint",
       })
       vim.fn.sign_define('DapStopped', {
-        text = '', -- nerdfonts icon here
-        texthl = 'rainbowcol3',
+        text = '', -- nerdfonts icon here
+        texthl = 'PreProc',
         -- linehl = "DapBreakpoint",
         -- numhl = "DapBreakpoint",
       })
@@ -63,6 +63,50 @@ return {
         type = 'executable',
         command = 'gdb',
         args = { '-q', '--interpreter=dap', '--eval-command', 'set print pretty on' },
+      }
+      dap.adapters.python = function(callback, config)
+        if config.request == 'launch' then
+          callback {
+            type = 'executable',
+            command = 'python',
+            args = { '-m', 'debugpy.adapter' },
+          }
+        else
+          local port = config.connect.port
+          local host = config.connect.host
+
+          callback {
+            type = 'server',
+            port = port,
+            host = host,
+            options = {
+              source_filetype = 'python',
+            },
+          }
+        end
+      end
+
+      dap.configurations.python = {
+        {
+          type = 'python',
+          request = 'launch',
+          name = 'Launch a debugging session',
+          program = '${file}',
+          pythonPath = function()
+            return 'python'
+          end,
+        },
+
+        {
+          type = 'python',
+          request = 'attach',
+          name = 'Attach a debugging session',
+          connect = function()
+            local host = vim.fn.input 'Host: '
+            local port = tonumber(vim.fn.input 'Port: ')
+            return { host = host, port = port }
+          end,
+        },
       }
       dap.configurations.c = {
         {
@@ -99,6 +143,33 @@ return {
         }, ]]
       }
       dap.configurations.cpp = dap.configurations.c
+      local widgets = require 'dap.ui.widgets'
+      local sidebar = widgets.sidebar(widgets.scopes, { width = 10 }, 'vsplit')
+      local bottbar = widgets.sidebar(widgets.frames, { height = 5 }, 'belowright split')
+      local repl = require 'dap.repl'
+
+      vim.keymap.set('n', '<leader>dr', function()
+        return repl.toggle({}, 'belowright split')
+      end)
+
+      vim.keymap.set('n', '<leader>ds', function()
+        return sidebar.toggle()
+      end)
+
+      vim.keymap.set('n', '<leader>df', function()
+        return bottbar.toggle()
+      end)
+
+      vim.keymap.set('n', '<leader>dk', function()
+        return widgets.hover()
+      end)
+
+      vim.keymap.set('n', '<leader>db', '<cmd>DapToggleBreakpoint<CR>')
+      vim.keymap.set('n', '<leader>dd', '<cmd>DapTerminate<CR>')
+      vim.keymap.set('n', '<leader>dj', '<cmd>DapContinue<CR>')
+      vim.keymap.set('n', '<leader>dn', '<cmd>DapStepOver<CR>')
+      vim.keymap.set('n', '<leader>di', '<cmd>DapStepInto<CR>')
+      vim.keymap.set('n', '<leader>do', '<cmd>DapStepOut<CR>')
     end,
   },
 
@@ -110,7 +181,7 @@ return {
       dapui.setup {
         controls = {
           element = 'repl',
-          enabled = true,
+          enabled = false,
           icons = {
             disconnect = '',
             pause = '',
@@ -126,7 +197,7 @@ return {
         element_mappings = {},
         expand_lines = true,
         floating = {
-          border = 'single',
+          border = 'noborder',
           mappings = {
             close = { 'q', '<Esc>' },
           },
@@ -142,20 +213,20 @@ return {
             elements = {
               {
                 id = 'scopes',
-                size = 0.25,
+                size = 1,
               },
-              {
-                id = 'breakpoints',
-                size = 0.25,
-              },
-              {
-                id = 'stacks',
-                size = 0.25,
-              },
-              {
-                id = 'watches',
-                size = 0.25,
-              },
+              -- {
+              --   id = 'breakpoints',
+              --   size = 0.25,
+              -- },
+              -- {
+              --   id = 'stacks',
+              --   size = 0.25,
+              -- },
+              -- {
+              --   id = 'watches',
+              --   size = 0.25,
+              -- },
             },
             position = 'left',
             size = 40,
@@ -201,12 +272,6 @@ return {
       dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
       end
-      vim.keymap.set('n', '<leader>db', '<cmd>DapToggleBreakpoint<CR>')
-      vim.keymap.set('n', '<leader>dt', '<cmd>DapTerminate<CR>')
-      vim.keymap.set('n', '<leader>dc', '<cmd>DapContinue<CR>')
-      vim.keymap.set('n', '<leader>dn', '<cmd>DapStepOver<CR>')
-      vim.keymap.set('n', '<leader>di', '<cmd>DapStepInto<CR>')
-      vim.keymap.set('n', '<leader>do', '<cmd>DapStepOut<CR>')
     end,
   },
 }

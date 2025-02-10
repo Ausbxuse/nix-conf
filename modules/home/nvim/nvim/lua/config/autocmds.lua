@@ -70,8 +70,6 @@ vim.api.nvim_create_autocmd('BufEnter', {
   end,
 })
 
-vim.api.nvim_create_autocmd('VimResized', { command = 'wincmd =' })
-
 -- Restore cursor pos
 vim.cmd [[
     autocmd BufReadPost * if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'  |   exe "normal! g`\""  | endif

@@ -53,7 +53,7 @@ function Toggle_window()
   end
 end
 
-vim.keymap.set('n', '<leader>=', ':silent lua Toggle_window()<CR>', { desc = 'Toggle Window' })
+vim.keymap.set('n', '<leader>=', '<cmd> lua Toggle_window()<CR>', { desc = 'Toggle Window' })
 
 local comment_styles = {
   lua = { start = '-- stylua: ignore start', stop = '-- stylua: ignore end' },

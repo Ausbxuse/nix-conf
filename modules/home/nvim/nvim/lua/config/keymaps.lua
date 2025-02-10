@@ -7,7 +7,7 @@ local function goto_buffer(n)
   end
 end
 
-local keys = { 'q', 'w', 'e', 'r', 't' }
+local keys = { 'q', 'w', 'e', 'r', 't', '1', '2', '3', '4', '5' }
 for i, key in ipairs(keys) do
   vim.keymap.set('n', '<leader>' .. key, function()
     goto_buffer(i)

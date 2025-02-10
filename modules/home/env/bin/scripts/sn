@@ -23,7 +23,7 @@ fi
 if ! tmux has-session -t="$selected_name" 2>/dev/null; then
   tmux new-session -ds "$selected_name" -n "nvim" -c "$selected"
   tmux send-keys -t "$selected_name:1" "nvim" C-m
-  tmux new-window -t "$selected_name:2" -n "shell" -c "$selected"
+  tmux split-window -t "$selected_name:1" -h -c "$selected"
 fi
 
 tmux switch-client -t "$selected_name"

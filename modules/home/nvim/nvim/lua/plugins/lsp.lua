@@ -92,8 +92,8 @@ return {
       vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo', numhl = 'DiagnosticSignInfo' })
       vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint', numhl = 'DiagnosticSignHint' })
 
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'noborder', max_width = 60, max_height = 40 })
-      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'noborder', max_width = 60, max_height = 40 })
+      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'none', max_width = 60, max_height = 40 })
+      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'none', max_width = 60, max_height = 40 })
 
       vim.diagnostic.config {
         underline = true,
@@ -122,6 +122,37 @@ return {
           [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
         },
       }
+      -- require('lspconfig').harper_ls.setup {
+      --   filetypes = { 'markdown' },
+      --   settings = {
+      --     ['harper-ls'] = {
+      --       -- isolateEnglish = true,
+      --       markdown = {
+      --         ignore_link_title = true,
+      --       },
+      --       userDictPath = vim.fn.stdpath 'config' .. '/spell/en.utf-8.add',
+      --       linters = {
+      --         spell_check = true,
+      --         spelled_numbers = false,
+      --         an_a = true,
+      --         sentence_capitalization = true,
+      --         unclosed_quotes = true,
+      --         wrong_quotes = true,
+      --         long_sentences = true,
+      --         repeated_words = true,
+      --         spaces = true,
+      --         matcher = true,
+      --         correct_number_suffix = true,
+      --         number_suffix_capitalization = true,
+      --         multiple_sequential_pronouns = true,
+      --         linking_verbs = true,
+      --         avoid_curses = true,
+      --         terminating_conjunctions = true,
+      --       },
+      --     },
+      --   },
+      -- }
+
       require('lspconfig').util.default_config.on_init = function(client, _)
         client.server_capabilities.semanticTokensProvider = nil
       end
@@ -137,7 +168,7 @@ return {
           'sourcekit',
         },
         preferred_servers = {
-          markdown = {},
+          markdown = { 'ltex' },
           python = { 'basedpyright' },
           netrw = {},
         },

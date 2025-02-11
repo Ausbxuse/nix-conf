@@ -15,6 +15,7 @@
     fd
     eza
     btop
+    fastfetch
   ];
 
   programs.fzf = {

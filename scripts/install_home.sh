@@ -8,7 +8,7 @@ GIT_BRANCH="dev"
 
 if ! command -v nix &> /dev/null; then
     echo "Installing Nix..."
-    curl -L $NIX_INSTALL_URL | sh
+    sh <(curl -L $NIX_INSTALL_URL) --daemon
     # Load Nix for the current shell
     . ~/.nix-profile/etc/profile.d/nix.sh
 

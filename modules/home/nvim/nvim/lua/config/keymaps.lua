@@ -16,6 +16,7 @@ end
 
 vim.keymap.set('i', '<c-c>', '<Esc>')
 vim.keymap.set('n', '<Esc>', '<cmd>nohl<cr>')
+vim.keymap.set('n', '<leader>x', '<cmd>bd<cr>')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', '<leader>b', '<cmd>ls<cr>:b ')
@@ -76,4 +77,4 @@ function Add_formatting_comments()
   vim.api.nvim_buf_set_lines(0, cursor_line, cursor_line, false, { style.stop })
 end
 
-vim.keymap.set('n', '<leader>df', Add_formatting_comments, { noremap = true, silent = true, desc = 'Add disable-formatting comments around current line' })
+vim.keymap.set('n', '<leader>fc', Add_formatting_comments, { noremap = true, silent = true, desc = 'Add disable-formatting comments around current line' })

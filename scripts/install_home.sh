@@ -35,7 +35,7 @@ nix run nixpkgs#home-manager -- switch --flake .#earthy
 
 if ! grep -q "$(command -v zsh)" /etc/shells; then
     echo "Authorizing Zsh as a valid shell..."
-    echo "$(command -v zsh)" | sudo tee -a /etc/shells
+    command -v zsh | sudo tee -a /etc/shells
 fi
 
 echo "Changing default shell to Zsh..."

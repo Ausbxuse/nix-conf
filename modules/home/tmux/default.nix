@@ -16,5 +16,15 @@
     ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./tmux}/ ${config.xdg.configHome}/tmux/
   '';
 
-  programs.tmux.extraConfig = builtins.readFile ./tmux.conf;
+  programs.tmux = {
+    extraConfig = builtins.readFile ./tmux.conf;
+    keyMode = "vi";
+    baseIndex = 1;
+    escapeTime = 20;
+    historyLimit = 30000;
+    aggressiveResize = true;
+    clock24 = true;
+    terminal = "xterm-256color";
+    mouse = true;
+  };
 }

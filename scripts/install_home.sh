@@ -18,7 +18,7 @@ fi
 echo "Cloning Git configuration repository..."
 if [ ! -d "$HOME/.config/git" ]; then
     mkdir -p "$HOME/src/public"
-    git clone "$GIT_CONFIG_REPO" -b "$GIT_BRANCH" "$HOME/src/public/nix-conf"
+    git clone "$GIT_CONFIG_REPO" --depth 1 -b "$GIT_BRANCH" "$HOME/src/public/nix-conf"
 else
     echo "Git config repo already exists, skipping."
 fi

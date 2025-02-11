@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+folders=(~/src/public ~/src/school ~/Research ~/src/public/nix-conf/modules/home ~/Documents)
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  selected=$(fd . --type d --exact-depth 1 "${folders[@]}" | fzf --reverse)
+fi
+
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+  tmux new-session -s "$selected_name" -c "$selected"
+  exit 0
+fi
+
+if ! tmux has-session -t="$selected_name" 2>/dev/null; then
+  tmux new-session -ds "$selected_name" -n "nvim" -c "$selected"
+  tmux send-keys -t "$selected_name:1" "nvim" C-m
+  tmux split-window -t "$selected_name:1" -h -c "$selected"
+  tmux select-pane -t "$selected_name:1.0"
+fi
+
+tmux switch-client -t "$selected_name"
+tmux select-window -t "$selected_name:1"

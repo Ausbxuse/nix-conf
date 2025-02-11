@@ -4,8 +4,6 @@
     xdg-utils # provides cli tools such as `xdg-mime` `xdg-open`
     #xdg-user-dirs
     gh
-    bat
-    nyancat
     #gnumake
     pre-commit
     cowsay
@@ -16,7 +14,6 @@
     htop
     gnupg
     iftop
-    fastfetch
     nix-output-monitor
     shfmt
     nmap

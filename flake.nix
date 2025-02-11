@@ -94,7 +94,7 @@
 
     homeConfigurations = {
       earthy = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.packages.x86_64-linux;
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
           username = "earthy";
           user-fullname = "Earthy User";

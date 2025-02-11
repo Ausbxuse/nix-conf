@@ -3,7 +3,7 @@
 set -e
 
 NIX_INSTALL_URL="https://nixos.org/nix/install"
-GIT_CONFIG_REPO="git@github.com:ausbxuse/nix-conf.git"
+GIT_CONFIG_REPO="https://github.com/ausbxuse/nix-conf"
 GIT_BRANCH="dev"
 
 if ! command -v nix &> /dev/null; then

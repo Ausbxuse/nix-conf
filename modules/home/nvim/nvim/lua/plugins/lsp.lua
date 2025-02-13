@@ -45,12 +45,12 @@ return {
           map('gd', fzf.lsp_definitions, '[G]oto [D]efinition')
           map('gr', fzf.lsp_references, '[G]oto [R]eferences')
           map('gi', fzf.lsp_implementations, '[G]oto [I]mplementation')
-          map('<leader>ltd', fzf.lsp_typedefs, 'Type [D]efinition')
-          map('<leader>lds', fzf.lsp_document_symbols, '[L]sp [S]ymbols')
-          map('<leader>lws', fzf.lsp_live_workspace_symbols, '[W]orkspace [S]ymbols')
-          map('<leader>lrn', vim.lsp.buf.rename, '[R]e[n]ame')
+          map('<leader>ld', fzf.lsp_typedefs, 'Type [D]efinition')
+          map('<leader>ls', fzf.lsp_document_symbols, '[L]sp [S]ymbols')
+          map('<leader>lS', fzf.lsp_live_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('<leader>lc', vim.lsp.buf.rename, '[C]hange var name')
           map('K', vim.lsp.buf.hover, 'Loo[K]up')
-          map('<leader>lca', fzf.lsp_code_actions, '[C]ode [A]ction', { 'n', 'x' })
+          map('<leader>la', fzf.lsp_code_actions, '[C]ode [A]ction', { 'n', 'x' })
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
           map('gs', vim.lsp.buf.signature_help, 'Signature [H]elp')
           vim.keymap.set('i', '<c-s>', vim.lsp.buf.signature_help)
@@ -80,9 +80,9 @@ return {
           end
 
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-            map('<leader>lih', function()
+            map('<leader>lh', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-            end, '[T]oggle Inlay [H]ints')
+            end, 'Inlay [H]ints')
           end
         end,
       })

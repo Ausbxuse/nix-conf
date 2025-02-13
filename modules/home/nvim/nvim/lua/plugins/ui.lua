@@ -48,7 +48,6 @@ return {
       indent = { enable = true, disable = { 'ruby' } },
     },
   },
-  { 'folke/zen-mode.nvim' },
   {
     'catgoose/nvim-colorizer.lua',
     event = 'VeryLazy',

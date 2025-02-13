@@ -73,7 +73,7 @@ return {
       end, { desc = '[f]ind [S]earch word' })
       vim.keymap.set('n', '<leader>fr', fzf.oldfiles, { desc = '[S]earch Recent Files ' })
       vim.keymap.set('n', '<leader>o', fzf.lsp_document_symbols, { desc = 'Symb[o]ls ' })
-      vim.keymap.set('n', '<leader><leader>', fzf.buffers, { desc = 'Find existing buffers' })
+      vim.keymap.set('n', '<leader>b', fzf.buffers, { desc = 'Find existing buffers' })
 
       vim.keymap.set('n', '<leader>/', function()
         fzf.blines()

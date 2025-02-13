@@ -60,5 +60,6 @@ swapon /dev/vg/swap
 
 # TODO: finish this for spacy and timy
 
-nixos-generate-config
-cp /etc/nixos/hardware-configuration.nix ./hosts/${host}/hardware-configuration.nix
+nixos-generate-config --root /mnt
+cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/${host}/hardware-configuration.nix
+cd /mnt && nixos-install

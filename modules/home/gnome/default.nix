@@ -4,9 +4,6 @@
   ];
 
   home.packages = with pkgs; [
-    # (nerdfonts.override {fonts = ["JetBrainsMono"];})
-    nerd-fonts.jetbrains-mono
-
     # pinentry
     gnome-shell-extensions
     networkmanager-openvpn

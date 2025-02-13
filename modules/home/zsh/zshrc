@@ -60,3 +60,7 @@ function lf() {
   fi
   rm -f -- "$tmp"
 }
+
+if command -v micromamba &> /dev/null ; then
+  eval "$(micromamba shell hook --shell zsh)"
+fi

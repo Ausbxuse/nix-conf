@@ -24,7 +24,7 @@
     historyLimit = 30000;
     aggressiveResize = true;
     clock24 = true;
-    terminal = "xterm-256color";
+    terminal = "tmux-256color";
     mouse = true;
   };
 }

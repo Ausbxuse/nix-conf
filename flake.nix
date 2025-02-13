@@ -104,7 +104,7 @@
           inherit inputs;
         };
         modules = [
-          ./modules/common/minimal/home
+          ./modules/common/gnome/home
         ];
       };
     };

@@ -74,6 +74,7 @@
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
+    histSize = 200000;
     enableCompletion = true;
     autosuggestion.enable = false;
     syntaxHighlighting.enable = false;

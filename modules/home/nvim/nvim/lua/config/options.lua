@@ -6,7 +6,7 @@ vim.g.maplocalleader = ' '
 
 local default_options = {
   clipboard = 'unnamedplus',
-  statusline = ' %f %m %r %= %k %S [%n] %l:%L ',
+  statusline = ' %f %m %r %= %k %S %l:%L ',
   spellfile = home .. '/.config/nvim/spell/en.utf-8.add',
   number = true,
   relativenumber = true,
@@ -46,6 +46,7 @@ local default_options = {
   pumblend = 10,
   winblend = 10, -- keep notify transparent
   colorcolumn = '', -- fixes indentline for now
+  shada = "!,'10000,<50,s10,h,:10000",
 }
 
 opt.shortmess:append 'c'

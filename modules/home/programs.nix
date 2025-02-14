@@ -25,7 +25,6 @@
     xz
     yarn
     zip
-    home-manager
     alejandra
     #nh
     #nvd

@@ -6,7 +6,7 @@
   gnome-iso = inputs.nixos-generators.nixosGenerate {
     system = "${pkgs.system}";
     format = "iso";
-    customFormats = {iso = import ./formats/minimal-iso.nix;};
+    customFormats = {iso = import ./formats/gnome-graphical.nix;};
     modules = [
       ../hosts/iso
     ];

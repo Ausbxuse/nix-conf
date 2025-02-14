@@ -4,7 +4,6 @@
     iftop
     nmap
     tree
-    home-manager
     alejandra
     lazygit
   ];

@@ -10,7 +10,7 @@
   nixpkgs = {
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 
@@ -41,7 +41,6 @@
       "https://cache.nixos.org"
       "https://ausbxuse.cachix.org"
       "https://nix-community.cachix.org"
-      "https://wezterm.cachix.org"
       # cache mirror located in China
       #"https://mirror.sjtu.edu.cn/nix-channels/store"
       #"https://mirrors.ustc.edu.cn/nix-channels/store"

@@ -25,14 +25,17 @@
         inherit modules pkgs;
         extraSpecialArgs = {inherit inputs username;};
       };
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in {
     # templates = import ./templates;
+
+    # ISO
+    packages.x86_64-linux = import ./generators {inherit pkgs inputs;};
 
     nixosConfigurations = {
       timy = mkNixos [./hosts/timy] "timy" "zhenyu";
       uni = mkNixos [./hosts/uni] "uni" "zhenyu";
       spacy = mkNixos [./hosts/spacy] "spacy" "zhenyu";
-      # iso = mkNixos [./hosts/iso] "iso" "zhenyu";
     };
 
     homeConfigurations = {

@@ -5,25 +5,31 @@
 }: {
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
-    trusted-users = ["nixos"];
+  i18n.defaultLocale = "en_US.UTF-8";
 
-    substituters = [
-      "https://cache.nixos.org"
-      "https://nix-community.cachix.org"
-    ];
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+  # services.xserver.videoDrivers = ["amd" "nvidia"];
+
+  networking = {
+    hostName = "nixos-iso";
+    wireless.enable = true;
   };
 
-  # faster build time
-  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
-  networking.networkmanager.enable = true;
-  environment.systemPackages = with pkgs; [
-    tmux
-    git
-    just
-    rsync
-    curl
-    wget
-  ];
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages32 = with pkgs; [libvdpau-va-gl vaapiVdpau];
+  };
+
+  services.logind = {
+    lidSwitch = "suspend";
+  };
+
+  networking.firewall = {
+    enable = false;
+    # allowedTCPPorts = [80 8080];
+  };
+
+  system.stateVersion = "24.05";
 }

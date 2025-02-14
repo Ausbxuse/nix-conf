@@ -1,9 +1,6 @@
 set shell := ["bash", "-uc"]
 
 # GENERATION := $$(nixos-rebuild list-generations --flake ".\#" | grep current)
-# NIX_FILES := $$(fd .nix)
-
-#all: install
 
 gitgc:
   git reflog expire --expire-unreachable=now --all
@@ -11,15 +8,6 @@ gitgc:
 
 dconf: 
 	rsync -av ~/.config/dconf/ ./hosts/base/home/gnome/dconf
-
-show:
-	echo $(GENERATION) >> README.md
-
-check:
-	nix flake check
-
-push: 
-	git push origin master
 
 uni:
 	nixos-rebuild switch --flake .#uni --use-remote-sudo |& nom
@@ -32,9 +20,6 @@ spacy:
 
 debug: 
 	nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose
-
-update:
-	nix flake update
 
 # Update specific input
 # usage: make upp i=home-manager

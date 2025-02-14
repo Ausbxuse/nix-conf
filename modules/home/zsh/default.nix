@@ -13,6 +13,7 @@
     fd
     eza
     btop
+    chafa
     fastfetch
   ];
 

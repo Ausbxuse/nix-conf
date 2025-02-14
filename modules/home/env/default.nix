@@ -7,7 +7,7 @@
 }: {
   home = {
     username = "${username}";
-    homeDirectory = "${config.home.homeDirectory}";
+    homeDirectory = "/home/${username}"; # avoids infinite recursion
     stateVersion = "24.05";
   };
 
@@ -21,7 +21,7 @@
 
   home.sessionVariables = {
     XCURSOR_THEME = "capitaine-cursors-white";
-    FLAKE = "${config.home.homeDirectory}/src/public/nixos-conf";
+    FLAKE = "${config.home.homeDirectory}/src/public/nix-conf";
     MANPAGER = "nvim +Man!";
     NPM_PACKAGES = "${config.home.homeDirectory}/.local/share/npm";
     NODE_PATH = "$NPM_PACKAGES/lib/node_modules:$NODE_PATH";

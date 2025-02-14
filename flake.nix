@@ -27,7 +27,7 @@
       };
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in {
-    # templates = import ./templates;
+    templates = import ./templates;
 
     # ISO
     packages.x86_64-linux = import ./generators {inherit pkgs inputs;};
@@ -39,10 +39,10 @@
     };
 
     homeConfigurations = {
-      "zhenyu@timy" = mkHome [./home-manager/timy] nixpkgs.legacyPackages."x86_64-linux" "zhenyu";
-      "zhenyu@uni" = mkHome [./home-manager/uni] nixpkgs.legacyPackages."x86_64-linux" "zhenyu";
-      "zhenyu@spacy" = mkHome [./home-manager/spacy] nixpkgs.legacyPackages."x86_64-linux" "zhenyu";
-      "zhenyu@earthy" = mkHome [./home-manager/earthy] nixpkgs.legacyPackages."x86_64-linux" "zhenyu";
+      "zhenyu@timy" = mkHome [./home-manager/timy] pkgs "zhenyu";
+      "zhenyu@uni" = mkHome [./home-manager/uni] pkgs "zhenyu";
+      "zhenyu@spacy" = mkHome [./home-manager/spacy] pkgs "zhenyu";
+      "zhenyu@earthy" = mkHome [./home-manager/earthy] pkgs "zhenyu";
     };
   };
 }

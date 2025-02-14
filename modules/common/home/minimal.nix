@@ -1,8 +1,8 @@
 {...}: {
   imports = [
-    ../../modules/home/env
-    ../../modules/home/zsh
-    ../../modules/home/nvim
-    ../../modules/home/tmux
+    ../../../modules/home/env
+    ../../../modules/home/zsh
+    ../../../modules/home/nvim
+    ../../../modules/home/tmux
   ];
 }

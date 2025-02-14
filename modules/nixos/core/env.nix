@@ -40,6 +40,6 @@
     # CONDARC = "${XDG_CONFIG_HOME}/conda/condarc";
     DICS = "/usr/share/stardict/dic/";
     MUTTER_DEBUG = "color";
-    MAMBA_ROOT_PREFIX = "${XDG_DATA_HOME}/micromamba";
+    MAMBA_ROOT_PREFIX = "${XDG_CACHE_HOME}/micromamba";
   };
 }

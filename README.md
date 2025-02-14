@@ -9,7 +9,8 @@ just install <host>
 # Install nixos
 
 1. Install using graphical installer
-2. Reboot and install my system setup using
+2. remember to make sure hardware configuration and luks setup are correct
+3. Reboot and install my system setup using
 
 ```bash
 nix --flake swith

@@ -10,13 +10,13 @@ dconf:
 	rsync -av ~/.config/dconf/ ./hosts/base/home/gnome/dconf
 
 uni:
-	nixos-rebuild switch --flake .#uni --use-remote-sudo |& nom
+	nixos-rebuild switch --flake .#uni --use-remote-sudo
 
 timy:
-	nixos-rebuild switch --flake .#timy --use-remote-sudo --show-trace --option max-call-depth 10000 |& nom
+	nixos-rebuild switch --flake .#timy --use-remote-sudo --show-trace --option max-call-depth 10000
 
 spacy:
-	nixos-rebuild switch --flake .#spacy --use-remote-sudo |& nom
+	nixos-rebuild switch --flake .#spacy --use-remote-sudo
 
 debug: 
 	nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose

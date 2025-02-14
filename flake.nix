@@ -29,7 +29,6 @@
   in {
     templates = import ./templates;
 
-    # ISO
     packages.x86_64-linux = import ./generators {inherit pkgs inputs;};
 
     nixosConfigurations = {
@@ -39,10 +38,10 @@
     };
 
     homeConfigurations = {
-      "zhenyu@timy" = mkHome [./home-manager/timy] pkgs "zhenyu";
-      "zhenyu@uni" = mkHome [./home-manager/uni] pkgs "zhenyu";
-      "zhenyu@spacy" = mkHome [./home-manager/spacy] pkgs "zhenyu";
-      "zhenyu@earthy" = mkHome [./home-manager/earthy] pkgs "zhenyu";
+      "zhenyu@timy" = mkHome [./home/timy] pkgs "zhenyu";
+      "zhenyu@uni" = mkHome [./home/uni] pkgs "zhenyu";
+      "zhenyu@spacy" = mkHome [./home/spacy] pkgs "zhenyu"; # gui
+      "zhenyu@earthy" = mkHome [./home/earthy] pkgs "zhenyu"; # no-gui
     };
   };
 }

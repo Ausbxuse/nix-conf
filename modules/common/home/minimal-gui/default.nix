@@ -4,17 +4,14 @@
   ...
 }: {
   imports = [
+    ../minimal.nix
+
     ../../../home/zathura
     ../../../home/firefox
-    ../../../home/wezterm
-    ../../../home/ghostty
     ../../../home/alacritty
 
-    ../../../home/zsh
-    ../../../home/nvim
-    ../../../home/tmux
-
-    ../../../home/programs.nix
+    # ../../../home/programs.nix
+    ../../../home/dev-tools.nix
 
     ../../../home/gnome
     # ../../../home/hyprland
@@ -25,9 +22,6 @@
     ../../../home/xdg.nix
     ../../../home/themes
     ../../../home/fonts
-    ../../../home/env
-
-    ../../../home/gaming.nix
 
     inputs.wallpapers.homeManagerModules.wallpaper
     inputs.stardict.homeManagerModules.stardict
@@ -36,38 +30,6 @@
 
   programs.zsh.initExtra = builtins.readFile ./zshrc;
   programs.tmux.extraConfig = builtins.readFile ./tmux.conf;
-
-  home.packages = with pkgs; [
-    # Non essentials
-    jupyter
-    gnome-graphs
-    thunderbird-bin
-    brave
-    discord
-    spotify
-    spotify-tray
-    libreoffice
-    texliveFull
-    gimp
-    # font-manager
-    foliate
-    obs-studio
-    scrcpy
-    calibre
-    quickemu
-    sct
-    gnome-monitor-config
-
-    stylua
-    black
-    isort
-    nodePackages.prettier
-  ];
-
-  services.syncthing = {
-    enable = true;
-    # tray.enable = true;
-  };
 
   home.pointerCursor = {
     name = "capitaine-cursors-white";

@@ -5,7 +5,8 @@
   ...
 }: {
   imports = [
-    ../../modules/common/normie/home
+    ../../modules/common/home/bloat.nix
+    ../../modules/common/home/minimal-gui
     ./dconf.nix
   ];
 

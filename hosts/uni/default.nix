@@ -2,7 +2,7 @@
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/common/normie/system.nix
+    ../../modules/common/system/minimal-gui.nix
     ../../modules/nixos/hardware/nvidia.nix
   ];
 

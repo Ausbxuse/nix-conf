@@ -1,10 +1,21 @@
+# for language specific packages (e.g. linters, debuggers, compilers)
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    htop
-    iftop
-    nmap
-    tree
+    #nh
+    #nvd
+    #gnumake
+    #nodePackages.npm
+    #nodePackages.pnpm
+    yarn
+    nodePackages.prettier
+    shfmt
+    jdk
+    cargo
+    gcc
+    gdb
     alejandra
-    lazygit
+    stylua
+    black
+    isort
   ];
 }

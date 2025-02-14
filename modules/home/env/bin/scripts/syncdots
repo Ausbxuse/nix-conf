@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-source_dir=/mnt/zhenyu
-target_dir=/home/zhenyu
+source_dir=/mnt/$USER
+target_dir=/home/$USER
 
 folders=("Media" "Public" "Research" "Documents" "Archive" ".ssh" "WIP" "src")
 

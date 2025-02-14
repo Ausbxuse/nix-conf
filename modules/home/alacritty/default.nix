@@ -143,7 +143,7 @@
     };
   };
 
-  home.activation.cleanFontCache = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    ${pkgs.fontconfig}/bin/fc-cache -vr
-  '';
+  # home.activation.cleanFontCache = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  #   ${pkgs.fontconfig}/bin/fc-cache -vr
+  # '';
 }

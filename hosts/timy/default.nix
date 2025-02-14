@@ -1,5 +1,9 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./kernel.nix
     ./hardware-configuration.nix

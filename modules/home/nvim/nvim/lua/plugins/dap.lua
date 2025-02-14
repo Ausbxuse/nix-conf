@@ -43,7 +43,7 @@ return {
         -- Use last cached arguments as default input
         local default_args = last_arguments or ''
         last_arguments = vim.fn.input('Args: ', default_args)
-        return vim.split(last_arguments, ' ')
+        return vim.split(last_arguments, '%s+')
       end
 
       vim.fn.sign_define('DapBreakpoint', {
@@ -92,19 +92,9 @@ return {
           request = 'launch',
           name = 'Launch a debugging session',
           program = '${file}',
+          args = get_arguments,
           pythonPath = function()
             return 'python'
-          end,
-        },
-
-        {
-          type = 'python',
-          request = 'attach',
-          name = 'Attach a debugging session',
-          connect = function()
-            local host = vim.fn.input 'Host: '
-            local port = tonumber(vim.fn.input 'Port: ')
-            return { host = host, port = port }
           end,
         },
       }
@@ -166,7 +156,7 @@ return {
 
       vim.keymap.set('n', '<leader>db', '<cmd>DapToggleBreakpoint<CR>')
       vim.keymap.set('n', '<leader>dd', '<cmd>DapTerminate<CR>')
-      vim.keymap.set('n', '<leader>dj', '<cmd>DapContinue<CR>')
+      vim.keymap.set('n', '<leader>dc', '<cmd>DapContinue<CR>')
       vim.keymap.set('n', '<leader>dn', '<cmd>DapStepOver<CR>')
       vim.keymap.set('n', '<leader>di', '<cmd>DapStepInto<CR>')
       vim.keymap.set('n', '<leader>do', '<cmd>DapStepOut<CR>')
@@ -209,28 +199,28 @@ return {
           expanded = '',
         },
         layouts = {
-          {
-            elements = {
-              {
-                id = 'scopes',
-                size = 1,
-              },
-              -- {
-              --   id = 'breakpoints',
-              --   size = 0.25,
-              -- },
-              -- {
-              --   id = 'stacks',
-              --   size = 0.25,
-              -- },
-              -- {
-              --   id = 'watches',
-              --   size = 0.25,
-              -- },
-            },
-            position = 'left',
-            size = 40,
-          },
+          -- {
+          --   elements = {
+          --     -- {
+          --     --   id = 'scopes',
+          --     --   size = 1,
+          --     -- },
+          --     -- {
+          --     --   id = 'breakpoints',
+          --     --   size = 0.25,
+          --     -- },
+          --     -- {
+          --     --   id = 'stacks',
+          --     --   size = 0.25,
+          --     -- },
+          --     -- {
+          --     --   id = 'watches',
+          --     --   size = 0.25,
+          --     -- },
+          --   },
+          --   position = 'left',
+          --   size = 0,
+          -- },
           {
             elements = {
               {
@@ -265,10 +255,11 @@ return {
       end
       dap.listeners.before.launch.dapui_config = function()
         dapui.open()
+        vim.api.nvim_command 'wincmd j'
       end
-      dap.listeners.before.event_terminated.dapui_config = function()
-        dapui.close()
-      end
+      -- dap.listeners.before.event_terminated.dapui_config = function()
+      --   dapui.close()
+      -- end
       dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
       end

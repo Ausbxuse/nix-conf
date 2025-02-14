@@ -12,6 +12,7 @@
     ../../nixos/hardware/sound.nix
     ../../nixos/hardware/printing.nix
     ../../nixos/hardware/usb.nix
+    inputs.grub2-theme.nixosModules.default
   ];
   environment.systemPackages = with pkgs; [
     openvpn

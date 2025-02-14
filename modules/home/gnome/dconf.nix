@@ -1,13 +1,13 @@
 # Generated via dconf2nix: https://github.com/gvolpe/dconf2nix
 {
   lib,
-  user-homedir,
+  username,
   ...
 }:
 with lib.hm.gvariant; {
   dconf.settings = {
     "org/freedesktop/tracker/miner/files" = {
-      index-recursive-directories = ["&DESKTOP" "&DOCUMENTS" "&MUSIC" "&PICTURES" "&VIDEOS" "${user-homedir}/Media/Music"];
+      index-recursive-directories = ["&DESKTOP" "&DOCUMENTS" "&MUSIC" "&PICTURES" "&VIDEOS" "/home/${username}/Media/Music"];
     };
 
     "org/gnome/Totem" = {
@@ -57,8 +57,8 @@ with lib.hm.gvariant; {
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri = "file://${user-homedir}/.local/share/wallpapers/city.jpg";
-      picture-uri-dark = "file://${user-homedir}/.local/share/wallpapers/city.jpg";
+      picture-uri = "file:///home/${username}/.local/share/wallpapers/city.jpg";
+      picture-uri-dark = "file:///home/${username}/.local/share/wallpapers/city.jpg";
       primary-color = "#3071AE";
       secondary-color = "#000000";
     };
@@ -358,7 +358,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/shell/extensions/azwallpaper" = {
       slideshow-current-wallpapper = "city.jpg";
-      slideshow-directory = "${user-homedir}/.local/share/wallpapers";
+      slideshow-directory = "/home/${username}/.local/share/wallpapers";
       slideshow-slide-duration = mkTuple [1 0 0];
       slideshow-timer-remaining = 3600;
       slideshow-wallpaper-queue = ["\34183\23572\33673\29305\&1.png" "deer.jpg" "\20113\38544\32321\26143\&2.png" "\24052\23665\22812\38632.png"];

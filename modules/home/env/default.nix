@@ -2,13 +2,11 @@
   config,
   lib,
   pkgs,
-  username,
-  user-homedir,
   ...
 }: {
   home = {
-    username = "${username}";
-    homeDirectory = "${user-homedir}";
+    username = "zhenyu";
+    homeDirectory = "/home/zhenyu";
     stateVersion = "24.05";
   };
 
@@ -22,7 +20,7 @@
 
   home.sessionVariables = {
     XCURSOR_THEME = "capitaine-cursors-white";
-    FLAKE = "${config.home.homeDirectory}/.local/src/public/nixos-conf";
+    FLAKE = "${config.home.homeDirectory}/src/public/nixos-conf";
     MANPAGER = "nvim +Man!";
     NPM_PACKAGES = "${config.home.homeDirectory}/.local/share/npm";
     NODE_PATH = "$NPM_PACKAGES/lib/node_modules:$NODE_PATH";

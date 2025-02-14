@@ -2,8 +2,6 @@
   config,
   lib,
   pkgs,
-  user-fullname,
-  user-email,
   ...
 }: {
   home.packages = with pkgs; [
@@ -54,8 +52,8 @@
   programs.git = {
     enable = true;
 
-    userName = "${user-fullname}";
-    userEmail = "${user-email}";
+    userName = "Zhenyu Zhao";
+    userEmail = "peterzhaozzy@gmail.com";
     delta = {
       enable = true;
       options = {

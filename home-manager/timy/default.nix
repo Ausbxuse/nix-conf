@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../../../modules/common/normie/home
+    ../../modules/common/normie/home
     ./dconf.nix
   ];
 

@@ -1,7 +1,6 @@
 {
   pkgs,
   username,
-  user-homedir,
   ...
 }: {
   programs.zsh.enable = true;
@@ -15,8 +14,8 @@
   users.defaultUserShell = pkgs.zsh;
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "video" "kvm"]; # Enable ‘sudo’ for the user.
-    home = "${user-homedir}";
+    extraGroups = ["wheel" "networkmanager" "video"]; # Enable ‘sudo’ for the user.
+    home = "/home/${username}";
     createHome = true;
   };
 

@@ -28,7 +28,11 @@
     ../../../home/env
 
     ../../../home/gaming.nix
+
+    inputs.wallpapers.homeManagerModules.wallpaper
+    inputs.stardict.homeManagerModules.stardict
   ];
+  nixpkgs.config.allowUnfree = true;
 
   programs.zsh.initExtra = builtins.readFile ./zshrc;
   programs.tmux.extraConfig = builtins.readFile ./tmux.conf;

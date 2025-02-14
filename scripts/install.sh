@@ -6,7 +6,7 @@ boot_size="512MiB"
 swap_size="512MiB"
 disk_dev="/dev/sda"
 disk_percent_space_for_os=100
-host="uni"
+host="spacy"
 
 if [ $disk_dev == "/dev/nvme0n1" ] || [ $disk_dev == "/dev/nvme1n1" ]; then
   part_boot="${disk_dev}p1"
@@ -57,8 +57,6 @@ swapon /dev/vg/swap
 #####################################
 ########### Install Nixos ###########
 #####################################
-
-# TODO: finish this for spacy and timy
 
 nixos-generate-config --root /mnt
 cp /mnt/etc/nixos/hardware-configuration.nix ./hosts/${host}/hardware-configuration.nix

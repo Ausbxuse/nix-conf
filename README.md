@@ -28,3 +28,5 @@ home-manager switch --flake github:ausbxuse/nix-conf#<host-home>
 ```bash
 nix build .#gnome-iso
 ```
+
+> NOTE: For lenovo yoga, add thinkpad-acpi to kernelModules

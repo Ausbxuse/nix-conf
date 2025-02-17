@@ -116,16 +116,6 @@
             key = "Minus";
             mods = "Control";
           }
-          {
-            action = "ScrollPageUp";
-            key = "PageUp";
-            mode = "~Alt";
-          }
-          {
-            action = "ScrollPageDown";
-            key = "PageDown";
-            mode = "~Alt";
-          }
         ];
       };
       scrolling = {

@@ -34,7 +34,7 @@
   home.pointerCursor = {
     name = "capitaine-cursors-white";
     package = pkgs.bibata-cursors;
-    size = 64;
+    size = 24;
     gtk.enable = true;
     x11.enable = true;
     x11.defaultCursor = "capitaine-cursors-white";

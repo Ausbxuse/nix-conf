@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# acpi alternative
-# acpi | sed "s/Battery [0-9]: //;s/[Dd]ischarging, /🔋/;s/[Nn]ot charging, /🛑/;s/[Cc]harging, /🔌/;s/[Uu]nknown, /♻️/;s/[Ff]ull, /⚡/;s/ \(remaining\|until charged\)//"; exit 
-# 
 
 battery_path=$(find /sys/class/power_supply/ -name "BAT*" | head -n 1)
 
@@ -10,30 +7,30 @@ status=$(cat "${battery_path}/status")
 if [ "${status}" = "Discharging" ]
 then
     case $capacity in
-        [0-9]) echo "#[fg=#ff2640]󰂃 ${capacity}%" ;;
-        1[0-9]) echo "#[fg=#ff2640] ${capacity}%" ;;
-        2[0-9]) echo "#[fg=#f4bf75] ${capacity}%" ;;
-        3[0-9]) echo "#[fg=#f4bf75] ${capacity}%" ;;
-        4[0-9]) echo "#[fg=#f4bf75] ${capacity}%" ;;
-        5[0-9]) echo "#[fg=#9ece6a] ${capacity}%" ;;
-        6[0-9]) echo "#[fg=#9ece6a] ${capacity}%" ;;
-        7[0-9]) echo "#[fg=#9ece6a] ${capacity}%" ;;
-        8[0-9]) echo "#[fg=#9ece6a] ${capacity}%" ;;
-        9[0-9]|10[0-9]) echo "#[fg=#9ece6a] " ;;
+        [0-9]) echo "#[fg=#ff2640]${capacity}%" ;;
+        1[0-9]) echo "#[fg=#ff2640]${capacity}%" ;;
+        2[0-9]) echo "#[fg=#f4bf75]${capacity}%" ;;
+        3[0-9]) echo "#[fg=#f4bf75]${capacity}%" ;;
+        4[0-9]) echo "#[fg=#f4bf75]${capacity}%" ;;
+        5[0-9]) echo "#[fg=#9ece6a]${capacity}%" ;;
+        6[0-9]) echo "#[fg=#9ece6a]${capacity}%" ;;
+        7[0-9]) echo "#[fg=#9ece6a]${capacity}%" ;;
+        8[0-9]) echo "#[fg=#9ece6a]${capacity}%" ;;
+        9[0-9]|10[0-9]) echo "#[fg=#9ece6a]#" ;;
     esac
 elif [ "${status}" = "Charging" ]
 then 
     case $capacity in
-        [0-9]|1[0-9]) echo "#[fg=#ff2640] ${capacity}%" ;;
-        2[0-9]|3[0-9]) echo "#[fg=#f4bf75] ${capacity}%" ;;
-        4[0-9]|5[0-9]) echo "#[fg=#f4bf75] ${capacity}%" ;;
-        6[0-9]|7[0-9]) echo "#[fg=#9ece6a] ${capacity}%" ;;
-        8[0-9]|9[0-9]) echo "#[fg=#9ece6a] ${capacity}%" ;;
-        10[0-9]) echo "#[fg=#9ece6a,bold] ${capacity}%" ;;
+        [0-9]|1[0-9]) echo "#[fg=#ff2640]${capacity}%" ;;
+        2[0-9]|3[0-9]) echo "#[fg=#f4bf75]${capacity}%" ;;
+        4[0-9]|5[0-9]) echo "#[fg=#f4bf75]${capacity}%" ;;
+        6[0-9]|7[0-9]) echo "#[fg=#9ece6a]${capacity}%" ;;
+        8[0-9]|9[0-9]) echo "#[fg=#9ece6a]${capacity}%" ;;
+        10[0-9]) echo "#[fg=#9ece6a,bold]${capacity}%" ;;
     esac
 elif [ "${status}" = "Full" ]
 then
-    printf "#[fg=#9ece6a,bold]"
+    printf "#[fg=#9ece6a,bold]#"
 else
-    printf ""
+    printf "?"
 fi

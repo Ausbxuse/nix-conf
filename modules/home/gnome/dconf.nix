@@ -196,6 +196,7 @@ with lib.hm.gvariant; {
     };
 
     "org/gnome/mutter" = {
+      experimental-features = ["scale-monitor-framebuffer"];
       attach-modal-dialogs = false;
       dynamic-workspaces = false;
       edge-tiling = false;

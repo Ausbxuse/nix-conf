@@ -43,7 +43,7 @@ return {
           end
 
           map('gd', fzf.lsp_definitions, '[G]oto [D]efinition')
-          map('gr', fzf.lsp_references, '[G]oto [R]eferences')
+          map('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
           map('gi', fzf.lsp_implementations, '[G]oto [I]mplementation')
           map('<leader>ld', fzf.lsp_typedefs, 'Type [D]efinition')
           map('<leader>ls', fzf.lsp_document_symbols, '[L]sp [S]ymbols')

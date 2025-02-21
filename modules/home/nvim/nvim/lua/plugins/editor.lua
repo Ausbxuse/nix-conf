@@ -27,4 +27,5 @@ return {
     end,
   },
   { 'mbbill/undotree' },
+  { 'zbirenbaum/copilot.lua', opts = {} },
 }

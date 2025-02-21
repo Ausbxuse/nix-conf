@@ -1,21 +1,28 @@
 # Set vim
+function __set_beam_cursor {
+    echo -ne '\e[6 q'
+}
+
+function __set_block_cursor {
+    echo -ne '\e[2 q'
+}
+
 function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-    [[ $1 = 'block' ]]; then
-      echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-    [[ ${KEYMAP} == viins ]] ||
-    [[ ${KEYMAP} = "" ]] ||
-    [[ $1 = 'beam' ]]; then
-        echo -ne '\e[5 q'
-  fi
+  case $KEYMAP in
+    vicmd) __set_block_cursor;;
+    viins|main) __set_beam_cursor;;
+  esac
 }
 zle -N zle-keymap-select
-zle-line-init() {
-  echo -ne "\e[5 q"
+
+function zle-line-init {
+    __set_beam_cursor
 }
 zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
+
+precmd() {
+    __set_beam_cursor  # doesn't have to be in precmd - can put outside a function if you like
+}
 
 bindkey -v '^?' backward-delete-char
 bindkey '^[[P' delete-char

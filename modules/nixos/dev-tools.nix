@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  # TODO: create fzf.nix module
   environment.systemPackages = with pkgs; [
     home-manager
     sshfs

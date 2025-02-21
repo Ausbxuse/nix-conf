@@ -7,9 +7,10 @@
       cursorTheme = "capitaine-cursors-white";
     };
   };
+  services.xserver.libinput.enable = true;
   # TODO: separate hyprland
-  programs.hyprland.enable = true;
-  programs.iio-hyprland.enable = true;
+  # programs.hyprland.enable = true;
+  # programs.iio-hyprland.enable = true;
 
   services.gnome.tinysparql.enable = true;
   # services.gnome.tracker.enable = true;

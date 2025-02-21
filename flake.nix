@@ -20,28 +20,33 @@
         inherit modules;
         specialArgs = {inherit inputs hostname username;};
       };
+
     mkHome = modules: pkgs: username:
       inputs.home-manager.lib.homeManagerConfiguration {
         inherit modules pkgs;
         extraSpecialArgs = {inherit inputs username;};
       };
+
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+    user = "zhenyu";
+    nixosHosts = ["timy" "uni" "spacy"];
+    homeHosts = ["timy" "uni" "spacy" "earthy"];
   in {
     templates = import ./templates;
 
-    packages.x86_64-linux = import ./generators {inherit pkgs inputs;};
+    packages.x86_64-linux = import ./isos {inherit pkgs inputs;};
 
-    nixosConfigurations = {
-      timy = mkNixos [./hosts/timy] "timy" "zhenyu";
-      uni = mkNixos [./hosts/uni] "uni" "zhenyu";
-      spacy = mkNixos [./hosts/spacy] "spacy" "zhenyu";
-    };
+    nixosConfigurations = builtins.listToAttrs (map (host: {
+        name = host;
+        value = mkNixos [./hosts/${host}] host user;
+      })
+      nixosHosts);
 
-    homeConfigurations = {
-      "zhenyu@timy" = mkHome [./home/timy] pkgs "zhenyu";
-      "zhenyu@uni" = mkHome [./home/uni] pkgs "zhenyu";
-      "zhenyu@spacy" = mkHome [./home/spacy] pkgs "zhenyu"; # gui
-      "zhenyu@earthy" = mkHome [./home/earthy] pkgs "zhenyu"; # no-gui
-    };
+    homeConfigurations = builtins.listToAttrs (map (host: {
+        name = "${user}@" + host;
+        value = mkHome [./home/${host}] pkgs user;
+      })
+      homeHosts);
   };
 }

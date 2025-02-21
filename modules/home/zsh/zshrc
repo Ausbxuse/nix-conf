@@ -64,3 +64,6 @@ function lf() {
 # if command -v micromamba &> /dev/null ; then
 #   eval "$(micromamba shell hook --shell zsh)"
 # fi
+setopt appendhistory
+setopt INC_APPEND_HISTORY  
+setopt SHARE_HISTORY

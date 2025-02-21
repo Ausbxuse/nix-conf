@@ -8,7 +8,7 @@
 
     ../../../home/zathura
     ../../../home/firefox
-    ../../../home/alacritty
+    ../../../home/ghostty
 
     # ../../../home/programs.nix
     ../../../home/dev-tools.nix

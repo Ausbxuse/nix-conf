@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./minimal.nix
-    ../../nixos/luks.nix
     ../../nixos/gui/gnome.nix
     ../../nixos/hardware/sound.nix
     ../../nixos/hardware/printing.nix
